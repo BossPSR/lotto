@@ -1,0 +1,294 @@
+/*==========================================
+    lottery ticket
+===========================================*/
+.lottery-ticket {
+    padding: 120px 0;
+    background: url('../img/svg/lottery-ticket-bg.png') center bottom no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+    &:after {
+        position: absolute;
+        content: '';
+        left: 40%;
+        top: 0;
+        width: 60%;
+        background: url('../img/svg/lottery-ticket-shape.png') center bottom no-repeat;
+        background-size: cover;
+        bottom: 0;
+        z-index: -2;
+    }
+    .part-img {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        height: calc(370px + 104px);
+        position: relative;
+        &:after {
+            position: absolute;
+            content: '';
+            right: 40px;
+            width: 902px;
+            bottom: -80px;
+            top: -60px;
+            background: url('../img/svg/jackpot-img-shape.png') right center no-repeat;
+            background-size: contain;
+            z-index: -1;
+        }
+        img {
+            width: auto;
+            height: 370px;
+            max-width: none;
+        }
+        .ill-width {
+            position: absolute;
+            height: auto;
+            right: 0;
+            top: 0;
+            width: 602px;
+            .ill-shape-set {
+                position: absolute;
+                height: 104px;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 370px;
+                img {
+                    width: 85px;
+                    height: 85px;
+                    &:nth-child(1) {
+                        position: absolute;
+                        left: 0;
+                        top: -100px;
+                        animation: scalation-2 1s infinite linear;
+                        @include transition(3s);
+                        animation-delay: 6s;
+                    }
+                    &:nth-child(2) {
+                        width: 40px;
+                        height: 40px;
+                        position: absolute;
+                        top: -100px;
+                        left: 70px;
+                        animation: scalation-3 4s infinite linear;
+                        @include transition(3s);
+                        animation-delay: 8s;
+                    }
+                    &:nth-child(3) {
+                        width: 40px;
+                        height: 40px;
+                        position: absolute;
+                        top: -100px;
+                        right: 70px;
+                        animation: scalation-2 2s infinite linear;
+                        @include transition(5s);
+                        animation-delay: 6s;
+                    }
+                    &:nth-child(4) {
+                        position: absolute;
+                        top: -100px;
+                        right: 0;
+                        animation: scalation-2 2s infinite linear;
+                        @include transition(3s);
+                        animation-delay: 8s;
+                    }
+                }
+            }
+        }
+        .draw-date {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 160px;
+            height: 146px;
+            span {
+                display: block;
+                &.title {
+                    font-size: 26px;
+                    font-weight: 700;
+                    color: $white;
+                    text-transform: uppercase;
+                    padding: 13px 0px;
+                    text-align: center;
+                }
+                &.date {
+                    color: $base-color-3;
+                    font-size: 32px;
+                    font-weight: 800;
+                    text-align: center;
+                    text-transform: uppercase;
+                    padding: 17px 0;
+                }
+            }
+        }
+        .clock {
+            position: absolute;
+            bottom: 16px;
+            left: -110px;
+            img {
+                width: 115px;
+                height: 115px;
+            }
+        }
+    }
+    .part-text {
+        h2 {
+            font-size: 45px;
+            line-height: 60px;
+            font-weight: 700;
+            color: $heading-color;
+            margin-top: -14px;
+            margin-bottom: 19px;
+        }
+        p {
+            color: $p-color-2;
+            font-size: 18px;
+            line-height: 28px;
+        }
+        .date-counter {
+            margin-top: 53px;
+            .single-counter {
+                width: 110px;
+                height: 110px;
+                background: $white;
+                border-radius: 50%;
+                position: relative;
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin-right: 26px;
+                &:after {
+                    position: absolute;
+                    content: '';
+                    left: -12px;
+                    top: -30px;
+                    bottom: -30px;
+                    right: 0;
+                    background: url('../img/svg/time-bg.png') center center no-repeat;
+                    background-size: contain;
+                    z-index: -1;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+                .conter-content {
+                    display: inline-block;
+                    margin: -7px 0 -2px;
+                    span {
+                        display: block;
+                        line-height: 100%;
+                        &.number {
+                            font-size: 35px;
+                            font-weight: 700;
+                            color: $heading-color;
+                            margin-bottom: 4px;
+                        }
+                        &.title {
+                            font-size: 17px;
+                            color: $p-color-1;
+                        }
+                    }
+                }
+            }
+        }
+        .buttons {
+            margin-top: 60px;
+            ul {
+                li {
+                    display: inline-block;
+                    a {
+                        display: inline-block;
+                        width: 190px;
+                        height: 60px;
+                        line-height: 60px;
+                        text-align: center;
+                        background: $gradient;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: $white;
+                        border-radius: 3px;
+                        position: relative;
+                        z-index: 2;
+                        @include transition($transition);
+                        margin-right: 16px;
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: $gradient-reverse;
+                            z-index: -1;
+                            border-radius: 3px;
+                            opacity: 0;
+                            @include transition($transition);
+                        }
+                        &:hover {
+                            &:after {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                    
+                    &:last-child {
+                        a {
+                            color: $base-color-3;
+                            margin-right: 0;
+                            &:after {
+                                background: $white;
+                                opacity: 1;
+                                width: auto;
+                                height: auto;
+                                top: 2px;
+                                left: 2px;
+                                right: 2px;
+                                bottom: 2px;
+                            }
+                            &:hover {
+                                color: $white;
+                                &:after {
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.active {
+        .part-img {
+            .ill-width {
+                .ill-shape-set {
+                    img {
+                        &:nth-child(1) {
+                            top: 6px;
+                        }
+                        &:nth-child(3), &:nth-child(2){
+                            top: 0
+                        }
+                        &:nth-child(4) {
+                            top: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.lottery-ticket.style-2 {
+    .part-img {
+        height: auto;
+        padding-right: 60px;
+        img {
+            height: auto;
+        }
+        &:after {
+            display: none;
+        }
+    }
+}

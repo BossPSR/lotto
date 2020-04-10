@@ -1,0 +1,106 @@
+/* =================================
+ Temlate Name : Lotters - Lottery & Raffle System HTML Template
+ Author Name : autworks
+ Date: 31/08/2019
+ Version: 1.0
+ =================================
+
+/* =================================
+ css index
+ =================================
+
+ *. variables
+ *. mixin
+ *. global
+ *. normalize
+
+ =================================
+
+ 1. header
+ 2. banner
+ 3. brand
+ 4. jackpot 
+ 5. lottery ticket
+ 6. lottery result
+ 7. choosing reason
+ 8. buying ticket
+ 9. how to work
+ 10. team
+ 11. statics
+ 12. testimonial
+ 13. affiliate
+ 14. mobile navbar
+ 15. footer
+
+ ============
+ inner pages
+ ============
+
+ 16. breadcrumb
+ 17. lottery details
+ 18. quick review
+ 19. contact
+ 20. faq
+ 21. blog details
+ 22. sidebar
+ 23. team
+ 24. blog
+ 25. about
+ 26. forms
+ 27. erroe
+
+============
+ user panel
+============
+
+28. player statics
+29. payment history
+30. player profile
+
+
+
+================================= */
+
+
+@import "main/_variables";
+@import "main/_mixins";
+@import "main/_global";
+@import "main/_normalize";
+@import "main/_animation";
+
+
+//=Section scss
+@import "sections/_header";
+@import "sections/_banner";
+@import "sections/_brand";
+@import "sections/_jackpot";
+@import "sections/_lottery-ticket";
+@import "sections/_lottery-result";
+@import "sections/_choosing-reason";
+@import "sections/_buying-ticket";
+@import "sections/_how-to-work";
+@import "sections/_team";
+@import "sections/_statics";
+@import "sections/_testimonial";
+@import "sections/_affiliate";
+@import "sections/_mobile-navbar";
+@import "sections/_footer";
+
+//=Pages scss
+@import "pages/_breadcrumb";
+@import "pages/_lottery-details";
+@import "pages/_quick-review";
+@import "pages/_contact";
+@import "pages/_faq";
+@import "pages/_blog-details";
+@import "pages/_sidebar";
+@import "pages/_team";
+@import "pages/_blog";
+@import "pages/_about";
+@import "pages/_forms";
+@import "pages/_error";
+
+//=user panel
+@import "user-panel/_player-statics";
+@import "user-panel/_payment-history";
+@import "user-panel/_player-profile";

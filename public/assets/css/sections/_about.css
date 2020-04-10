@@ -1,0 +1,10 @@
+/*==========================================
+    about
+==========================================*/
+.about {
+  padding: 120px 0; }
+  .about .part-feature .single-feature .feature-icon {
+    width: 65px;
+    height: 65px; }
+    .about .part-feature .single-feature .feature-icon img {
+      width: 100%; }

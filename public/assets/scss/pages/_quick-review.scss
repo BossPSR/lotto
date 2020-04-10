@@ -1,0 +1,113 @@
+.quick-review {
+    padding: 120px 0 90px;
+    &.team-page {
+        padding-top: 0;
+    }
+    .single-jackpot {
+        padding: 45px 30px;
+        box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.08);
+        border-radius: 5px;
+        margin-bottom: 30px;
+        background: $white;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        .part-head {
+            margin-bottom: 32px;
+            text-align: center;
+            .icon {
+                width: 80px;
+                height: 80px;
+                background: $gradient;
+                border-radius: 50%;
+                text-align: center;
+                position: relative;
+                @include transition($transition);
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 2;
+                img {
+                    height: 60%;
+                }
+                &:after {
+                    position: absolute;
+                    content: '';
+                    top: -30px;
+                    right: -50px;
+                    left: -50px;
+                    bottom: -12px;
+                    background: url('../img/svg/jackpot-icon-bg.png') center center no-repeat;
+                    background-size: contain;
+                    transform: rotate(90deg);
+                    @include transition($transition);
+                    z-index: -2;
+                }
+                &:before {
+                    position: absolute;
+                    content: '';
+                    left: -1px;
+                    top: -1px;
+                    right: -1px;
+                    bottom: -1px;
+                    background: $gradient-2;
+                    z-index: -1;
+                    border-radius: 50%;
+                    @include transition($transition);
+                    opacity: 0;
+                }
+            }
+        }
+        .part-body {
+            h3 {
+                font-size: 23px;
+                font-weight: 700;
+                color: #0c375a;
+                margin-bottom: 17px;
+            }
+            p {
+                font-size: 18px;
+                color: #969ea5;
+                line-height: 28px;
+                margin-bottom: 27px;
+            }
+            a {
+                display: inline-block;
+                font-size: 18px;
+                color: $base-color;
+                font-weight: 600;
+                @include transition($transition);
+                i {
+                    margin-left: 10px;
+                    font-size: 16px;
+                }
+            }
+        }
+        &:hover {
+            .part-head {
+                .icon {
+                    &:before {
+                        opacity: 1;
+                    }
+                    &:after {
+                        background: url('../img/svg/jackpot-icon-bg-hover.png') center center no-repeat;
+                        background-size: contain;
+                        transform: rotate(90deg);
+                    }
+                }
+                .text {
+                    span {
+                        &.amount {
+                            color: $base-color-2;
+                        }
+                    }
+                }
+            }
+            .part-body {
+                a {
+                    color: $base-color-2;
+                }
+            }
+        }
+    }
+}

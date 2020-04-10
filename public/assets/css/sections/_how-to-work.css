@@ -1,0 +1,9 @@
+/*==========================================
+    how to works
+===========================================*/
+.how-to-works .part-img {
+  height: 652px; }
+  .how-to-works .part-img img {
+    max-width: none;
+    width: auto;
+    height: 100%; }

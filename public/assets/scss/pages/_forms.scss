@@ -1,0 +1,256 @@
+/*==========================================
+    login
+==========================================*/
+.form {
+    padding: 120px 0;
+    form {
+        background: $white;
+        box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        padding: 50px 50px 60px;
+        position: relative;
+        border-radius: 10px;
+        z-index: 2;
+        .form-group {
+            margin-bottom: 25px;
+            &.checkbox {
+                height: 100%;
+                .form-check {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100%;
+                    margin: 2px 0 0;
+                }
+            }
+            &.fieldset {
+                margin: 13px 0 21px;
+            }
+            label {
+                color: $heading-color;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 13px;
+                .requred {
+                    color: $base-color;
+                }
+            }
+            input.form-control {
+                height: 60px;
+                border: none;
+                background: #f3f6ff;
+                color: $heading-color;
+                font-size: 18px;
+                padding: 10px 30px;
+                font-weight: 500;
+                width: 100%;
+                &::placeholder {
+                    opacity: .8;
+                }
+            }
+            textarea {
+                height: 160px;
+                border: none;
+                background: #f3f6ff;
+                color: $heading-color;
+                font-size: 18px;
+                padding: 30px 30px;
+                font-weight: 500;
+                &::placeholder {
+                    opacity: .8;
+                }
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+            .form-check {
+                padding-left: 15px;
+                margin-right: 60px;
+                [type="radio"]:checked,
+                [type="radio"]:not(:checked) {
+                    position: absolute;
+                    left: -9999px;
+                }
+                [type="radio"]:checked + label,
+                [type="radio"]:not(:checked) + label
+                {
+                    position: relative;
+                    padding-left: 28px;
+                    cursor: pointer;
+                    line-height: 20px;
+                    display: inline-block;
+                    color: #666;
+                }
+                [type="radio"]:checked + label:before,
+                [type="radio"]:not(:checked) + label:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 18px;
+                    height: 18px;
+                    border: 1px solid $base-color;
+                    border-radius: 100%;
+                    background: #fff;
+                }
+                [type="radio"]:checked + label:after,
+                [type="radio"]:not(:checked) + label:after {
+                    content: '';
+                    width: 12px;
+                    height: 12px;
+                    background: $gradient;
+                    position: absolute;
+                    top: 3px;
+                    left: 3px;
+                    border-radius: 100%;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                }
+                [type="radio"]:not(:checked) + label:after {
+                    opacity: 0;
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                }
+                [type="radio"]:checked + label:after {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+        }
+        select {
+            height: 60px;
+            border: none;
+            background: #f3f6ff;
+            color: $heading-color;
+            font-size: 16px;
+            padding: 10px 30px;
+            font-weight: 500;
+            appearance: none;
+            position: relative;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        button {
+            width: 190px;
+            height: 55px;
+            background: $gradient;
+            color: $white;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            overflow: hidden;
+            margin-top: 40px;
+            &:after {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: $gradient-reverse;
+                opacity: 0;
+                @include transition($transition);
+                z-index: -1;
+            }
+            &:hover {
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+        .forgetting-password {
+            display: inline-block;
+            margin-top: 28px;
+            text-align: right;
+            width: 100%;
+            font-size: 16px;
+            color: $descr-color;
+            font-weight: 600;
+        }
+
+        /* Base for label styling */
+        [type="checkbox"]:not(:checked),
+        [type="checkbox"]:checked {
+        position: absolute;
+        left: -9999px;
+        }
+        [type="checkbox"]:not(:checked) + label,
+        [type="checkbox"]:checked + label {
+        position: relative;
+        padding-left: 1.95em;
+        cursor: pointer;
+        margin: 0;
+        line-height: 100%;
+        }
+
+        /* checkbox aspect */
+        [type="checkbox"]:not(:checked) + label:before,
+        [type="checkbox"]:checked + label:before {
+        content: '';
+        position: absolute;
+        left: 0; 
+        top: 1px;
+        width: 20px; 
+        height: 20px;
+        border-radius: 50px;
+        border: 1px solid $base-color;
+        background: #fff;
+        }
+        /* checked mark aspect */
+        [type="checkbox"]:not(:checked) + label:after,
+        [type="checkbox"]:checked + label:after {
+        content: '';
+        position: absolute;
+        top: 5px; 
+        left: 4px;
+        width: 12px;
+        border-radius: 50px;
+        height: 12px;
+        font-size: 1.3em;
+        line-height: 0.8;
+        background: $gradient;
+        transition: all .2s;
+        font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+        }
+        /* checked mark aspect changes */
+        [type="checkbox"]:not(:checked) + label:after {
+        opacity: 0;
+        transform: scale(0);
+        }
+        [type="checkbox"]:checked + label:after {
+        opacity: 1;
+        transform: scale(1);
+        }
+
+    }
+    &.style-2 {
+        form {
+            background: $gradient;
+            .form-group label {
+                color: $white;
+                .requred {
+                    color: $white;
+                }
+            }
+            .login-button, .submit-button {
+                background: $gradient-2;
+                &:after {
+                    background: $gradient-2-reverse;
+                }
+            }
+            .forgetting-password {
+                color: $white;
+            }
+            .form-group .form-check [type="radio"]:checked + label,
+            .form-group .form-check [type="radio"]:not(:checked) + label {
+                color: $white;
+            }
+        }
+    }
+}

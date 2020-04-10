@@ -1,0 +1,120 @@
+/*=======================================
+    custom container
+========================================*/
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px; 
+    } 
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 750px; 
+    } 
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 970px;
+    } 
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px; 
+    } 
+}
+
+
+/*=======================================
+    section-title
+========================================*/
+.section-title {
+    margin-bottom: 72px;
+    span {
+        &.sub-title {
+            font-size: 18px;
+            color: $base-color-2;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 23px;
+        }
+    }
+    h2 {
+        color: $heading-color;
+        font-size: 45px;
+        line-height: 60px;
+        font-weight: 700;
+        margin-bottom: 19px;
+        margin-top: -14px;
+    }
+    p {
+        color: $p-color-1;
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+.preloader {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#nest1 {
+	display: block;
+	position: relative;
+	height: 100px;
+	width: 100px;
+	border: 3px solid transparent;
+	border-top-color: $base-color;
+	border-radius: 50%;
+	-webkit-animation: spin7 1.5s ease infinite;
+	animation: spin7 1.5s ease infinite
+}
+
+#nest1:after,
+#nest1:before {
+	position: absolute;
+	border: 3px solid transparent;
+	content: ""
+}
+
+#nest1:before {
+	border-radius: 50%;
+	border-top-color: $base-color-2;
+	-webkit-animation: spin7 3s linear infinite;
+    animation: spin7 3s linear infinite;
+    top: 7px;
+	right: 7px;
+	bottom: 7px;
+	left: 7px;
+}
+
+#nest1:after {
+	border-radius: 50%;
+	border-top-color: #000;
+	-webkit-animation: spin7 1.5s ease infinite;
+    animation: spin7 1.5s ease infinite;
+    top: 15px;
+    right: 15px;
+    left: 15px;
+	bottom: 15px
+}
+
+@keyframes spin7 {
+	from {
+		-webkit-transform: rotate(0);
+		transform: rotate(0)
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg)
+	}
+}

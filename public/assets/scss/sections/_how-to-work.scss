@@ -1,0 +1,186 @@
+/*==========================================
+    how to works
+===========================================*/
+.how-to-works {
+    &.how-it-works-page {
+        padding: 120px 0 0;
+        .hover-img {
+            text-align: center;
+            margin-top: 30px;
+        }
+    }
+    .part-img {
+        height: 602px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: relative;
+        margin-right: 30px;
+        img {
+            max-width: none;
+            width: auto;
+            height: 100%;
+        }
+        .ill-shape {
+            position: absolute;
+            bottom: 40px;
+            right: 85px;
+            height: 430px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: -1;
+            img {
+                width: auto;
+                max-width: none;
+                height: 100%;
+            }
+        }
+    }
+    .working-list {
+        margin-right: -50px;
+        width: -webkit-fill-available;
+        .working-list-content {
+            position: relative;
+            z-index: 2;
+            &:after {
+                position: absolute;
+                content: '';
+                left: 30px;
+                right: 30px;
+                top: 30px;
+                bottom: 30px;
+                background: url('../img/svg/how-to-works-step-bg.png') center center no-repeat;
+                background-size: contain;
+                z-index: -1;
+            }
+            .single-system {
+                text-align: center;
+                box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.06);
+                @include transition($transition);
+                background: $white;
+                position: relative;
+                border-radius: 4px;
+                overflow: hidden;
+                perspective: 100px;
+                perspective-origin: center; 
+                &:hover {
+                    .hover-content {
+                        top: 0;
+                    }
+                    box-shadow: 0 0 10px 2px rgba(251, 150, 14, 0.12);
+                    .system-content {
+                        transform: translateY(-100%);
+                    }
+                }
+                .system-content {
+                    padding: 40px 0;
+                    transform: translateY(0);
+                    @include transition($transition);
+                    .number {
+                        display: inline-block;
+                        font-size: 25px;
+                        color: $white;
+                        font-weight: 700;
+                        background: $gradient;
+                        width: 80px;
+                        height: 80px;
+                        line-height: 80px;
+                        text-align: center;
+                        border-radius: 50%;
+                        margin-bottom: 17px;
+                        position: relative;
+                        z-index: 0;
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            left: -1px;
+                            top: -1px;
+                            right: -1px;
+                            bottom: -1px;
+                            z-index: -1;
+                            background: $gradient-2;
+                            border-radius: 50%;
+                            opacity: 0;
+                            @include transition($transition);
+                        }
+                    }
+                    .title {
+                        color: $heading-color-2;
+                        font-size: 23px;
+                        font-weight: 700;
+                        display: block;
+                        line-height: 28px;
+                    }
+                }
+                .hover-content {
+                    position: absolute;
+                    content: '';
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: $gradient;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0 30px;
+                    border-radius: 4px;
+                    text-transform: capitalize;
+                    @include transition($transition);
+                    p {
+                        color: $white;
+                        line-height: 28px;
+                        font-size: 18px;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.how-to-works.style-2 {
+    padding: 120px 0;
+    background: -webkit-linear-gradient(-20deg, #005cea 0%, #00c5fb 100%);
+    position: relative;
+    z-index: 2;
+    .working-list {
+        margin-right: 0;
+        .working-list-content {
+            &:after {
+                background: url('../img/svg/how-to-works-step-bg-2.png') center center no-repeat;
+                background-size: contain;
+            }
+            .single-system {
+                .hover-content {
+                    background: -webkit-linear-gradient(473deg, #eab324 20%, #fa8900 100%);
+                }
+            }
+        }
+    }
+    .banner-shape {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        left: 0;
+        height: 100%;
+        z-index: -1;
+        img {
+            &:first-child {
+                position: absolute;
+                height: 100%;
+                top: 0;
+                bottom: 0;
+                left: 0%;
+            }
+            &:last-child {
+                position: absolute;
+                height: 100%;
+                top: 0;
+                bottom: 0;
+                right: -10%;
+            }
+        }
+    }
+}

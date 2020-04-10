@@ -1,0 +1,63 @@
+/*==========================================
+    brand
+===========================================*/
+.brand {
+    background: #ecf3f9;
+    padding: 40px 0;
+    .brand-list {
+        .single-brand {
+            padding: 28px 30px;
+            margin: 0 30px;
+            background: $white;
+            border-radius: 5px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(0, 118, 231, 0.2);
+            &:after {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: $gradient-2;
+                z-index: -1;   
+                opacity: 0;       
+                @include transition($transition); 
+                border-radius: 5px; 
+            }
+            &:hover {
+                border-color: transparent;
+                &:after {
+                    opacity: 1;
+                }
+            }
+            img {
+                width: 100%;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.brand.style-2 {
+    background: $gradient;
+    .owl-item.active.target {
+        .single-brand {
+            &:after {
+                opacity: 0!important;
+            }
+        }
+    }
+    .single-brand {
+        &:hover {
+            &:after {
+                opacity: 0!important;
+            } 
+        }
+    }
+}

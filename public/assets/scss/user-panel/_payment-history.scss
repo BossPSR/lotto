@@ -1,0 +1,105 @@
+/*==========================================
+    payment history
+==========================================*/
+.payment-history {
+    margin-top: 68px;
+    .transaction-area {
+        .nav-tabs {
+            border-bottom: none;    
+            display: inline-flex;
+            position: relative;
+            left: 50%;
+            margin-left: -190px;
+            margin-bottom: 50px;
+            .nav-item {
+                .nav-link {
+                    display: inline-block;
+                    color: #fff;
+                    font-weight: 600;
+                    background: transparent;
+                    border: 1px solid #05bb59;
+                    font-size: 16px;
+                    border: 1px solid #05bb59;
+                    padding: 15px 0;
+                    text-align: center;
+                    width: 180px;
+                    border-radius: 50px;
+                    margin-right: 20px;
+                    color: #05bb59;
+                    @include transition($transition);
+                    &.active, &:focus, &:hover {
+                        background: #05bb59;
+                        border: 1px solid #05bb59;
+                        color: #fff;
+                    }
+                }
+                &:last-child {
+                    .nav-link {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+            .table {
+                margin-bottom: 0;
+                thead {
+                    background: $gradient;
+                    th {
+                        border: none;
+                        padding: 10px 0;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #ffffff;
+                        text-align: center;
+                        &:first-child {
+                            padding-left: 38px;
+                            text-align: left;
+                        }
+                    }
+                    td {
+                        padding: 15px 0;
+                    }
+                }
+                tbody {
+                    border-left: 1px solid rgba(109, 73, 235, 0.2);
+                    border-right: 1px solid rgba(109, 73, 235, 0.2);
+                    tr {
+                        border-bottom: 1px solid rgba(109, 73, 235, 0.2);
+                        th {
+                            border-top: none;
+                            padding-left: 40px;
+                            padding: 11px 0 11px 40px;
+                            text-transform: capitalize;
+                            font-weight: 600;
+                            .user-img {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50px;
+                                overflow: hidden;
+                                margin-right: 20px;
+                                border: 1px solid #05bb59;
+                                img {
+                                    width: 100%;
+                                    padding: 3px;
+                                    border-radius: 50%;
+                                }
+                            }
+                            span {
+                                font-size: 16px;
+                                color: $heading-color;
+                                padding-top: 15px;
+                            }
+                        }
+                        td {
+                            padding: 0;
+                            border-top: none;
+                            color: $p-color-1;
+                            font-size: 18px;
+                            vertical-align: middle;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+    }
+}

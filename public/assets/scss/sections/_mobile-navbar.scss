@@ -1,0 +1,79 @@
+.mobile-navbar {
+    display: none;
+}
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .mobile-navbar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 55;
+        background: $white;
+        box-shadow: 0 0 6px -2px rgba(0, 0, 0, 0.4);
+        ul {
+            display: flex;
+            height: 100%;
+            flex-direction: row;
+            align-items: center;
+            li {
+                display: flex;
+                flex: 1;
+                position: relative;
+                a {
+                    display: inline-block;
+                    height: 50px;
+                    width: 100%;
+                    text-align: center;
+                    line-height: 42px;                
+                    img {
+                        height: 25px;
+                    }
+                }
+                &:nth-child(3) {
+                    width: 40px;
+                    height: 40px;
+                    background: $gradient-2;
+                    position: relative;
+                    transform: rotate(45deg);
+                    max-width: 40px;
+                    top: -19px;
+                    border-radius: 15px;
+                    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.26);
+                    a {
+                        transform: rotate(-45deg);
+                        line-height: 40px;
+                        padding-left: 6px;
+                        img {
+                            height: 20px;
+                        }
+                    }
+                }
+                &:first-child {
+                    &:after {
+                        position: absolute;
+                        width: 1px;
+                        height: 10px;
+                        background: #ccc;
+                        content: '';
+                        right: 0;
+                        top: 50%;
+                        margin-top: -5px;
+                    }
+                }
+                &:last-child {
+                    &:after {
+                        position: absolute;
+                        width: 1px;
+                        height: 10px;
+                        background: #ccc;
+                        content: '';
+                        left: 0;
+                        top: 50%;
+                        margin-top: -5px;
+                    }
+                }
+            }
+        }
+    }
+}

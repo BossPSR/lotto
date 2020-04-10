@@ -1,0 +1,51 @@
+.select-lang > div{
+    margin-left: 5px;
+}
+
+.header_login > form{
+    display: flex;
+}
+
+.button_login{
+   background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
+   color: #ffffff;
+}
+
+.form_user{
+    margin: 0 5px;
+}
+
+.form_user > div{
+    color: #000000;
+}
+
+.form_user_send{
+    display: flex;
+    align-items: center;
+}
+
+.single-jackpot{
+    height: 90%;
+}
+
+.lotto_list_colum_2{
+    display: flex;
+}
+
+.lotto_list_colum_2 > .lotto_list_colum_2_detail{
+    flex-grow: 1;
+    text-align: center;
+    border: 1px solid #ffce4f;
+    margin: 0 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.lotto_list_colum_2 > .lotto_list_colum_2_detail > div{
+    padding: 5px;
+}
+
+.lotto_list_colum_2 > .lotto_list_colum_2_detail > div:first-child{
+    background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
+    color: #ffffff;
+}

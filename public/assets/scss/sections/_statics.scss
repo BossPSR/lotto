@@ -1,0 +1,152 @@
+/*==========================================
+    statics
+===========================================*/
+.user-statics {
+    padding: 0 0 90px;
+    background: url('../img/statics-bg.png') center bottom no-repeat;
+    background-size: cover;
+    &.style-2 {
+        background: none;
+    }
+    .part-statics {
+        .single-statics {
+            text-align: center;
+            box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.06);
+            @include transition($transition);
+            background: $white;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            perspective: 100px;
+            perspective-origin: center; 
+            margin-bottom: 30px;
+            &.payout {
+                background: #e5e6f9;
+                .statics-content {
+                    .number {
+                        background: -webkit-linear-gradient(473deg, #a7abdf 0%, #42489d 100%);
+                    }
+                }
+                .hover-content {
+                    background: -webkit-linear-gradient(473deg, #a7abdf 0%, #42489d 100%);
+                }
+            }
+            &.biggest-payout {
+                background: #e4f3fa;
+            }
+            &.player {
+                background: #e3f8f7;
+                margin-top: 30px;
+                .statics-content {
+                    .number {
+                        background: -webkit-linear-gradient(473deg, #18c2ba 0%, #014f4a 100%);
+                    }
+                }
+                .hover-content {
+                    background: -webkit-linear-gradient(473deg, #18c2ba 0%, #014f4a 100%);
+                }
+            }
+            &.bet {
+                background: #f8efdf;
+                .statics-content {
+                    .number {
+                        background: $gradient-2;
+                    }
+                }
+                .hover-content {
+                    background: $gradient-2;
+                }
+            }
+            &:hover {
+                .hover-content {
+                    top: 0;
+                }
+                box-shadow: 0 0 10px 2px rgba(251, 150, 14, 0.12);
+                .statics-content {
+                    transform: translateY(-100%);
+                }
+            }
+            .statics-content {
+                padding: 40px 0;
+                transform: translateY(0);
+                @include transition($transition);
+                .number {
+                    display: inline-block;
+                    font-size: 25px;
+                    color: $white;
+                    font-weight: 700;
+                    background: $gradient;
+                    width: 120px;
+                    height: 120px;
+                    line-height: 120px;
+                    text-align: center;
+                    border-radius: 50%;
+                    margin-bottom: 17px;
+                    position: relative;
+                    z-index: 0;
+                    &:after {
+                        position: absolute;
+                        content: '';
+                        left: -1px;
+                        top: -1px;
+                        right: -1px;
+                        bottom: -1px;
+                        z-index: -1;
+                        background: $gradient-2;
+                        border-radius: 50%;
+                        opacity: 0;
+                        @include transition($transition);
+                    }
+                }
+                .title {
+                    color: $heading-color-2;
+                    font-size: 23px;
+                    font-weight: 700;
+                    display: block;
+                    line-height: 28px;
+                }
+            }
+            .hover-content {
+                position: absolute;
+                content: '';
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: $gradient;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 25px;
+                border-radius: 4px;
+                text-transform: capitalize;
+                @include transition($transition);
+                p {
+                    color: $white;
+                    line-height: 28px;
+                    font-size: 18px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .part-map {
+        width: 100%;
+        #world-map-gdp {
+            width: 600px;
+            height: 400px;
+            .jvectormap-container {
+                background: rgba(255, 255, 255, 0) !important;
+            }
+            .jvectormap-zoomin, .jvectormap-zoomout {
+                display: none;
+            }
+            circle {
+                r: 8;
+                stroke: #fecb4b;
+                fill: #fb9912;
+            }
+        }
+    }
+}

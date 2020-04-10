@@ -1,0 +1,272 @@
+/*==========================================
+    lottery result
+===========================================*/
+.lottery-result {
+    padding: 120px 0;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 60px;
+    &:after {
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        left: 0;
+        bottom: 0px;
+        content: '';
+        z-index: -1;
+        background: url('../img/svg/lottery-result-bg.png') right bottom no-repeat;
+        background-size: cover;
+    }
+    .result-board {
+        padding: 30px;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.04);
+        .title {
+            float: left;
+            h3 {
+                font-size: 22px;
+                color: $heading-color-2;
+                font-weight: 700;
+                margin-bottom: 24px;
+                margin-top: -3px;
+            }
+        }
+        .view-result {
+            float: right;
+            a {
+                display: inline-block;
+                font-size: 18px;
+                font-weight: 600;
+                color: $link-color;
+            }
+        }
+        .table {
+            margin: 0;
+            thead {
+                tr {
+                    th {
+                        font-size: 18px;
+                        color: #403b3b;
+                        font-weight: 600;
+                        padding: 11px 20px;
+                        border-bottom: none;
+                        border-color: #e6e6e6;
+                        border-right: 1px solid #e6e6e6;
+                        &:first-child {
+                            border-left: 1px solid #e6e6e6; 
+                        }
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    th, td {
+                        font-size: 18px;
+                        color: #666;
+                        font-weight: 400;
+                        padding: 0 20px;
+                        border-color: transparent;
+                        border-right: 1px solid transparent;
+                        height: 60px;
+                        display: table-cell;
+                        vertical-align: middle;
+                        ul {
+                            li {
+                                display: inline-block;
+                                a {
+                                    display: inline-block;
+                                    width: 30px;
+                                    height: 30px;
+                                    background: #ffffff;
+                                    text-align: center;
+                                    line-height: 26px;
+                                    border: 1px solid rgba(102, 102, 102, 0.4);
+                                    border-radius: 50%;
+                                    font-size: 16px;
+                                    color: $p-color-1;
+                                    margin-right: 6px;
+                                    cursor: text;
+                                }
+                                &:last-child {
+                                    a {
+                                        margin-right: 0;
+                                    }
+                                }
+                                &.winning-number {
+                                    a {
+                                        background: $gradient;
+                                        color: $white;
+                                        border-color: transparent;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    th {
+                        border-left: 1px solid #e6e6e6; 
+                        width: 210px;
+                        font-weight: 500;
+                        color: #444;
+                        font-size: 16px;
+                        border-right-color: transparent;
+                        img {
+                            width: 40px;
+                            height: auto;
+                            margin-right: 11px;
+                        }
+                    }
+                    td {
+                        &:last-child {
+                            width: 300px;
+                            border-color: #e6e6e6;
+                            border-top: none;
+                        }
+                    }
+                    &:nth-child(2n+1) {
+                        background: #f1f2f4;
+                    }
+                    &:last-child {
+                        th, td {
+                            border-bottom: 1px solid #e6e6e6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .winners-list {
+        padding: 30px 24px;
+        border: 1px solid #ecf6ff;
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.04);
+        position: relative;
+        &:after {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background: #fff;
+        }
+        h3 {
+            font-size: 22px;
+            color: $heading-color-2;
+            font-weight: 700;
+            margin-bottom: 24px;
+            margin-top: -3px;
+        }
+        .single-winner {
+            display: flow-root;
+            border-radius: 4px;
+            background: $white;
+            padding: 13px 15px;
+            border: 1px solid #e6e6e6;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            .part-img {
+                width: 40px;
+                float: left;
+                margin-right: 20px;
+                img {
+                    width: 100%;
+                    border-radius: 3px;
+                }
+            }
+            .part-text {
+                display: table-cell;
+                span {
+                    display: block;
+                    &.name {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: rgba(48, 52, 101, 0.8);
+                        margin-top: -4px;
+                        margin-bottom: 2px;
+                    }
+                    &.lottery-subject {
+                        color: #777;
+                        font-size: 16px;
+                    }
+                    &.winning-date {
+                        color: #777;
+                        font-size: 16px;
+                    }
+                    &.winning-prize {
+                        font-size: 21px;
+                        font-weight: 600;
+                        color: #17b936;
+                    }
+                }
+            }
+        }
+    }
+    .shape-container {
+        position: absolute;
+        top: 0;
+        max-width: 1170px;
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .shape-set-1, .shape-set-2 {
+        height: 173px;
+        width: 185px;
+        position: absolute;
+        top: 45px;
+        left: -125px;
+        img {
+            &:nth-child(1) {
+                position: absolute;
+                width: 120px;
+                bottom: 0;
+                left: 0;
+                animation: scalation-4 3s infinite linear;
+                animation-delay: .9s;
+                z-index: -2;
+            }
+            &:nth-child(2) {
+                position: absolute;
+                width: 35px;
+                left: 50px;
+                top: 0;
+                animation: scalation-4 3s infinite linear;
+                animation-delay: .9s;
+                z-index: 2;
+            }
+            &:nth-child(3) {
+                position: absolute;
+                width: 55px;
+                right: 0;
+                top: 8px;
+                z-index: -1;
+                animation: scalation-4 3s infinite linear;
+                animation-delay: .9s;
+            }
+        }
+    }
+    .shape-set-2 {
+        z-index: -1;
+        left: auto;
+        right: -125px;
+        bottom: 0px;
+        top: auto;
+        transform: rotate(180deg);
+    }
+}
+.lottery-result.style-2 {
+    &:after {
+        background: url('../img/svg/lottery-result-bg-2.png') center center no-repeat;
+        background-size: contain;
+        width: 100%;
+    }
+}
+.lottery-result.style-3 {
+    padding-top: 0;
+}
