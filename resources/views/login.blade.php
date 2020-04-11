@@ -41,7 +41,7 @@
                                 <img src="assets/img/svg/euro-million.png" alt="">
                             </div>
                             <div class="text">
-                                <span class="amount">จับยี่กี VIP - รอบที่ 73</span>
+                                <span class="amount">หวยรัฐบาล</span>
                                 <span class="draw-date">10 April 2020</span>
                             </div>
                         </div>
@@ -72,24 +72,225 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-sm-6">
+                <div class="col-xl-12 col-lg-12 col-sm-12">
                     <div class="single-jackpot">
                         <div class="part-head">
                             <div class="icon">
                                 <img src="assets/img/svg/euro-jackpot.png" alt="">
                             </div>
                             <div class="text">
-                                <span class="amount">$258,467,964</span>
-                                <span class="draw-date">Next Draw : 3 Days 4:21:11</span>
+                                <span class="amount">หวยหุ้นต่างประเทศ</span>
+                                <span class="draw-date">10 April 2020</span>
                             </div>
                         </div>
                         <div class="part-body">
-                            <h3>Euro Jackpot</h3>
-                            <p>Eurojackpot is a relatively new lottery. It was organized for the first time in 2012. It’s simple, safe, and convenient.</p>
-                                <a href="#">Play Now <i class="fas fa-arrow-right"></i></a>
+                            <div class="d-flex">
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="lotto_list_colum_2 form-group">
+                                        <div class="lotto_list_colum_2_detail">
+                                            <div>หุ้นเกาหลี</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="lotto_list_colum_2">
+                                        <div class="lotto_list_colum_2_detail">
+                                            <div>3ตัวบน</div>
+                                            <div>481</div>
+                                        </div>
+
+                                        <div class="lotto_list_colum_2_detail">
+                                            <div>2ตัวล่าง</div>
+                                            <div>21</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="d-flex">
+                                        <div>
+                                            <div class="lotto_list_colum_2 form-group">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>นิเคอิรอบเช้า</div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="lotto_list_colum_2 form-group">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>นิเคอิรอบเช้า</div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="d-flex">
+                                        <div>
+
+                                            <div class="lotto_list_colum_2 form-group">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>นิเคอิรอบเช้า</div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+
+                                        <div>
+                                            <div class="lotto_list_colum_2 form-group">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>นิเคอิรอบเช้า</div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xl-4 col-lg-4 col-sm-4">
+                    <div class="single-jackpot">
+                        <div class="part-head">
+                            <div class="icon">
+                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                            </div>
+                            <div class="text">
+                                <span class="amount">หวยหุ้นต่างประเทศ</span>
+                                <span class="draw-date">10 April 2020</span>
+                            </div>
+                        </div>
+                        <div class="part-body">
+                            <div>
+                                <div class="lotto_list_colum_2 form-group">
+                                    <div class="lotto_list_colum_2_detail">
+                                        <div>นิเคอิรอบเช้า</div>
+                                    </div>
+                                </div>
+    
+                                <div class="lotto_list_colum_2">
+                                    <div class="lotto_list_colum_2_detail">
+                                        <div>3ตัวบน</div>
+                                        <div>481</div>
+                                    </div>
+    
+                                    <div class="lotto_list_colum_2_detail">
+                                        <div>2ตัวล่าง</div>
+                                        <div>21</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="lotto_list_colum_2 form-group">
+                                    <div class="lotto_list_colum_2_detail">
+                                        <div>นิเคอิรอบเช้า</div>
+                                    </div>
+                                </div>
+    
+                                <div class="lotto_list_colum_2">
+                                    <div class="lotto_list_colum_2_detail">
+                                        <div>3ตัวบน</div>
+                                        <div>481</div>
+                                    </div>
+    
+                                    <div class="lotto_list_colum_2_detail">
+                                        <div>2ตัวล่าง</div>
+                                        <div>21</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-sm-4">
+                    <div class="single-jackpot">
+                        <div class="part-head">
+                            <div class="icon">
+                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                            </div>
+                            <div class="text">
+                                <span class="amount">หวยหุ้นต่างประเทศ</span>
+                                <span class="draw-date">10 April 2020</span>
+                            </div>
+                        </div>
+                        <div class="part-body">
+                            <div class="lotto_list_colum_2 form-group">
+                                <div class="lotto_list_colum_2_detail">
+                                    <div>นิเคอิรอบบ่าย</div>
+                                </div>
+                            </div>
+
+                            <div class="lotto_list_colum_2">
+                                <div class="lotto_list_colum_2_detail">
+                                    <div>3ตัวบน</div>
+                                    <div>481</div>
+                                </div>
+
+                                <div class="lotto_list_colum_2_detail">
+                                    <div>2ตัวล่าง</div>
+                                    <div>21</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="single-jackpot">
                         <div class="part-head">

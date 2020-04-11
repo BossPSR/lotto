@@ -43,7 +43,7 @@
         <!-- preloader end -->
 
                 <!-- header begin -->
-                <div class="header style-2" style="border-bottom: 1px solid #ffce4f">
+                {{-- <div class="header style-2" style="border-bottom: 1px solid #ffce4f">
                     <div class="topbar">
                         <div class="container">
                             <div class="row">
@@ -130,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- header end -->
         @yield('login')
 
