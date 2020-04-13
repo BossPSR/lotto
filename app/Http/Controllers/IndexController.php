@@ -11,4 +11,9 @@ class IndexController extends Controller
     {
         return view('login');
     }
+
+    public function index_member()
+    {
+        return view('index_member');
+    }
 }

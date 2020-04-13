@@ -43,7 +43,7 @@
         <!-- preloader end -->
 
                 <!-- header begin -->
-                {{-- <div class="header style-2" style="border-bottom: 1px solid #ffce4f">
+                <div class="header style-2" style="border-bottom: 1px solid #ffce4f">
                     <div class="topbar">
                         <div class="container">
                             <div class="row">
@@ -130,11 +130,181 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <!-- header end -->
         @yield('login')
 
+                <!-- footer begin -->
+                <div class="footer style-2">
+                    <div class="banner-shape">
+                        <img src="assets/img/svg/footer-shape-1.png" alt="">
+                        <img src="assets/img/svg/footer-shape-2.png" alt="">
+                    </div>
+                    <div class="container">
+                        <div class="payment-method">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <h2>Eligible Payment Method.</h2>
+                                    <p>We offer various payment options, which may vary from country to country. See which methods are we support to paid out.</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
+                                    <div class="methods">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="assets/img/mastercard.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="assets/img/visa.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="assets/img/paypal.jpg" alt="">
+                                                </a>
+                                            </li><li>
+                                                <a href="#">
+                                                    <img src="assets/img/skrill.jpg" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="col-xl-4 col-lg-4 col-md-5">
+                                <div class="footer-widget">
+                                    <div class="about-area">
+                                        <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                                        <p>Lotters set itself on a mission to give people around the world the opportunity to play the world’s biggest lotteries: Powerball, UK Lotto, EuroMillions & others.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 col-sm-4 col-md-2">
+                                <div class="footer-widget">
+                                    <div class="link-widget">
+                                        <h3>About</h3>
+                                        <ul>
+                                            <li>
+                                                <a href="#">About us</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Partners</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Career</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Reviews</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Conditions</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Help</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-sm-4 col-md-3">
+                                <div class="footer-widget">
+                                    <div class="link-widget">
+                                        <h3>Facitlity's</h3>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Official lottery</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">100% Safe Secure</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Instant Payout </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Performance Bonus</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Dedicated Support</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">No commission</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 col-sm-4 col-md-2">
+                                <div class="footer-widget">
+                                    <div class="link-widget">
+                                        <h3>Company</h3>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Contact</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Customers</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Apps</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Lottery</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Bonues</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer end -->
         
+                <!-- copyright begin -->
+                <div class="copyright">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-8 col-lg-8">
+                                <p>Copyright © 2019; All Right Reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- copyright end -->
+        
+                <!-- mobile navbar begin -->
+                <div class="mobile-navbar">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="assets/img/svg/home.svg" alt=""></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="assets/img/svg/lotto.svg" alt=""></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="assets/img/svg/ui.svg" alt=""></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="assets/img/svg/power-ball.svg" alt=""></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="assets/img/svg/user.svg" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- mobile navbar end -->
+                
         <!-- jquery -->
         <script src="{{asset('assets/js/jquery.js')}}"></script>
         <!-- proper js -->

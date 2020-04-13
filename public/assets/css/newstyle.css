@@ -24,8 +24,8 @@
     align-items: center;
 }
 
-.single-jackpot{
-    height: 90%;
+.single_jackpot_all > .single-jackpot{
+    height: 100%;
 }
 
 .lotto_list_colum_2{

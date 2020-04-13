@@ -1,0 +1,217 @@
+@extends('option/layout_member')
+@section('index_member')
+       <!-- jackpot begin -->
+       <div class="jackpot">
+        <div class="container shape-container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
+                    <div class="single-jackpot">
+                        <div class="part-head">
+                           
+                        </div>
+                        <div class="part-body">
+                            <div class="d-flex">
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            แทงหวย
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            รายการโพย
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            ผลรางวัล
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            แทงหวย
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            รายการโพย
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            ผลรางวัล
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            รายการแจ้ง ฝาก/ถอน
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            รายงานเครดิต
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            ระบบแนะนำ
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            สร้างเลขชุด
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            ข่าวสารประชาสัมพันธ์
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            ระบบโบนัสทั้งหมด
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            วิธีการใช้งาน
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            กล่องจดหมาย
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                           
+                                        </div>
+                                        <div class="part-body">
+                                           
+                                            ติดต่อเอเย่นต์
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+    <!-- jackpot end -->
+@endsection
