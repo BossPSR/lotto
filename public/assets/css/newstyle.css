@@ -49,3 +49,13 @@
     background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
     color: #ffffff;
 }
+
+.header_after_login {
+    margin: 0 5px;
+    font-size: 20px;
+}
+
+.header_after_login:last-child {
+    margin: 0 0 0 5px;
+    cursor: pointer;
+}

@@ -14,3 +14,5 @@
 Route::get('/','IndexController@index');
 Route::get('/index','IndexController@index');
 Route::get('/index_member','IndexController@index_member');
+Route::get('/lottery_play','LotteryPlayController@index');
+Route::get('/contact','LotteryPlayController@contact');
