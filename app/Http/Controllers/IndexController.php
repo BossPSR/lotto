@@ -16,4 +16,9 @@ class IndexController extends Controller
     {
         return view('index_member');
     }
+
+    public function plus_story()
+    {
+        return view('plus_story');
+    }
 }

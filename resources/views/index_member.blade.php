@@ -1,8 +1,15 @@
 @extends('option/layout_member')
 @section('index_member')
+
        <!-- jackpot begin -->
        <div class="jackpot">
-
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+                    <a href="/plus_story" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">เพิ่มบทความใหม่</button></a>
+                </div>
+            </div>
+        </div>
         <div class="container shape-container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
@@ -72,7 +79,7 @@
                         <div class="part-body">
                             <div class="d-flex">
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <a href="/lottery_play" style="display:block;">
+                                    <a href="/lottery_play" style="display:block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
                                             
@@ -215,7 +222,7 @@
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <a href="" style="display: block;">
+                                    <a href="" style="display: block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
                                             

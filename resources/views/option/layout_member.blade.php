@@ -62,12 +62,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="select-lang">
-                                <div>
-                                    <a href=""><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
-                                </div>
-                                <div>
-                                    <a href=""><i class="fas fa-headset"></i>ติดต่อเรา</a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -98,8 +93,8 @@
                                 <nav class="navbar navbar-expand-lg for-lottery">
                 
                                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <ul class="navbar-nav ml-auto">
-                                            <li class="nav-item dropdown">
+                                        <ul class="navbar-nav ml-auto">                                         
+                                            <li class="nav-item">
                                                 <div class="header_login">
                                                     <div class="d-flex">
                                                         <div class="header_after_login">
@@ -154,6 +149,7 @@
 
         @yield('index_member')
         @yield('lottery_play')
+        @yield('plus_story')
                    
         <!-- jquery -->
         <script src="{{asset('assets/js/jquery.js')}}"></script>
