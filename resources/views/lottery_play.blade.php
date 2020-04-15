@@ -2,7 +2,13 @@
 @section('lottery_play')
        <!-- jackpot begin -->
        <div class="jackpot">
-
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+                    <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
+                </div>
+            </div>
+        </div>
         <div class="container shape-container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">

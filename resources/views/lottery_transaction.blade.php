@@ -39,17 +39,8 @@
                                         <div class="part-body">
                                            
                     
-                                            <div class="lotto_list_colum_2">
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>3ตัวบน</div>
-                                                    <div>481</div>
-                                                </div>
-                    
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>2ตัวล่าง</div>
-                                                    <div>21</div>
-                                                </div>
-                                            </div>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list1">โพยหวยหุ้น</button>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list2">โพยหวยรัฐบาล</button>
                                          
                 
                                             
@@ -70,17 +61,8 @@
                                         <div class="part-body">
                                            
                     
-                                            <div class="lotto_list_colum_2">
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>3ตัวบน</div>
-                                                    <div>481</div>
-                                                </div>
-                    
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>2ตัวล่าง</div>
-                                                    <div>21</div>
-                                                </div>
-                                            </div>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list1">โพยหวยหุ้นย้อนหลัง</button>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list2">โพยหวยรัฐบาลย้อนหลัง</button>
                                          
                 
                                             
@@ -103,17 +85,8 @@
                                         <div class="part-body">
                                            
                     
-                                            <div class="lotto_list_colum_2">
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>3ตัวบน</div>
-                                                    <div>481</div>
-                                                </div>
-                    
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>2ตัวล่าง</div>
-                                                    <div>21</div>
-                                                </div>
-                                            </div>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list1">โพยจับยี่กี Huay</button>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list2">โพยจับยี่กี Huay VIP</button>
                                          
                 
                                             
@@ -134,17 +107,8 @@
                                         <div class="part-body">
                                            
                     
-                                            <div class="lotto_list_colum_2">
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>3ตัวบน</div>
-                                                    <div>481</div>
-                                                </div>
-                    
-                                                <div class="lotto_list_colum_2_detail">
-                                                    <div>2ตัวล่าง</div>
-                                                    <div>21</div>
-                                                </div>
-                                            </div>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list1">โพยจับยี่กี Huay ย้อนหลัง</button>
+                                            <button type="button" class="btn btn-warning new_story" onClick="" value="help_list2">โพยจับยี่กี Huay VIP ย้อนหลัง</button>
                                          
                 
                                             
