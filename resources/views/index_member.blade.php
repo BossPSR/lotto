@@ -39,27 +39,31 @@
                             </div>
                             <div class="d-flex">
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
+                                    <a href="/lottery_play" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                            
+                                            </div>
+                                            <div class="part-body">
+                                            
+                                                ฝากเครดิต
+                                            </div>
                                         </div>
-                                        <div class="part-body">
-                                           
-                                            ฝากเครดิต
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
+                                    <a href="/lottery_play" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                            
+                                            </div>
+                                            <div class="part-body">
+                                            
+                                                ถอนเครดิต
+                                            </div>
                                         </div>
-                                        <div class="part-body">
-                                           
-                                            ถอนเครดิต
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                             </div>
@@ -119,17 +123,6 @@
                             </div>
 
                             <div class="d-flex">
-                                <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
-                                            รายการแจ้ง ฝาก/ถอน
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
@@ -155,9 +148,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-
-                            <div class="d-flex">
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
@@ -169,6 +159,11 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            </div>
+
+                            <div class="d-flex">
+                               
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
@@ -194,9 +189,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-
-                            <div class="d-flex">
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
@@ -209,20 +201,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
-                                            กล่องจดหมาย
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                
+
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <a href="" style="display: block; color:#3d5169;">
+                                    <a href="/contact" style="display: block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
                                             

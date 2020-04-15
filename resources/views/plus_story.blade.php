@@ -59,32 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex">
-                                <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
-                                            ฝากเครดิต
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
-                                            ถอนเครดิต
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                           
                         </div>
                     </div>
                 </div>  

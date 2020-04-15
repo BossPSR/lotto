@@ -150,6 +150,7 @@
         @yield('index_member')
         @yield('lottery_play')
         @yield('plus_story')
+        @yield('contact')
                    
         <!-- jquery -->
         <script src="{{asset('assets/js/jquery.js')}}"></script>
