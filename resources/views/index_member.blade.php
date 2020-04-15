@@ -28,11 +28,11 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+                                           ฿ 0
                                         </div>
                                         <div class="part-body">
                                            
-                                            ฿ 0
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -42,11 +42,11 @@
                                     <a href="/lottery_play" style="display:block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+                                                ฝากเครดิต
                                             </div>
                                             <div class="part-body">
                                             
-                                                ฝากเครดิต
+                                                
                                             </div>
                                         </div>
                                     </a>
@@ -56,11 +56,11 @@
                                     <a href="/lottery_play" style="display:block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+                                                ถอนเครดิต
                                             </div>
                                             <div class="part-body">
                                             
-                                                ถอนเครดิต
+                                                
                                             </div>
                                         </div>
                                     </a>
@@ -86,38 +86,42 @@
                                     <a href="/lottery_play" style="display:block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+                                                แทงหวย
                                             </div>
                                             <div class="part-body">
                                             
-                                                แทงหวย
+                                                
                                             </div>
                                         </div>
                                     </a>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
+                                    <a href="/lottery_transaction" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                รายการโพย
+                                            </div>
+                                            <div class="part-body">
+                                            
+                                                
+                                            </div>
                                         </div>
-                                        <div class="part-body">
-                                           
-                                            รายการโพย
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
+                                    <a href="/lottery_result" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                ผลรางวัล
+                                            </div>
+                                            <div class="part-body">
+                                            
+                                                
+                                            </div>
                                         </div>
-                                        <div class="part-body">
-                                           
-                                            ผลรางวัล
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                             </div>
@@ -127,35 +131,35 @@
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
                                             รายงานเครดิต
                                         </div>
+                                        <div class="part-body">
+                                           
+                                            
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
                                             ระบบแนะนำ
                                         </div>
+                                        <div class="part-body">
+                                           
+                                            
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+                                            สร้างเลขชุด
                                         </div>
                                         <div class="part-body">
                                            
-                                            สร้างเลขชุด
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -168,37 +172,39 @@
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
                                             ข่าวสารประชาสัมพันธ์
                                         </div>
+                                        <div class="part-body">
+                                           
+                                            
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
-                                        </div>
-                                        <div class="part-body">
-                                           
                                             ระบบโบนัสทั้งหมด
                                         </div>
+                                        <div class="part-body">
+                                           
+                                            
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                           
+                                    <a href="/help" style="display: block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                วิธีการใช้งาน
+                                            </div>
+                                            <div class="part-body">
+                                            
+                                                
+                                            </div>
                                         </div>
-                                        <div class="part-body">
-                                           
-                                            วิธีการใช้งาน
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                             </div>
@@ -211,11 +217,11 @@
                                     <a href="/contact" style="display: block; color:#3d5169;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+                                                ติดต่อเอเย่นต์
                                             </div>
                                             <div class="part-body">
                                             
-                                                ติดต่อเอเย่นต์
+                                                
                                             </div>
                                         </div>
                                     </a>

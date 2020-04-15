@@ -1,0 +1,166 @@
+@extends('option/layout_member')
+@section('lottery_transaction')
+
+       <!-- jackpot begin -->
+       <div class="jackpot">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+                    <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="container shape-container">
+           
+            <div class="row">
+
+                <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
+                    <div class="single-jackpot">
+                        <div class="part-head">
+                            <div class="icon">
+                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                            </div>
+                            <div class="text">
+                                <span class="amount">รายการโพย</span>
+                            </div>
+                        </div>
+                        <div class="part-body">
+                            <div class="d-flex">
+                                <div class="col-xl-6 col-lg-6 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                            <div class="icon">
+                                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                                            </div>
+                                            <div class="text">
+                                                <span class="amount">โพยหวยหุ้น</span>
+                                            </div>
+                                        </div>
+                                        <div class="part-body">
+                                           
+                    
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                    
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                         
+                
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                               <div class="col-xl-6 col-lg-6 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                            <div class="icon">
+                                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                                            </div>
+                                            <div class="text">
+                                                <span class="amount">โพยหวยหุ้นย้อนหลัง</span>
+                                            </div>
+                                        </div>
+                                        <div class="part-body">
+                                           
+                    
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                    
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                         
+                
+                                            
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="col-xl-6 col-lg-6 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                            <div class="icon">
+                                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                                            </div>
+                                            <div class="text">
+                                                <span class="amount">โพยจับยี่กี Huay</span>
+                                            </div>
+                                        </div>
+                                        <div class="part-body">
+                                           
+                    
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                    
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                         
+                
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                               <div class="col-xl-6 col-lg-6 col-sm-12">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+                                            <div class="icon">
+                                                <img src="assets/img/svg/euro-jackpot.png" alt="">
+                                            </div>
+                                            <div class="text">
+                                                <span class="amount">โพยจับยี่กี Huayย้อนหลัง</span>
+                                            </div>
+                                        </div>
+                                        <div class="part-body">
+                                           
+                    
+                                            <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>3ตัวบน</div>
+                                                    <div>481</div>
+                                                </div>
+                    
+                                                <div class="lotto_list_colum_2_detail">
+                                                    <div>2ตัวล่าง</div>
+                                                    <div>21</div>
+                                                </div>
+                                            </div>
+                                         
+                
+                                            
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+
+    </div>
+    <!-- jackpot end -->
+@endsection

@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/','IndexController@index');
-Route::get('/index','IndexController@index');
-Route::get('/index_member','IndexController@index_member');
-Route::get('/plus_story','IndexController@plus_story');
-Route::get('/lottery_play','LotteryPlayController@index');
-Route::get('/contact','ContactController@index');
+Route::get('/','Frontend\IndexController@index');
+Route::get('/index','Frontend\IndexController@index');
+Route::get('/index_member','Frontend\IndexController@index_member');
+Route::get('/plus_story','Frontend\IndexController@plus_story');
+Route::get('/lottery_play','Frontend\LotteryPlayController@index');
+Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index');
+Route::get('/lottery_result','Frontend\LotteryResultController@index');
+Route::get('/help','Frontend\HelpController@index');
+Route::get('/contact','Frontend\ContactController@index');

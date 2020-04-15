@@ -148,8 +148,11 @@
         <!-- header end -->
 
         @yield('index_member')
-        @yield('lottery_play')
         @yield('plus_story')
+        @yield('lottery_play')
+        @yield('lottery_transaction')
+        @yield('lotto_result')
+        @yield('help')
         @yield('contact')
                    
         <!-- jquery -->
