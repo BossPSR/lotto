@@ -149,9 +149,11 @@
 
         @yield('index_member')
         @yield('plus_story')
+        @yield('lottery_withdraw')
         @yield('lottery_play')
         @yield('lottery_transaction')
         @yield('lotto_result')
+        @yield('lottery_news')
         @yield('help')
         @yield('contact')
                    

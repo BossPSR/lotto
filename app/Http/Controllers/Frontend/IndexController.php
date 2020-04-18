@@ -21,4 +21,9 @@ class IndexController extends Controller
     {
         return view('plus_story');
     }
+
+    public function lottery_withdraw()
+    {
+        return view('lottery_withdraw');
+    }
 }

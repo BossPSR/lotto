@@ -39,8 +39,8 @@
                             </div>
                             <div class="d-flex">
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <a href="/lottery_play" style="display:block; color:#3d5169;">
-                                        <div class="single-jackpot">
+                                    <a href="/lottery_play" style="display:block; color:#fff;">
+                                        <div class="single-jackpot bg-primary">
                                             <div class="part-head">
                                                 ฝากเครดิต
                                             </div>
@@ -53,8 +53,8 @@
                                 </div>
 
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <a href="/lottery_play" style="display:block; color:#3d5169;">
-                                        <div class="single-jackpot">
+                                    <a href="/lottery_withdraw" style="display:block; color:#fff;">
+                                        <div class="single-jackpot bg-success">
                                             <div class="part-head">
                                                 ถอนเครดิต
                                             </div>
@@ -170,15 +170,17 @@
                                
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                            ข่าวสารประชาสัมพันธ์
-                                        </div>
-                                        <div class="part-body">
-                                           
+                                    <a href="/lottery_news" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                ข่าวสารประชาสัมพันธ์
+                                            </div>
+                                            <div class="part-body">
                                             
+                                                
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">

@@ -14,7 +14,13 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                     <div class="single-jackpot">
                         <div class="part-head">
-                            แทงหวย
+                            <div class="icon">
+                                <img src="assets/img/svg/euro-million.png" alt="">
+                            </div>
+                            <div class="text">
+                                <span class="amount">แทงหวย</span>
+                                <span class="draw-date"></span>
+                            </div>        
                         </div>
                         <div class="part-body">
                             <div class="d-flex">
