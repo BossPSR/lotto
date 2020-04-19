@@ -39,7 +39,7 @@
                             </div>
                             <div class="d-flex">
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
-                                    <a href="/lottery_play" style="display:block; color:#fff;">
+                                    <a href="/lottery_request_deposit" style="display:block; color:#fff;">
                                         <div class="single-jackpot bg-primary">
                                             <div class="part-head">
                                                 ฝากเครดิต
@@ -129,15 +129,17 @@
                             <div class="d-flex">
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                            รายงานเครดิต
-                                        </div>
-                                        <div class="part-body">
-                                           
+                                    <a href="/lottery_credit" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                รายงานเครดิต
+                                            </div>
+                                            <div class="part-body">
                                             
+                                                
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
@@ -153,15 +155,17 @@
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                            สร้างเลขชุด
-                                        </div>
-                                        <div class="part-body">
-                                           
+                                    <a href="/lottery_number_set" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                สร้างเลขชุด
+                                            </div>
+                                            <div class="part-body">
                                             
+                                                
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                             </div>
@@ -184,15 +188,17 @@
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                            ระบบโบนัสทั้งหมด
-                                        </div>
-                                        <div class="part-body">
-                                           
+                                    <a href="/lottery_bonus" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                ระบบโบนัสทั้งหมด
+                                            </div>
+                                            <div class="part-body">
                                             
+                                                
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">

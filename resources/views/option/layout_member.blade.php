@@ -149,11 +149,15 @@
 
         @yield('index_member')
         @yield('plus_story')
+        @yield('lottery_request_deposit')
         @yield('lottery_withdraw')
         @yield('lottery_play')
         @yield('lottery_transaction')
         @yield('lotto_result')
+        @yield('lottery_credit')
+        @yield('lottery_number_set')
         @yield('lottery_news')
+        @yield('lottery_bonus')
         @yield('help')
         @yield('contact')
                    
