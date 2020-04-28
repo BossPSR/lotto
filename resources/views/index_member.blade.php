@@ -143,15 +143,17 @@
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-                                            ระบบแนะนำ
-                                        </div>
-                                        <div class="part-body">
-                                           
+                                    <a href="/lottery_affiliate" style="display:block; color:#3d5169;">
+                                        <div class="single-jackpot">
+                                            <div class="part-head">
+                                                ระบบแนะนำ
+                                            </div>
+                                            <div class="part-body">
                                             
+                                                
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">

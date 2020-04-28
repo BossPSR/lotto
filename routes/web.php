@@ -21,6 +21,7 @@ Route::get('/lottery_play','Frontend\LotteryPlayController@index');
 Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index');
 Route::get('/lottery_result','Frontend\LotteryResultController@index');
 Route::get('/lottery_credit','Frontend\LotteryCreditController@index');
+Route::get('/lottery_affiliate','Frontend\LotteryAffiliateController@index');
 Route::get('/lottery_number_set','Frontend\LotteryNumberSetController@index');
 Route::get('/lottery_news','Frontend\LotteryNewsController@index');
 Route::get('/lottery_bonus','Frontend\LotteryBonusController@index');
