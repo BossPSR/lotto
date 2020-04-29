@@ -12,6 +12,7 @@
 */
 
 Route::get('/','Frontend\IndexController@index');
+Route::get('/register','Frontend\IndexController@register');
 Route::get('/index','Frontend\IndexController@index');
 Route::get('/index_member','Frontend\IndexController@index_member');
 Route::get('/plus_story','Frontend\IndexController@plus_story');

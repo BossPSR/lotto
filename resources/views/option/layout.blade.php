@@ -133,7 +133,7 @@
                 </div>
                 <!-- header end -->
         @yield('login')
-
+        @yield('register')
                 <!-- footer begin -->
                 <div class="footer style-2">
                     <div class="banner-shape">

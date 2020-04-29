@@ -12,6 +12,11 @@ class IndexController extends Controller
         return view('login');
     }
 
+    public function register()
+    {
+        return view('register');
+    }
+
     public function index_member()
     {
         return view('index_member');
