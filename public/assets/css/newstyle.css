@@ -83,3 +83,7 @@
  .new_affiliate:last-child{
     margin-right: 0;
  }
+
+ .set_profile:hover{
+    color: #0056b3;
+ }

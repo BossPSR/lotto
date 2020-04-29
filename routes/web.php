@@ -12,7 +12,10 @@
 */
 
 Route::get('/','Frontend\IndexController@index');
+Route::post('/login_process','Frontend\IndexController@login_process');
+Route::get('/logout','Frontend\IndexController@logout');
 Route::get('/register','Frontend\IndexController@register');
+Route::post('/register_process','Frontend\IndexController@register_process');
 Route::get('/index','Frontend\IndexController@index');
 Route::get('/index_member','Frontend\IndexController@index_member');
 Route::get('/plus_story','Frontend\IndexController@plus_story');

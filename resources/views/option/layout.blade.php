@@ -64,7 +64,7 @@
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="select-lang">
                                         <div>
-                                            <a href=""><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
+                                            <a href="/register"><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
                                         </div>
                                         <div>
                                             <a href=""><i class="fas fa-headset"></i>ติดต่อเรา</a>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="container">
                         <div class="menu-bar" style="margin:15px 0;">
                             <div class="row">
@@ -82,14 +82,14 @@
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-7">
                                             <div class="logo">
-                                                <a href="index.html">
-                                                    <img id="logo-2" src="assets/img/logo-2.png" alt="">
-                                                </a>
+
+                                                <img id="logo-2" src="assets/img/logo-2.png" alt="">
+
                                             </div>
                                         </div>
                                         <div class="d-xl-none d-lg-none d-block col-5">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                                
+
                                             </button>
                                         </div>
                                     </div>
@@ -97,20 +97,21 @@
                                 <div class="col-xl-9 col-lg-9 for-lottery">
                                     <div class="mainmenu">
                                         <nav class="navbar navbar-expand-lg for-lottery">
-        
+
                                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                 <ul class="navbar-nav ml-auto">
                                                     <li class="nav-item dropdown">
                                                         <div class="header_login">
-                                                            <form action="" method="post">
+                                                            <form action="login_process" method="post">
+                                                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                                 <div class="form_user">
                                                                     <div>ชื่อผู้ใช้งาน</div>
-                                                                    <input class="form-control" type="text" name="" id="">
+                                                                    <input class="form-control" type="text" name="username" id="">
                                                                     <a href=""><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
                                                                 </div>
                                                                 <div class="form_user">
                                                                     <div>รหัสผ่าน</div>
-                                                                    <input class="form-control" type="password" name="" id="">
+                                                                    <input class="form-control" type="password" name="password" id="">
                                                                     <a href=""><i class="fas fa-unlock"></i> ลืมรหัสผ่าน</a>
                                                                 </div>
                                                                 <div class="form_user_send">
@@ -120,9 +121,9 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                         
-                                            
-                                               
+
+
+
                                             </div>
                                         </nav>
                                     </div>
@@ -270,7 +271,7 @@
                     </div>
                 </div>
                 <!-- footer end -->
-        
+
                 <!-- copyright begin -->
                 <div class="copyright">
                     <div class="container">
@@ -282,7 +283,7 @@
                     </div>
                 </div>
                 <!-- copyright end -->
-        
+
                 <!-- mobile navbar begin -->
                 <div class="mobile-navbar">
                     <ul>
@@ -304,7 +305,7 @@
                     </ul>
                 </div>
                 <!-- mobile navbar end -->
-                
+
         <!-- jquery -->
         <script src="{{asset('assets/js/jquery.js')}}"></script>
         <!-- proper js -->
