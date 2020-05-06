@@ -13,21 +13,29 @@
 
 Route::get('/','Frontend\IndexController@index');
 Route::post('/login_process','Frontend\IndexController@login_process');
-Route::get('/logout','Frontend\IndexController@logout');
-Route::get('/register','Frontend\IndexController@register');
+Route::get('/profile_user','Frontend\IndexController@profile_user')->name('profile_user');
+Route::get('/logout','Frontend\IndexController@logout')->name('logout');
+Route::get('/register','Frontend\IndexController@register')->name('register');
 Route::post('/register_process','Frontend\IndexController@register_process');
 Route::get('/index','Frontend\IndexController@index');
 Route::get('/index_member','Frontend\IndexController@index_member');
-Route::get('/plus_story','Frontend\IndexController@plus_story');
-Route::get('/lottery_request_deposit','Frontend\IndexController@lottery_request_deposit');
-Route::get('/lottery_withdraw','Frontend\IndexController@lottery_withdraw');
-Route::get('/lottery_play','Frontend\LotteryPlayController@index');
-Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index');
-Route::get('/lottery_result','Frontend\LotteryResultController@index');
-Route::get('/lottery_credit','Frontend\LotteryCreditController@index');
-Route::get('/lottery_affiliate','Frontend\LotteryAffiliateController@index');
-Route::get('/lottery_number_set','Frontend\LotteryNumberSetController@index');
-Route::get('/lottery_news','Frontend\LotteryNewsController@index');
-Route::get('/lottery_bonus','Frontend\LotteryBonusController@index');
-Route::get('/help','Frontend\HelpController@index');
-Route::get('/contact','Frontend\ContactController@index');
+Route::get('/plus_story','Frontend\IndexController@plus_story')->name('plus_story');
+Route::get('/lottery_request_deposit','Frontend\IndexController@lottery_request_deposit')->name('lottery_request_deposit');
+Route::get('/lottery_withdraw','Frontend\IndexController@lottery_withdraw')->name('lottery_withdraw');
+Route::get('/lottery_play','Frontend\LotteryPlayController@index')->name('lottery_play');
+Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index')->name('lottery_transaction');
+Route::get('/lottery_result','Frontend\LotteryResultController@index')->name('lottery_result');
+Route::get('/lottery_credit','Frontend\LotteryCreditController@index')->name('lottery_credit');
+Route::get('/lottery_affiliate','Frontend\LotteryAffiliateController@index')->name('lottery_affiliate');
+Route::get('/lottery_number_set','Frontend\LotteryNumberSetController@index')->name('lottery_number_set');
+Route::get('/lottery_news','Frontend\LotteryNewsController@index')->name('lottery_news');
+Route::get('/lottery_bonus','Frontend\LotteryBonusController@index')->name('lottery_bonus');
+Route::get('/help','Frontend\HelpController@index')->name('help');
+Route::get('/contact','Frontend\ContactController@index')->name('contact');
+
+//admin
+Route::prefix('/admin')->group(function () {
+    Route::get('/login','Backend\IndexController@index');
+    Route::post('/login_process','Backend\IndexController@login_process')->name('admin_login_process');
+    // Route::get('/index_admin','Backend\IndexController@index_admin');
+});

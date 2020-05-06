@@ -9,7 +9,7 @@ class LotteryAffiliateController extends Controller
 {
     public function index()
     {
-        return view('lottery_affiliate');
+        return view('frontend.lottery_affiliate');
     }
 
 }

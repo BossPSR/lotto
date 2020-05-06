@@ -9,7 +9,7 @@ class LotteryPlayController extends Controller
 {
     public function index()
     {
-        return view('lottery_play');
+        return view('frontend.lottery_play');
     }
 
 }

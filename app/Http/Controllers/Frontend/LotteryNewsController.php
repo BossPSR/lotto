@@ -9,6 +9,6 @@ class LotteryNewsController extends Controller
 {
     public function index()
     {
-        return view('lottery_news');
-    }    
+        return view('frontend.lottery_news');
+    }
 }

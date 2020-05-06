@@ -13,7 +13,7 @@ class IndexController extends Controller
     public function index()
     {
         if (!Auth::check()) {
-            return view('login');
+            return view('frontend.login');
         }else{
             return redirect('index_member');
         }
@@ -39,6 +39,11 @@ class IndexController extends Controller
         }
     }
 
+    public function profile_user()
+    {
+        return view('frontend.profile_user');
+    }
+
     public function logout()
     {
         Auth::logout();
@@ -47,7 +52,7 @@ class IndexController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('frontend.register');
     }
 
     public function register_process(Request $request)
@@ -112,21 +117,21 @@ class IndexController extends Controller
 
     public function index_member()
     {
-        return view('index_member');
+        return view('frontend.index_member');
     }
 
     public function plus_story()
     {
-        return view('plus_story');
+        return view('frontend.plus_story');
     }
 
     public function lottery_request_deposit()
     {
-        return view('lottery_request_deposit');
+        return view('frontend.lottery_request_deposit');
     }
 
     public function lottery_withdraw()
     {
-        return view('lottery_withdraw');
+        return view('frontend.lottery_withdraw');
     }
 }

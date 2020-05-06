@@ -9,6 +9,6 @@ class LotteryCreditController extends Controller
 {
     public function index()
     {
-        return view('lottery_credit');
-    }    
+        return view('frontend.lottery_credit');
+    }
 }

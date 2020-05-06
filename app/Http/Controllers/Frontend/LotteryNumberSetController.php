@@ -9,6 +9,6 @@ class LotteryNumberSetController extends Controller
 {
     public function index()
     {
-        return view('lottery_number_set');
-    }    
+        return view('frontend.lottery_number_set');
+    }
 }

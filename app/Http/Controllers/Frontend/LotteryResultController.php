@@ -9,7 +9,7 @@ class LotteryResultController extends Controller
 {
     public function index()
     {
-        return view('lottery_result');
+        return view('frontend.lottery_result');
     }
 
 }
