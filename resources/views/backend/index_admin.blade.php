@@ -1,5 +1,4 @@
-@extends('backend/option/layout_admin')
+@extends('backend/option/layout_admin_after')
 @section('contact_admin')
-    ttttess
 
 @endsection
