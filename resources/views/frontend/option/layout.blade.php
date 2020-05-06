@@ -102,7 +102,7 @@
                                                 <ul class="navbar-nav ml-auto">
                                                     <li class="nav-item dropdown">
                                                         <div class="header_login">
-                                                            <form action="login_process" method="post">
+                                                            <form action="{{ route('login_process') }}" method="post">
                                                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                                 <div class="form_user">
                                                                     <div>ชื่อผู้ใช้งาน</div>

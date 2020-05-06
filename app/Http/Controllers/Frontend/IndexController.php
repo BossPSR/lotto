@@ -10,12 +10,17 @@ use Auth;
 
 class IndexController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','login_process','register','register_process');
+    }
     public function index()
     {
         if (!Auth::check()) {
             return view('frontend.login');
         }else{
-            return redirect('index_member');
+            return redirect()->route('index_member');
         }
     }
 
@@ -35,19 +40,13 @@ class IndexController extends Controller
         }
         else
         {
-            return redirect('/');
+             return redirect()->route('index');
         }
     }
 
     public function profile_user()
     {
         return view('frontend.profile_user');
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
     }
 
     public function register()
@@ -79,7 +78,7 @@ class IndexController extends Controller
         $tel = $request->input('tel');
 
         if ($password != $confirm_password) {
-            redirect('/register');
+            return redirect()->route('register');
         }
 
         $member = new User;
@@ -108,9 +107,7 @@ class IndexController extends Controller
 
         }
 
-
-
-            redirect('/');
+        return redirect()->route('index');
 
 
     }

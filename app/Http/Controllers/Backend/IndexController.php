@@ -10,14 +10,14 @@ use Auth;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
-
-        if (!Auth::check()) {
-            return view('backend.login');
-        }else{
-            return redirect('index_admin');
-        }
+        return view('backend.index_admin');
     }
 
 }

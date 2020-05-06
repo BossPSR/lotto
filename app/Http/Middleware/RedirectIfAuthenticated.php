@@ -18,10 +18,22 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        // if (Auth::guard($guard)->check()) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
+
+        // return $next($request);
+
+        if ($guard == "admin" && Auth::guard($guard)->check()) {
+            return redirect()->route('admin.login');
+        }
+
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect()->guest(route('index_member'));
         }
 
         return $next($request);
+
+
     }
 }

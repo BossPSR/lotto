@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/','Frontend\IndexController@index');
-Route::post('/login_process','Frontend\IndexController@login_process');
+Route::get('/','Frontend\IndexController@index')->name('index');
+Route::get('/index','Frontend\IndexController@index')->name('index');
+Route::get('/register','Frontend\IndexController@register')->name('register');
+Route::post('/register_process','Frontend\IndexController@register_process')->name('register_process');
+Route::post('/login_process','Auth\LoginController@login')->name('login_process');
 Route::get('/profile_user','Frontend\IndexController@profile_user')->name('profile_user');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
-Route::get('/register','Frontend\IndexController@register')->name('register');
-Route::post('/register_process','Frontend\IndexController@register_process');
-Route::get('/index','Frontend\IndexController@index');
-Route::get('/index_member','Frontend\IndexController@index_member');
+
+Route::get('/index_member','Frontend\IndexController@index_member')->name('index_member');
 Route::get('/plus_story','Frontend\IndexController@plus_story')->name('plus_story');
 Route::get('/lottery_request_deposit','Frontend\IndexController@lottery_request_deposit')->name('lottery_request_deposit');
 Route::get('/lottery_withdraw','Frontend\IndexController@lottery_withdraw')->name('lottery_withdraw');
@@ -37,5 +38,5 @@ Route::get('/contact','Frontend\ContactController@index')->name('contact');
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/login','Auth\LoginController@showAdminLoginForm')->name('login');
     Route::post('/login_process','Auth\LoginController@adminLogin')->name('login_process');
-    Route::get('/index_admin','Backend\IndexController@index_admin');
+    Route::get('/index_admin','Backend\IndexController@index')->name('index');
 });

@@ -33,7 +33,7 @@
                                     <div class="part-body">
                                         <div class="d-flex">
                                             <div class="col-xl-12 col-lg-12 col-sm-12">
-                                                <form action="register_process" method="post" enctype="multipart/form-data">
+                                                <form action="{{route('register_process')}}" method="post" enctype="multipart/form-data">
                                                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                     <div>รูปโปรไฟล์</div>
                                                     <input type="file" name="file_name" class="form-control form-group" id="imgInp">
