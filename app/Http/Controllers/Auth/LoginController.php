@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -45,18 +47,22 @@ class LoginController extends Controller
         return 'username';
     }
 
+    public function showAdminLoginForm()
+    {
+        return view('backend.login');
+    }
+
     public function adminLogin(Request $request)
     {
         $key = $this->username();
-        $redirectTo = config('ingametrade.system').'/dashboard';
 
         $this->validate($request, [
             $key => 'required|string',
             'password' => 'required|string'
         ]);
 
-        if (\Auth::guard('admin')->attempt([$key => $request->$key, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended($redirectTo);
+        if (\Auth::guard('admin')->attempt([$key => $request->$key, 'password' => $request->password])) {
+            return redirect('/admin/index_admin');
         }
         return back()
             ->withInput($request->only($key, 'remember'))
@@ -65,15 +71,11 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        if(\Auth::guard('admin')->check()) {
-            $redirect = config('ingametrade.system').'/login';
-            \Auth::guard('admin')->logout();
+        if(Auth::guard('admin')->check()) {
+            $redirect = '/admin/login';
+            Auth::guard('admin')->logout();
         } else {
-            $user = Auth::user();
-            if (! is_null($user)) {
-                $user->login_status = 0;
-                $user->save();
-            }
+
             $redirect = '/';
             $this->guard()->logout();
         }

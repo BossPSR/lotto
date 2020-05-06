@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\Admin as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
@@ -17,9 +17,9 @@ class Admin extends Authenticatable
      */
     protected $guard = 'admins';
     protected $table = 'admins';
-    protected $fillable = [
-        'first_name' , 'last_name' ,'username', 'password',
-    ];
+    // protected $fillable = [
+    //     'first_name' , 'last_name' ,'username', 'password',
+    // ];
 
     /**
      * The attributes that should be hidden for arrays.

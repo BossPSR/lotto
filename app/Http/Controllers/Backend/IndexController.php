@@ -20,31 +20,4 @@ class IndexController extends Controller
         }
     }
 
-    public function login_process(Request $request)
-    {
-
-        $this->validate($request,[
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        if (Auth::guest('admins')->attempt(['username' => $username, 'password' => $password]))
-        {
-            return redirect('index_admin');
-        }
-        else
-        {
-            return redirect('/admin/login');
-        }
-    }
-
-    // public function logout()
-    // {
-    //     Auth::logout();
-    //     return redirect('/admin/login');
-    // }
-
 }

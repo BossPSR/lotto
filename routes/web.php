@@ -14,7 +14,7 @@
 Route::get('/','Frontend\IndexController@index');
 Route::post('/login_process','Frontend\IndexController@login_process');
 Route::get('/profile_user','Frontend\IndexController@profile_user')->name('profile_user');
-Route::get('/logout','Frontend\IndexController@logout')->name('logout');
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Route::get('/register','Frontend\IndexController@register')->name('register');
 Route::post('/register_process','Frontend\IndexController@register_process');
 Route::get('/index','Frontend\IndexController@index');
@@ -34,8 +34,8 @@ Route::get('/help','Frontend\HelpController@index')->name('help');
 Route::get('/contact','Frontend\ContactController@index')->name('contact');
 
 //admin
-Route::prefix('/admin')->group(function () {
-    Route::get('/login','Backend\IndexController@index');
-    Route::post('/login_process','Backend\IndexController@login_process')->name('admin_login_process');
-    // Route::get('/index_admin','Backend\IndexController@index_admin');
+Route::prefix('/admin')->name('admin.')->group(function () {
+    Route::get('/login','Auth\LoginController@showAdminLoginForm')->name('login');
+    Route::post('/login_process','Auth\LoginController@adminLogin')->name('login_process');
+    Route::get('/index_admin','Backend\IndexController@index_admin');
 });

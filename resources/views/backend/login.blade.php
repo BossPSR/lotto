@@ -25,7 +25,7 @@
                                     <p class="px-2">Welcome back, please login to your account.</p>
                                     <div class="card-content">
                                         <div class="card-body pt-1">
-                                            <form action="{{ route('admin_login_process') }}" method="POST">
+                                            <form action="{{ route('admin.login_process') }}" method="POST">
                                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                 <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input type="text" class="form-control" name="username" id="user-name" placeholder="Username" required>
