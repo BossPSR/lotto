@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('lottery_bonus')
+@section('contact_member')
 
     <!-- jackpot begin -->
     <div class="jackpot">
@@ -40,7 +40,7 @@
                                             รับ 200 เครดิต
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="d-flex">
@@ -59,16 +59,16 @@
                                              รับเครดิตพิเศษ
                                          </div>
                                      </div>
-                                 </div> 
+                                 </div>
                              </div>
 
-                             
 
-        
+
+
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

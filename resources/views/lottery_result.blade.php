@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('lotto_result')
+@section('contact_member')
 
        <!-- jackpot begin -->
        <div class="jackpot">
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="container shape-container">
-           
+
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-sm-6 single_jackpot_all form-group">
                     <div class="single-jackpot">
@@ -30,7 +30,7 @@
                                     <div>3ตัวบน</div>
                                     <div>481</div>
                                 </div>
-                               
+
                                 <div class="lotto_list_colum_2_detail">
                                     <div>2ตัวล่าง</div>
                                     <div>21</div>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-xl-6 col-lg-6 col-sm-6 single_jackpot_all form-group">
                     <div class="single-jackpot">
                         <div class="part-head">
@@ -64,7 +64,7 @@
                                     <div>3ตัวบน</div>
                                     <div>481</div>
                                 </div>
-                               
+
                                 <div class="lotto_list_colum_2_detail">
                                     <div>3ตัวล่าง</div>
                                     <div>211</div>
@@ -104,22 +104,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -136,22 +136,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -168,25 +168,25 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="d-flex">
@@ -202,22 +202,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -234,22 +234,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -266,25 +266,25 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="d-flex">
@@ -300,22 +300,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -332,22 +332,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -364,32 +364,32 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
 
-               
+
             </div>
         </div>
 
@@ -420,22 +420,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -452,22 +452,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -484,25 +484,25 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="d-flex">
@@ -518,22 +518,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -550,22 +550,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -582,25 +582,25 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="d-flex">
@@ -616,22 +616,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -648,22 +648,22 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -680,32 +680,32 @@
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                           
-                    
+
+
                                             <div class="lotto_list_colum_2">
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>3ตัวบน</div>
                                                     <div>481</div>
                                                 </div>
-                    
+
                                                 <div class="lotto_list_colum_2_detail">
                                                     <div>2ตัวล่าง</div>
                                                     <div>21</div>
                                                 </div>
                                             </div>
-                                         
-                
-                                            
+
+
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
 
-               
+
             </div>
         </div>
     </div>

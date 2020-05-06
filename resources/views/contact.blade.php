@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('contact')
+@section('contact_member')
        <!-- jackpot begin -->
        <div class="jackpot">
         <div class="container">
@@ -27,10 +27,10 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             https://www.huay.com/register/huayinter#/step/first
                                             <br>
                                             0615295327
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
 

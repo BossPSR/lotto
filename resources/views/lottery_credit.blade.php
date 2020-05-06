@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('lottery_credit')
+@section('contact_member')
 
     <!-- jackpot begin -->
     <div class="jackpot">
@@ -32,17 +32,17 @@
                                         <button type="button" class="btn btn-warning new_story">รายงานเครดิตย้อนหลัง</button>
                                         </div>
                                         <div class="part-body">
-                                           
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
-        
+
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

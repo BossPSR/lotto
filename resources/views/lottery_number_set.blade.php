@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('lottery_number_set')
+@section('contact_member')
 
     <!-- jackpot begin -->
     <div class="jackpot">
@@ -37,27 +37,27 @@
                                                     <span class="draw-date">10 April 2020</span>
                                                 </div>
                                             </div>
-                                           
+
                                             <div>
                                                 <button type="button" class="btn btn-warning new_story">ดูรายละเอียด</button>
                                                 <button type="button" class="btn btn-danger">ลบ</button>
                                             </div>
                                         </div>
                                         <div class="part-body">
-                                            
+
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
 
 
-                             
 
-        
+
+
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('lottery_play')
+@section('contact_member')
        <!-- jackpot begin -->
        <div class="jackpot">
         <div class="container">
@@ -20,7 +20,7 @@
                             <div class="text">
                                 <span class="amount">แทงหวย</span>
                                 <span class="draw-date"></span>
-                            </div>        
+                            </div>
                         </div>
                         <div class="part-body">
                             <div class="d-flex">
@@ -28,10 +28,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -41,10 +41,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -53,10 +53,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -66,10 +66,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -79,10 +79,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -91,17 +91,17 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -121,10 +121,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -134,10 +134,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -146,10 +146,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -159,10 +159,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -172,10 +172,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -184,17 +184,17 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -214,10 +214,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -227,10 +227,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -239,10 +239,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -252,10 +252,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -265,10 +265,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -277,10 +277,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -293,10 +293,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -306,10 +306,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -318,10 +318,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -331,10 +331,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -344,10 +344,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -356,10 +356,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -372,10 +372,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -385,10 +385,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -397,10 +397,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -410,10 +410,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -423,10 +423,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -435,10 +435,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -451,10 +451,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -464,10 +464,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -476,10 +476,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -489,10 +489,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -502,10 +502,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -514,10 +514,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -530,10 +530,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -543,10 +543,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -555,10 +555,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
@@ -568,10 +568,10 @@
                                     <a href="/lottery_play" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
-                                            
+
                                             </div>
                                             <div class="part-body">
-                                            
+
                                                 แทงหวย
                                             </div>
                                         </div>
@@ -581,10 +581,10 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             รายการโพย
                                         </div>
                                     </div>
@@ -593,17 +593,17 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                           
+
                                         </div>
                                         <div class="part-body">
-                                           
+
                                             ผลรางวัล
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('lottery_withdraw')
+@section('contact_member')
 
     <!-- jackpot begin -->
     <div class="jackpot">
@@ -25,14 +25,14 @@
                         </div>
                         <div class="part-body">
                             <div class="d-flex">
-       
+
                                 <div class="col-xl-12 col-lg-12 col-sm-12">
                                     <div class="single-jackpot">
                                         <div class="part-head">
-                                          
+
                                         </div>
                                         <div class="part-body">
-                                            
+
                                             <div class="form-group">
                                                 <div>ธนาคาร</div>
                                                 <div class="d-flex" style="padding: 15px; border: 1px solid rgba(0, 0, 0, 0.125);">
@@ -61,10 +61,10 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('index_member')
+@section('contact_member')
 
        <!-- jackpot begin -->
        <div class="jackpot">
@@ -31,8 +31,8 @@
                                            ฿ 0
                                         </div>
                                         <div class="part-body">
-                                           
-                                            
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -45,8 +45,8 @@
                                                 ฝากเครดิต
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -59,8 +59,8 @@
                                                 ถอนเครดิต
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
 
@@ -78,7 +78,7 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                     <div class="single-jackpot">
                         <div class="part-head">
-                           
+
                         </div>
                         <div class="part-body">
                             <div class="d-flex">
@@ -89,8 +89,8 @@
                                                 แทงหวย
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -103,8 +103,8 @@
                                                 รายการโพย
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -117,8 +117,8 @@
                                                 ผลรางวัล
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -135,8 +135,8 @@
                                                 รายงานเครดิต
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -149,8 +149,8 @@
                                                 ระบบแนะนำ
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -163,8 +163,8 @@
                                                 สร้างเลขชุด
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -173,7 +173,7 @@
                             </div>
 
                             <div class="d-flex">
-                               
+
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <a href="/lottery_news" style="display:block; color:#3d5169;">
@@ -182,8 +182,8 @@
                                                 ข่าวสารประชาสัมพันธ์
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -196,8 +196,8 @@
                                                 ระบบโบนัสทั้งหมด
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -210,8 +210,8 @@
                                                 วิธีการใช้งาน
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -220,7 +220,7 @@
                             </div>
 
                             <div class="d-flex">
-                                
+
 
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
@@ -230,8 +230,8 @@
                                                 ติดต่อเอเย่นต์
                                             </div>
                                             <div class="part-body">
-                                            
-                                                
+
+
                                             </div>
                                         </div>
                                     </a>
@@ -243,7 +243,7 @@
                     </div>
                 </div>
 
-               
+
             </div>
         </div>
     </div>

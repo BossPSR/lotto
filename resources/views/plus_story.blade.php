@@ -1,5 +1,5 @@
 @extends('option/layout_member')
-@section('plus_story')
+@section('contact_member')
     <!-- jackpot begin -->
     <div class="jackpot">
         <div class="container">
@@ -66,10 +66,10 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
     </div>
@@ -78,14 +78,14 @@
     <script>
         function story(){
             $('#new_story').css('display','none');
-            $('#new_story_lotto').css('display','none');   
+            $('#new_story_lotto').css('display','none');
             if (event.target.value == "story") {
                 $('#new_story').css('display','block');
             }else if(event.target.value == "lotto"){
-                $('#new_story_lotto').css('display','block');   
+                $('#new_story_lotto').css('display','block');
             }else{
                 alert('ไม่มีรายการนี้อยู่ในระบบ');
-            } 
+            }
         }
 
         function lotto(){

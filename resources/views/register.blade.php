@@ -1,5 +1,5 @@
 @extends('option/layout')
-@section('register')
+@section('content')
 <script src="{{asset('assets/js/preview_img.js')}}"></script>
 <!-- jackpot begin -->
 <div class="jackpot">
