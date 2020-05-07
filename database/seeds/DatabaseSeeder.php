@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin_4',
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('123456'),
-            'status' => 'ผู้ดูแลระบบใหม่',
+            'status' => 'ผู้ดูแลระบบใหญ่',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

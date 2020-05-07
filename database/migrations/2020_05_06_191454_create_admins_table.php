@@ -19,7 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status',['คนออกผลห่วย','ผู้ดูแลสมาชิก','ผู้ดูแลฝากถอน','ผู้ดูแลระบบใหม่'])->nullable();
+            $table->enum('status',['คนออกผลหวย','ผู้ดูแลสมาชิก','ผู้ดูแลฝากถอน','ผู้ดูแลระบบใหญ่'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
