@@ -38,5 +38,6 @@ Route::get('/contact','Frontend\ContactController@index')->name('contact');
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/login','Auth\LoginController@showAdminLoginForm')->name('login');
     Route::post('/login_process','Auth\LoginController@adminLogin')->name('login_process');
-    Route::get('/index_admin','Backend\IndexController@index')->name('index');
+    Route::get('/index_admin','Backend\IndexController@index')->name('index'); //Dashboard
+    Route::get('/manage_lotter','Backend\ManageLotterController@index')->name('manage_lotter'); //จัดการหวย
 });

@@ -16,6 +16,13 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/charts/apexcharts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/extensions/tether-theme-arrows.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/extensions/tether.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/extensions/shepherd-theme-default.css') }}">
+    <link rel="stylesheet" type="text/css" href=".{{ asset('backend/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href=".{{ asset('backend/app-assets/vendors/css/file-uploaders/dropzone.min.css') }}">
+    <link rel="stylesheet" type="text/css" href=".{{ asset('backend/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -30,6 +37,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/pages/search.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/pages/dashboard-analytics.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/pages/card-analytics.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/plugins/tour/tour.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/plugins/file-uploaders/dropzone.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/pages/data-list-view.css') }}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -240,7 +254,12 @@
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0">Vuexy</h2>
                     </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
+                    <style>
+                        #tippy-1{
+                            display: none;
+                        }
+                    </style>
+                {{-- <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li> --}}
             </ul>
         </div>
         <div class="shadow-bottom"></div>
@@ -268,14 +287,24 @@
 
                 @if (Auth::user()->status == "คนออกผลหวย" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
                     @if(Auth::user()->status == "ผู้ดูแลระบบใหญ่")
-                    <li class="nav-item {{ request()->path(route('admin.index')) ? 'active' : '' }}">
+                    <li class="nav-item {{ Request::segment(2) == 'index_admin' ? 'active' : '' }}">
                         <a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                     </li>
                     @endif
-                    <li class=" nav-item {{ request()->path(route('admin.index')) ? 'active' : '' }}">
-                        <a href="maps-google.html"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
+
+                    <li class="nav-item {{ Request::segment(2) == 'manage_lotter' ? 'active' : '' }}">
+                        <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{{ route('admin.manage_lotter') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยทั่วไป">จัดการหวยทั่วไป</span></a>
+                            </li>
+                            <li><a href="content-typography.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี">จัดการหวยยี่กี</span></a>
+                            </li>
+                            <li><a href="content-text-utilities.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี CF">จัดการหวยยี่กี CF</span></a>
+                            </li>
+
+                        </ul>
                     </li>
-                    <li class=" nav-item">
+                    <li class="nav-item">
                         <a href="maps-google.html"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
                     </li>
                     <li class=" nav-item">
@@ -321,14 +350,7 @@
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper">
-
-
-        </div>
-    </div>
+    @yield('contact_admin')
     <!-- END: Content-->
 
     <div class="sidenav-overlay"></div>
@@ -348,7 +370,24 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('backend/app-assets/vendors/js/extensions/dropzone.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{{ asset('backend/app-assets/js/core/app-menu.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/js/core/app.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/js/scripts/components.js') }}"></script>
+
+    <script src="{{ asset('backend/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/extensions/tether.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/extensions/shepherd.min.js') }}"></script>
+    <!-- END: Theme JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="{{ asset('backend/app-assets/js/core/app-menu.js') }}"></script>
@@ -357,6 +396,8 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
+    <script src="{{ asset('backend/app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/js/scripts/ui/data-list-view.js') }}"></script>
     <!-- END: Page JS-->
 
 </body>
