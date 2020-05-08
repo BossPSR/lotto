@@ -304,23 +304,60 @@
 
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a href="maps-google.html"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
+                        <a href="#"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวย">ออกผลหวย</span></a>
+                            </li>
+                            <li><a href="content-typography.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี">ออกผลหวยยี่กี</span></a>
+                            </li>
+                            <li><a href="content-text-utilities.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี CF">ออกผลหวยยี่กี CF</span></a>
+                            </li>
+
+                        </ul>
                     </li>
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-sort-numeric-asc"></i><span class="menu-title" data-i18n="จัดการเลขอ้น">จัดการเลขอ้น</span></a>
+
+                    <li class="nav-item">
+                        <a href="#"><i class="fa fa-sort-numeric-asc"></i><span class="menu-title" data-i18n="จัดการเลขอ้น">จัดการเลขอ้น</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="หวยทั่วไป">หวยทั่วไป</span></a>
+                            </li>
+                            <li><a href="content-typography.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="หวยยี่กี">หวยยี่กี</span></a>
+                            </li>
+                            <li><a href="content-text-utilities.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="หวยยี่กี CF">หวยยี่กี CF</span></a>
+                            </li>
+
+                        </ul>
                     </li>
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-delicious"></i><span class="menu-title" data-i18n="โพยหวย">โพยหวย</span></a>
+
+                    <li class="nav-item">
+                        <a href="#"><i class="fa fa-delicious"></i><span class="menu-title" data-i18n="โพยหวย">โพยหวย</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="โพยหวยทั่วไป">โพยหวยทั่วไป</span></a>
+                            </li>
+                        </ul>
                     </li>
+
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลสมาชิก" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="feather icon-users"></i><span class="menu-title" data-i18n="ระบบจัดการผู้เล่น">ระบบจัดการผู้เล่น</span></a>
+
+                    <li class="nav-item">
+                        <a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="ระบบจัดการผู้เล่น">ระบบจัดการผู้เล่น</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติสมัครสมาชิก">อนุมัติสมัครสมาชิก</span></a>
+                            </li>
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการผู้เล่น">รายการผู้เล่น</span></a>
+                            </li>
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="บัญชีดำ">บัญชีดำ</span></a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li class=" nav-item">
                         <a href="maps-google.html"><i class="fa fa-newspaper-o"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">จัดการข่าวสาร</span></a>
                     </li>
+
                     <li class=" nav-item">
                         <a href="maps-google.html"><i class="fa fa-list-alt"></i><span class="menu-title" data-i18n="จัดการกฎกติกา">จัดการกฎกติกา</span></a>
                     </li>
@@ -329,17 +366,42 @@
                     </li>
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลฝากถอน" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-money"></i><span class="menu-title" data-i18n="จัดการฝากเงิน">จัดการฝากเงิน</span></a>
+
+                    <li class="nav-item">
+                        <a href="#"><i class="fa fa-money"></i><span class="menu-title" data-i18n="จัดการฝากเงิน">จัดการฝากเงิน</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งฝาก">อนุมัติแจ้งฝาก</span></a>
+                            </li>
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งฝากเงิน">รายการแจ้งฝากเงิน</span></a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-credit-card-alt"></i><span class="menu-title" data-i18n="จัดการถอนเงิน">จัดการถอนเงิน</span></a>
+
+                    <li class="nav-item">
+                        <a href="#"><i class="fa fa-credit-card-alt"></i><span class="menu-title" data-i18n="จัดการถอนเงิน">จัดการถอนเงิน</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งถอน">อนุมัติแจ้งถอน</span></a>
+                            </li>
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งถอนเงิน">รายการแจ้งถอนเงิน</span></a>
+                            </li>
+                        </ul>
                     </li>
+
+
                     <li class=" nav-item">
                         <a href="maps-google.html"><i class="fa fa-university"></i><span class="menu-title" data-i18n="จัดการบัญชีธนาคาร">จัดการบัญชีธนาคาร</span></a>
                     </li>
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-percent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
+
+                    <li class="nav-item">
+                        <a href="#"><i class="fa fa-cpercent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
+                        <ul class="menu-content">
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการคอมมิชชั่น">จัดการคอมมิชชั่น</span></a>
+                            </li>
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายงานเครดิตแนะนำ">รายงานเครดิตแนะนำ</span></a>
+                            </li>
+                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการอนุมัติถอนเงิน">รายการอนุมัติถอนเงิน</span></a>
+                            </li>
+                        </ul>
                     </li>
                 @endif
 
