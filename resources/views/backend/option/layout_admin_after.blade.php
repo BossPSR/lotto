@@ -370,39 +370,39 @@
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลฝากถอน" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::segment(2) == 'deposit_approve' || Request::segment(2) == 'deposit_list' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-money"></i><span class="menu-title" data-i18n="จัดการฝากเงิน">จัดการฝากเงิน</span></a>
                         <ul class="menu-content">
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งฝาก">อนุมัติแจ้งฝาก</span></a>
+                            <li><a href="{{ route('admin.deposit_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งฝาก">อนุมัติแจ้งฝาก</span></a>
                             </li>
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งฝากเงิน">รายการแจ้งฝากเงิน</span></a>
+                            <li><a href="{{ route('admin.deposit_list') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งฝากเงิน">รายการแจ้งฝากเงิน</span></a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::segment(2) == 'withdraw_approve' || Request::segment(2) == 'withdraw_list' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-credit-card-alt"></i><span class="menu-title" data-i18n="จัดการถอนเงิน">จัดการถอนเงิน</span></a>
                         <ul class="menu-content">
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งถอน">อนุมัติแจ้งถอน</span></a>
+                            <li><a href="{{ route('admin.withdraw_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งถอน">อนุมัติแจ้งถอน</span></a>
                             </li>
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งถอนเงิน">รายการแจ้งถอนเงิน</span></a>
+                            <li><a href="{{ route('admin.withdraw_list') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งถอนเงิน">รายการแจ้งถอนเงิน</span></a>
                             </li>
                         </ul>
                     </li>
 
 
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-university"></i><span class="menu-title" data-i18n="จัดการบัญชีธนาคาร">จัดการบัญชีธนาคาร</span></a>
+                    <li class="nav-item {{ Request::segment(2) == 'bank_huay' ? 'active' : '' }}">
+                        <a href="{{ route('admin.bank_huay') }}"><i class="fa fa-university"></i><span class="menu-title" data-i18n="จัดการบัญชีธนาคาร">จัดการบัญชีธนาคาร</span></a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::segment(2) == 'commission_manage' || Request::segment(2) == 'commission_credit' || Request::segment(2) == 'commission_approve' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-percent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
                         <ul class="menu-content">
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการคอมมิชชั่น">จัดการคอมมิชชั่น</span></a>
+                            <li><a href="{{ route('admin.commission_manage') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการคอมมิชชั่น">จัดการคอมมิชชั่น</span></a>
                             </li>
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายงานเครดิตแนะนำ">รายงานเครดิตแนะนำ</span></a>
+                            <li><a href="{{ route('admin.commission_credit') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายงานเครดิตแนะนำ">รายงานเครดิตแนะนำ</span></a>
                             </li>
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการอนุมัติถอนเงิน">รายการอนุมัติถอนเงิน</span></a>
+                            <li><a href="{{ route('admin.commission_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการอนุมัติถอนเงิน">รายการอนุมัติถอนเงิน</span></a>
                             </li>
                         </ul>
                     </li>

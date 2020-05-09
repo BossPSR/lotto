@@ -65,4 +65,16 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/rule_huay','Backend\RuleHuayController@index')->name('rule_huay'); //จัดการกฏติกา
 
     Route::get('/contact_huay','Backend\ContactHuayController@index')->name('contact_huay'); //จัดการข้อมูลติดต่อ
+
+    Route::get('/deposit_approve','Backend\DepositHuayController@deposit_approve')->name('deposit_approve'); //อนุมัติแจ้งฝาก
+    Route::get('/deposit_list','Backend\DepositHuayController@deposit_list')->name('deposit_list'); //รายการแจ้งฝากเงิน
+
+    Route::get('/withdraw_approve','Backend\WithdrawHuayController@withdraw_approve')->name('withdraw_approve'); //อนุมัติแจ้งถอน
+    Route::get('/withdraw_list','Backend\WithdrawHuayController@withdraw_list')->name('withdraw_list'); //รายการแจ้งถอนเงิน
+
+    Route::get('/bank_huay','Backend\BankHuayController@index')->name('bank_huay'); //อนุมัติแจ้งถอน
+
+    Route::get('/commission_manage','Backend\CommissionController@commission_manage')->name('commission_manage'); //อนุมัติสมัครสมาชิก
+    Route::get('/commission_credit','Backend\CommissionController@commission_credit')->name('commission_credit'); //รายการผู้เล่น
+    Route::get('/commission_approve','Backend\CommissionController@commission_approve')->name('commission_approve'); //บัญชีดำ
 });
