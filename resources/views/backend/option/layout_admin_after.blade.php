@@ -292,27 +292,27 @@
                     </li>
                     @endif
 
-                    <li class="nav-item {{ Request::segment(2) == 'manage_lotter' ? 'active' : '' }}">
+                    <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_yeekee' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
                         <ul class="menu-content">
-                            <li><a href="{{ route('admin.manage_lotter') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยทั่วไป">จัดการหวยทั่วไป</span></a>
+                            <li><a href="{{ route('admin.manage_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยทั่วไป">จัดการหวยทั่วไป</span></a>
                             </li>
-                            <li><a href="content-typography.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี">จัดการหวยยี่กี</span></a>
+                            <li><a href="{{ route('admin.manage_huay_yeekee') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี">จัดการหวยยี่กี</span></a>
                             </li>
-                            <li><a href="content-text-utilities.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี CF">จัดการหวยยี่กี CF</span></a>
+                            <li><a href="{{ route('admin.manage_huay_yeekee_cf') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี CF">จัดการหวยยี่กี CF</span></a>
                             </li>
 
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::segment(2) == 'reward_huay' || Request::segment(2) == 'reward_huay_yeekee' || Request::segment(2) == 'reward_huay_yeekee_cf' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
                         <ul class="menu-content">
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวย">ออกผลหวย</span></a>
+                            <li><a href="{{ route('admin.reward_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวย">ออกผลหวย</span></a>
                             </li>
-                            <li><a href="content-typography.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี">ออกผลหวยยี่กี</span></a>
+                            <li><a href="{{ route('admin.reward_huay_yeekee') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี">ออกผลหวยยี่กี</span></a>
                             </li>
-                            <li><a href="content-text-utilities.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี CF">ออกผลหวยยี่กี CF</span></a>
+                            <li><a href="{{ route('admin.reward_huay_yeekee_cf') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี CF">ออกผลหวยยี่กี CF</span></a>
                             </li>
 
                         </ul>
@@ -393,7 +393,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#"><i class="fa fa-cpercent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
+                        <a href="#"><i class="fa fa-percent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
                         <ul class="menu-content">
                             <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการคอมมิชชั่น">จัดการคอมมิชชั่น</span></a>
                             </li>
@@ -460,6 +460,7 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('backend/app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
     <script src="{{ asset('backend/app-assets/js/scripts/ui/data-list-view.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/js/scripts/modal/components-modal.js') }}"></script>
     <!-- END: Page JS-->
 
 </body>

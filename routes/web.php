@@ -36,8 +36,13 @@ Route::get('/contact','Frontend\ContactController@index')->name('contact');
 
 //admin
 Route::prefix('/admin')->name('admin.')->group(function () {
-    Route::get('/login','Auth\LoginController@showAdminLoginForm')->name('login');
+    Route::get('/login','Auth\LoginController@showAdminLoginForm')->name('login'); // Login Admin
     Route::post('/login_process','Auth\LoginController@adminLogin')->name('login_process');
     Route::get('/index_admin','Backend\IndexController@index')->name('index'); //Dashboard
-    Route::get('/manage_lotter','Backend\ManageLotterController@index')->name('manage_lotter'); //จัดการหวย
+    Route::get('/manage_huay','Backend\ManageHuayController@index')->name('manage_huay'); //จัดการหวย
+    Route::get('/manage_huay_yeekee','Backend\ManageHuayController@manage_huay_yeekee')->name('manage_huay_yeekee'); //จัดการหวยยี่กี
+    Route::get('/manage_huay_yeekee_cf','Backend\ManageHuayController@manage_huay_yeekee_cf')->name('manage_huay_yeekee_cf'); //จัดการหวยยี่กี CF
+    Route::get('/reward_huay','Backend\RewardHuayController@index')->name('reward_huay'); //ออกผลหวย
+    Route::get('/reward_huay_yeekee','Backend\RewardHuayController@reward_huay_yeekee')->name('reward_huay_yeekee'); //ออกผลหวยยี่กี
+    Route::get('/reward_huay_yeekee_cf','Backend\RewardHuayController@reward_huay_yeekee_cf')->name('reward_huay_yeekee_cf'); //ออกผลหวยยี่กี CF
 });
