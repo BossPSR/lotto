@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class NewsHuayController extends Controller
 
     public function index()
     {
-        return view('backend.news_huay.huay_news');
+        $contents = DB::table('contents')->get();
+        return view('backend.news_huay.huay_news', ['contents' => $contents]);
     }
 }
