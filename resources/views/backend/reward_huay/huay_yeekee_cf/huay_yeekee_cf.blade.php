@@ -12,13 +12,13 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">ออกผลหวยยี่กี CF</h2>
+                            <h2 class="content-header-title float-left mb-0">ออกผลหวยยี่กี</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">ออกผลรางวัล</a>
                                     </li>
 
-                                    <li class="breadcrumb-item active">ออกผลหวยยี่กี CF
+                                    <li class="breadcrumb-item active">ออกผลหวยยี่กี
                                     </li>
                                 </ol>
                             </div>
@@ -75,6 +75,7 @@
                                     <td>
                                         <span data-toggle="modal" data-target="#trophy"><i class="fa fa-trophy" style="font-size: 25px;"></i></span>
                                         <span data-toggle="modal" data-target="#rank"><i class="fa fa-list-ol" style="font-size: 25px;"></i></span>
+                                        <span data-toggle="modal" data-target="#crosshair"><i class="feather icon-crosshair" style="font-size: 25px;"></i></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -97,6 +98,7 @@
                                     <td>
                                         <span data-toggle="modal" data-target="#trophy"><i class="fa fa-trophy" style="font-size: 25px;"></i></span>
                                         <span data-toggle="modal" data-target="#rank"><i class="fa fa-list-ol" style="font-size: 25px;"></i></span>
+                                        <span data-toggle="modal" data-target="#crosshair"><i class="feather icon-crosshair" style="font-size: 25px;"></i></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -119,6 +121,7 @@
                                     <td>
                                         <span data-toggle="modal" data-target="#trophy"><i class="fa fa-trophy" style="font-size: 25px;"></i></span>
                                         <span data-toggle="modal" data-target="#rank"><i class="fa fa-list-ol" style="font-size: 25px;"></i></span>
+                                        <span data-toggle="modal" data-target="#crosshair"><i class="feather icon-crosshair" style="font-size: 25px;"></i></span>
                                     </td>
                                 </tr>
                                  <!-- Modal trophy-->
@@ -222,7 +225,35 @@
                                 </div>
                                 <!-- Modal rank-->
 
+                                <!-- Modal crosshair-->
+                                <div class="modal fade text-left" id="crosshair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel1">แก้ไขข้อมูลผลหวย</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label>สามตัวบน</label>
+                                                    <input type="number" name="" class="form-control" id="">
+                                                </div>
 
+                                                <div class="form-group">
+                                                    <label>สามตัวล่าง</label>
+                                                    <input type="number" name="" class="form-control" id="">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">แก้ไขข้อมูลผลหวย</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal crosshair-->
 
                             </tbody>
                         </table>
