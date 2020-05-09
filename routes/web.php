@@ -40,6 +40,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/login_process','Auth\LoginController@adminLogin')->name('login_process');
 
     Route::get('/index_admin','Backend\IndexController@index')->name('index'); //Dashboard
+    Route::get('/manage_admin','Backend\IndexController@manage_admin')->name('manage_admin'); //ระบบจัดการผู้ดูแล
 
     Route::get('/manage_huay','Backend\ManageHuayController@index')->name('manage_huay'); //จัดการหวย
     Route::get('/manage_huay_yeekee','Backend\ManageHuayController@manage_huay_yeekee')->name('manage_huay_yeekee'); //จัดการหวยยี่กี
@@ -55,4 +56,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::get('/chit_huay','Backend\ChitHuayController@index')->name('chit_huay'); //โพยหวยทั่วไป
 
+    Route::get('/approve_user','Backend\UserController@approve_user')->name('approve_user'); //อนุมัติสมัครสมาชิก
+    Route::get('/list_user','Backend\UserController@list_user')->name('list_user'); //รายการผู้เล่น
+    Route::get('/blacklist_user','Backend\UserController@blacklist_user')->name('blacklist_user'); //บัญชีดำ
+
+    Route::get('/news_huay','Backend\NewsHuayController@index')->name('news_huay'); //จัดการข่าวสาร
+
+    Route::get('/rule_huay','Backend\RuleHuayController@index')->name('rule_huay'); //จัดการกฏติกา
+
+    Route::get('/contact_huay','Backend\ContactHuayController@index')->name('contact_huay'); //จัดการข้อมูลติดต่อ
 });

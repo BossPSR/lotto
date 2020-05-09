@@ -8,7 +8,7 @@ use App\Models\Admin;
 use File;
 use Auth;
 
-class IndexController extends Controller
+class RuleHuayController extends Controller
 {
     public function __construct()
     {
@@ -17,12 +17,6 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('backend.index_admin');
+        return view('backend.rule_huay.huay_rule');
     }
-
-    public function manage_admin()
-    {
-        return view('backend.manage_admin');
-    }
-
 }

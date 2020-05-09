@@ -9,7 +9,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Search - Vuexy - Bootstrap HTML admin template</title>
+    <title>Lotto</title>
     <link rel="apple-touch-icon" href="{{ asset('backend/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -290,6 +290,9 @@
                     <li class="nav-item {{ Request::segment(2) == 'index_admin' ? 'active' : '' }}">
                         <a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                     </li>
+                    <li class="nav-item {{ Request::segment(2) == 'manage_admin' ? 'active' : '' }}">
+                        <a href="{{ route('admin.manage_admin') }}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="ระบบจัดการผู้ดูแล">ระบบจัดการผู้ดูแล</span></a>
+                    </li>
                     @endif
 
                     <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_yeekee' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
@@ -342,27 +345,27 @@
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลสมาชิก" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::segment(2) == 'approve_user' || Request::segment(2) == 'list_user' || Request::segment(2) == 'blacklist_user' ? 'active' : '' }}">
                         <a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="ระบบจัดการผู้เล่น">ระบบจัดการผู้เล่น</span></a>
                         <ul class="menu-content">
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติสมัครสมาชิก">อนุมัติสมัครสมาชิก</span></a>
+                            <li><a href="{{ route('admin.approve_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติสมัครสมาชิก">อนุมัติสมัครสมาชิก</span></a>
                             </li>
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการผู้เล่น">รายการผู้เล่น</span></a>
+                            <li><a href="{{ route('admin.list_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการผู้เล่น">รายการผู้เล่น</span></a>
                             </li>
-                            <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="บัญชีดำ">บัญชีดำ</span></a>
+                            <li><a href="{{ route('admin.blacklist_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="บัญชีดำ">บัญชีดำ</span></a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-newspaper-o"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">จัดการข่าวสาร</span></a>
+                    <li class="nav-item {{ Request::segment(2) == 'news_huay' ? 'active' : '' }}">
+                        <a href="{{ route('admin.news_huay') }}"><i class="fa fa-newspaper-o"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">จัดการข่าวสาร</span></a>
                     </li>
 
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="fa fa-list-alt"></i><span class="menu-title" data-i18n="จัดการกฎกติกา">จัดการกฎกติกา</span></a>
+                    <li class="nav-item {{ Request::segment(2) == 'rule_huay' ? 'active' : '' }}">
+                        <a href="{{ route('admin.rule_huay') }}"><i class="fa fa-list-alt"></i><span class="menu-title" data-i18n="จัดการกฎกติกา">จัดการกฎกติกา</span></a>
                     </li>
-                    <li class=" nav-item">
-                        <a href="maps-google.html"><i class="feather icon-phone-outgoing"></i><span class="menu-title" data-i18n="จัดการข้อมูลติดต่อ">จัดการข้อมูลติดต่อ</span></a>
+                    <li class="nav-item {{ Request::segment(2) == 'contact_huay' ? 'active' : '' }}">
+                        <a href="{{ route('admin.contact_huay') }}"><i class="feather icon-phone-outgoing"></i><span class="menu-title" data-i18n="จัดการข้อมูลติดต่อ">จัดการข้อมูลติดต่อ</span></a>
                     </li>
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลฝากถอน" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
