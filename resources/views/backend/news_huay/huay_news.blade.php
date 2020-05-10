@@ -192,7 +192,7 @@
     };
     $(document).ready(function() {
 
-        @if(session() - > has('message'))
+        @if(session()-> has('message'))
         Swal.fire({
             position: 'bottom-end',
             type: '{{ session()->get("status") }}',
