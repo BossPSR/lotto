@@ -77,4 +77,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/commission_manage','Backend\CommissionController@commission_manage')->name('commission_manage'); //อนุมัติสมัครสมาชิก
     Route::get('/commission_credit','Backend\CommissionController@commission_credit')->name('commission_credit'); //รายการผู้เล่น
     Route::get('/commission_approve','Backend\CommissionController@commission_approve')->name('commission_approve'); //บัญชีดำ
+    
+    
+    Route::post('/get-data','Backend\DefaultController@getData')->name('getData'); //ดึงข้อมูลเข้า Modal
 });

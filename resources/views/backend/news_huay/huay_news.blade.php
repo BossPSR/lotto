@@ -5,8 +5,9 @@
     #DataTables_Table_0_length {
         display: none;
     }
-    .thincell{
-        width:1px;
+
+    .thincell {
+        width: 1px;
     }
 </style>
 <!-- BEGIN: Content-->
@@ -63,9 +64,9 @@
                                         <td style="display:none;"></td>
                                         <td>{{$i}}</td>
                                         <td class="product-name">{{$content->title}}</td>
-                                        <td >{{$content->description}}</td>
+                                        <td>{{$content->description}}</td>
                                         <td class="text-center">
-                                            <span data-toggle="modal" data-target="#trophy" data-edit-id="{{$content->id}}"><i class="fa fa-edit" style="font-size: 25px;"></i></span>
+                                            <span data-toggle="modal" data-target="#edit" data-edit-id="{{$content->id}}"><i class="fa fa-edit" style="font-size: 25px;"></i></span>
                                         </td>
                                     </tr>
                             <?php
@@ -73,7 +74,7 @@
                             }
                             ?>
                             <!-- Modal Edit-->
-                            <div class="modal fade text-left" id="trophy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                            <div class="modal fade text-left" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -90,12 +91,12 @@
 
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea class="form-control"></textarea>
+                                                <textarea name="description" class="form-control"></textarea>
                                             </div>
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">แก้ไขข้อมูลผลหวย</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">แก้ไขข้อมูล</button>
                                         </div>
                                     </div>
                                 </div>
@@ -114,5 +115,92 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-git.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#edit').on('show.bs.modal', function(event) {
+            var modal = $(this)
+            var button = $(event.relatedTarget)
+            var id = $(button).data('editId');
+            debug = false;
+            var CSRF_TOKEN = '{{ csrf_token() }}';
+
+            $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/admin/get-data',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {
+                        _token: CSRF_TOKEN,
+                        'target_secret': '{{md5("get-contents")}}',
+                        'get-id': id
+                    },
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function(data) {
+
+                        if (debug) {
+                            console.log(data);
+                        }
+                        var input_all = modal.find('input')
+
+                        var gen_image_all = modal.find('.gen-auto');
+
+                        var element;
+                        if (gen_image_all.length)
+                            gen_image_all.remove();
+
+                        for (let index = 0; index < input_all.length; index++) {
+                            element = input_all[index];
+                            if (debug) {
+                                console.log(index)
+                                console.log('type')
+                                console.log(element.type)
+                            }
+
+                            if (data[element.name] && element.type == 'text')
+                                element.value = data[element.name]
+                            if (data[element.name] && element.type == 'number')
+                                element.value = data[element.name]
+                            else if (data[element.name] && element.type == 'color')
+                                $(element).spectrum("set", data[element.name]);
+                            else if (data[element.name] && element.type == 'file') {
+                                var file = data[element.name];
+                                var div_out = $(element).closest("div")
+
+                                // CHECK FILETYPE
+                                $.ajax({
+                                    url: '/check-file',
+                                    type: 'POST',
+                                    data: {
+                                        _token: CSRF_TOKEN,
+                                        message: $(".getinfo").val(),
+                                        'path': file
+                                    },
+                                    dataType: 'JSON',
+                                    success: function(check_file) {
+                                        if (check_file.type == 'image') {
+                                            var image_element = '<img class="gen-auto gen-image" src="' + check_file['path'] + '" style="width:100%;">';
+                                            $(div_out[0]).append(image_element);
+                                        }
+                                    }
+                                });
+                            } else
+                                element.value = data[element.name]
+                        }
+                        var input_all = modal.find('textarea')
+                        for (let index = 0; index < input_all.length; index++) {
+                            element = input_all[index];
+                            if (data[element.name])
+                                element.value = data[element.name]
+                        }
+                    }
+                })
+                .fail(function(data) {
+                    console.log(data.responseText);
+                });
+        });
+    });
+</script>
 <!-- END: Content-->
 @endsection
