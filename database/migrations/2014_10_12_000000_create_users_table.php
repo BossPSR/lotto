@@ -18,8 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username');
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->string('tel');
+            $table->string('line_id')->nullable();
+            $table->enum('status',['รอการตรวจสอบ','อนุมัติ','ไม่อนุมัติ','แบนสมาชิก','บัญชีดำ'])->default('รอการตรวจสอบ');
             $table->string('cover_name',100)->nullable();
             $table->string('path_cover',100)->nullable();
             $table->string('cover_extension',50)->nullable();

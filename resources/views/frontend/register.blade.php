@@ -57,8 +57,6 @@
                                                     <div>นามสกุล</div>
                                                     <input type="text" name="last_name" class="form-control form-group">
 
-                                                    <div>วัน/เดือน/ปี เกิด</div>
-                                                    <input type="date" name="birthday" class="form-control form-group">
 
                                                     <div>อีเมล</div>
                                                     <input type="email" name="email" class="form-control form-group">
