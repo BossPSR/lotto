@@ -109,7 +109,7 @@
                                             <form method="POST" action="/admin/news_huay" onsubmit="doSubmit(this)">
                                                 <div class="form-group">
                                                     <label>หัวข้อ</label>
-                                                    <input type="text" name="title" class="form-control" id="" required>
+                                                    <input maxlength="255"  type="text" name="title" class="form-control" id="" required>
                                                 </div>
 
                                                 <div class="form-group">
@@ -143,7 +143,7 @@
                                                 <input name="id" type="hidden">
                                                 <div class="form-group">
                                                     <label>หัวข้อ</label>
-                                                    <input type="text" name="title" class="form-control" id="" required>
+                                                    <input maxlength="255"  type="text" name="title" class="form-control" id="" required>
                                                 </div>
 
                                                 <div class="form-group">
@@ -192,7 +192,7 @@
     };
     $(document).ready(function() {
 
-        @if(session()-> has('message'))
+        @if(session()->has('message'))
         Swal.fire({
             position: 'bottom-end',
             type: '{{ session()->get("status") }}',
@@ -201,8 +201,7 @@
             showConfirmButton: false,
             backdrop: false,
             timer: 2000
-
-        })
+        });
         @endif
 
         $('#edit').on('show.bs.modal', function(event) {

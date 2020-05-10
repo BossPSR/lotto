@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\DB;
 
 class NewsHuayController extends Controller
 {   
-    private static $table = "";
+    private static $table = "contents";
+    private static $view = "admin/news_huay";
+
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
 
-    public function post()
+    public function post(Request $request)
     {
         
         if(isset($_POST['addContents']))
@@ -33,11 +35,11 @@ class NewsHuayController extends Controller
         
             $sort_data = array('sort_order_id' => $content->id);
            
-            DB::table('contents')
+            DB::table(self::$table)
             ->where('id', $content->id)
             ->update($sort_data);
             
-            return redirect('admin/news_huay')->with('message', 'แก้ไขสำเร็จ!')->with('status', 'success');
+            return redirect(self::$view)->with('message', 'เพิ่มข้อมูลสำเร็จ!')->with('status', 'success');
         }
         else if(isset($_POST['editContents']))
         {
@@ -45,25 +47,25 @@ class NewsHuayController extends Controller
                 'title' => $_POST['title'],
                 'description' => $_POST['description'],
             );
-            $affected = DB::table('contents')
+            $affected = DB::table(self::$table)
               ->where('id', $_POST['id'])
               ->update($data);
 
-            return redirect('admin/news_huay')->with('message', 'แก้ไขสำเร็จ!')->with('status', 'success');
+            return redirect(self::$view)->with('message', 'แก้ไขสำเร็จ!')->with('status', 'success');
         }
         else if(isset($_POST['deleteContents']))
         {
             Contents::where('id', $_POST['id'])
                 ->delete();
-            return redirect('admin/news_huay')->with('message', 'ลบสำเร็จ')->with('status', 'success');
+            return redirect(self::$view)->with('message', 'ลบสำเร็จ')->with('status', 'success');
         }
         else if(isset($_POST['sort']))
         {
-            $from = DB::table('contents')
+            $from = DB::table(self::$table)
             ->where('sort_order_id', $_POST['from'])
             ->first();
 
-            $to = DB::table('contents')
+            $to = DB::table(self::$table)
             ->where('sort_order_id', $_POST['to'])
             ->first();
             
@@ -72,23 +74,23 @@ class NewsHuayController extends Controller
                 $data_from = array('sort_order_id' => $_POST['to']);
                 $data_to = array('sort_order_id' => $_POST['from']);
 
-                $affected = DB::table('contents')
+                $affected = DB::table(self::$table)
                   ->where('id', $from->id)
                   ->update($data_from);
                   
-                $affected = DB::table('contents')
+                $affected = DB::table(self::$table)
                   ->where('id', $to->id)
                   ->update($data_to);
 
-                return redirect('admin/news_huay')->with('message', 'แก้ไขลำดับสำเร็จ!')->with('status', 'success');
+                return redirect(self::$view)->with('message', 'แก้ไขลำดับสำเร็จ!')->with('status', 'success');
             }
         }
-        return redirect('admin/news_huay')->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
+        return redirect(self::$view)->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
     }
 
     public function index()
     {
-        $contents = DB::table('contents')->where('deleted_at', null)->orderBy('sort_order_id')->get();
+        $contents = DB::table(self::$table)->where('deleted_at', null)->orderBy('sort_order_id')->get();
         return view('backend.news_huay.huay_news', ['contents' => $contents]);
     }
 }

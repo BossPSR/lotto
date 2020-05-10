@@ -20,10 +20,12 @@ class DefaultController extends Controller
 
         $this::$allow_table = array(
             md5('get-contents') => 'contents',
+            md5('get-player_rules') => 'player_rules',
+            md5('get-banks') => 'banks',
         );
     }
 
-    public function getData()
+    public function get_data()
     {
         $allow_table = $this::$allow_table;
 
