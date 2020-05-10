@@ -80,4 +80,5 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     
     
     Route::post('/get-data','Backend\DefaultController@getData')->name('getData'); //ดึงข้อมูลเข้า Modal
+    Route::post('/news_huay','Backend\NewsHuayController@post')->name('post'); //จัดการข่าวสาร
 });

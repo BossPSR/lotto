@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SampleSeeder extends Seeder
 {
@@ -11,6 +12,15 @@ class SampleSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Contents::class, 50)->create();
+        factory(App\Models\Contents::class, 50)->create()->each(function ($content) {
+            
+            //สร้างแล้วใส่ ORDER id
+            $data = array(
+                'sort_order_id' => $content->id ,
+            );
+            $affected = DB::table('contents')
+              ->where('id', $content->id)
+              ->update($data);
+        });;
     }
 }
