@@ -63,7 +63,6 @@ class IndexController extends Controller
             'confirm_password' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'birthday' => 'required',
             'email' => 'required',
             'tel' => 'required',
         ]);
@@ -73,7 +72,6 @@ class IndexController extends Controller
         $confirm_password = $request->input('confirm_password');
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
-        $birthday = $request->input('birthday');
         $email = $request->input('email');
         $tel = $request->input('tel');
 
@@ -86,7 +84,6 @@ class IndexController extends Controller
         $member->password = bcrypt($confirm_password);
         $member->first_name = $first_name;
         $member->last_name = $last_name;
-        $member->birthday = $birthday;
         $member->email = $email;
         $member->tel = $tel;
         $member->save();
@@ -114,6 +111,9 @@ class IndexController extends Controller
 
     public function index_member()
     {
+        if (Auth::user()->status == "รอการตรวจสอบ") {
+            return redirect()->route('logout');
+        }
         return view('frontend.index_member');
     }
 

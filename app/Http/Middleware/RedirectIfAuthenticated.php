@@ -29,6 +29,7 @@ class RedirectIfAuthenticated
         }
 
         if (Auth::guard($guard)->check()) {
+
             return redirect()->guest(route('index_member'));
         }
 
