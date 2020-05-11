@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use File;
 use Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -17,7 +18,9 @@ class UserController extends Controller
 
     public function approve_user()
     {
-        return view('backend.user_huay.approve_user.approve_user');
+        $data = [];
+        $data['user'] = User::where('status','รอการตรวจสอบ')->get();
+        return view('backend.user_huay.approve_user.approve_user',$data);
     }
 
     public function list_user()
