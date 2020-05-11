@@ -11,6 +11,7 @@
     }
 </style>
 <!-- BEGIN: Content-->
+
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -42,14 +43,16 @@
             <!-- Data list view starts -->
             <section id="data-list-view" class="data-list-view-header">
                 <!-- DataTable starts -->
+                <a data-toggle="modal" class="float-right btn btn-success btn text-white" data-target="#add"><i class="fa fa-plus"></i> เพิ่ม</a>
                 <div class="table-responsive">
                     <table class="table data-list-view">
                         <thead>
                             <tr>
                                 <th style="display:none;"></th>
                                 <th class="thincell">#</th>
-                                <th>TITLE</th>
-                                <th>DESCRIPTION</th>
+                                <th class="thincell">จัดลำดับ</th>
+                                <th>หัวข้อ</th>
+                                <th>คำอธิบาย</th>
                                 <th class="thincell">ACTION</th>
                             </tr>
                         </thead>
@@ -57,12 +60,31 @@
                             <?php
                             if ($contents) {
                                 $i = 0;
+                                $index = -1;
                                 foreach ($contents as $content) {
                                     $i++;
+                                    $index++;
                             ?>
                                     <tr>
                                         <td style="display:none;"></td>
                                         <td>{{$i}}</td>
+                                        <td>
+                                            <?php
+                                            $before = isset($contents[($index - 1)]) ? $contents[($index - 1)] : null;
+                                            $after = isset($contents[($index + 1)]) ? $contents[($index + 1)] : null;
+                                            echo "<div class='row' style='display: flex; flex-flow: row;'>";
+                                            echo "<form onsubmit='doSubmit(this)' method='POST'>";
+                                            if ($before)
+                                                echo "<button name='sort' class='btn btn-sm btn-warning pl-1 pr-1'><i class='fa fa-chevron-up'></i></button><input type='hidden' name='from' value='" . $before->sort_order_id . "'><input type='hidden' name='to' value='" . $content->sort_order_id . "'>";
+                                            echo '</form>';
+                                            echo "<form onsubmit='doSubmit(this)' method='POST'>";
+                                            if ($after)
+                                                echo "<button name='sort' class='btn btn-sm btn-warning pl-1 pr-1'><i class='fa fa-chevron-down'></i></button><input type='hidden' name='from' value='" . $after->sort_order_id . "'><input type='hidden' name='to' value='" . $content->sort_order_id . "'>";
+                                            echo '</form>';
+                                            echo '</div>';
+
+                                            ?>
+                                        </td>
                                         <td class="product-name">{{$content->title}}</td>
                                         <td>{{$content->description}}</td>
                                         <td class="text-center">
@@ -73,6 +95,39 @@
                                 }
                             }
                             ?>
+                            <!-- Modal Add-->
+                            <div class="modal fade text-left" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel1">เพิ่ม</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="/admin/news_huay" onsubmit="doSubmit(this)">
+                                                <div class="form-group">
+                                                    <label>หัวข้อ</label>
+                                                    <input maxlength="255"  type="text" name="title" class="form-control" id="" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>คำอธิบาย</label>
+                                                    <textarea name="description" class="form-control" required></textarea>
+                                                </div>
+                                                <div class="form-group  mb-0">
+                                                    <div class="text-right">
+                                                        <button type="submit" class="btn btn-primary" name="addContents">เพิ่มข้อมูล</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal Add-->
+
                             <!-- Modal Edit-->
                             <div class="modal fade text-left" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -84,25 +139,29 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text" name="title" class="form-control" id="">
-                                            </div>
+                                            <form method="POST" action="/admin/news_huay" onsubmit="doSubmit(this)">
+                                                <input name="id" type="hidden">
+                                                <div class="form-group">
+                                                    <label>หัวข้อ</label>
+                                                    <input maxlength="255"  type="text" name="title" class="form-control" id="" required>
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea name="description" class="form-control"></textarea>
-                                            </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">แก้ไขข้อมูล</button>
+                                                <div class="form-group">
+                                                    <label>คำอธิบาย</label>
+                                                    <textarea name="description" class="form-control" required></textarea>
+                                                </div>
+                                                <div class="form-group  mb-0">
+                                                    <div class="text-right" style="display: flex;flex-direction: row-reverse;">
+                                                        <button type="submit" class="btn btn-primary" name="editContents">บันทึกข้อมูล</button>
+                                                        <button class="btn btn-danger" name="deleteContents">ลบ</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Modal Edit-->
-
                         </tbody>
                     </table>
                 </div>
@@ -115,15 +174,43 @@
         </div>
     </div>
 </div>
+
+<!-- BEGIN: Page Vendor JS-->
+<script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script src="https://code.jquery.com/jquery-git.min.js"></script>
+<!-- END: Page Vendor JS-->
+
 <script type="text/javascript">
+    var csrf_token = '{{ csrf_token() }}';
+
+    function doSubmit(form) {
+        var inputElem = document.createElement('input');
+        inputElem.type = 'hidden';
+        inputElem.name = '_token';
+        inputElem.value = csrf_token;
+        form.append(inputElem)
+    };
     $(document).ready(function() {
+
+        @if(session()->has('message'))
+        Swal.fire({
+            position: 'bottom-end',
+            type: '{{ session()->get("status") }}',
+            width: 200,
+            title: '<small> {{ session()->get("message") }} </small>',
+            showConfirmButton: false,
+            backdrop: false,
+            timer: 2000
+        });
+        @endif
+
         $('#edit').on('show.bs.modal', function(event) {
+
             var modal = $(this)
             var button = $(event.relatedTarget)
+
             var id = $(button).data('editId');
             debug = false;
-            var CSRF_TOKEN = '{{ csrf_token() }}';
 
             $.ajax({
                     /* the route pointing to the post function */
@@ -131,7 +218,7 @@
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
                     data: {
-                        _token: CSRF_TOKEN,
+                        _token: csrf_token,
                         'target_secret': '{{md5("get-contents")}}',
                         'get-id': id
                     },
@@ -168,23 +255,6 @@
                                 var file = data[element.name];
                                 var div_out = $(element).closest("div")
 
-                                // CHECK FILETYPE
-                                $.ajax({
-                                    url: '/check-file',
-                                    type: 'POST',
-                                    data: {
-                                        _token: CSRF_TOKEN,
-                                        message: $(".getinfo").val(),
-                                        'path': file
-                                    },
-                                    dataType: 'JSON',
-                                    success: function(check_file) {
-                                        if (check_file.type == 'image') {
-                                            var image_element = '<img class="gen-auto gen-image" src="' + check_file['path'] + '" style="width:100%;">';
-                                            $(div_out[0]).append(image_element);
-                                        }
-                                    }
-                                });
                             } else
                                 element.value = data[element.name]
                         }

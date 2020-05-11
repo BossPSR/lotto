@@ -79,5 +79,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/commission_approve','Backend\CommissionController@commission_approve')->name('commission_approve'); //บัญชีดำ
     
     
-    Route::post('/get-data','Backend\DefaultController@getData')->name('getData'); //ดึงข้อมูลเข้า Modal
+    Route::post('/get-data','Backend\DefaultController@get_data')->name('get_data'); //ดึงข้อมูลเข้า Modal
+
+    Route::post('/news_huay','Backend\NewsHuayController@post')->name('post'); //จัดการข่าวสาร
+    Route::post('/rule_huay','Backend\RuleHuayController@post'); //จัดการกฏกติกา
+    Route::post('/bank_huay','Backend\BankHuayController@post'); //จัดการกฏกติกา
 });

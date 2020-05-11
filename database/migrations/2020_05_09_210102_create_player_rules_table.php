@@ -15,7 +15,7 @@ class CreatePlayerRulesTable extends Migration
     {
         Schema::create('player_rules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('sort_order_id');
+            $table->bigInteger('sort_order_id')->nullable();
             $table->string('title');
             $table->longText('description')->nullable();
             $table->longText('image')->nullable();

@@ -15,7 +15,7 @@ class CreateBanksTable extends Migration
     {
         Schema::create('banks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('sort_order_id');
+            $table->bigInteger('sort_order_id')->nullable();
             $table->string('bank_name');
             $table->string('account_no');
             $table->string('account_name')->nullable();
