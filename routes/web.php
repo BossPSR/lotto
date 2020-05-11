@@ -83,5 +83,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::post('/news_huay','Backend\NewsHuayController@post')->name('post'); //จัดการข่าวสาร
     Route::post('/rule_huay','Backend\RuleHuayController@post'); //จัดการกฏกติกา
-    Route::post('/bank_huay','Backend\BankHuayController@post'); //จัดการกฏกติกา
+    Route::post('/bank_huay','Backend\BankHuayController@post'); //จัดการธนาคาร
+    Route::post('/contact_huay','Backend\ContactHuayController@post'); //จัดการข้อมูลติดต่อ
+    Route::post('/deposit_approve','Backend\DepositHuayController@post'); //จัดการฝาก
+    Route::post('/withdraw_approve','Backend\WithdrawHuayController@post'); //จัดการถอน
 });

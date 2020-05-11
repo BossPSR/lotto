@@ -37,200 +37,53 @@
             <div class="content-body">
                 <!-- Data list view starts -->
                 <section id="data-list-view" class="data-list-view-header">
+                <!-- DataTable starts -->
+                <div class="table-responsive">
+                    <table class="table data-list-view">
+                        <thead>
+                            <tr>
+                                <th style="display:none;"></th>
+                                <th class="thincell">#</th>
+                                <th>ลูกค้า</th>
+                                <th>บัญชีผู้ใช้งาน</th>
+                                <th>วันที่</th>
+                                <th>เวลา</th>
+                                <th>ยอดเงินแจ้งโอน</th>
+                                <th class="thincell">สถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($deposit_lists) {
+                                $i = 0;
+                                $index = -1;
+                                foreach ($deposit_lists as $deposit_list) {
+                                    $i++;
+                                    $index++;
+                            ?>
+                                    <tr>
+                                        <td style="display:none;"></td>
+                                        <td class="text-center">{{$i}}</td>
+                                        <td class="product-name">{{$deposit_list->user_info->first_name}} {{$deposit_list->user_info->last_name}}</td>
+                                        <td class="product-name">{{$deposit_list->user_info->username}}</td>
+                                        <td>{{date('d/m/Y', strtotime($deposit_list->created_at))}}</td>
+                                        <td>{{date('H:i:s', strtotime($deposit_list->created_at))}}</td>
+                                        <td class="text-right">{{number_format($deposit_list->amount, 2)}}</td>
+                                        <td class="text-center" nowrap><?php echo $deposit_list->status_name ?></td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
 
+                        </tbody>
+                    </table>
+                </div>
+                <!-- DataTable ends -->
 
-                    <!-- DataTable starts -->
-                    <div class="table-responsive">
-                        <table class="table data-list-view">
-                            <thead>
-                                <tr>
-                                    <th style="display:none;"></th>
-                                    <th>NAME</th>
-                                    <th>CATEGORY</th>
-                                    <th>POPULARITY</th>
-                                    <th>ORDER STATUS</th>
-                                    <th>PRICE</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+               
 
-                                <tr>
-                                    <td style="display:none;"></td>
-                                    <td class="product-name">Altec Lansing - Mini H2O Bluetooth Speaker</td>
-                                    <td class="product-category">Fitness</td>
-                                    <td>
-                                        <div class="progress progress-bar-success">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="40" aria-valuemax="100" style="width:87%"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="chip chip-success">
-                                            <div class="chip-body">
-                                                <div class="chip-text">delivered</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-price">$199.99</td>
-                                    <td>
-                                        <span data-toggle="modal" data-target="#trophy"><i class="fa fa-trophy" style="font-size: 25px;"></i></span>
-                                        <span data-toggle="modal" data-target="#rank"><i class="fa fa-list-ol" style="font-size: 25px;"></i></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="display:none;"></td>
-                                    <td class="product-name">rrAltec Lansing - Mini H2O Bluetooth Speaker</td>
-                                    <td class="product-category">Fitness</td>
-                                    <td>
-                                        <div class="progress progress-bar-success">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="40" aria-valuemax="100" style="width:87%"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="chip chip-success">
-                                            <div class="chip-body">
-                                                <div class="chip-text">delivered</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-price">$199.99</td>
-                                    <td>
-                                        <span data-toggle="modal" data-target="#trophy"><i class="fa fa-trophy" style="font-size: 25px;"></i></span>
-                                        <span data-toggle="modal" data-target="#rank"><i class="fa fa-list-ol" style="font-size: 25px;"></i></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="display:none;"></td>
-                                    <td class="product-name">bAltec Lansing - Mini H2O Bluetooth Speaker</td>
-                                    <td class="product-category">Fitness</td>
-                                    <td>
-                                        <div class="progress progress-bar-success">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="40" aria-valuemax="100" style="width:87%"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="chip chip-success">
-                                            <div class="chip-body">
-                                                <div class="chip-text">delivered</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-price">$199.99</td>
-                                    <td>
-                                        <span data-toggle="modal" data-target="#trophy"><i class="fa fa-trophy" style="font-size: 25px;"></i></span>
-                                        <span data-toggle="modal" data-target="#rank"><i class="fa fa-list-ol" style="font-size: 25px;"></i></span>
-                                    </td>
-                                </tr>
-                                 <!-- Modal trophy-->
-                                 <div class="modal fade text-left" id="trophy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">แก้ไขข้อมูลผลหวย</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label>สามตัวบน</label>
-                                                    <input type="number" name="" class="form-control" id="">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>สามตัวล่าง</label>
-                                                    <input type="number" name="" class="form-control" id="">
-                                                </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">แก้ไขข้อมูลผลหวย</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal trophy-->
-
-                                 <!-- Modal rank-->
-                                 <div class="modal fade text-left" id="rank" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">หวย</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>สามตัวบน</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>สามตัวโต้ด</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>สามตัวหน้า</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>สามตัวล่าง</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>สองตัวหน้า</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>สองตัวล่าง</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>วิ่งบน</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>วิ่งล่าง</label>
-                                                            <input type="number" name="" class="form-control" id="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">แก้ไขตัวเลข</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal rank-->
-
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- DataTable ends -->
-
-
-                </section>
+            </section>
                 <!-- Data list view end -->
 
             </div>

@@ -5,6 +5,11 @@
     #DataTables_Table_0_length {
         display: none;
     }
+    .image_rules{
+        width: 80px;
+        height: 60px;
+        object-fit: contain;
+    }
 
     .thincell {
         width: 1px;
@@ -50,6 +55,7 @@
                                 <th style="display:none;"></th>
                                 <th class="thincell">#</th>
                                 <th class="thincell">จัดลำดับ</th>
+                                <th class="thincell">รูป</th>
                                 <th>หัวข้อ</th>
                                 <th>คำอธิบาย</th>
                                 <th class="thincell">ACTION</th>
@@ -83,6 +89,11 @@
                                             echo '</div>';
 
                                             ?>
+                                        </td>
+                                        <td class="product-name">
+                                            @if($player_rule->image)
+                                            <a target="_blank" href="{{url($player_rule->image)}}"><img src="{{url($player_rule->image)}}" class="image_rules"></a>
+                                            @endif
                                         </td>
                                         <td class="product-name">{{$player_rule->title}}</td>
                                         <td>{{$player_rule->description}}</td>

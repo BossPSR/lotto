@@ -4,19 +4,108 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin;
+use App\Models\Contacts;
 use File;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class ContactHuayController extends Controller
 {
+    private static $table = "contacts";
+    private static $view = "admin/contact_huay";
+
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
 
+    public function post(Request $request)
+    {
+        if (isset($_POST['addContacts'])) {
+
+            $contact = new Contacts();
+
+            if ($request->hasFile('image')) {
+                $filepath = 'uploads/contacts/' . $contact->id;
+                if (!File::exists($filepath)) {
+                    File::makeDirectory($filepath, 0775, true);
+                }
+
+                $file = $request->file('image');
+                $filename = $file->getClientOriginalName();
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $filename = 'image_' . $contact->id . '.' . $ext;
+                $file->move($filepath, $filename);
+
+                $contact->image = $filepath.'/'.$filename;
+            }
+
+            // Save the model
+            $contact->save();
+
+            $sort_data = array('sort_order_id' => $contact->id);
+
+            DB::table(self::$table)
+                ->where('id', $contact->id)
+                ->update($sort_data);
+            return redirect(self::$view)->with('message', 'เพิ่มข้อมูลสำเร็จ!')->with('status', 'success');
+        } else if (isset($_POST['editContacts'])) {
+
+            if ($request->hasFile('image')) {
+                $filepath = 'uploads/contacts/' . $request->id;
+                if (!File::exists($filepath)) {
+                    File::makeDirectory($filepath, 0775, true);
+                }
+
+                $file = $request->file('image');
+                $filename = $file->getClientOriginalName();
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $filename = 'image_' . $request->id . '.' . $ext;
+                $file->move($filepath, $filename);
+
+                $data = array('image' => $filepath . '/' . $filename);
+                $affected = DB::table(self::$table)
+                    ->where('id', $_POST['id'])
+                    ->update($data);
+            }
+
+            return redirect(self::$view)->with('message', 'แก้ไขสำเร็จ!')->with('status', 'success');
+        } else if (isset($_POST['deleteContacts'])) {
+            Contacts::where('id', $_POST['id'])
+                ->delete();
+            return redirect(self::$view)->with('message', 'ลบสำเร็จ')->with('status', 'success');
+        } else if (isset($_POST['sort'])) {
+            $from = DB::table(self::$table)
+                ->where('sort_order_id', $_POST['from'])
+                ->first();
+
+            $to = DB::table(self::$table)
+                ->where('sort_order_id', $_POST['to'])
+                ->first();
+
+            if ($to && $from) {
+                $data_from = array('sort_order_id' => $_POST['to']);
+                $data_to = array('sort_order_id' => $_POST['from']);
+
+                $affected = DB::table(self::$table)
+                    ->where('id', $from->id)
+                    ->update($data_from);
+
+                $affected = DB::table(self::$table)
+                    ->where('id', $to->id)
+                    ->update($data_to);
+
+                return redirect(self::$view)->with('message', 'แก้ไขลำดับสำเร็จ!')->with('status', 'success');
+            }
+        }
+        return redirect(self::$view)->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
+    }
+
     public function index()
     {
-        return view('backend.contact_huay.huay_contact');
+        $contacts = DB::table(self::$table)->where('deleted_at', null)->orderBy('sort_order_id')->get();
+        return view('backend.contact_huay.huay_contact', ['contacts' => $contacts]);
     }
 }

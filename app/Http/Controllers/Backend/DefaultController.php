@@ -22,6 +22,9 @@ class DefaultController extends Controller
             md5('get-contents') => 'contents',
             md5('get-player_rules') => 'player_rules',
             md5('get-banks') => 'banks',
+            md5('get-contacts') => 'contacts',
+            md5('get-deposits') => 'deposits',
+            md5('get-withdraws') => 'withdraws',
         );
     }
 
