@@ -24,6 +24,8 @@ Route::get('/plus_story','Frontend\IndexController@plus_story')->name('plus_stor
 Route::get('/lottery_request_deposit','Frontend\IndexController@lottery_request_deposit')->name('lottery_request_deposit');
 Route::get('/lottery_withdraw','Frontend\IndexController@lottery_withdraw')->name('lottery_withdraw');
 Route::get('/lottery_play','Frontend\LotteryPlayController@index')->name('lottery_play');
+Route::get('/lottery_government','Frontend\LotteryPlayController@lottery_government')->name('lottery_government');
+Route::get('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee')->name('lottery_yeekee');
 Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index')->name('lottery_transaction');
 Route::get('/lottery_result','Frontend\LotteryResultController@index')->name('lottery_result');
 Route::get('/lottery_credit','Frontend\LotteryCreditController@index')->name('lottery_credit');
@@ -77,8 +79,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/commission_manage','Backend\CommissionController@commission_manage')->name('commission_manage'); //อนุมัติสมัครสมาชิก
     Route::get('/commission_credit','Backend\CommissionController@commission_credit')->name('commission_credit'); //รายการผู้เล่น
     Route::get('/commission_approve','Backend\CommissionController@commission_approve')->name('commission_approve'); //บัญชีดำ
-    
-    
+
+
     Route::post('/get-data','Backend\DefaultController@get_data')->name('get_data'); //ดึงข้อมูลเข้า Modal
 
     Route::post('/news_huay','Backend\NewsHuayController@post')->name('post'); //จัดการข่าวสาร

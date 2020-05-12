@@ -17,4 +17,13 @@ class LotteryPlayController extends Controller
         return view('frontend.lottery_play');
     }
 
+    public function lottery_government()
+    {
+        return view('frontend.lottery_government');
+    }
+
+    public function lottery_yeekee()
+    {
+        return view('frontend.lottery_yeekee');
+    }
 }

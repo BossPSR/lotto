@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
                                     <div class="support-area">
-                                        <ul>
+                                        {{-- <ul>
                                             <li>
                                                 <span class="icon"><i class="fas fa-headphones-alt"></i></span>
                                                 +00 564 834 58
@@ -58,11 +58,11 @@
                                                 <span class="icon"><i class="far fa-envelope"></i></span>
                                                 support24@gmail.com
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
-                                    <div class="select-lang">
+                                    <div class="select-lang" style="font-size: 20px;">
                                         <div>
                                             <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
                                         </div>

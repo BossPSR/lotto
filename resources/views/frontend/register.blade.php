@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="part-body">
                                         <div class="d-flex">
-                                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                                            <div class="col-xl-12 col-lg-12 col-sm-12 register_form">
                                                 <form action="{{route('register_process')}}" method="post" enctype="multipart/form-data">
                                                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                     <div>รูปโปรไฟล์</div>
@@ -57,15 +57,17 @@
                                                     <div>นามสกุล</div>
                                                     <input type="text" name="last_name" class="form-control form-group">
 
-
                                                     <div>อีเมล</div>
                                                     <input type="email" name="email" class="form-control form-group">
 
                                                     <div>โทรศัพท์ติดต่อ</div>
                                                     <input type="text" name="tel" class="form-control form-group">
 
+                                                    <div>ชื่อผู้ใช้งานที่แนะนำ</div>
+                                                    <input type="text" name="tel" class="form-control form-group">
+
                                                     <button type="submit" class="btn btn-warning new_story">สมัครสมาชิก</button>
-                                                    <button type="reset" class="btn btn-danger ">ยกเลิก</button>
+                                                    <button type="reset" class="btn btn-danger new_story_cancel">ยกเลิก</button>
                                                 </form>
 
 

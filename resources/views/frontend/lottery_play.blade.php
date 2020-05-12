@@ -25,7 +25,7 @@
                         <div class="part-body">
                             <div class="d-flex">
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <a href="/lottery_play" style="display:block;">
+                                    <a href="{{ route('lottery_government')}}" style="display:block;">
                                         <div class="single-jackpot">
                                             <div class="part-head">
 

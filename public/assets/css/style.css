@@ -19,7 +19,7 @@
  1. header
  2. banner
  3. brand
- 4. jackpot 
+ 4. jackpot
  5. lottery ticket
  6. lottery result
  7. choosing reason
@@ -1478,7 +1478,8 @@ ul {
       .jackpot .single-jackpot .part-head .text span {
         display: block; }
         .jackpot .single-jackpot .part-head .text span.amount {
-          font-size: 22px;
+          /* font-size: 22px; */
+          font-size: 42px;
           color: #027fe8;
           font-weight: 700;
           -webkit-transition: all 0.3s ease-in;
@@ -1486,7 +1487,8 @@ ul {
           -o-transition: all 0.3s ease-in;
           transition: all 0.3s ease-in; }
         .jackpot .single-jackpot .part-head .text span.draw-date {
-          font-size: 16px;
+          /* font-size: 16px; */
+          font-size: 36px;
           color: #777; }
     .jackpot .single-jackpot .part-body h3 {
       font-size: 23px;

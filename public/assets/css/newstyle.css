@@ -2,6 +2,10 @@
     margin-left: 5px;
 }
 
+.header_login{
+    font-size: 25px;
+}
+
 .header_login > form{
     display: flex;
 }
@@ -9,6 +13,7 @@
 .button_login{
    background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
    color: #ffffff;
+   font-size: 25px;
 }
 
 .form_user{
@@ -18,6 +23,7 @@
 .form_user > div{
     color: #000000;
 }
+
 
 .form_user_send{
     display: flex;
@@ -39,6 +45,7 @@
     margin: 0 5px;
     border-radius: 10px;
     overflow: hidden;
+    font-size: 25px;
 }
 
 .lotto_list_colum_2 > .lotto_list_colum_2_detail > div{
@@ -63,15 +70,21 @@
 .button_plus_story{
     background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
     color: #ffffff;
+    font-size: 25px;
  }
 
  .new_story{
     background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
     color: #ffffff;
+    font-size: 25px;
  }
 
  .new_story:first-child{
     margin-right: 5px;
+ }
+
+ .new_story_cancel{
+     font-size: 25px;
  }
 
  .new_affiliate{
@@ -86,4 +99,8 @@
 
  .set_profile:hover{
     color: #0056b3;
+ }
+
+ .register_form{
+     font-size: 30px;
  }
