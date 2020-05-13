@@ -89,4 +89,5 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/contact_huay','Backend\ContactHuayController@post'); //จัดการข้อมูลติดต่อ
     Route::post('/deposit_approve','Backend\DepositHuayController@post'); //จัดการฝาก
     Route::post('/withdraw_approve','Backend\WithdrawHuayController@post'); //จัดการถอน
+    Route::post('/manage_admin','Backend\indexController@post_admin'); //จัดการ admin
 });

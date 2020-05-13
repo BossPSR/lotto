@@ -15,12 +15,13 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('status',['คนออกผลหวย','ผู้ดูแลสมาชิก','ผู้ดูแลฝากถอน','ผู้ดูแลระบบใหญ่'])->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

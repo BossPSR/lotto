@@ -25,6 +25,7 @@ class DefaultController extends Controller
             md5('get-contacts') => 'contacts',
             md5('get-deposits') => 'deposits',
             md5('get-withdraws') => 'withdraws',
+            md5('get-admins') => 'admins',
         );
     }
 
