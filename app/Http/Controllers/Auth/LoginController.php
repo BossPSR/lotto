@@ -42,6 +42,22 @@ class LoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
     }
 
+    public function login(Request $request)
+    {
+        $key = $this->username();
+
+        $this->validate($request, [
+            $key => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        if (Auth::guard('user')->attempt([$key => $request->$key, 'password' => $request->password])) {
+            return redirect('index_member');
+        } else {
+            return redirect()->route('index');
+        }
+    }
+
     public function username()
     {
         return 'username';

@@ -33,38 +33,40 @@
                                     <div class="part-body">
                                         <div class="d-flex">
                                             <div class="col-xl-12 col-lg-12 col-sm-12 register_form">
-                                                <form action="{{route('register_process')}}" method="post" enctype="multipart/form-data">
+                                                <form action="{{route('register_process')}}" method="post" onsubmit="validateForm(this)" enctype="multipart/form-data">
                                                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                     <div>รูปโปรไฟล์</div>
-                                                    <input type="file" name="file_name" class="form-control form-group" id="imgInp">
+                                                    <input type="file" name="file_name" class="form-control form-group" id="imgInp" required>
                                                     <div style="width:30%; margin:auto;">
-                                                        <img id="blah"/>
+                                                        <label for="imgInp" style="cursor: pointer">
+                                                            <img id="blah" src="{{url('assets/img/upload.png')}}">
+                                                        </label>
                                                     </div>
 
 
                                                     <div>ชื่อเข้าสู่ระบบ</div>
-                                                    <input type="text" name="username" class="form-control form-group">
+                                                    <input type="text" name="username" class="form-control form-group" required>
 
                                                     <div>รหัสผ่าน</div>
-                                                    <input type="password" name="password" class="form-control form-group">
+                                                    <input type="password" id="password" name="password" class="form-control form-group" required>
 
                                                     <div>ยืนยันรหัสผ่าน</div>
-                                                    <input type="password" name="confirm_password" class="form-control form-group">
+                                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required>
 
                                                     <div>ชื่อจริง</div>
-                                                    <input type="text" name="first_name" class="form-control form-group">
+                                                    <input type="text" name="first_name" class="form-control form-group" required>
 
                                                     <div>นามสกุล</div>
-                                                    <input type="text" name="last_name" class="form-control form-group">
+                                                    <input type="text" name="last_name" class="form-control form-group" required>
 
                                                     <div>อีเมล</div>
-                                                    <input type="email" name="email" class="form-control form-group">
+                                                    <input type="email" name="email" class="form-control form-group" required>
 
                                                     <div>โทรศัพท์ติดต่อ</div>
-                                                    <input type="text" name="tel" class="form-control form-group">
+                                                    <input type="text" name="tel" pattern="[0-9]+" class="form-control form-group" required>
 
                                                     <div>ชื่อผู้ใช้งานที่แนะนำ</div>
-                                                    <input type="text" name="tel" class="form-control form-group">
+                                                    <input type="text" name="upline_username" class="form-control form-group">
 
                                                     <button type="submit" class="btn btn-warning new_story">สมัครสมาชิก</button>
                                                     <button type="reset" class="btn btn-danger new_story_cancel">ยกเลิก</button>
@@ -87,21 +89,46 @@
 
 </div>
 <!-- jackpot end -->
+<script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
-    function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    @if(session()-> has('message'))
 
-        reader.onload = function(e) {
-        $('#blah').attr('src', e.target.result);
+    var status = "{{session()->get('status')}}"
+    var status_name = (status == "success" ? 'สำเร็จ' : 'ไม่สำเร็จ')
+    Swal.fire(
+        status_name,
+        '<small> {{ session()->get("message") }} </small>',
+        '{{ session()->get("status") }}',
+    );
+    @endif
+
+    function validateForm(form) {
+        var input_password = document.getElementById("password");
+        var input_confirm_password = document.getElementById("confirm_password");
+        if (input_password.value != input_confirm_password.value) {
+            Swal.fire(
+                'ไม่สำเร็จ!',
+                'กรุณาป้อนรหัสผ่านให้ตรงกัน!',
+                'error'
+            )
+            event.preventDefault();
         }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
     }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
     }
 
     $("#imgInp").change(function() {
-    readURL(this);
+        readURL(this);
     });
 </script>
 @endsection

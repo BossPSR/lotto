@@ -248,4 +248,15 @@
         </div>
     </div>
     <!-- jackpot end -->
+<script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+<script>
+    @if(session()->has('message'))
+    Swal.fire({
+        type: '{{ session()->get("status") }}',
+        title: '<small> {{ session()->get("message") }} </small>',
+        showConfirmButton: false,
+        timer: 5000
+    });
+    @endif
+</script>
 @endsection
