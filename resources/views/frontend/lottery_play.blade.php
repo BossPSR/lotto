@@ -32,9 +32,23 @@
                                             </div>
                                             <div class="part-body">
 
-                                                แทงหวย
+                                                หวยรัฐบาล
                                             </div>
                                         </div>
+                                    </a>
+                                </div>
+
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <a href="{{ route('lottery_yeekee')}}" style="display:block;">
+                                    <div class="single-jackpot">
+                                        <div class="part-head">
+
+                                        </div>
+                                        <div class="part-body">
+
+                                            หวยยี่กี
+                                        </div>
+                                    </div>
                                     </a>
                                 </div>
 
@@ -45,60 +59,14 @@
                                         </div>
                                         <div class="part-body">
 
-                                            รายการโพย
+                                            หวยยี่กี CF
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
 
-                                        </div>
-                                        <div class="part-body">
 
-                                            ผลรางวัล
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <a href="/lottery_play" style="display:block;">
-                                        <div class="single-jackpot">
-                                            <div class="part-head">
-
-                                            </div>
-                                            <div class="part-body">
-
-                                                แทงหวย
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-
-                                        </div>
-                                        <div class="part-body">
-
-                                            รายการโพย
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <div class="single-jackpot">
-                                        <div class="part-head">
-
-                                        </div>
-                                        <div class="part-body">
-
-                                            ผลรางวัล
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
 

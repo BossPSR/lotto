@@ -104,3 +104,25 @@
  .register_form{
      font-size: 30px;
  }
+
+ .card_list_lottery{
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    background:  #fa8900;
+    padding: 15px;
+    color: #fff;
+ }
+
+ .lottert_detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+ .button_number:active{
+    background:  #fa8900;
+    color: #fff;
+ }
