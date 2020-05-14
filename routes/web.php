@@ -21,8 +21,13 @@ Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
 Route::get('/index_member','Frontend\IndexController@index_member')->name('index_member');
 Route::get('/plus_story','Frontend\IndexController@plus_story')->name('plus_story');
+
 Route::get('/lottery_request_deposit','Frontend\IndexController@lottery_request_deposit')->name('lottery_request_deposit');
+Route::post('/lottery_request_deposit','Frontend\IndexController@lottery_request_deposit_post');
+
 Route::get('/lottery_withdraw','Frontend\IndexController@lottery_withdraw')->name('lottery_withdraw');
+Route::post('/lottery_withdraw','Frontend\IndexController@lottery_withdraw_post');
+
 Route::get('/lottery_play','Frontend\LotteryPlayController@index')->name('lottery_play');
 Route::get('/lottery_government','Frontend\LotteryPlayController@lottery_government')->name('lottery_government');
 Route::get('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee')->name('lottery_yeekee');

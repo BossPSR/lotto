@@ -23,6 +23,7 @@ class CreateWithdrawsTable extends Migration
             $table->string('bank_name');
             $table->string('account_no');
             $table->string('account_name')->nullable();
+            $table->string('remark', 500)->nullable();
             $table->decimal('amount', 12, 2)->default(0);
             $table->softDeletes();
             $table->timestamps();

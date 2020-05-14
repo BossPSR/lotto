@@ -59,7 +59,7 @@
                                 <th class="thincell">#</th>
                                 <th>ลูกค้า</th>
                                 <th>บัญชีผู้ใช้งาน</th>
-                                <th>รายละเอียดการโอน</th>
+                                <th>บัญชี</th>
                                 <th>วันที่</th>
                                 <th>เวลา</th>
                                 <th>ยอดเงินแจ้งโอน</th>
@@ -81,14 +81,18 @@
                                         <td class="text-center">{{$i}}</td>
                                         <td class="product-name">{{$withdraw_list->user_info->first_name}} {{$withdraw_list->user_info->last_name}}</td>
                                         <td class="product-name">{{$withdraw_list->user_info->username}}</td>
-                                        <td>{{date('d/m/Y', strtotime($withdraw_list->created_at))}}</td>
-                                        <td>{{date('H:i:s', strtotime($withdraw_list->created_at))}}</td>
-                                        <td class="text-right">{{number_format($withdraw_list->amount, 2)}}</td>
                                         <td class="text-center">
+                                            @if($withdraw_list->remark)
+                                                <small class="text-danger" style="word-break:break-all">*หมายเหตุ : {{$withdraw_list->remark}}</small><br>
+                                            @endif
                                             <label>{{$withdraw_list->bank_name}}</label><br>
                                             <small>{{$withdraw_list->account_no}}</small><br>
                                             <small>{{$withdraw_list->account_name}}</small><br>
                                         </td>
+                                        <td>{{date('d/m/Y', strtotime($withdraw_list->created_at))}}</td>
+                                        <td>{{date('H:i:s', strtotime($withdraw_list->created_at))}}</td>
+                                        <td class="text-right">{{number_format($withdraw_list->amount, 2)}}</td>
+                                        
                                         <td class="text-center" nowrap><?php echo $withdraw_list->status_name ?></td>
                                         <td class="text-center">
                                             <span data-toggle="modal" data-target="#condition" 
@@ -99,6 +103,7 @@
                                             data-bank-name="{{$withdraw_list->bank_name}}"
                                             data-account-no="{{$withdraw_list->account_no}}"
                                             data-account-name="{{$withdraw_list->account_name}}"
+                                            data-remark="{{$withdraw_list->remark}}"
                                             ><i class="fa fa-search" style="font-size: 25px;"></i></span>
                                         </td>
                                     </tr>
@@ -144,6 +149,8 @@
                         <b>เลขที่บัญชี</b> <label id="account_no"></label>
                         <br>
                         <b>ชื่อบัญชี</b> <label id="account_name"></label>
+                        <br>
+                        <b>หมายเหตุ</b> <label id="remark"></label>
                         <br>
                         <label>ยอดเงินแจ้งโอน</label>
                         <input type="number" name="amount" class="form-control" id="" readonly>
@@ -207,6 +214,7 @@
             $('#bank_name').text($(button).data('bankName'));
             $('#account_no').text($(button).data('accountNo'));
             $('#account_name').text($(button).data('accountName'));
+            $('#remark').text($(button).data('remark'));
 
 
             $.ajax({

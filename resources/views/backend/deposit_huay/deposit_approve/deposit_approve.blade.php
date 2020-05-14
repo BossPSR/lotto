@@ -57,6 +57,7 @@
                             <tr>
                                 <th style="display:none;"></th>
                                 <th class="thincell">#</th>
+                                <th class="thincell">หลักฐานการโอน</th>
                                 <th>ลูกค้า</th>
                                 <th>บัญชีผู้ใช้งาน</th>
                                 <th>วันที่</th>
@@ -78,6 +79,11 @@
                                     <tr>
                                         <td style="display:none;"></td>
                                         <td class="text-center">{{$i}}</td>
+                                        <td class="product-name">
+                                            @if($deposit_list->proof_image)
+                                            <a target="_blank" href="{{url($deposit_list->proof_image)}}"><img src="{{url($deposit_list->proof_image)}}" class="image_rules"></a>
+                                            @endif
+                                        </td>
                                         <td class="product-name">{{$deposit_list->user_info->first_name}} {{$deposit_list->user_info->last_name}}</td>
                                         <td class="product-name">{{$deposit_list->user_info->username}}</td>
                                         <td>{{date('d/m/Y', strtotime($deposit_list->created_at))}}</td>

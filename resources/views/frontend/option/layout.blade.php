@@ -107,7 +107,7 @@
                                                                 <div class="form_user">
                                                                     <div>ชื่อผู้ใช้งาน</div>
                                                                     <input class="form-control" type="text" name="username" id="">
-                                                                    <a href=""><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
+                                                                    <a href="" tabindex="-1"><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
                                                                 </div>
                                                                 <div class="form_user">
                                                                     <div>รหัสผ่าน</div>

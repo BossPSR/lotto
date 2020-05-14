@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deposits;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Withdraws;
 use File;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +27,93 @@ class IndexController extends Controller
         }
     }
 
+    public function lottery_request_deposit_post(Request $request)
+    {
+        if(isset($_POST['addDeposit']))
+        {
+            $deposit = new Deposits();
+            $deposit->amount = $_POST['amount'];
+            $deposit->banks_id = $_POST['bank_id'];
+            $deposit->user_id = auth()->user()->id;
+
+            $deposit->save();
+
+            $data = array(
+                'sort_order_id' => $deposit->id
+            );
+            // Upload image
+            if ($request->hasFile('file_name')) {
+                $filepath = 'uploads/deposit/';
+                if (!File::exists($filepath)) {
+                    File::makeDirectory($filepath, 0775, true);
+                }
+
+                $file = $request->file('file_name');
+                $filename = $file->getClientOriginalName();
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $filename = time().'_proof_image_' . $deposit->id . '.' . $ext;
+                $file->move($filepath, $filename);
+
+                $data['proof_image'] = $filepath.'/'.$filename;
+
+                
+            }
+            DB::table('deposits')
+                ->where('id', $deposit->id)
+                ->update($data);
+            return redirect()->route('index_member')->with('message', 'กรุณารอผู้ดูแลระบบตรวจสอบข้อมูล!')->with('status', 'success');
+
+        }
+        return redirect()->route('lottery_request_deposit')->with('message', 'เกิดข้อผิดพลาด!')->with('status', 'error');
+
+    }
+    
+    public function lottery_withdraw_post(Request $request)
+    {
+        if(isset($_POST['updateUserBank']))
+        {
+            $user_id = auth()->user()->id;
+
+            $data = array(
+                'bank_name' => $_POST['bank_name'],
+                'account_no' => $_POST['account_no'],
+                'account_name' => $_POST['account_name'],
+            );
+
+            DB::table('users')
+                ->where('id', $user_id)
+                ->update($data);
+
+            return redirect()->route('lottery_withdraw')->with('message', 'คุณได้ตั้งค่าเสร็จสมบูรณ์แล้ว!')->with('status', 'success');
+
+        }
+        else if(isset($_POST['addWithdraw']))
+        {
+            $user = auth()->user();
+            $withdraw = new Withdraws();
+            $withdraw->remark = $_POST['remark'];
+            $withdraw->amount = $_POST['amount'];
+            $withdraw->user_id = auth()->user()->id;
+            $withdraw->bank_name = $user->bank_name;
+            $withdraw->account_no = $user->account_no;
+            $withdraw->account_name = $user->account_name;
+
+            $withdraw->save();
+
+            $data = array(
+                'sort_order_id' => $withdraw->id
+            );
+            DB::table('withdraws')
+                ->where('id', $withdraw->id)
+                ->update($data);
+            return redirect()->route('index_member')->with('message', 'กรุณารอผู้ดูแลระบบตรวจสอบข้อมูล!')->with('status', 'success');
+
+        }
+        return redirect()->route('lottery_withdraw')->with('message', 'เกิดข้อผิดพลาด!')->with('status', 'error');
+
+    }
+
     public function login_process(Request $request)
     {
         $this->validate($request, [
@@ -40,6 +129,7 @@ class IndexController extends Controller
         } else {
             return redirect()->route('index');
         }
+        
     }
 
     public function profile_user()
@@ -127,11 +217,14 @@ class IndexController extends Controller
 
     public function lottery_request_deposit()
     {
-        return view('frontend.lottery_request_deposit');
+        $banks = DB::table("banks")->where('deleted_at', null)->orderBy('sort_order_id','asc')->get();
+        return view('frontend.lottery_request_deposit', ['banks'=> $banks]);
     }
 
     public function lottery_withdraw()
     {
-        return view('frontend.lottery_withdraw');
+        $user_info = auth()->user();
+
+        return view('frontend.lottery_withdraw', ['user_info' => $user_info]);
     }
 }
