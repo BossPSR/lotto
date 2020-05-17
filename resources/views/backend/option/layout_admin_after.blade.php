@@ -295,16 +295,13 @@
                     </li>
                     @endif
 
-                    <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_yeekee' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
+                    <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_round' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
                         <ul class="menu-content">
-                            <li><a href="{{ route('admin.manage_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยทั่วไป">จัดการหวยทั่วไป</span></a>
+                            <li><a href="{{ route('admin.manage_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย</span></a>
                             </li>
-                            <li><a href="{{ route('admin.manage_huay_yeekee') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี">จัดการหวยยี่กี</span></a>
+                            <li><a href="{{ route('admin.manage_huay_round') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการรอบหวย">รอบหวย</span></a>
                             </li>
-                            <li><a href="{{ route('admin.manage_huay_yeekee_cf') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวยยี่กี CF">จัดการหวยยี่กี CF</span></a>
-                            </li>
-
                         </ul>
                     </li>
 

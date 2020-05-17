@@ -178,7 +178,7 @@
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <a href="{{ route('lottery_news') }}" style="display:block; color:#3d5169;">
                                         <div class="single-jackpot">
-                                            <div class="part-head">
+                                            <div class="part-head text-success">
                                                 ข่าวสารประชาสัมพันธ์
                                             </div>
                                             <div class="part-body">

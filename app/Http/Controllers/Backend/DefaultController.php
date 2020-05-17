@@ -27,6 +27,8 @@ class DefaultController extends Controller
             md5('get-withdraws') => 'withdraws',
             md5('get-admins') => 'admins',
             md5('get-users') => 'users',
+            md5('get-huays') => 'huays',
+            md5('get-huay_rounds') => 'huay_rounds',
         );
     }
 

@@ -50,6 +50,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/manage_admin','Backend\IndexController@manage_admin')->name('manage_admin'); //ระบบจัดการผู้ดูแล
 
     Route::get('/manage_huay','Backend\ManageHuayController@index')->name('manage_huay'); //จัดการหวย
+    Route::get('/manage_huay_round','Backend\ManageHuayController@manage_huay_round')->name('manage_huay_round'); //จัดการหวย
+    
     Route::get('/manage_huay_yeekee','Backend\ManageHuayController@manage_huay_yeekee')->name('manage_huay_yeekee'); //จัดการหวยยี่กี
     Route::get('/manage_huay_yeekee_cf','Backend\ManageHuayController@manage_huay_yeekee_cf')->name('manage_huay_yeekee_cf'); //จัดการหวยยี่กี CF
 
@@ -96,4 +98,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/withdraw_approve','Backend\WithdrawHuayController@post'); //จัดการถอน
     Route::post('/manage_admin','Backend\indexController@post_admin'); //จัดการ admin
     Route::post('/approve_user','Backend\UserController@post'); //อนุมัติสมัครสมาชิก
+
+    Route::POST('/manage_huay','Backend\ManageHuayController@huay_manage_post');//จัดการราคาหวย
+    Route::POST('/manage_huay_round','Backend\ManageHuayController@manage_huay_round_post');//จัดการรอบหวย
 });

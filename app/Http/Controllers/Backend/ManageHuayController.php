@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use File;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class ManageHuayController extends Controller
 {
@@ -15,14 +16,191 @@ class ManageHuayController extends Controller
         $this->middleware('auth:admin');
     }
 
+    public function huay_manage_post(Request $request)
+    {
+        if (isset($_POST['updateHuay'])) {
+            $data = array(
+                'price_tree_up' => $_POST['price_tree_up'],
+                'price_tree_tod' => $_POST['price_tree_tod'],
+                'price_tree_front' => $_POST['price_tree_front'],
+                'price_tree_down' => $_POST['price_tree_down'],
+                'price_two_up' => $_POST['price_two_up'],
+                'price_two_down' => $_POST['price_two_down'],
+                'price_run_up' => $_POST['price_run_up'],
+                'price_run_down' => $_POST['price_run_down'],
+            );
+            DB::table('huays')
+                ->where('id', $request->id)
+                ->update($data);
+            return redirect('admin/manage_huay')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+        }
+        return redirect('admin/manage_huay')->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
+    }
+
+
     public function index()
     {
-        return view('backend.manage_huay.huay.huay_manage');
+        $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null;
+
+        if ($_GET['category_id']) {
+            $huays = DB::table('huays')
+                ->join('huay_categorys', 'huays.huay_category_id', '=', 'huay_categorys.id')
+                ->select('huays.*', 'huay_categorys.name as category_name')
+                ->where('huay_category_id', $_GET['category_id'])
+                ->get();
+        } else {
+            $huays = DB::table('huays')
+                ->join('huay_categorys', 'huays.huay_category_id', '=', 'huay_categorys.id')
+                ->select('huays.*', 'huay_categorys.name as category_name')
+                ->get();
+        }
+
+        $huay_categorys = DB::table('huay_categorys')
+            ->get();
+
+        return view('backend.manage_huay.huay.huay_manage', ['huays' => $huays, 'huay_categorys' => $huay_categorys]);
     }
 
     public function manage_huay_yeekee()
     {
         return view('backend.manage_huay.huay_yeekee.huay_yeekee');
+    }
+
+    public function manage_huay_round_post(Request $request)
+    {
+        $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null;
+        $_GET['start_date'] = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-d');
+        $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d');
+
+        if (isset($_POST['addRound'])) {
+
+            $_POST['start_datetime'] = $_POST['date'].' '.$_POST['start_time'].':00';
+            $_POST['end_datetime'] = $_POST['date'].' '.$_POST['end_time'].':59';
+
+            $huay = DB::table("huays")->where('id', $_POST['huay_id'])->first();
+            if (!$huay)
+                return redirect('admin/manage_huay_round')->with('message', 'ไม่พบหวยที่ท่านเลือก!')->with('status', 'error');
+            if (date('Y-m-d H:i:s', strtotime($_POST['start_datetime'])) > date('Y-m-d H:i:s', strtotime($_POST['end_datetime'])))
+                return redirect('admin/manage_huay_round')->with('message', 'ไม่สามารถเลือกวันเวลาเริ่มต้น หลังจากวันเวลาสิ้นสุดได้!')->with('status', 'error');
+
+            $data = array(
+                'huay_category_id' => $huay->huay_category_id,
+                'huay_id' => $_POST['huay_id'],
+                'name' => $_POST['name'],
+                'date' => $_POST['date'],
+                'start_time' => $_POST['start_time'],
+                'end_time' => $_POST['end_time'],
+                'start_datetime' => $_POST['start_datetime'],
+                'end_datetime' => $_POST['end_datetime'],
+                'price_tree_up' => $_POST['price_tree_up'],
+                'price_tree_tod' => $_POST['price_tree_tod'],
+                'price_tree_front' => $_POST['price_tree_front'],
+                'price_tree_down' => $_POST['price_tree_down'],
+                'price_two_up' => $_POST['price_two_up'],
+                'price_two_down' => $_POST['price_two_down'],
+                'price_run_up' => $_POST['price_run_up'],
+                'price_run_down' => $_POST['price_run_down'],
+                'is_active' => 1,
+            );
+            DB::table('huay_rounds')->insert($data);
+            return redirect('admin/manage_huay_round')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+        }
+        if (isset($_POST['updateRound'])) {
+
+            $_POST['start_datetime'] = $_POST['date'].' '.date('H:i:00', strtotime($_POST['start_time']));
+            $_POST['end_datetime'] = $_POST['date'].' '.date('H:i:59', strtotime($_POST['end_time']));
+
+            $huay = DB::table("huays")->where('id', $_POST['huay_id'])->first();
+            if (!$huay)
+                return redirect('admin/manage_huay_round')->with('message', 'ไม่พบหวยที่ท่านเลือก!')->with('status', 'error');
+            if (date('Y-m-d H:i:s', strtotime($_POST['start_datetime'])) > date('Y-m-d H:i:s', strtotime($_POST['end_datetime'])))
+                return redirect('admin/manage_huay_round')->with('message', 'ไม่สามารถเลือกวันเวลาเริ่มต้น หลังจากวันเวลาสิ้นสุดได้!')->with('status', 'error');
+
+            $data = array(
+                'huay_category_id' => $huay->huay_category_id,
+                'huay_id' => $_POST['huay_id'],
+                'name' => $_POST['name'],
+                'date' => $_POST['date'],
+                'start_time' => $_POST['start_time'],
+                'end_time' => $_POST['end_time'],
+                'start_datetime' => $_POST['start_datetime'],
+                'end_datetime' => $_POST['end_datetime'],
+                'price_tree_up' => $_POST['price_tree_up'],
+                'price_tree_tod' => $_POST['price_tree_tod'],
+                'price_tree_front' => $_POST['price_tree_front'],
+                'price_tree_down' => $_POST['price_tree_down'],
+                'price_two_up' => $_POST['price_two_up'],
+                'price_two_down' => $_POST['price_two_down'],
+                'price_run_up' => $_POST['price_run_up'],
+                'price_run_down' => $_POST['price_run_down'],
+            );
+            DB::table('huay_rounds')
+                ->where('id', $request->id)
+                ->update($data);
+            return redirect('admin/manage_huay_round')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+        }
+        if (isset($_POST['deleteRound'])) {
+            
+            DB::table('huay_rounds')
+                ->where('id', $request->id)
+                ->delete();
+            return redirect('admin/manage_huay_round')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+        }
+        else if(isset($_POST['on']))
+        {
+            $data = array('is_active' => 1);
+            DB::table('huay_rounds')
+                ->where('id', $request->id)
+                ->update($data);
+                
+            return redirect('admin/manage_huay_round?category_id='.$_GET['category_id'].'&start_date='.$_GET['start_date'].'&end_date='.$_GET['end_date'])->with('message', 'เปิดสำเร็จ!')->with('status', 'success');
+        }
+        else if(isset($_POST['off']))
+        {
+            $data = array('is_active' => 0);
+            DB::table('huay_rounds')
+                ->where('id', $request->id)
+                ->update($data);
+            return redirect('admin/manage_huay_round?category_id='.$_GET['category_id'].'&start_date='.$_GET['start_date'].'&end_date='.$_GET['end_date'])->with('message', 'ปิดสำเร็จ!')->with('status', 'success');
+        }
+        return redirect('admin/manage_huay_round')->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
+    }
+
+    public function manage_huay_round()
+    {
+        $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null;
+        $_GET['start_date'] = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-d');
+        $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d');
+
+        $huays = DB::table('huays')
+            ->join('huay_categorys', 'huays.huay_category_id', '=', 'huay_categorys.id')
+            ->select('huays.*', 'huay_categorys.name as category_name')
+            ->get();
+
+        $huay_categorys = DB::table('huay_categorys')
+            ->get();
+
+        if ($_GET['category_id']) {
+            $huay_rounds = DB::table('huay_rounds')
+                ->whereBetween('start_datetime', array($_GET['start_date'] . ' 00:00:00', $_GET['end_date'] . ' 23:59:59'))
+                ->where('huay_category_id', $_GET['category_id'])
+                ->join('huay_categorys', 'huay_rounds.huay_category_id', '=', 'huay_categorys.id')
+                ->select('huay_rounds.*', 'huay_categorys.name as category_name')
+                ->get();
+        } else {
+            $huay_rounds = DB::table('huay_rounds')
+                ->whereBetween('start_datetime', array($_GET['start_date'] . ' 00:00:00', $_GET['end_date'] . ' 23:59:59'))
+                ->join('huay_categorys', 'huay_rounds.huay_category_id', '=', 'huay_categorys.id')
+                ->select('huay_rounds.*', 'huay_categorys.name as category_name')
+                ->get();
+        }
+
+        $data = array(
+            'huay_rounds' => $huay_rounds,
+            'huays' => $huays,
+            'huay_categorys' => $huay_categorys
+        );
+        return view('backend.manage_huay.huay_round.huay_round', $data);
     }
 
     public function manage_huay_yeekee_cf()
