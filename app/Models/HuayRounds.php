@@ -4,20 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class HuayRounds extends Model
 {
+
     use SoftDeletes;
 
     protected $table = "huay_rounds";
     protected $fillable = [
-        'huay_category_id', 
-        'huay_id', 
-        'date', 
-        'start_time', 
-        'end_time', 
-        'start_datetime', 
-        'end_datetime', 
+        'huay_category_id',
+        'huay_id',
+        'date',
+        'start_time',
+        'end_time',
+        'start_datetime',
+        'end_datetime',
         'name',
         'is_active',
         'price_tree_up',
@@ -38,4 +40,19 @@ class HuayRounds extends Model
         'result_run_down',
     ];
     protected $dates = ['deleted_at'];
+
+    function __construct()
+    {
+        $huay_round_need_to_stops = DB::table($this->table)->where('is_active', 1)->where('end_datetime', '<', date('Y-m-d H:i:s'))->get('id');
+        if (count($huay_round_need_to_stops)) {
+            $id_all = array();
+            foreach ($huay_round_need_to_stops as $info)
+                array_push($id_all, $info->id);
+
+            $data = array('is_active' => 0);
+            DB::table($this->table)
+                ->where('id', $id_all)
+                ->update($data);
+        }
+    }
 }

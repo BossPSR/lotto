@@ -47,6 +47,19 @@ class SampleSeeder extends Seeder
                 ->update($data);
         });
 
+        // User
+        DB::table('users')->insert([
+            'username' => 'f',
+            'first_name' => 'f',
+            'last_name' => 'f',
+            'password' => Hash::make('f'),
+            'tel' => '0954869064',
+            'email' => Str::random(10).'@gmail.com',
+            'status' => 'อนุมัติ',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
         // HUAY
         DB::table('huay_categorys')->insert([
             'name' => 'หวยทั่วไป',

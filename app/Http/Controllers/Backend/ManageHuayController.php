@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\HuayRounds;
 use File;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -83,26 +84,31 @@ class ManageHuayController extends Controller
             if (date('Y-m-d H:i:s', strtotime($_POST['start_datetime'])) > date('Y-m-d H:i:s', strtotime($_POST['end_datetime'])))
                 return redirect('admin/manage_huay_round')->with('message', 'ไม่สามารถเลือกวันเวลาเริ่มต้น หลังจากวันเวลาสิ้นสุดได้!')->with('status', 'error');
 
-            $data = array(
-                'huay_category_id' => $huay->huay_category_id,
-                'huay_id' => $_POST['huay_id'],
-                'name' => $_POST['name'],
-                'date' => $_POST['date'],
-                'start_time' => $_POST['start_time'],
-                'end_time' => $_POST['end_time'],
-                'start_datetime' => $_POST['start_datetime'],
-                'end_datetime' => $_POST['end_datetime'],
-                'price_tree_up' => $_POST['price_tree_up'],
-                'price_tree_tod' => $_POST['price_tree_tod'],
-                'price_tree_front' => $_POST['price_tree_front'],
-                'price_tree_down' => $_POST['price_tree_down'],
-                'price_two_up' => $_POST['price_two_up'],
-                'price_two_down' => $_POST['price_two_down'],
-                'price_run_up' => $_POST['price_run_up'],
-                'price_run_down' => $_POST['price_run_down'],
-                'is_active' => 1,
-            );
-            DB::table('huay_rounds')->insert($data);
+            $huay_round = new HuayRounds();
+            $huay_round->huay_category_id = $huay->huay_category_id;
+            $huay_round->huay_id = $_POST['huay_id'];
+            $huay_round->name = $_POST['name'];
+            $huay_round->date = $_POST['date'];
+            $huay_round->start_time = $_POST['start_time'];
+            $huay_round->end_time = $_POST['end_time'];
+            $huay_round->start_datetime = $_POST['start_datetime'];
+            $huay_round->end_datetime = $_POST['end_datetime'];
+            $huay_round->price_tree_up = $_POST['price_tree_up'];
+            $huay_round->price_tree_tod = $_POST['price_tree_tod'];
+            $huay_round->price_tree_front = $_POST['price_tree_front'];
+            $huay_round->price_tree_down = $_POST['price_tree_down'];
+            $huay_round->price_two_up = $_POST['price_two_up'];
+            $huay_round->price_two_down = $_POST['price_two_down'];
+            $huay_round->price_run_up = $_POST['price_run_up'];
+            $huay_round->price_run_down = $_POST['price_run_down'];
+            $huay_round->is_active = 1;
+            $huay_round->save();
+            
+            $data = array('secret' => md5(date('Y-m-d H:i:s').'_huay_round_'.$huay_round->id));
+            DB::table('huay_rounds')
+            ->where('id', $huay_round->id)
+            ->update($data);
+
             return redirect('admin/manage_huay_round')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
         }
         if (isset($_POST['updateRound'])) {
