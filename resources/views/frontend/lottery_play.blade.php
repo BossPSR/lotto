@@ -85,16 +85,16 @@
 
                                 ?>
                                     <div class="col-6 col-md-3 col-lg-2 mb-2 px-1">
-                                        <div class="info-card info-card-{{$style}} shadow rounded text-center">
-                                            <a href="{{$href}}" class="text-white">
+                                        <div class="info-card info-card-{{$style}} shadow rounded text-center " style="cursor: pointer !important">
+                                            <a href="{{$href}}" class="text-white" >
                                                 <h2><span>
-                                                <div id="timer">
-                                                    <label id="hours{{$index}}" class="m-0"></label><label id="minutes{{$index}}" class="m-0"><?php echo ($huay_round->is_active ? '' : 'ปิดรับแทง') ?></label><label id="seconds{{$index}}" class="m-0"></label>
+                                                <div id="timer" style="cursor: pointer !important">
+                                                    <label id="hours{{$index}}" class="m-0" style="cursor: pointer !important"></label><label id="minutes{{$index}}" class="m-0" style="cursor: pointer !important"><?php echo ($huay_round->is_active ? '' : 'ปิดรับแทง') ?></label><label id="seconds{{$index}}" class="m-0" style="cursor: pointer !important"></label>
                                                 </div>
                                                 </span></h2>
                                                 <span class="name">{{$huay_round->name}}</span>
                                                 <br>
-                                                <span class="time">
+                                                <span class="time m-1">
                                                     <small>ปิดรับ : {{date('d/m/Y H:i:s',strtotime($huay_round->end_datetime))}}</small>
                                                 </span>
                                             </a>

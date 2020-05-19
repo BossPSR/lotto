@@ -43,7 +43,7 @@ class LotteryPlayController extends Controller
         if(!$vertify)
             return redirect('lottery_play')->with('message', 'ลิงก์ที่ท่านเข้าหมดเวลาแล้ว!')->with('status', 'error');;
 
-        return view('frontend.lottery_government');
+        return view('frontend.lottery_government', ['huay_round' => $vertify]);
     }
 
     public function lottery_yeekee()
