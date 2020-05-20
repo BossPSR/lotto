@@ -1,7 +1,7 @@
 @extends('frontend/option/layout_member')
 @section('contact_member')
 <!-- jackpot begin -->
-<div class="jackpot">
+<div class="jackpot" style="background:#FED63E;">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group" id="test">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div id="app">
-                        <input-number 
+                        <input-number
                         :price_tree_up="{{$huay_round->price_tree_up}}"
                         :price_tree_tod="{{$huay_round->price_tree_tod}}"
                         :price_tree_front="{{$huay_round->price_tree_front}}"
@@ -41,7 +41,7 @@
 <!-- jackpot end -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript" src="js/app.js"></script>
-<!-- 
+<!--
 <script>
     let arrNum = [];
 

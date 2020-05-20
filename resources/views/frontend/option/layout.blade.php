@@ -43,8 +43,8 @@
         <!-- preloader end -->
 
                 <!-- header begin -->
-                <div class="header style-2" style="border-bottom: 1px solid #ffce4f">
-                    <div class="topbar">
+                <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);">
+                    <div class="topbar" style="border-bottom: 1px solid #fff;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">

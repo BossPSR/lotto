@@ -31,7 +31,7 @@
     }
 
 </style>
-<div class="jackpot">
+<div class="jackpot" style="background:#FED63E;">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
