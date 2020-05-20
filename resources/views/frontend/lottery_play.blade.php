@@ -22,14 +22,14 @@
     .info-card-danger h2{
         background-color: #AD1A1A;
     }
-    
+
     .info-card-success{
         background-color: #00A804;
     }
     .info-card-success h2{
         background-color: #1C5C1D;
     }
-    
+
 </style>
 <div class="jackpot">
     <div class="container">
@@ -44,10 +44,8 @@
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot m-0 p-3">
                     <div class="part-head m-0">
-                        <div class="icon">
-                            <img src="assets/img/svg/euro-million.png" alt="">
-                        </div>
-                        <div class="text">
+
+                        <div class="text" style="margin-left:25px;">
                             <span class="amount">แทงหวย</span>
                         </div>
                     </div>
@@ -136,7 +134,7 @@
                 $index++;
                 ?>
                 function makeTimer<?php echo $index ?>() {
-                    var endTime = new Date("{{date('d M Y H:i:s', strtotime($huay_round->end_datetime))}} GMT+07:00");			
+                    var endTime = new Date("{{date('d M Y H:i:s', strtotime($huay_round->end_datetime))}} GMT+07:00");
                         endTime = (Date.parse(endTime) / 1000);
 
                         var now = new Date();
@@ -144,7 +142,7 @@
 
                         var timeLeft = endTime - now;
 
-                        var days = Math.floor(timeLeft / 86400); 
+                        var days = Math.floor(timeLeft / 86400);
                         var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
                         var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
                         var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
@@ -157,8 +155,8 @@
                         {
                             $("#hours{{$index}}").html(hours+':');
                             $("#minutes{{$index}}").html(minutes+":");
-                            $("#seconds{{$index}}").html(seconds);	
-                        }	
+                            $("#seconds{{$index}}").html(seconds);
+                        }
                         else
                             $("#minutes{{$index}}").html('ปิดรับแทง');
 

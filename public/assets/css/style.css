@@ -1479,7 +1479,7 @@ ul {
         display: block; }
         .jackpot .single-jackpot .part-head .text span.amount {
           /* font-size: 22px; */
-          font-size: 42px;
+          font-size: 32px;
           color: #027fe8;
           font-weight: 700;
           -webkit-transition: all 0.3s ease-in;
@@ -1488,7 +1488,7 @@ ul {
           transition: all 0.3s ease-in; }
         .jackpot .single-jackpot .part-head .text span.draw-date {
           /* font-size: 16px; */
-          font-size: 36px;
+          font-size: 26px;
           color: #777; }
     .jackpot .single-jackpot .part-body h3 {
       font-size: 23px;

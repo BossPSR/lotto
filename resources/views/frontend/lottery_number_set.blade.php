@@ -15,10 +15,8 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                     <div class="single-jackpot">
                         <div class="part-head">
-                            <div class="icon">
-                                <img src="assets/img/svg/euro-jackpot.png" alt="">
-                            </div>
-                            <div class="text">
+
+                            <div class="text" style="margin-left:25px;">
                                 <span class="amount">สร้างเลขชุด</span>
                                 <span class="draw-date"></span>
                             </div>

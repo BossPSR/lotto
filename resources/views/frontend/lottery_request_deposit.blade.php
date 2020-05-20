@@ -44,10 +44,8 @@
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
                     <div class="part-head">
-                        <div class="icon">
-                            <img src="assets/img/svg/euro-million.png" alt="">
-                        </div>
-                        <div class="text">
+
+                        <div class="text"  style="margin-left:25px;">
                             <span class="amount">แจ้งเติมเครดิต</span>
                             <span class="draw-date"></span>
                         </div>
@@ -75,7 +73,7 @@
                                                             <input type="radio" class="cmb2-option" name="bank_id" id="bank_id' . $index . '" value="' . $bank->id . '" required>
                                                             <label for="bank_id' . $index . '">
                                                             <img src="' . url('assets/img/banks/' . $bank->bank_name . '.png') . '">
-                                                            
+
                                                             </label>
                                                             <lable>' . $bank->bank_name . '</label><br>
                                                             <lable>' . $bank->account_no . '</label><br>

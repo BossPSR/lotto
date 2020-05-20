@@ -37,10 +37,8 @@ $banks_array = array(
                 <div class="single-jackpot">
                     @if($user_info->bank_name)
                     <div class="part-head">
-                        <div class="icon">
-                            <img src="assets/img/svg/euro-million.png" alt="">
-                        </div>
-                        <div class="text">
+
+                        <div class="text" style="margin-left:25px;">
                             <span class="amount">แจ้งถอนเครดิต</span>
                             <span class="draw-date"></span>
                         </div>
@@ -89,10 +87,8 @@ $banks_array = array(
                     </div>
                     @else
                     <div class="part-head">
-                        <div class="icon">
-                            <img src="assets/img/svg/euro-million.png" alt="">
-                        </div>
-                        <div class="text">
+
+                        <div class="text"  style="margin-left:25px;">
                             <span class="amount">ตั้งค่าธนาคาร</span>
                             <span class="draw-date"></span>
                         </div>
