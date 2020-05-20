@@ -28,7 +28,8 @@ Vue.component('input-number', require('./components/inputNumberComponent.vue').d
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
+const inputNumber = new Vue({
+    el: '#input-number'
 });
+
 

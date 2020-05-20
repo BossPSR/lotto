@@ -2230,8 +2230,59 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    can_shoot: {
+      type: Number,
+      "default": 0
+    },
     price_tree_up: {
       type: Number,
       "default": 0
@@ -2267,9 +2318,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   },
   data: function data() {
     return {
+      counter_list: 0,
       input_digi: 0,
+      page_index: 1,
       my_number_txt: "",
-      my_number: [],
+      my_number: {
+        price_tree_up: [],
+        price_tree_tod: [],
+        price_tree_front: [],
+        price_tree_down: [],
+        price_two_up: [],
+        price_two_down: [],
+        price_run_up: [],
+        price_run_down: []
+      },
       option_huay: {
         price_tree_up: false,
         price_tree_tod: false,
@@ -2279,23 +2341,119 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         price_two_down: false,
         price_run_up: false,
         price_run_down: false
+      },
+      type_name: {
+        price_tree_up: 'สามตัวบน',
+        price_tree_tod: 'สามตัวโต๊ด',
+        price_tree_front: 'สามตัวหน้า',
+        price_tree_down: 'สามตัวหลัง',
+        price_two_up: 'สองตัวบน',
+        price_two_down: 'สองตัวล่าง',
+        price_run_up: 'วิ่งบน',
+        price_run_down: 'วิ่งล่าง'
       }
     };
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    this.counter_list = 0;
   },
   created: function created() {
     window.addEventListener('keyup', this.keymonitor);
   },
   methods: {
+    delete_duplicate: function delete_duplicate() {
+      this.show_duplicate(false);
+
+      for (var _i = 0, _Object$entries = Object.entries(this.my_number); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            huay_type = _Object$entries$_i[0],
+            list = _Object$entries$_i[1];
+
+        if (list.length) {
+          for (var i = 0; i < list.length; i++) {
+            if (list[i].is_duplicate) this.remove_number(huay_type, i);
+          }
+        }
+      }
+
+      this.cal_duplicate();
+    },
+    show_duplicate: function show_duplicate() {
+      var set = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var result = $("*[data-duplicate='true']");
+
+      for (var i = 0; i < result.length; i++) {
+        if (set == null) {
+          if ($(result[i]).hasClass("bg-danger")) $(result[i]).removeClass("bg-danger text-white");else $(result[i]).addClass("bg-danger text-white");
+        } else {
+          if (set) $(result[i]).addClass("bg-danger text-white");else $(result[i]).removeClass("bg-danger text-white");
+        }
+      }
+    },
+    remove_number: function remove_number(type_name, index) {
+      this.my_number[type_name].splice(index, 1);
+      this.refesh_my_number();
+      this.cal_duplicate();
+    },
+    change_multiple: function change_multiple(type_name, index, multiple) {
+      this.my_number[type_name][index].multiple = multiple;
+      this.my_number[type_name][index].total_price = numeral(multiple * this.my_number[type_name][index].price).format('0,0');
+    },
+    change_multiple_all: function change_multiple_all(multiple) {
+      var change_input = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      if (multiple > 0) {
+        for (var _i2 = 0, _Object$entries2 = Object.entries(this.my_number); _i2 < _Object$entries2.length; _i2++) {
+          var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+              huay_type = _Object$entries2$_i[0],
+              list = _Object$entries2$_i[1];
+
+          if (list.length) {
+            for (var i = 0; i < list.length; i++) {
+              this.my_number[huay_type][i].multiple = multiple;
+              this.my_number[huay_type][i].total_price = numeral(multiple * list[i].price).format('0,0');
+            }
+          }
+        }
+
+        console.log(this.my_number);
+      }
+
+      if (change_input) $('#change_price_input').val(multiple);
+    },
+    change_page: function change_page(index) {
+      this.page_index = index;
+
+      if (index == 1) {
+        $("#shoot-number-btn").removeClass("btn-primary text-white").addClass("btn-outline-primary");
+        $("#input-number-btn").addClass("btn-primary text-white").removeClass("btn-outline-primary");
+        this.option_huay = {
+          price_tree_up: false,
+          price_tree_tod: false,
+          price_tree_front: false,
+          price_tree_down: false,
+          price_two_up: false,
+          price_two_down: false,
+          price_run_up: false,
+          price_run_down: false
+        };
+      } else if (index == 2) {
+        $("#shoot-number-btn").addClass("btn-primary text-white").removeClass("btn-outline-primary");
+        $("#input-number-btn").removeClass("btn-primary text-white").addClass("btn-outline-primary");
+      } else if (index == 3) {
+        $("#list").append('<div class="item mb-2"><div class="input-group"><div class="input-group-append"><span class="input-group-text border-0 ranking-number text-center px-1">1 .</span></div> <div class="input-group-append"><span class="input-group-text number bg-gold">11</span></div> <input type="tel" placeholder="ระบุจำนวนเงิน" minlength="6" maxlength="6" pattern="[0-9]*" class="form-control bg-black text-gold border-right-gold"> <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black">ชนะ : 90 ฿</span></div> <div class="input-group-append"><div class="btn btn-danger">ลบ</div></div></div></div>');
+      }
+
+      console.log(index);
+    },
     select_option: function select_option(key) {
       // หากเป็น วิ่ง จะ ปิดอันอื่นหมด
       if (key == 'price_run_up' || key == 'price_run_down') {
-        for (var _i = 0, _Object$entries = Object.entries(this.option_huay); _i < _Object$entries.length; _i++) {
-          var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-              key_obj = _Object$entries$_i[0],
-              value = _Object$entries$_i[1];
+        for (var _i3 = 0, _Object$entries3 = Object.entries(this.option_huay); _i3 < _Object$entries3.length; _i3++) {
+          var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+              key_obj = _Object$entries3$_i[0],
+              value = _Object$entries3$_i[1];
 
           if (key_obj != "price_run_up" && key_obj != 'price_run_down') {
             this.option_huay[key_obj] = false;
@@ -2335,10 +2493,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
         this.input_digi = 2;
 
-        for (var _i2 = 0, _Object$entries2 = Object.entries(this.option_huay); _i2 < _Object$entries2.length; _i2++) {
-          var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
-              _key_obj = _Object$entries2$_i[0],
-              _value = _Object$entries2$_i[1];
+        for (var _i4 = 0, _Object$entries4 = Object.entries(this.option_huay); _i4 < _Object$entries4.length; _i4++) {
+          var _Object$entries4$_i = _slicedToArray(_Object$entries4[_i4], 2),
+              _key_obj = _Object$entries4$_i[0],
+              _value = _Object$entries4$_i[1];
 
           if (_key_obj !== "price_two_up" && _key_obj !== 'price_two_down' && _value == true) this.input_digi = 3;
         }
@@ -2347,10 +2505,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       var check = false;
 
-      for (var _i3 = 0, _Object$entries3 = Object.entries(this.option_huay); _i3 < _Object$entries3.length; _i3++) {
-        var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
-            _key_obj2 = _Object$entries3$_i[0],
-            _value2 = _Object$entries3$_i[1];
+      for (var _i5 = 0, _Object$entries5 = Object.entries(this.option_huay); _i5 < _Object$entries5.length; _i5++) {
+        var _Object$entries5$_i = _slicedToArray(_Object$entries5[_i5], 2),
+            _key_obj2 = _Object$entries5$_i[0],
+            _value2 = _Object$entries5$_i[1];
 
         if (_value2 == true) {
           check = true;
@@ -2384,14 +2542,61 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       console.log(this.input_digi);
     },
+    cal_duplicate: function cal_duplicate() {
+      var pass = {
+        price_tree_up: {},
+        price_tree_tod: {},
+        price_tree_front: {},
+        price_tree_down: {},
+        price_two_up: {},
+        price_two_down: {},
+        price_run_up: {},
+        price_run_down: {}
+      };
+
+      for (var _i6 = 0, _Object$entries6 = Object.entries(this.my_number); _i6 < _Object$entries6.length; _i6++) {
+        var _Object$entries6$_i = _slicedToArray(_Object$entries6[_i6], 2),
+            huay_type = _Object$entries6$_i[0],
+            list = _Object$entries6$_i[1];
+
+        if (list.length) {
+          for (var i = 0; i < list.length; i++) {
+            if (pass[huay_type][list[i]['number']] == undefined) pass[huay_type][list[i]['number']] = 0;
+            pass[huay_type][list[i]['number']]++;
+          }
+        }
+      }
+
+      for (var _i7 = 0, _Object$entries7 = Object.entries(this.my_number); _i7 < _Object$entries7.length; _i7++) {
+        var _Object$entries7$_i = _slicedToArray(_Object$entries7[_i7], 2),
+            _huay_type = _Object$entries7$_i[0],
+            _list = _Object$entries7$_i[1];
+
+        if (_list.length) {
+          for (var i = 0; i < _list.length; i++) {
+            if (pass[_huay_type][_list[i]['number']] == undefined) pass[_huay_type][_list[i]['number']] = 0;
+            pass[_huay_type][_list[i]['number']]++;
+            if (pass[_huay_type][_list[i]['number']] > 2) this.my_number[_huay_type][i].is_duplicate = true;else this.my_number[_huay_type][i].is_duplicate = false;
+          }
+        }
+      }
+    },
     refesh_my_number: function refesh_my_number() {
       this.my_number_txt = "";
 
-      if (this.my_number.length) {
-        for (var i = 1; i <= this.my_number.length; i++) {
-          this.my_number_txt += this.my_number[this.my_number.length - i]['number'] + ", ";
+      for (var _i8 = 0, _Object$entries8 = Object.entries(this.my_number); _i8 < _Object$entries8.length; _i8++) {
+        var _Object$entries8$_i = _slicedToArray(_Object$entries8[_i8], 2),
+            huay_type = _Object$entries8$_i[0],
+            list = _Object$entries8$_i[1];
+
+        if (list.length) {
+          for (var i = 1; i <= list.length; i++) {
+            this.my_number_txt += list[list.length - i]['number'] + ", ";
+          }
         }
       }
+
+      console.log(this.my_number);
     },
     clear_last: function clear_last() {
       var input1 = $("#input1");
@@ -2426,36 +2631,42 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
 
         if (input_full) {
-          for (var _i4 = 0, _Object$entries4 = Object.entries(this.option_huay); _i4 < _Object$entries4.length; _i4++) {
-            var _Object$entries4$_i = _slicedToArray(_Object$entries4[_i4], 2),
-                key_obj = _Object$entries4$_i[0],
-                value = _Object$entries4$_i[1];
+          for (var _i9 = 0, _Object$entries9 = Object.entries(this.option_huay); _i9 < _Object$entries9.length; _i9++) {
+            var _Object$entries9$_i = _slicedToArray(_Object$entries9[_i9], 2),
+                key_obj = _Object$entries9$_i[0],
+                value = _Object$entries9$_i[1];
 
             if (value == true) {
               if (key_obj != 'price_two_up' && key_obj != 'price_two_down') var number = input1.text() + input2.text() + input3.text();else var number = input1.text() + input2.text();
-              this.my_number.push({
+              this.my_number[key_obj].push({
                 number: number,
                 number_type: key_obj,
+                is_duplicate: false,
                 multiple: 1,
+                total_price: numeral(this[key_obj] * 1).format('0,0'),
                 price: this[key_obj]
               });
             }
           }
 
-          Swal.fire({
-            position: 'top',
-            icon: 'success',
-            title: '<small class="text-center">เพิ่ม</small>&nbsp;<small class="text-center">' + input1.text() + input2.text() + input3.text() + "</small>",
-            showConfirmButton: false,
-            timer: 1000,
-            backdrop: true,
-            width: 200
-          });
-          console.log(this.my_number);
-          this.refesh_my_number();
-          input1.text("");
-          input2.text("");
-          input3.text("");
+          var app = this;
+          setTimeout(function () {
+            Swal.fire({
+              position: 'top',
+              icon: 'success',
+              title: '<small class="text-center">เพิ่ม</small>&nbsp;<small class="text-center">' + number + "</small>",
+              showConfirmButton: false,
+              timer: 1000,
+              backdrop: true,
+              width: 200
+            });
+            console.log(app.my_number);
+            app.refesh_my_number();
+            app.cal_duplicate();
+            input1.text("");
+            input2.text("");
+            input3.text("");
+          }, 200);
         }
       } else if (number == -1) this.clear_last();else if (number == -2) {
         Swal.fire({
@@ -2471,6 +2682,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           if (result.value) {
             Swal.fire('ลบสำเร็จ!', 'รายการแทงถูกลบแล้ว.', 'success');
             _this.my_number = [];
+            input1.text("");
+            input2.text("");
+            input3.text("");
 
             _this.refesh_my_number();
           }
@@ -38718,712 +38932,1046 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "d-flex" }, [
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_tree_up" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_tree_up")
+    _vm.can_shoot && _vm.page_index <= 2
+      ? _c("div", { staticClass: "row mb-4" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-primary text-white col-md-6",
+              staticStyle: { "border-radius": "0px" },
+              attrs: { id: "input-number-btn" },
+              on: {
+                click: function($event) {
+                  return _vm.change_page(1)
+                }
               }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    สามตัวบบน (" +
-                    _vm._s(_vm.price_tree_up) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_tree_tod" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_tree_tod")
+            },
+            [_vm._v("แทงเลข")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-outline-primary col-md-6",
+              staticStyle: { "border-radius": "0px" },
+              attrs: { id: "shoot-number-btn" },
+              on: {
+                click: function($event) {
+                  return _vm.change_page(2)
+                }
               }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    สามตัวโต๊ด (" +
-                    _vm._s(_vm.price_tree_tod) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ])
-    ]),
+            },
+            [_vm._v("ยิงเลข")]
+          )
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "d-flex" }, [
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_tree_front" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_tree_front")
-              }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    สามตัวหน้า (" +
-                    _vm._s(_vm.price_tree_front) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_tree_down" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_tree_down")
-              }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    สามตัวหลัง (" +
-                    _vm._s(_vm.price_tree_down) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex" }, [
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_two_up" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_two_up")
-              }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    สองตัวบน (" +
-                    _vm._s(_vm.price_two_up) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_two_down" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_two_down")
-              }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    สองตัวล่าง (" +
-                    _vm._s(_vm.price_two_down) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex" }, [
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_run_up" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_run_up")
-              }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    วิ่งบน (" +
-                    _vm._s(_vm.price_run_up) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "single-jackpot",
-            staticStyle: { padding: "0", cursor: "pointer" },
-            attrs: { id: "price_run_down" },
-            on: {
-              click: function($event) {
-                return _vm.select_option("price_run_down")
-              }
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "part-body",
-                staticStyle: { padding: "15px 15px" }
-              },
-              [
-                _vm._v(
-                  "\n                    วิ่งล่าง (" +
-                    _vm._s(_vm.price_run_down) +
-                    ")\n                "
-                )
-              ]
-            )
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex " }, [
-      _c(
-        "div",
-        {
-          staticClass: "col-xl-12 col-lg-12 col-sm-12 hide",
-          attrs: { id: "main-input" }
-        },
-        [
-          _c("div", { staticClass: "single-jackpot" }, [
-            _vm._m(0),
+    _vm.page_index == 1
+      ? _c("div", [
+          _c("div", { staticClass: "d-flex" }, [
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_tree_up" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_tree_up")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        สามตัวบบน (" +
+                          _vm._s(_vm.price_tree_up) +
+                          ")\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "part-body disableSelection" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_tree_tod" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_tree_tod")
+                    }
+                  }
+                },
+                [
                   _c(
                     "div",
                     {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(1)
-                        }
-                      }
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
                     },
                     [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    1\n                                "
-                          )
-                        ]
+                      _vm._v(
+                        "\n                        สามตัวโต๊ด (" +
+                          _vm._s(_vm.price_tree_tod) +
+                          ")\n                    "
                       )
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_tree_front" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_tree_front")
+                    }
+                  }
+                },
+                [
                   _c(
                     "div",
                     {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(2)
-                        }
-                      }
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
                     },
                     [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    2\n                                "
-                          )
-                        ]
+                      _vm._v(
+                        "\n                        สามตัวหน้า (" +
+                          _vm._s(_vm.price_tree_front) +
+                          ")\n                    "
                       )
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_tree_down" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_tree_down")
+                    }
+                  }
+                },
+                [
                   _c(
                     "div",
                     {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(3)
-                        }
-                      }
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
                     },
                     [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    3\n                                "
-                          )
-                        ]
+                      _vm._v(
+                        "\n                        สามตัวหลัง (" +
+                          _vm._s(_vm.price_tree_down) +
+                          ")\n                    "
                       )
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_two_up" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_two_up")
+                    }
+                  }
+                },
+                [
                   _c(
                     "div",
                     {
-                      staticClass: "single-jackpot button_number bg-warning",
-                      staticStyle: {
-                        padding: "0",
-                        color: "#fff",
-                        cursor: "pointer"
-                      }
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
                     },
                     [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: { padding: "15px 15px" },
-                          on: {
-                            click: function($event) {
-                              return _vm.numpad(-1)
+                      _vm._v(
+                        "\n                        สองตัวบน (" +
+                          _vm._s(_vm.price_two_up) +
+                          ")\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_two_down" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_two_down")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        สองตัวล่าง (" +
+                          _vm._s(_vm.price_two_down) +
+                          ")\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_run_up" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_run_up")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        วิ่งบน (" +
+                          _vm._s(_vm.price_run_up) +
+                          ")\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "single-jackpot disableSelection",
+                  staticStyle: { padding: "0", cursor: "pointer" },
+                  attrs: { id: "price_run_down" },
+                  on: {
+                    click: function($event) {
+                      return _vm.select_option("price_run_down")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "part-body",
+                      staticStyle: { padding: "15px 15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        วิ่งล่าง (" +
+                          _vm._s(_vm.price_run_down) +
+                          ")\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex " }, [
+            _c(
+              "div",
+              {
+                staticClass: "col-xl-12 col-lg-12 col-sm-12 hide",
+                attrs: { id: "main-input" }
+              },
+              [
+                _c("div", { staticClass: "single-jackpot disableSelection" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "part-body disableSelection" }, [
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(1)
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-reply",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
-                      )
-                    ]
-                  )
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        1\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(2)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        2\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(3)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        3\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number bg-warning",
+                            staticStyle: {
+                              padding: "0",
+                              color: "#fff",
+                              cursor: "pointer"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: { padding: "15px 15px" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.numpad(-1)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-reply",
+                                  attrs: { "aria-hidden": "true" }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(4)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        4\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(5)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        5\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(6)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        6\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number bg-danger",
+                            staticStyle: {
+                              padding: "0",
+                              color: "#fff",
+                              cursor: "pointer"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(-2)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: { padding: "15px 15px" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        ล้างข้อมูล\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(7)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        7\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(8)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        8\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(9)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        9\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("div", { staticClass: "col-xl-9 col-lg-9 col-sm-9" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "single-jackpot disableSelection button_number",
+                            staticStyle: { padding: "0", cursor: "pointer" },
+                            on: {
+                              click: function($event) {
+                                return _vm.numpad(0)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "part-body text-center",
+                                staticStyle: {
+                                  padding: "15px 15px",
+                                  border: "rgba(0, 0, 0, 0.08) 3px solid",
+                                  "border-radius": "5px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        0\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(4)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
+              ]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.page_index == 3
+      ? _c(
+          "div",
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-sm btn-warning text-white col-md-2",
+                attrs: { id: "input-number-btn" },
+                on: {
+                  click: function($event) {
+                    return _vm.change_page(1)
+                  }
+                }
+              },
+              [_vm._v("กลับ")]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.my_number, function(list, huay_type) {
+              return _c(
+                "div",
+                [
+                  list.length
+                    ? _c("div", [
+                        _c("label", { staticClass: "mt--2" }, [
+                          _vm._v(" " + _vm._s(_vm.type_name[huay_type]))
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm._l(list, function(item, index) {
+                    return _c("div", [
+                      _c("div", { staticClass: "item mb-2" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c("div", { staticClass: "input-group-append" }, [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "input-group-text bg-white",
+                                staticStyle: { "min-width": "45px" },
+                                attrs: { align: "center" }
+                              },
+                              [_vm._v(_vm._s(index + 1) + ".")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "input-group-append" }, [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "input-group-text number bg-gold",
+                                staticStyle: { "min-width": "50px" },
+                                attrs: { "data-duplicate": item.is_duplicate }
+                              },
+                              [_vm._v(_vm._s(item.number))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass:
+                              "form-control bg-black text-gold border-right-gold",
+                            attrs: {
+                              type: "tel",
+                              placeholder: "ระบุจำนวนเงิน",
+                              minlength: "6",
+                              maxlength: "6",
+                              pattern: "[0-9]*",
+                              "data-duplicate": item.is_duplicate
+                            },
+                            domProps: { value: item.multiple },
+                            on: {
+                              keyup: function($event) {
+                                return _vm.change_multiple(
+                                  huay_type,
+                                  index,
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "input-group-append input-group-append-price"
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text bg-black",
+                                  attrs: { "data-duplicate": item.is_duplicate }
+                                },
+                                [
+                                  _vm._v(
+                                    "ชนะ : " + _vm._s(item.total_price) + " ฿"
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "input-group-append" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "btn btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.remove_number(huay_type, index)
+                                  }
+                                }
+                              },
+                              [_vm._v("ลบ")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  })
+                ],
+                2
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "section",
+              { staticClass: "setting", attrs: { id: "setting_price" } },
+              [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-block btn-info",
+                        on: {
+                          click: function($event) {
+                            return _vm.show_duplicate()
                           }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    4\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-search text-white" }),
+                        _vm._v(" ดูเลขซ้ำ")
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-block btn-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.delete_duplicate()
+                          }
+                        }
+                      },
+                      [_vm._v("ตัดเลขซ้ำออก")]
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(5)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    5\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
+                _c("h3", [_vm._v("เดิมพันราคาเท่ากัน")]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(6)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    6\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number bg-danger",
-                      staticStyle: {
-                        padding: "0",
-                        color: "#fff",
-                        cursor: "pointer"
+                _c("div", { staticClass: "form__price" }, [
+                  _c("div", { staticClass: "input-group mb-3" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "change_price_input",
+                        type: "tel",
+                        pattern: "[0-9]*",
+                        placeholder: "ใส่ราคา"
                       },
                       on: {
-                        click: function($event) {
-                          return _vm.numpad(-2)
+                        keyup: function($event) {
+                          return _vm.change_multiple_all($event.target.value)
                         }
                       }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: { padding: "15px 15px" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    ล้างข้อมูล\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_multiple_all(5, true)
+                          }
+                        }
+                      },
+                      [_vm._v("5 ฿")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_multiple_all(10, true)
+                          }
+                        }
+                      },
+                      [_vm._v("10 ฿")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_multiple_all(20, true)
+                          }
+                        }
+                      },
+                      [_vm._v("20 ฿")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_multiple_all(50, true)
+                          }
+                        }
+                      },
+                      [_vm._v("50 ฿")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_multiple_all(100, true)
+                          }
+                        }
+                      },
+                      [_vm._v("100 ฿")]
+                    )
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(7)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    7\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(8)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    8\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-3 col-lg-3 col-sm-3" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(9)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    9\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-9 col-lg-9 col-sm-9" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot button_number",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      on: {
-                        click: function($event) {
-                          return _vm.numpad(0)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body text-center",
-                          staticStyle: {
-                            padding: "15px 15px",
-                            border: "rgba(0, 0, 0, 0.08) 3px solid",
-                            "border-radius": "5px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    0\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]
-      )
-    ]),
+              ]
+            )
+          ],
+          2
+        )
+      : _vm._e(),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "card_list_lottery",
-        staticStyle: {
-          position: "fixed",
-          left: "0px",
-          right: "0px",
-          "word-break": "break-word",
-          overflow: "scroll"
-        }
-      },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", { attrs: { id: "lottery_all" } }, [
-          _vm._v("\n            " + _vm._s(_vm.my_number_txt) + "\n        ")
-        ])
-      ]
-    )
+    _vm.page_index == 1
+      ? _c(
+          "div",
+          {
+            staticClass: "card_list_lottery",
+            staticStyle: {
+              position: "fixed",
+              left: "0px",
+              right: "0px",
+              "word-break": "break-word",
+              overflow: "scroll"
+            }
+          },
+          [
+            _c("div", { staticClass: "lottert_detail" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _vm.my_number_txt !== ""
+                ? _c("div", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-light mt-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_page(3)
+                          }
+                        }
+                      },
+                      [_vm._v("แทงเลข")]
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "lottery_all" } }, [
+              _vm._v(
+                "\n            " + _vm._s(_vm.my_number_txt) + "\n        "
+              )
+            ])
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -39467,27 +40015,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "lottert_detail" }, [
-      _c("div", [
-        _vm._v("รายการแทง "),
-        _c("span", { attrs: { id: "lotttery_num" } })
-      ]),
-      _vm._v(" "),
+    return _c("div", { staticClass: "input-group-append" }, [
       _c(
-        "div",
-        { staticStyle: { display: "none" }, attrs: { id: "lottery_price" } },
-        [
-          _c("button", { staticClass: "btn btn-warning" }, [
-            _c("i", {
-              staticClass: "fa fa-table",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(
-              " ใส่ราคาแทง\n                                                                                                    "
-            )
-          ])
-        ]
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "button" } },
+        [_vm._v("ตกลง")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _vm._v("รายการแทง "),
+      _c("span", { attrs: { id: "lotttery_num" } })
     ])
   }
 ]
@@ -51692,8 +52234,8 @@ Vue.component('input-number', __webpack_require__(/*! ./components/inputNumberCo
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app'
+var inputNumber = new Vue({
+  el: '#input-number'
 });
 
 /***/ }),

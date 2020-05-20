@@ -86,6 +86,7 @@ class ManageHuayController extends Controller
 
             $huay_round = new HuayRounds();
             $huay_round->huay_category_id = $huay->huay_category_id;
+            $huay_round->can_shoot = $huay->can_shoot;
             $huay_round->huay_id = $_POST['huay_id'];
             $huay_round->name = $_POST['name'];
             $huay_round->date = $_POST['date'];
@@ -124,6 +125,7 @@ class ManageHuayController extends Controller
 
             $data = array(
                 'huay_category_id' => $huay->huay_category_id,
+                'can_shoot' => $huay->can_shoot,
                 'huay_id' => $_POST['huay_id'],
                 'name' => $_POST['name'],
                 'date' => $_POST['date'],

@@ -19,7 +19,6 @@ class CreateHuays extends Migration
             $table->bigInteger('sort_order_id')->nullable();
             $table->string('name');
             $table->tinyInteger('can_shoot')->default(0);
-            $table->tinyInteger('is_yee_kee')->default(0);
             $table->decimal('price_tree_up', 12, 2)->default(0);
             $table->decimal('price_tree_tod', 12, 2)->default(0);
             $table->decimal('price_tree_front', 12, 2)->default(0);

@@ -96,6 +96,7 @@ class SampleSeeder extends Seeder
                 'name' => 'หวยยี่กี ' . $i,
                 'huay_category_id' => 2,
                 'price_tree_up' => 900,
+                'can_shoot' => 1,
                 // 'price_tree_tod' => 150,
                 // 'price_tree_front' => 450,
                 // 'price_tree_down' => 450,
@@ -108,16 +109,18 @@ class SampleSeeder extends Seeder
         }
 
         DB::table('huay_categorys')->insert([
-            'name' => 'หวยยี่กี CF',
+            'name' => 'หวยยี่กี Big Money',
             'sort_order_id' => 3,
             'created_at' => now(),
         ]);
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('huays')->insert([
-                'name' => 'หวยยี่กี CF ' . $i,
+                'name' => 'หวยยี่กี Big Money ' . $i,
                 'huay_category_id' => 3,
                 'price_tree_up' => 900,
+                'can_shoot' => 1,
+
                 // 'price_tree_tod' => 150,
                 // 'price_tree_front' => 450,
                 // 'price_tree_down' => 450,

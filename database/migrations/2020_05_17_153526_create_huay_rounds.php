@@ -25,6 +25,7 @@ class CreateHuayRounds extends Migration
             $table->tinyInteger('is_active');
             $table->string('name');
             $table->string('secret')->nullable();
+            $table->tinyInteger('can_shoot')->default(0);
 
             $table->decimal('price_tree_up', 12, 2)->default(0);
             $table->decimal('price_tree_tod', 12, 2)->default(0);
