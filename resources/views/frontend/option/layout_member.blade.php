@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-9 for-lottery">
+                        <div class="col-xl-9 col-lg-9 for-lottery text-white">
                             <div class="mainmenu">
                                 <nav class="navbar navbar-expand-lg for-lottery">
 
@@ -99,7 +99,7 @@
                                                 <div class="header_login">
                                                     <div class="d-flex">
                                                         <div class="header_after_login">
-                                                            $ 100
+                                                          {{number_format(Auth::user()->money, 2)}}
                                                         </div>
                                                         <div class="header_after_login">
                                                             <i class="fa fa-bell" aria-hidden="true"></i>

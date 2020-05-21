@@ -29,8 +29,11 @@ Route::get('/lottery_withdraw','Frontend\IndexController@lottery_withdraw')->nam
 Route::post('/lottery_withdraw','Frontend\IndexController@lottery_withdraw_post');
 
 Route::get('/lottery_play','Frontend\LotteryPlayController@index')->name('lottery_play');
+
 Route::get('/lottery_government','Frontend\LotteryPlayController@lottery_government')->name('lottery_government');
 Route::get('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee')->name('lottery_yeekee');
+Route::POST('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee_post');// ข้อมูลหวย Yeekee
+
 Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index')->name('lottery_transaction');
 Route::get('/lottery_result','Frontend\LotteryResultController@index')->name('lottery_result');
 Route::get('/lottery_credit','Frontend\LotteryCreditController@index')->name('lottery_credit');

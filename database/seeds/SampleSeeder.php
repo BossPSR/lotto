@@ -49,7 +49,7 @@ class SampleSeeder extends Seeder
 
         // User
         DB::table('users')->insert([
-            'username' => 'f',
+            'username' => 'sanyaluck',
             'first_name' => 'f',
             'last_name' => 'f',
             'password' => Hash::make('f'),

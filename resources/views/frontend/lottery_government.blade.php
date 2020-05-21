@@ -4,6 +4,7 @@
 // echo '<pre>';
 // print_r($huay_round);
 // echo '</pre>';
+$_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
 ?>
 <!-- jackpot begin -->
 <div class="jackpot" style="background:#FED63E; min-height: calc(100vh - 50px);" >
@@ -38,6 +39,7 @@
                         :price_two_down="{{$huay_round->price_two_down}}"
                         :price_run_up="{{$huay_round->price_run_up}}"
                         :price_run_down="{{$huay_round->price_run_down}}"
+                        :huay_secret="'{{$huay_round->secret}}'"
                         ></input-number>
                     </div>
                 </div>

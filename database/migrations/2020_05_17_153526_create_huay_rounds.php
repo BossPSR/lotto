@@ -27,23 +27,23 @@ class CreateHuayRounds extends Migration
             $table->string('secret')->nullable();
             $table->tinyInteger('can_shoot')->default(0);
 
-            $table->decimal('price_tree_up', 12, 2)->default(0);
-            $table->decimal('price_tree_tod', 12, 2)->default(0);
-            $table->decimal('price_tree_front', 12, 2)->default(0);
-            $table->decimal('price_tree_down', 12, 2)->default(0);
-            $table->decimal('price_two_up', 12, 2)->default(0);
-            $table->decimal('price_two_down', 12, 2)->default(0);
-            $table->decimal('price_run_up', 12, 2)->default(0);
-            $table->decimal('price_run_down', 12, 2)->default(0);
+            $table->decimal('price_tree_up', 22, 2)->default(0);
+            $table->decimal('price_tree_tod', 22, 2)->default(0);
+            $table->decimal('price_tree_front', 22, 2)->default(0);
+            $table->decimal('price_tree_down', 22, 2)->default(0);
+            $table->decimal('price_two_up', 22, 2)->default(0);
+            $table->decimal('price_two_down', 22, 2)->default(0);
+            $table->decimal('price_run_up', 22, 2)->default(0);
+            $table->decimal('price_run_down', 22, 2)->default(0);
 
-            $table->decimal('result_tree_up', 12, 2)->default(0);
-            $table->decimal('result_tree_tod', 12, 2)->default(0);
-            $table->decimal('result_tree_front', 12, 2)->default(0);
-            $table->decimal('result_tree_down', 12, 2)->default(0);
-            $table->decimal('result_two_up', 12, 2)->default(0);
-            $table->decimal('result_two_down', 12, 2)->default(0);
-            $table->decimal('result_run_up', 12, 2)->default(0);
-            $table->decimal('result_run_down', 12, 2)->default(0);
+            $table->decimal('result_tree_up', 22, 2)->default(0);
+            $table->decimal('result_tree_tod', 22, 2)->default(0);
+            $table->decimal('result_tree_front', 22, 2)->default(0);
+            $table->decimal('result_tree_down', 22, 2)->default(0);
+            $table->decimal('result_two_up', 22, 2)->default(0);
+            $table->decimal('result_two_down', 22, 2)->default(0);
+            $table->decimal('result_run_up', 22, 2)->default(0);
+            $table->decimal('result_run_down', 22, 2)->default(0);
 
             $table->softDeletes();
             $table->timestamps();

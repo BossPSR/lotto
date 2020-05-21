@@ -33,6 +33,8 @@ class CreateUsersTable extends Migration
             $table->string('bank_name')->nullable();
             $table->string('account_no')->nullable();
             $table->string('account_name')->nullable();
+            $table->decimal('money', 22, 2)->default(0);
+            $table->decimal('credit', 22, 2)->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

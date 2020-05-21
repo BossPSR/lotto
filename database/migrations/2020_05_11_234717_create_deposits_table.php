@@ -21,7 +21,7 @@ class CreateDepositsTable extends Migration
             $table->bigInteger('admin_id')->nullable();
             $table->longText('proof_image')->nullable();
             $table->enum('status', ['pending','confirm','reject']);
-            $table->decimal('amount', 12, 2)->default(0);
+            $table->decimal('amount', 22, 2)->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
