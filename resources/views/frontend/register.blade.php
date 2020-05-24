@@ -1,5 +1,8 @@
 @extends('frontend/option/layout')
 @section('content')
+<?php
+$_GET['ref_code'] = isset($_GET['ref_code']) ? $_GET['ref_code'] : null;
+?>
 <script src="{{asset('assets/js/preview_img.js')}}"></script>
 <!-- jackpot begin -->
 <div class="jackpot" style="background:#FED63E;">
@@ -34,7 +37,7 @@
                                                 <form action="{{route('register_process')}}" method="post" onsubmit="validateForm(this)" enctype="multipart/form-data">
                                                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                     <div>รูปโปรไฟล์</div>
-                                                    <input type="file" name="file_name" class="form-control form-group" id="imgInp" required>
+                                                    <input accept="image/*" type="file" name="file_name" class="form-control form-group" id="imgInp" required>
                                                     <div style="width:30%; margin:auto;">
                                                         <label for="imgInp" style="cursor: pointer">
                                                             <img id="blah" src="{{url('assets/img/upload.png')}}">
@@ -56,6 +59,9 @@
 
                                                     <div>นามสกุล</div>
                                                     <input type="text" name="last_name" class="form-control form-group" required>
+                                                    
+                                                    <div>วัน/เดืิอน/ปี เกิด</div>
+                                                    <input type="date" name="birthday" class="form-control form-group" required>
 
                                                     <div>อีเมล</div>
                                                     <input type="email" name="email" class="form-control form-group" required>
@@ -63,8 +69,8 @@
                                                     <div>โทรศัพท์ติดต่อ</div>
                                                     <input type="text" name="tel" pattern="[0-9]+" class="form-control form-group" required>
 
-                                                    <div>ชื่อผู้ใช้งานที่แนะนำ</div>
-                                                    <input type="text" name="upline_username" class="form-control form-group">
+                                                    <div>Code ผู้แนะนำ</div>
+                                                    <input type="text" name="upline_username" class="form-control form-group" value="{{$_GET['ref_code']}}">
 
                                                     <button type="submit" class="btn btn-warning new_story">สมัครสมาชิก</button>
                                                     <button type="reset" class="btn btn-danger new_story_cancel">ยกเลิก</button>

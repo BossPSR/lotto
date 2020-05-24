@@ -29,6 +29,7 @@ class DefaultController extends Controller
             md5('get-users') => 'users',
             md5('get-huays') => 'huays',
             md5('get-huay_rounds') => 'huay_rounds',
+            md5('get-commission_setting') => 'commission_setting',
         );
     }
 

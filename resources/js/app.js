@@ -24,6 +24,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('input-number', require('./components/inputNumberComponent.vue').default);
+Vue.component('poy-list', require('./components/PoysList.vue').default);
+Vue.component('my-number-set', require('./components/MyNumberSet.vue').default);
 Vue.use(VueAxios, axios)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,8 +33,8 @@ Vue.use(VueAxios, axios)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const inputNumber = new Vue({
-    el: '#input-number'
+const app = new Vue({
+    el: '#app'
 });
 
 

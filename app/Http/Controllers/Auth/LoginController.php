@@ -52,7 +52,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('user')->attempt([$key => $request->$key, 'password' => $request->password])) {
-            return redirect('index_member');
+            return redirect()->route('index_member');
         } else {
             return redirect()->route('index');
         }

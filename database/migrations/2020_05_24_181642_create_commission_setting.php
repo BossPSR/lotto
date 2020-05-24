@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNumberSets extends Migration
+class CreateCommissionSetting extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateNumberSets extends Migration
      */
     public function up()
     {
-        Schema::create('number_sets', function (Blueprint $table) {
+        Schema::create('commission_setting', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->decimal('commission_percent', 5, 2)->default(0);
+            $table->decimal('max_withdraws', 22, 2)->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateNumberSets extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('number_sets');
+        Schema::dropIfExists('commission_setting');
     }
 }

@@ -29,6 +29,10 @@ class RuleHuayController extends Controller
             $player_rule->title = $_POST['title'];
             $player_rule->description = $_POST['description'];
 
+            // Save the model
+            $player_rule->save();
+
+            $path = '';
             // Upload image
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/player_rules/' . $player_rule->id;
@@ -43,13 +47,13 @@ class RuleHuayController extends Controller
                 $filename = 'image_' . $player_rule->id . '.' . $ext;
                 $file->move($filepath, $filename);
 
-                $player_rule->image = $filepath.'/'.$filename;
+                $path = $filepath.'/'.$filename;
             }
 
-            // Save the model
-            $player_rule->save();
-
-            $sort_data = array('sort_order_id' => $player_rule->id);
+            $sort_data = array(
+                'sort_order_id' => $player_rule->id,
+                'image' => $path
+            );
 
             DB::table(self::$table)
                 ->where('id', $player_rule->id)

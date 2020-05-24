@@ -5,7 +5,8 @@
     #DataTables_Table_0_length {
         display: none;
     }
-    .image_rules{
+
+    .image_rules {
         width: 80px;
         height: 60px;
         object-fit: contain;
@@ -55,9 +56,9 @@
                                 <th style="display:none;"></th>
                                 <th class="thincell">#</th>
                                 <th class="thincell">จัดลำดับ</th>
-                                <th >QR</th>
+                                <th class="thincell">QR</th>
                                 <!-- <th>หัวข้อ</th> -->
-                                <!-- <th>คำอธิบาย</th> -->
+                                <th>คำอธิบาย</th>
                                 <th class="thincell">ACTION</th>
                             </tr>
                         </thead>
@@ -94,7 +95,10 @@
                                             @if($contact->image)
                                             <a target="_blank" href="{{url($contact->image)}}"><img src="{{url($contact->image)}}" class="image_rules"></a>
                                             @endif
-                                           
+
+                                        </td>
+                                        <td class="product-name">
+                                            {{$contact->description}}
                                         </td>
                                         <td class="text-center">
                                             <span data-toggle="modal" data-target="#edit" data-edit-id="{{$contact->id}}"><i class="fa fa-edit" style="font-size: 25px;"></i></span>
@@ -115,16 +119,16 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="POST" action="/admin/contact_huay" onsubmit="doSubmit(this)" enctype="multipart/form-data" >
+                                            <form method="POST" action="/admin/contact_huay" onsubmit="doSubmit(this)" enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <label>QR</label>
-                                                    <input type="file" name="image" class="form-control" accept="image/*"> 
+                                                    <input type="file" name="image" class="form-control" accept="image/*">
                                                 </div>
 
-                                                <!-- <div class="form-group">
+                                                <div class="form-group">
                                                     <label>คำอธิบาย</label>
                                                     <textarea name="description" class="form-control" required></textarea>
-                                                </div> -->
+                                                </div>
                                                 <div class="form-group  mb-0">
                                                     <div class="text-right">
                                                         <button type="submit" class="btn btn-primary" name="addContacts">เพิ่มข้อมูล</button>
@@ -154,10 +158,10 @@
                                                     <label>QR</label>
                                                     <input type="file" name="image" class="form-control" accept="image/*">
                                                 </div>
-                                                <!-- <div class="form-group">
+                                                <div class="form-group">
                                                     <label>คำอธิบาย</label>
                                                     <textarea name="description" class="form-control" required></textarea>
-                                                </div> -->
+                                                </div>
                                                 <div class="form-group  mb-0">
                                                     <div class="text-right" style="display: flex;flex-direction: row-reverse;">
                                                         <button type="submit" class="btn btn-primary" name="editContacts">บันทึกข้อมูล</button>

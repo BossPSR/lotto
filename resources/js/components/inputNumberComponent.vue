@@ -563,11 +563,60 @@
                 <a v-on:click="numpad(-3)" class="btn btn-sm btn-primary text-white col-md-6">ส่งโพย</a>
             </div>
         </div>
+        <div v-if="page_index==5">
+            <hr>
+            <legend class='text-center'>เลือกเลขชุด</legend>
+            <div class="alert alert-danger" v-if="poy_list.length == 0" style="display: flex; justify-content: space-between;">
+                <label>ยังไม่มีเลขชุด</label>
+            </div>
+    
+            <div v-for="(poy, index) in poy_list">
+                <a v-on:click="load_number_list(poy.id)" style="cursor:pointer;">
+                    <div class="row border shadow rounded mb-3 p-2">
+                        <div class="col-md-2 mt-2">
+                            <label class="title">ลำดับ {{index+1}}</label>
+                        </div>
+                        <div class="col-md-5 text-center mt-2">
+                            <label>{{poy.name}}</label>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <small class="date">สร้างเมื่อ<br> {{poy.datetime}}</small>
+                        </div>
+                        <div class="col-md-1 text-right pt-1">
+                            <button class='btn btn-sm btn-success' v-on:click="choose_set(poy.id)">เลือก</button>
+                        </div>
+                    </div>
+                </a>
+                <div v-bind:id="'poy-'+poy.id" v-if="old_list[poy.id]">
+                    <div v-for="(list, huay_type) in old_list[poy.id]">
+                        <table class="table table-sm border">
+                            <tr class="thead-dark">
+                                <th style="width:1px"></th>
+                                <th>{{type_name[huay_type]}}</th>
+                                <th style="width:1px"></th>
+                            </tr>
+                            <tr v-for="(item, index) in list">
+                                <td nowrap>{{ index+1}}.</td>
+                                <td>{{ item.number }}</td>
+                                <td nowrap>{{ item.multiple }} ฿</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div v-if="old_list[poy.id].length < 1">
+                        <label>ไม่พบรายการ</label>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
         <div v-if="page_index == 1" class="card_list_lottery" style="position:fixed; left:0px; right:0px;word-break: break-word; overflow:scroll">
             <div class="lottert_detail">
                 <div>รายการแทง <span id="lotttery_num"></span></div>
                 <div v-if="my_number_txt !==''">
                     <button class="btn btn-light mt-2" v-on:click="change_page(3)">แทงเลข</button>
+                </div>
+                <div v-if="my_number_txt ==''">
+                    <button class="btn btn-light mt-2" v-on:click="change_page(5)">เลขชุด/ดึงโพย</button>
                 </div>
             </div>
     
@@ -666,6 +715,10 @@ export default {
                 price_run_up: 'วิ่งบน',
                 price_run_down: 'วิ่งล่าง',
             },
+
+            //PAGE SET
+            poy_list: [],
+            old_list: [],
         }
     },
     mounted() {
@@ -814,6 +867,19 @@ export default {
 
                     });
 
+            } else if (index == 5) {
+                var app = this;
+                this.axios.post('/lottery_number_set', {
+                        get_poy_list: true,
+                    })
+                    .then(function(response) {
+                        console.log(response.data)
+                        app.poy_list = response.data;
+                        app.page_index = 5;
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    });
             }
             console.log(index)
         },
@@ -935,7 +1001,7 @@ export default {
                 if (list.length) {
                     for (var i = 0; i < list.length; i++) {
                         total_price += (list[i].price * list[i].multiple);
-                        total_multiple +=  list[i].multiple;
+                        total_multiple += list[i].multiple;
                     }
                 }
             }
@@ -1063,7 +1129,7 @@ export default {
                             else
                                 var number = input1.text() + input2.text();
 
-                            total_number += number+",";
+                            total_number += number + ",";
                             this.my_number[key_obj].push({
                                 number: number,
                                 number_type: key_obj,
@@ -1298,6 +1364,76 @@ export default {
                     });
                 }
             }
+        },
+        //PAGE 5
+        load_number_list(id) {
+            var app = this
+
+            if (app.old_list[id] == undefined) {
+                this.axios.post('/lottery_transaction', {
+                        get_number_list: true,
+                        huay_round_poy_id: id
+                    })
+                    .then(function(response) {
+                        app.old_list[id] = response.data;
+                        app.$forceUpdate();
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    });
+            }
+        },
+        choose_set(id) {
+            var app = this;
+            if (app.old_list[id] == undefined) {
+                this.axios.post('/lottery_transaction', {
+                        get_number_list: true,
+                        huay_round_poy_id: id
+                    })
+                    .then(function(response) {
+                        app.set_to_variable(response.data)
+                        // app.old_list[id] = response.data;
+                        // app.$forceUpdate();
+                    })
+                    .catch(function(error) {
+                        // console.log(error)
+                    });
+            } else {
+                console.log(app.old_list)
+                app.set_to_variable(app.old_list[id])
+            }
+        },
+        // เอาเลข จาก Set มาใส่ Array แทง
+        set_to_variable(datas) {
+
+            console.log("LOGGG")
+            console.log(datas)
+            for (const [huay_type, list] of Object.entries(datas)) {
+                
+
+                if (list.length) {
+                    for (var i = 0; i < list.length; i++) {
+                        var info = list[i];
+                        console.log('-------')
+                        console.log(info);
+                        console.log('-------')
+                        this.my_number[huay_type].push({
+                            number: info.number,
+                            number_type: length,
+                            is_duplicate: false,
+                            multiple: 1,
+                            multiple_txt: numeral(info.multiple).format('0,0'),
+                            total_price: numeral((this[huay_type] * 1)).format('0,0'),
+                            price: this[huay_type],
+                            date: new Date(),
+                        });
+                    }
+                }
+            }
+            this.change_page(1);
+            this.cal_duplicate();
+            this.cal_total_price();
+            this.refesh_my_number();
         }
     }
 

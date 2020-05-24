@@ -11,7 +11,7 @@ class Contacts extends Model
 
     protected $table = "contacts";
     protected $fillable = [
-        'description', 
+        'image', 
     ];
     protected $dates = ['deleted_at'];
 }

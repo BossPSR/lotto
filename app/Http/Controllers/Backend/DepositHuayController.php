@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Deposits;
+use App\Models\User;
 use File;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -48,14 +49,27 @@ class DepositHuayController extends Controller
     public function post(Request $request)
     {
         if (isset($_POST['depositConfirm'])) {
-            $data = array(
-                'status' => 'confirm',
-                'admin_id' => auth()->user()->id,
-            );
-            DB::table(self::$table)
-                ->where('id', $request->id)
-                ->update($data);
-            return redirect('admin/deposit_approve')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+
+            $info = DB::table(self::$table)->where('id', $request->id)->first();
+
+            if ($info) {
+                $data = array(
+                    'status' => 'confirm',
+                    'admin_id' => auth()->user()->id,
+                );
+
+
+                DB::table(self::$table)
+                    ->where('id', $request->id)
+                    ->update($data);
+
+                $user = User::where('id', $info->user_id)->first();
+                $update_user = array('money' => ($info->amount+ $user->money));
+
+                User::where('id', $info->user_id)->update($update_user);
+
+                return redirect('admin/deposit_approve')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+            }
         } else if (isset($_POST['depositReject'])) {
             $data = array(
                 'status' => 'reject',

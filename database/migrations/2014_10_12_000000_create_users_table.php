@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('admin_id')->nullable();
             $table->enum('status',['รอการตรวจสอบ','อนุมัติ','ไม่อนุมัติ','แบนสมาชิก','บัญชีดำ'])->default('รอการตรวจสอบ');
             $table->string('cover_name',100)->nullable();
+            $table->string('affiliate_code',100)->nullable();
             $table->string('path_cover',100)->nullable();
             $table->string('cover_extension',50)->nullable();
             $table->string('email')->unique();

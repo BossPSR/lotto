@@ -35,10 +35,14 @@ Route::get('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee')->n
 Route::POST('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee_post');// ข้อมูลหวย Yeekee
 
 Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index')->name('lottery_transaction');
+Route::POST('/lottery_transaction','Frontend\LotteryTransactionController@post');
+
 Route::get('/lottery_result','Frontend\LotteryResultController@index')->name('lottery_result');
 Route::get('/lottery_credit','Frontend\LotteryCreditController@index')->name('lottery_credit');
 Route::get('/lottery_affiliate','Frontend\LotteryAffiliateController@index')->name('lottery_affiliate');
 Route::get('/lottery_number_set','Frontend\LotteryNumberSetController@index')->name('lottery_number_set');
+Route::post('/lottery_number_set','Frontend\LotteryNumberSetController@post');
+
 Route::get('/lottery_news','Frontend\LotteryNewsController@index')->name('lottery_news');
 Route::get('/lottery_bonus','Frontend\LotteryBonusController@index')->name('lottery_bonus');
 Route::get('/help','Frontend\HelpController@index')->name('help');
@@ -87,6 +91,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/bank_huay','Backend\BankHuayController@index')->name('bank_huay'); //อนุมัติแจ้งถอน
 
     Route::get('/commission_manage','Backend\CommissionController@commission_manage')->name('commission_manage'); //อนุมัติสมัครสมาชิก
+    Route::post('/commission_manage','Backend\CommissionController@post'); //อนุมัติสมัครสมาชิก
+    
     Route::get('/commission_credit','Backend\CommissionController@commission_credit')->name('commission_credit'); //รายการผู้เล่น
     Route::get('/commission_approve','Backend\CommissionController@commission_approve')->name('commission_approve'); //บัญชีดำ
 

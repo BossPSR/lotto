@@ -1932,6 +1932,368 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MyNumberSet.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MyNumberSet.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {},
+  data: function data() {
+    return {
+      poy_list: {},
+      page: 1,
+      old_list: [],
+      type_name: {
+        price_tree_up: 'สามตัวบน',
+        price_tree_tod: 'สามตัวโต๊ด',
+        price_tree_front: 'สามตัวหน้า',
+        price_tree_down: 'สามตัวหลัง',
+        price_two_up: 'สองตัวบน',
+        price_two_down: 'สองตัวล่าง',
+        price_run_up: 'วิ่งบน',
+        price_run_down: 'วิ่งล่าง'
+      },
+      type_no: {
+        price_tree_up: 3,
+        price_tree_tod: 3,
+        price_tree_front: 3,
+        price_tree_down: 3,
+        price_two_up: 2,
+        price_two_down: 2,
+        price_run_up: 1,
+        price_run_down: 1
+      },
+      my_number: [{
+        number: "",
+        huay_type: "price_tree_up",
+        number_length: 3,
+        can_delete: false
+      }]
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    this.pull_list();
+  },
+  methods: {
+    pull_list: function pull_list() {
+      var app = this;
+      this.axios.post('/lottery_number_set', {
+        get_poy_list: true
+      }).then(function (response) {
+        console.log(response.data);
+        app.poy_list = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    load_number_list: function load_number_list(id) {
+      var app = this;
+
+      if (app.old_list[id] == undefined) {
+        this.axios.post('/lottery_transaction', {
+          get_number_list: true,
+          huay_round_poy_id: id
+        }).then(function (response) {
+          console.log(response.data);
+          app.old_list[id] = response.data;
+          app.$forceUpdate();
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+
+      console.log(app.old_list);
+    },
+    change_page: function change_page(page) {
+      this.page = page;
+    },
+    check_input: function check_input(evt) {
+      evt = evt ? evt : window.event;
+      var charCode = evt.which ? evt.which : evt.keyCode;
+
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        event.preventDefault();
+        return false;
+      }
+
+      return true;
+    },
+    change_number: function change_number(evt, index) {
+      this.my_number[index].number = evt.target.value;
+    },
+    add_row: function add_row() {
+      var temp = {
+        number: "",
+        huay_type: "price_tree_up",
+        number_length: 3,
+        can_delete: true
+      };
+      this.my_number.push(temp);
+    },
+    change_huay_type: function change_huay_type(index, huay_type) {
+      this.my_number[index].huay_type = huay_type;
+      var old_length = this.my_number[index].number_length;
+      this.my_number[index].number_length = this.type_no[huay_type];
+      console.log(this.my_number[index].number.length);
+
+      if (old_length > this.type_no[huay_type]) {
+        var new_number = '';
+
+        if (this.my_number[index].number.length > 0) {
+          for (var i = 0; i < this.type_no[huay_type]; i++) {
+            new_number += this.my_number[index].number[i];
+            console.log(new_number);
+          }
+        }
+
+        this.my_number[index].number = new_number;
+      }
+    },
+    add_custom_poy: function add_custom_poy() {
+      var app = this;
+      this.axios.post('/lottery_number_set', {
+        add_custom_poy: true,
+        name: $('#name').val(),
+        number_array: this.my_number
+      }).then(function (response) {
+        console.log(response.data);
+        app.change_page(1);
+        app.pull_list();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    delete_row: function delete_row(index) {
+      this.my_number.splice(index, 1);
+    },
+    delete_set: function delete_set(index) {
+      var _this = this;
+
+      var app = this;
+      Swal.fire({
+        title: 'แน่ใจที่จะลบ?',
+        text: "โพยนี้จะหายไป!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ใช่, ลบมัน!',
+        cancelButtonText: 'ยกเลิก!'
+      }).then(function (result) {
+        if (result.value) {
+          _this.axios.post('/lottery_transaction', {
+            delete_poy: true,
+            huay_round_poy_id: app.poy_list[index].id
+          }).then(function (response) {
+            app.poy_list.splice(index, 1);
+            Swal.fire('ลบ!', 'สำเร็จแล้ว.', 'success');
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PoysList.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PoysList.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    poy_list: {
+      type: Array,
+      "default": []
+    }
+  },
+  data: function data() {
+    return {
+      old_list: [],
+      type_name: {
+        price_tree_up: 'สามตัวบน',
+        price_tree_tod: 'สามตัวโต๊ด',
+        price_tree_front: 'สามตัวหน้า',
+        price_tree_down: 'สามตัวหลัง',
+        price_two_up: 'สองตัวบน',
+        price_two_down: 'สองตัวล่าง',
+        price_run_up: 'วิ่งบน',
+        price_run_down: 'วิ่งล่าง'
+      }
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  methods: {
+    load_number_list: function load_number_list(id) {
+      var app = this;
+
+      if (app.old_list[id] == undefined) {
+        this.axios.post('/lottery_transaction', {
+          get_number_list: true,
+          huay_round_poy_id: id
+        }).then(function (response) {
+          console.log(response.data);
+          app.old_list[id] = response.data;
+          app.$forceUpdate();
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+
+      console.log(app.old_list);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputNumberComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputNumberComponent.vue?vue&type=script&lang=js& ***!
@@ -1953,6 +2315,55 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2616,7 +3027,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         price_two_down: 'สองตัวล่าง',
         price_run_up: 'วิ่งบน',
         price_run_down: 'วิ่งล่าง'
-      }
+      },
+      //PAGE SET
+      poy_list: [],
+      old_list: []
     };
   },
   mounted: function mounted() {
@@ -2758,6 +3172,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             width: 400
           });
         })["catch"](function (error) {});
+      } else if (index == 5) {
+        var app = this;
+        this.axios.post('/lottery_number_set', {
+          get_poy_list: true
+        }).then(function (response) {
+          console.log(response.data);
+          app.poy_list = response.data;
+          app.page_index = 5;
+        })["catch"](function (error) {
+          console.log(error);
+        });
       }
 
       console.log(index);
@@ -3213,6 +3638,74 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           });
         }
       }
+    },
+    //PAGE 5
+    load_number_list: function load_number_list(id) {
+      var app = this;
+
+      if (app.old_list[id] == undefined) {
+        this.axios.post('/lottery_transaction', {
+          get_number_list: true,
+          huay_round_poy_id: id
+        }).then(function (response) {
+          app.old_list[id] = response.data;
+          app.$forceUpdate();
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    },
+    choose_set: function choose_set(id) {
+      var app = this;
+
+      if (app.old_list[id] == undefined) {
+        this.axios.post('/lottery_transaction', {
+          get_number_list: true,
+          huay_round_poy_id: id
+        }).then(function (response) {
+          app.set_to_variable(response.data); // app.old_list[id] = response.data;
+          // app.$forceUpdate();
+        })["catch"](function (error) {// console.log(error)
+        });
+      } else {
+        console.log(app.old_list);
+        app.set_to_variable(app.old_list[id]);
+      }
+    },
+    // เอาเลข จาก Set มาใส่ Array แทง
+    set_to_variable: function set_to_variable(datas) {
+      console.log("LOGGG");
+      console.log(datas);
+
+      for (var _i11 = 0, _Object$entries11 = Object.entries(datas); _i11 < _Object$entries11.length; _i11++) {
+        var _Object$entries11$_i = _slicedToArray(_Object$entries11[_i11], 2),
+            huay_type = _Object$entries11$_i[0],
+            list = _Object$entries11$_i[1];
+
+        if (list.length) {
+          for (var i = 0; i < list.length; i++) {
+            var info = list[i];
+            console.log('-------');
+            console.log(info);
+            console.log('-------');
+            this.my_number[huay_type].push({
+              number: info.number,
+              number_type: length,
+              is_duplicate: false,
+              multiple: 1,
+              multiple_txt: numeral(info.multiple).format('0,0'),
+              total_price: numeral(this[huay_type] * 1).format('0,0'),
+              price: this[huay_type],
+              date: new Date()
+            });
+          }
+        }
+      }
+
+      this.change_page(1);
+      this.cal_duplicate();
+      this.cal_total_price();
+      this.refesh_my_number();
     }
   }
 });
@@ -39452,6 +39945,521 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MyNumberSet.vue?vue&type=template&id=b976cf1c&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MyNumberSet.vue?vue&type=template&id=b976cf1c& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm.page == 1
+        ? _c(
+            "div",
+            { staticClass: "col-md-12" },
+            [
+              _c("div", { staticClass: "text-right mb-2" }, [
+                _vm.poy_list.length > 0
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-success ",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_page(2)
+                          }
+                        }
+                      },
+                      [_vm._v("สร้างเลขชุด")]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm.poy_list.length == 0
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "alert alert-danger",
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "space-between"
+                      }
+                    },
+                    [
+                      _c("label", [_vm._v("ยังไม่มีเลขชุด")]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-success",
+                          on: {
+                            click: function($event) {
+                              return _vm.change_page(2)
+                            }
+                          }
+                        },
+                        [_vm._v("สร้างเลขชุด")]
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.poy_list, function(poy, index) {
+                return _c("div", [
+                  _c(
+                    "a",
+                    {
+                      staticStyle: { cursor: "pointer" },
+                      on: {
+                        click: function($event) {
+                          return _vm.load_number_list(poy.id)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "row border shadow rounded mb-3 p-2" },
+                        [
+                          _c("div", { staticClass: "col-md-2 mt-2" }, [
+                            _c("label", { staticClass: "title" }, [
+                              _vm._v("ลำดับ " + _vm._s(index + 1))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-md-6 text-center mt-2" },
+                            [_c("label", [_vm._v(_vm._s(poy.name))])]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-3 text-right" }, [
+                            _c("small", { staticClass: "date" }, [
+                              _vm._v("สร้างเมื่อ"),
+                              _c("br"),
+                              _vm._v(" " + _vm._s(poy.datetime))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-1 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger btn-sm mt-1 w-100",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.delete_set(index)
+                                  }
+                                }
+                              },
+                              [_vm._v("ลบ")]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.old_list[poy.id]
+                    ? _c(
+                        "div",
+                        { attrs: { id: "poy-" + poy.id } },
+                        [
+                          _vm._l(_vm.old_list[poy.id], function(
+                            list,
+                            huay_type
+                          ) {
+                            return _c("div", [
+                              _c(
+                                "table",
+                                { staticClass: "table table-sm border" },
+                                [
+                                  _c("tr", { staticClass: "thead-dark" }, [
+                                    _c("th", { staticStyle: { width: "1px" } }),
+                                    _vm._v(" "),
+                                    _c("th", [
+                                      _vm._v(_vm._s(_vm.type_name[huay_type]))
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._l(list, function(item, index) {
+                                    return _c("tr", [
+                                      _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(_vm._s(index + 1) + ".")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(item.number))])
+                                    ])
+                                  })
+                                ],
+                                2
+                              )
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _vm.old_list[poy.id].length < 1
+                            ? _c("div", [_c("label", [_vm._v("ไม่พบรายการ")])])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("hr")
+                        ],
+                        2
+                      )
+                    : _vm._e()
+                ])
+              })
+            ],
+            2
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.page == 2
+        ? _c("div", { staticClass: "col-md-12" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-warning mb-2",
+                on: {
+                  click: function($event) {
+                    return _vm.change_page(1)
+                  }
+                }
+              },
+              [_vm._v("ย้อนกลับ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass: "border p-2 rounded",
+                attrs: { methods: "POST" },
+                on: {
+                  submit: function($event) {
+                    return _vm.add_custom_poy()
+                  }
+                }
+              },
+              [
+                _c("label", [_vm._v("ชื่อเลขชุด")]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "name",
+                    id: "name",
+                    required: ""
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", [_vm._v("ชุดตัวเลข")]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { id: "number-add-list" } },
+                  [
+                    _vm._l(_vm.my_number, function(data, index) {
+                      return _c("div", { staticClass: "row mb-2" }, [
+                        _c("div", { staticClass: "col-md-2" }, [
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  return _vm.change_huay_type(
+                                    index,
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.type_name, function(name, huay_type) {
+                              return _c(
+                                "option",
+                                { domProps: { value: huay_type } },
+                                [_vm._v(_vm._s(name))]
+                              )
+                            }),
+                            0
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-5" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "number[]",
+                              placeholder: "ใส่ตัวเลขเท่านั้น",
+                              maxlength: data.number_length,
+                              minlength: data.number_length,
+                              required: ""
+                            },
+                            domProps: { value: data.number },
+                            on: {
+                              keypress: function($event) {
+                                return _vm.check_input($event)
+                              },
+                              keyup: function($event) {
+                                return _vm.change_number($event, index)
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        data.can_delete
+                          ? _c("div", { staticClass: "col-md-1" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn-sm btn btn-danger text-white mt-1",
+                                  attrs: { type: "text" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.delete_row(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("ลบ")]
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-info btn-sm text-white",
+                        on: {
+                          click: function($event) {
+                            return _vm.add_row()
+                          }
+                        }
+                      },
+                      [_vm._v("เพิ่มรายการ")]
+                    )
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "row m-0 mt-2" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-outline-danger btn-sm col-md-6",
+                      on: {
+                        click: function($event) {
+                          return _vm.change_page(1)
+                        }
+                      }
+                    },
+                    [_vm._v("ยกเลิก")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-sm text-white col-md-6"
+                    },
+                    [_vm._v("บันทึก")]
+                  )
+                ])
+              ]
+            )
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PoysList.vue?vue&type=template&id=6c94db82&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PoysList.vue?vue&type=template&id=6c94db82& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        _vm._l(_vm.poy_list, function(poy, index) {
+          return _c("div", [
+            _c(
+              "a",
+              {
+                staticStyle: { cursor: "pointer" },
+                on: {
+                  click: function($event) {
+                    return _vm.load_number_list(poy.id)
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "row border shadow rounded mb-3 p-2" },
+                  [
+                    _c("div", { staticClass: "col-md-2 mt-2" }, [
+                      _c("label", { staticClass: "title" }, [
+                        _vm._v("ลำดับ " + _vm._s(index + 1))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6 text-center mt-2" }, [
+                      _c("label", [
+                        _vm._v(
+                          _vm._s(poy.round_info.name) +
+                            " (" +
+                            _vm._s(poy.code) +
+                            ")"
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4 text-right" }, [
+                      _c("small", { staticClass: "date" }, [
+                        _vm._v("สร้างเมื่อ"),
+                        _c("br"),
+                        _vm._v(" " + _vm._s(poy.datetime))
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm.old_list[poy.id]
+              ? _c(
+                  "div",
+                  { attrs: { id: "poy-" + poy.id } },
+                  [
+                    _vm._l(_vm.old_list[poy.id], function(list, huay_type) {
+                      return _c("div", [
+                        _c(
+                          "table",
+                          { staticClass: "table table-sm border" },
+                          [
+                            _c("tr", { staticClass: "thead-dark" }, [
+                              _c("th", { staticStyle: { width: "1px" } }),
+                              _vm._v(" "),
+                              _c("th", [
+                                _vm._v(_vm._s(_vm.type_name[huay_type]))
+                              ]),
+                              _vm._v(" "),
+                              _c("th", { staticStyle: { width: "1px" } }),
+                              _vm._v(" "),
+                              _c("th", { staticStyle: { width: "1px" } }, [
+                                _vm._v("เล่น")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticStyle: { width: "1px" },
+                                  attrs: { nowrap: "" }
+                                },
+                                [_vm._v("ชนะ")]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(list, function(item, index) {
+                              return _c("tr", [
+                                _c("td", { attrs: { nowrap: "" } }, [
+                                  _vm._v(_vm._s(index + 1) + ".")
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(item.number))]),
+                                _vm._v(" "),
+                                item.is_won == -1
+                                  ? _c("td", { staticClass: "text-warning" }, [
+                                      _vm._v("รอผล")
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                item.is_won == 1
+                                  ? _c("td", { staticClass: "text-success" }, [
+                                      _vm._v("ชนะ")
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                item.is_won == 0
+                                  ? _c("td", { staticClass: "text-danger" }, [
+                                      _vm._v("แพ้")
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "text-right",
+                                    attrs: { nowrap: "" }
+                                  },
+                                  [_vm._v(_vm._s(item.multiple_txt) + " ฿")]
+                                ),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-right" }, [
+                                  _vm._v(_vm._s(item.total_price_txt))
+                                ])
+                              ])
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _vm.old_list[poy.id].length < 1
+                      ? _c("div", [_c("label", [_vm._v("ไม่พบรายการ")])])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("hr")
+                  ],
+                  2
+                )
+              : _vm._e()
+          ])
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputNumberComponent.vue?vue&type=template&id=ce0ce356&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputNumberComponent.vue?vue&type=template&id=ce0ce356& ***!
@@ -41416,6 +42424,155 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
+        _vm.page_index == 5
+          ? _c(
+              "div",
+              [
+                _c("hr"),
+                _vm._v(" "),
+                _c("legend", { staticClass: "text-center" }, [
+                  _vm._v("เลือกเลขชุด")
+                ]),
+                _vm._v(" "),
+                _vm.poy_list.length == 0
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "alert alert-danger",
+                        staticStyle: {
+                          display: "flex",
+                          "justify-content": "space-between"
+                        }
+                      },
+                      [_c("label", [_vm._v("ยังไม่มีเลขชุด")])]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.poy_list, function(poy, index) {
+                  return _c("div", [
+                    _c(
+                      "a",
+                      {
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.load_number_list(poy.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "row border shadow rounded mb-3 p-2" },
+                          [
+                            _c("div", { staticClass: "col-md-2 mt-2" }, [
+                              _c("label", { staticClass: "title" }, [
+                                _vm._v("ลำดับ " + _vm._s(index + 1))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-5 text-center mt-2" },
+                              [_c("label", [_vm._v(_vm._s(poy.name))])]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-4 text-right" }, [
+                              _c("small", { staticClass: "date" }, [
+                                _vm._v("สร้างเมื่อ"),
+                                _c("br"),
+                                _vm._v(" " + _vm._s(poy.datetime))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-1 text-right pt-1" },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-sm btn-success",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.choose_set(poy.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("เลือก")]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.old_list[poy.id]
+                      ? _c(
+                          "div",
+                          { attrs: { id: "poy-" + poy.id } },
+                          [
+                            _vm._l(_vm.old_list[poy.id], function(
+                              list,
+                              huay_type
+                            ) {
+                              return _c("div", [
+                                _c(
+                                  "table",
+                                  { staticClass: "table table-sm border" },
+                                  [
+                                    _c("tr", { staticClass: "thead-dark" }, [
+                                      _c("th", {
+                                        staticStyle: { width: "1px" }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("th", [
+                                        _vm._v(_vm._s(_vm.type_name[huay_type]))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", {
+                                        staticStyle: { width: "1px" }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(list, function(item, index) {
+                                      return _c("tr", [
+                                        _c("td", { attrs: { nowrap: "" } }, [
+                                          _vm._v(_vm._s(index + 1) + ".")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(item.number))]),
+                                        _vm._v(" "),
+                                        _c("td", { attrs: { nowrap: "" } }, [
+                                          _vm._v(_vm._s(item.multiple) + " ฿")
+                                        ])
+                                      ])
+                                    })
+                                  ],
+                                  2
+                                )
+                              ])
+                            }),
+                            _vm._v(" "),
+                            _vm.old_list[poy.id].length < 1
+                              ? _c("div", [
+                                  _c("label", [_vm._v("ไม่พบรายการ")])
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("hr")
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  ])
+                })
+              ],
+              2
+            )
+          : _vm._e(),
+        _vm._v(" "),
         _vm.page_index == 1
           ? _c(
               "div",
@@ -41446,6 +42603,23 @@ var render = function() {
                             }
                           },
                           [_vm._v("แทงเลข")]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.my_number_txt == ""
+                    ? _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-light mt-2",
+                            on: {
+                              click: function($event) {
+                                return _vm.change_page(5)
+                              }
+                            }
+                          },
+                          [_vm._v("เลขชุด/ดึงโพย")]
                         )
                       ])
                     : _vm._e()
@@ -53762,6 +54936,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('input-number', __webpack_require__(/*! ./components/inputNumberComponent.vue */ "./resources/js/components/inputNumberComponent.vue")["default"]);
+Vue.component('poy-list', __webpack_require__(/*! ./components/PoysList.vue */ "./resources/js/components/PoysList.vue")["default"]);
+Vue.component('my-number-set', __webpack_require__(/*! ./components/MyNumberSet.vue */ "./resources/js/components/MyNumberSet.vue")["default"]);
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTED_MODULE_0___default.a);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -53769,8 +54945,8 @@ Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTE
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var inputNumber = new Vue({
-  el: '#input-number'
+var app = new Vue({
+  el: '#app'
 });
 
 /***/ }),
@@ -53884,6 +55060,145 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MyNumberSet.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/MyNumberSet.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MyNumberSet_vue_vue_type_template_id_b976cf1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyNumberSet.vue?vue&type=template&id=b976cf1c& */ "./resources/js/components/MyNumberSet.vue?vue&type=template&id=b976cf1c&");
+/* harmony import */ var _MyNumberSet_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyNumberSet.vue?vue&type=script&lang=js& */ "./resources/js/components/MyNumberSet.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MyNumberSet_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MyNumberSet_vue_vue_type_template_id_b976cf1c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MyNumberSet_vue_vue_type_template_id_b976cf1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MyNumberSet.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MyNumberSet.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/MyNumberSet.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MyNumberSet_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MyNumberSet.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MyNumberSet.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MyNumberSet_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MyNumberSet.vue?vue&type=template&id=b976cf1c&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/MyNumberSet.vue?vue&type=template&id=b976cf1c& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MyNumberSet_vue_vue_type_template_id_b976cf1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MyNumberSet.vue?vue&type=template&id=b976cf1c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MyNumberSet.vue?vue&type=template&id=b976cf1c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MyNumberSet_vue_vue_type_template_id_b976cf1c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MyNumberSet_vue_vue_type_template_id_b976cf1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PoysList.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/PoysList.vue ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PoysList_vue_vue_type_template_id_6c94db82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PoysList.vue?vue&type=template&id=6c94db82& */ "./resources/js/components/PoysList.vue?vue&type=template&id=6c94db82&");
+/* harmony import */ var _PoysList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PoysList.vue?vue&type=script&lang=js& */ "./resources/js/components/PoysList.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _PoysList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _PoysList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PoysList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PoysList_vue_vue_type_template_id_6c94db82___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PoysList_vue_vue_type_template_id_6c94db82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PoysList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PoysList.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/PoysList.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PoysList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PoysList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PoysList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PoysList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PoysList.vue?vue&type=template&id=6c94db82&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/PoysList.vue?vue&type=template&id=6c94db82& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PoysList_vue_vue_type_template_id_6c94db82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PoysList.vue?vue&type=template&id=6c94db82& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PoysList.vue?vue&type=template&id=6c94db82&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PoysList_vue_vue_type_template_id_6c94db82___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PoysList_vue_vue_type_template_id_6c94db82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

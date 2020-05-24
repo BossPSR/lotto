@@ -28,7 +28,7 @@ $_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
                     <?php
 
                     ?>
-                    <div id="input-number">
+                    <div id="app">
                         <input-number
                         :can_shoot="{{$huay_round->can_shoot}}"
                         :price_tree_up="{{$huay_round->price_tree_up}}"

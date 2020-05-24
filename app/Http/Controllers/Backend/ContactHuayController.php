@@ -24,7 +24,12 @@ class ContactHuayController extends Controller
         if (isset($_POST['addContacts'])) {
 
             $contact = new Contacts();
+            $contact->description = $request->description;
 
+           
+            $contact->save();
+
+            $path = '';
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/contacts/' . $contact->id;
                 if (!File::exists($filepath)) {
@@ -38,13 +43,13 @@ class ContactHuayController extends Controller
                 $filename = 'image_' . $contact->id . '.' . $ext;
                 $file->move($filepath, $filename);
 
-                $contact->image = $filepath.'/'.$filename;
+                $path = $filepath.'/'.$filename;
             }
 
-            // Save the model
-            $contact->save();
-
-            $sort_data = array('sort_order_id' => $contact->id);
+            $sort_data = array(
+                'sort_order_id' => $contact->id,
+                'image' => $path
+            );
 
             DB::table(self::$table)
                 ->where('id', $contact->id)
@@ -52,6 +57,7 @@ class ContactHuayController extends Controller
             return redirect(self::$view)->with('message', 'เพิ่มข้อมูลสำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['editContacts'])) {
 
+            $data = array('description' => $request->description);
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/contacts/' . $request->id;
                 if (!File::exists($filepath)) {
@@ -65,11 +71,13 @@ class ContactHuayController extends Controller
                 $filename = 'image_' . $request->id . '.' . $ext;
                 $file->move($filepath, $filename);
 
-                $data = array('image' => $filepath . '/' . $filename);
-                $affected = DB::table(self::$table)
+                $data['image'] = $filepath . '/' . $filename;
+                
+            }
+
+            $affected = DB::table(self::$table)
                     ->where('id', $_POST['id'])
                     ->update($data);
-            }
 
             return redirect(self::$view)->with('message', 'แก้ไขสำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['deleteContacts'])) {

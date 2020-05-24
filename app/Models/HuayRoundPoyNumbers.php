@@ -10,6 +10,7 @@ class HuayRoundPoyNumbers extends Model
     use SoftDeletes;
 
     protected $table = "huay_round_poy_numbers";
-    protected $fillable = [];
+    protected $fillable = ['id'];
     protected $dates = ['deleted_at'];
+    
 }

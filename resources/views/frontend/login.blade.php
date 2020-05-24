@@ -705,17 +705,15 @@
     </div>
     <!-- jackpot end -->
 
-    <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+<script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
-    @if(session()-> has('message'))
-
-    var status = "{{session()->get('status')}}"
-    var status_name = (status == "success" ? 'สำเร็จ' : 'ไม่สำเร็จ')
-    Swal.fire(
-        status_name,
-        '<small> {{ session()->get("message") }} </small>',
-        '{{ session()->get("status") }}',
-    );
+    @if(session()->has('message'))
+    Swal.fire({
+        type: '{{ session()->get("status") }}',
+        title: '<small> {{ session()->get("message") }} </small>',
+        showConfirmButton: false,
+        timer: 5000
+    });
     @endif
 </script>
 @endsection

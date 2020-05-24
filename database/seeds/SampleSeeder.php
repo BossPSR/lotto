@@ -12,7 +12,14 @@ class SampleSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\User::class, 100)->create();
+        factory(App\Models\User::class, 100)->create()->each(function ($user){
+            $data = array(
+                'affiliate_code' => md5('afc_'.$user->id.'_'.$user->username.'_'.$user->created_at),
+            );
+            $affected = DB::table('users')
+                ->where('id', $user->id)
+                ->update($data);
+        });
 
         factory(App\Models\Contents::class, 50)->create()->each(function ($content) {
 
@@ -56,6 +63,7 @@ class SampleSeeder extends Seeder
             'tel' => '0954869064',
             'email' => Str::random(10).'@gmail.com',
             'status' => 'อนุมัติ',
+            'affiliate_code' => md5('afc_101_sanyaluck_'.date('Y-m-d H:i:s')),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
