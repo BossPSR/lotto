@@ -11,175 +11,162 @@
     }
 
 
-*
-{
-    user-select: none;
-    -webkit-tap-highlight-color:transparent;
-}
+    * {
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
 
-*:focus
-{
-    outline: none;
-}
+    *:focus {
+        outline: none;
+    }
 
-body
-{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background-color: #f1f9f9;
-}
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background-color: #f1f9f9;
+    }
 
-#app-cover
-{
-    display: table;
-    width: 600px;
-    margin: 80px auto;
-    counter-reset: button-counter;
-}
+    #app-cover {
+        display: table;
+        width: 600px;
+        margin: 80px auto;
+        counter-reset: button-counter;
+    }
 
-.toggle-button-cover
-{
-    display: table-cell;
-    position: relative;
-    box-sizing: border-box;
-}
+    .toggle-button-cover {
+        display: table-cell;
+        position: relative;
+        box-sizing: border-box;
+    }
 
-.button-cover
-{
-    background-color: #fff;
-    box-shadow: 0 10px 20px -8px #c5d6d6;
-    border-radius: 4px;
-}
+    .button-cover {
+        background-color: #fff;
+        box-shadow: 0 10px 20px -8px #c5d6d6;
+        border-radius: 4px;
+    }
 
-.button-cover:before
-{
-    counter-increment: button-counter;
-    content: counter(button-counter);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    color: #d7e3e3;
-    font-size: 12px;
-    line-height: 1;
-    padding: 5px;
-}
+    .button-cover:before {
+        counter-increment: button-counter;
+        content: counter(button-counter);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: #d7e3e3;
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px;
+    }
 
-.button-cover, .knobs, .layer
-{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
+    .button-cover,
+    .knobs,
+    .layer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 
-.button
-{
-    position: relative;
-    top: 50%;
-    width: 74px;
-    height: 36px;
-    margin: -20px auto 0 auto;
-    overflow: hidden;
-}
+    .button {
+        position: relative;
+        top: 50%;
+        width: 74px;
+        height: 36px;
+        margin: -20px auto 0 auto;
+        overflow: hidden;
+    }
 
-.button.r, .button.r .layer
-{
-    border-radius: 100px;
-}
+    .button.r,
+    .button.r .layer {
+        border-radius: 100px;
+    }
 
-.button.b2
-{
-    border-radius: 2px;
-}
+    .button.b2 {
+        border-radius: 2px;
+    }
 
-.checkbox
-{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 3;
-}
+    .checkbox {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 3;
+    }
 
-.knobs
-{
-    z-index: 2;
-}
+    .knobs {
+        z-index: 2;
+    }
 
-.layer
-{
-    font-size: 5px;
+    .layer {
+        font-size: 5px;
 
-    width: 100%;
-    height: 100%;
-    background-color: #ebfcec;
-    transition: 0.3s ease all;
-    z-index: 1;
-}
+        width: 100%;
+        height: 100%;
+        background-color: #ebfcec;
+        transition: 0.3s ease all;
+        z-index: 1;
+    }
 
 
-    #button-10 .knobs:before, #button-10 .knobs:after, #button-10 .knobs span
-{
-    position: absolute;
-    top: 4px;
-    width: 30px;
-    height: 80%;
-    font-size: 10px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1;
-    padding: 9px 4px;
-    border-radius: 2px;
-    transition: 0.3s ease all;
-}
+    #button-10 .knobs:before,
+    #button-10 .knobs:after,
+    #button-10 .knobs span {
+        position: absolute;
+        top: 4px;
+        width: 30px;
+        height: 80%;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+        padding: 9px 4px;
+        border-radius: 2px;
+        transition: 0.3s ease all;
+    }
 
-#button-10 .knobs:before
-{
-    content: '';
-    left: 4px;
-    background-color: #78c200;
-}
+    #button-10 .knobs:before {
+        content: '';
+        left: 4px;
+        background-color: #78c200;
+    }
 
-#button-10 .knobs:after
-{
-    content: 'ปิด';
-    right: 4px;
-    color: #4e4e4e;
-}
+    #button-10 .knobs:after {
+        content: 'ปิด';
+        right: 4px;
+        color: #4e4e4e;
+    }
 
-#button-10 .knobs span
-{
-    display: inline-block;
-    left: 4px;
-    color: #fff;
-    z-index: 1;
-}
+    #button-10 .knobs span {
+        display: inline-block;
+        left: 4px;
+        color: #fff;
+        z-index: 1;
+    }
 
-#button-10 .checkbox:checked + .knobs span
-{
-    color: #4e4e4e;
-}
+    #button-10 .checkbox:checked+.knobs span {
+        color: #4e4e4e;
+    }
 
-#button-10 .checkbox:checked + .knobs:before
-{
-    left: 42px;
-    background-color: #F44336;
-}
+    #button-10 .checkbox:checked+.knobs:before {
+        left: 42px;
+        background-color: #F44336;
+    }
 
-#button-10 .checkbox:checked + .knobs:after
-{
-    color: #fff;
-}
+    #button-10 .checkbox:checked+.knobs:after {
+        color: #fff;
+    }
 
-#button-10 .checkbox:checked ~ .layer
-{
-    background-color: #fcebeb;
-}
+    #button-10 .checkbox:checked~.layer {
+        background-color: #fcebeb;
+    }
 </style>
+<?php
+if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GET['end_date'])))
+    $_GET['end_date'] =  $_GET['start_date'];
+?>
 <!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -294,20 +281,17 @@ body
                                                     <form method="POST" onsubmit="doSubmit(this)">
                                                         <input type="hidden" name="id" value="{{$huay_round->id}}" class="thincell">
                                                         <?php
-                                                        if($huay_round->is_active)
-                                                        {
+                                                        if ($huay_round->is_active) {
                                                             echo '<a name="on" class="btn btn-success btn-sm text-white" >เปิด</a>';
                                                             echo '<button name="off" class="btn btn-outline-danger btn-sm">ปิด</button>';
-                                                        }
-                                                        else
-                                                        {
+                                                        } else {
                                                             echo '<button name="on" class="btn btn-outline-success btn-sm ">เปิด</button>';
                                                             echo '<a name="off" class="btn btn-danger btn-sm text-white" >ปิด</a>';
                                                         }
-                                                        
+
 
                                                         ?>
-                                                        
+
                                                     </form>
                                                 </td>
                                                 <td class="text-right">
@@ -324,7 +308,7 @@ body
                     </div>
                     <!-- DataTable ends -->
 
-                    
+
                     <!-- Modal add round-->
                     <div class="modal fade text-left" id="addRound" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -345,11 +329,9 @@ body
                                                     <select class="form-control" name="huay_id" id="select_huay" required>
                                                         <option selected disabled value="">เลือกประเภทหวย</option>
                                                         <?php
-                                                        if(count($huays))
-                                                        {
-                                                            foreach($huays as $huay)
-                                                            {
-                                                                echo "<option value='".$huay->id."'>".$huay->category_name.'-'.$huay->name."</option>";
+                                                        if (count($huays)) {
+                                                            foreach ($huays as $huay) {
+                                                                echo "<option value='" . $huay->id . "'>" . $huay->category_name . '-' . $huay->name . "</option>";
                                                             }
                                                         }
                                                         ?>
@@ -381,53 +363,53 @@ body
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวบน</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_up" class="form-control" id="" required>
+                                                <div class="form-group">
+                                                    <label>สามตัวบน</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_up" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวโต้ด</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_tod" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สามตัวโต้ด</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_tod" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวหน้า</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_front" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สามตัวหน้า</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_front" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวล่าง</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_down" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สามตัวล่าง</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_down" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สองตัวบน</label>
-                                                <input type="number" step="0.01" min="0" name="price_two_up" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สองตัวบน</label>
+                                                    <input type="number" step="0.01" min="0" name="price_two_up" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สองตัวล่าง</label>
-                                                <input type="number" step="0.01" min="0" name="price_two_down" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สองตัวล่าง</label>
+                                                    <input type="number" step="0.01" min="0" name="price_two_down" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>วิ่งบน</label>
-                                                <input type="number" step="0.01" min="0" name="price_run_up" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>วิ่งบน</label>
+                                                    <input type="number" step="0.01" min="0" name="price_run_up" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>วิ่งล่าง</label>
-                                                <input type="number" step="0.01" min="0" name="price_run_down" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>วิ่งล่าง</label>
+                                                    <input type="number" step="0.01" min="0" name="price_run_down" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
                                         </div>
                                         <div class="form-group  mb-0">
                                             <div class="text-right" style="display: flex;flex-direction: row-reverse;">
@@ -441,8 +423,8 @@ body
                     </div>
                     <!-- Modal add-->
 
-                     <!-- Modal edit round-->
-                     <div class="modal fade text-left" id="updateRound" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                    <!-- Modal edit round-->
+                    <div class="modal fade text-left" id="updateRound" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -461,11 +443,9 @@ body
                                                     <select class="form-control" name="huay_id" id="select_huay2" required>
                                                         <option selected disabled value="">เลือกประเภทหวย</option>
                                                         <?php
-                                                        if(count($huays))
-                                                        {
-                                                            foreach($huays as $huay)
-                                                            {
-                                                                echo "<option value='".$huay->id."'>".$huay->category_name.'-'.$huay->name."</option>";
+                                                        if (count($huays)) {
+                                                            foreach ($huays as $huay) {
+                                                                echo "<option value='" . $huay->id . "'>" . $huay->category_name . '-' . $huay->name . "</option>";
                                                             }
                                                         }
                                                         ?>
@@ -497,53 +477,53 @@ body
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวบน</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_up" class="form-control" id="" required>
+                                                <div class="form-group">
+                                                    <label>สามตัวบน</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_up" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวโต้ด</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_tod" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สามตัวโต้ด</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_tod" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวหน้า</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_front" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สามตัวหน้า</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_front" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สามตัวล่าง</label>
-                                                <input type="number" step="0.01" min="0" name="price_tree_down" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สามตัวล่าง</label>
+                                                    <input type="number" step="0.01" min="0" name="price_tree_down" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สองตัวบน</label>
-                                                <input type="number" step="0.01" min="0" name="price_two_up" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สองตัวบน</label>
+                                                    <input type="number" step="0.01" min="0" name="price_two_up" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>สองตัวล่าง</label>
-                                                <input type="number" step="0.01" min="0" name="price_two_down" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>สองตัวล่าง</label>
+                                                    <input type="number" step="0.01" min="0" name="price_two_down" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>วิ่งบน</label>
-                                                <input type="number" step="0.01" min="0" name="price_run_up" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>วิ่งบน</label>
+                                                    <input type="number" step="0.01" min="0" name="price_run_up" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>วิ่งล่าง</label>
-                                                <input type="number" step="0.01" min="0" name="price_run_down" class="form-control" id="" required>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>วิ่งล่าง</label>
+                                                    <input type="number" step="0.01" min="0" name="price_run_down" class="form-control" id="" required>
+                                                </div>
                                             </div>
-                                        </div>
                                         </div>
                                         <div class="form-group  mb-0">
                                             <div class="text-right" style="display: flex;flex-direction: row-reverse;">
@@ -581,7 +561,7 @@ body
         inputElem.name = '_token';
         inputElem.value = csrf_token;
         form.append(inputElem)
-       
+
     };
     $(document).ready(function() {
 
@@ -724,7 +704,7 @@ body
                                 var file = data[element.name];
                                 var div_out = $(element).closest("div")
 
-                            } else if(data[element.name])
+                            } else if (data[element.name])
                                 element.value = data[element.name]
                         }
                         var input_all = modal.find('textarea')
@@ -738,79 +718,79 @@ body
                 .fail(function(data) {
                     console.log(data.responseText);
                 });
-            });
+        });
 
-            $('#select_huay2').on('change', function(event) {
+        $('#select_huay2').on('change', function(event) {
 
-                var modal = $("#updateRound")
-                var button = $(event.relatedTarget)
+            var modal = $("#updateRound")
+            var button = $(event.relatedTarget)
 
-                var id = this.value;
-                debug = false;
+            var id = this.value;
+            debug = false;
 
-                $.ajax({
-                        /* the route pointing to the post function */
-                        url: '/admin/get-data',
-                        type: 'POST',
-                        /* send the csrf-token and the input to the controller */
-                        data: {
-                            _token: csrf_token,
-                            'target_secret': '{{md5("get-huays")}}',
-                            'get-id': id
-                        },
-                        dataType: 'JSON',
-                        /* remind that 'data' is the response of the AjaxController */
-                        success: function(data) {
+            $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/admin/get-data',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {
+                        _token: csrf_token,
+                        'target_secret': '{{md5("get-huays")}}',
+                        'get-id': id
+                    },
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function(data) {
 
-                            if (debug) {
-                                console.log(id);
-                                console.log(data);
-                            }
-                            var input_all = modal.find('input')
-
-                            var gen_image_all = modal.find('.gen-auto');
-
-                            var element;
-                            if (gen_image_all.length)
-                                gen_image_all.remove();
-
-                            for (let index = 0; index < input_all.length; index++) {
-                                element = input_all[index];
-
-                                if(element.name == 'id')
-                                    continue;
-                                if (debug) {
-                                    console.log(index)
-                                    console.log('type')
-                                    console.log(element.type)
-                                    console.log(element.name)
-                                }
-
-                                if (data[element.name] && element.type == 'text')
-                                    element.value = data[element.name]
-                                if (data[element.name] && element.type == 'number')
-                                    element.value = data[element.name]
-                                else if (data[element.name] && element.type == 'color')
-                                    $(element).spectrum("set", data[element.name]);
-                                else if (data[element.name] && element.type == 'file') {
-                                    var file = data[element.name];
-                                    var div_out = $(element).closest("div")
-
-                                } else if(data[element.name])
-                                    element.value = data[element.name]
-                            }
-                            var input_all = modal.find('textarea')
-                            for (let index = 0; index < input_all.length; index++) {
-                                element = input_all[index];
-                                if (data[element.name])
-                                    element.value = data[element.name]
-                            }
+                        if (debug) {
+                            console.log(id);
+                            console.log(data);
                         }
-                    })
-                    .fail(function(data) {
-                        console.log(data.responseText);
-                    });
+                        var input_all = modal.find('input')
+
+                        var gen_image_all = modal.find('.gen-auto');
+
+                        var element;
+                        if (gen_image_all.length)
+                            gen_image_all.remove();
+
+                        for (let index = 0; index < input_all.length; index++) {
+                            element = input_all[index];
+
+                            if (element.name == 'id')
+                                continue;
+                            if (debug) {
+                                console.log(index)
+                                console.log('type')
+                                console.log(element.type)
+                                console.log(element.name)
+                            }
+
+                            if (data[element.name] && element.type == 'text')
+                                element.value = data[element.name]
+                            if (data[element.name] && element.type == 'number')
+                                element.value = data[element.name]
+                            else if (data[element.name] && element.type == 'color')
+                                $(element).spectrum("set", data[element.name]);
+                            else if (data[element.name] && element.type == 'file') {
+                                var file = data[element.name];
+                                var div_out = $(element).closest("div")
+
+                            } else if (data[element.name])
+                                element.value = data[element.name]
+                        }
+                        var input_all = modal.find('textarea')
+                        for (let index = 0; index < input_all.length; index++) {
+                            element = input_all[index];
+                            if (data[element.name])
+                                element.value = data[element.name]
+                        }
+                    }
+                })
+                .fail(function(data) {
+                    console.log(data.responseText);
                 });
+        });
     });
 </script>
 @endsection

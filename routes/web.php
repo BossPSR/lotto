@@ -40,6 +40,7 @@ Route::POST('/lottery_transaction','Frontend\LotteryTransactionController@post')
 Route::get('/lottery_result','Frontend\LotteryResultController@index')->name('lottery_result');
 Route::get('/lottery_credit','Frontend\LotteryCreditController@index')->name('lottery_credit');
 Route::get('/lottery_affiliate','Frontend\LotteryAffiliateController@index')->name('lottery_affiliate');
+Route::post('/lottery_affiliate','Frontend\LotteryAffiliateController@post');
 Route::get('/lottery_number_set','Frontend\LotteryNumberSetController@index')->name('lottery_number_set');
 Route::post('/lottery_number_set','Frontend\LotteryNumberSetController@post');
 
@@ -71,6 +72,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/un_huay_yeekee_cf','Backend\UnHuayController@un_huay_yeekee_cf')->name('un_huay_yeekee_cf'); //จัดการหวยยี่กี CF
 
     Route::get('/chit_huay','Backend\ChitHuayController@index')->name('chit_huay'); //โพยหวยทั่วไป
+    Route::post('/chit_huay','Backend\ChitHuayController@post'); //โพยหวยทั่วไป
 
     Route::get('/approve_user','Backend\UserController@approve_user')->name('approve_user'); //อนุมัติสมัครสมาชิก
     Route::get('/list_user','Backend\UserController@list_user')->name('list_user'); //รายการผู้เล่น
@@ -95,6 +97,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     
     Route::get('/commission_credit','Backend\CommissionController@commission_credit')->name('commission_credit'); //รายการผู้เล่น
     Route::get('/commission_approve','Backend\CommissionController@commission_approve')->name('commission_approve'); //บัญชีดำ
+    Route::post('/commission_approve','Backend\CommissionController@post'); // อนุมัติการถอน Credit
 
 
     Route::post('/get-data','Backend\DefaultController@get_data')->name('get_data'); //ดึงข้อมูลเข้า Modal

@@ -102,7 +102,7 @@
                                                           {{number_format(Auth::user()->money, 2)}}
                                                           <i class="fa fa-coins"></i>
                                                           |
-                                                          {{number_format(Auth::user()->crdit, 2)}}
+                                                          {{number_format(Auth::user()->credit, 2)}}
                                                           <i class="fa fa-coins"></i>
                                                           CF
                                                         </div>

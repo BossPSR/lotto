@@ -2,7 +2,10 @@
 @section('content')
 <?php
 $_GET['ref_code'] = isset($_GET['ref_code']) ? $_GET['ref_code'] : null;
+if(session()-> has('ref_code'))
+ $_GET['ref_code'] = session()->get("ref_code");
 ?>
+
 <script src="{{asset('assets/js/preview_img.js')}}"></script>
 <!-- jackpot begin -->
 <div class="jackpot" style="background:#FED63E;">

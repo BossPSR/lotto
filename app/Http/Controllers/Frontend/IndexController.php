@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Models\Deposits;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Withdraws;
@@ -140,6 +141,7 @@ class IndexController extends Controller
 
     public function register_process(Request $request)
     {
+
         $username = $request->input('username');
         $password = $request->input('password');
         $confirm_password = $request->input('confirm_password');
@@ -152,19 +154,19 @@ class IndexController extends Controller
         $check_username = DB::table('users')->where('username', $_POST['username'])->first();
 
         if ($check_username)
-            return redirect()->route('register')->with('message', 'Username ถูกใช้ไปแล้ว!')->with('status', 'error');
+            return redirect()->route('register')->with('message', 'Username ถูกใช้ไปแล้ว!')->with('status', 'error')->with('ref_code', $_POST['upline_username']);
 
         $check_email = DB::table('users')->where('email', $_POST['email'])->first();
         if ($check_email)
-            return redirect()->route('register')->with('message', 'Email ถูกใช้ไปแล้ว!')->with('status', 'error');
+            return redirect()->route('register')->with('message', 'Email ถูกใช้ไปแล้ว!')->with('status', 'error')->with('ref_code', $_POST['upline_username']);
 
         $check_tel = DB::table('users')->where('tel', $_POST['tel'])->first();
         if ($check_tel)
-            return redirect()->route('register')->with('message', 'เบอร์โทรนี้ถูกใช้ไปแล้ว!')->with('status', 'error');
+            return redirect()->route('register')->with('message', 'เบอร์โทรนี้ถูกใช้ไปแล้ว!')->with('status', 'error')->with('ref_code', $_POST['upline_username']);
 
 
         if ($password != $confirm_password) {
-            return redirect()->route('register')->with('message', 'รหัสผ่านไม่ตรงกัน!')->with('status', 'error');
+            return redirect()->route('register')->with('message', 'รหัสผ่านไม่ตรงกัน!')->with('status', 'error')->with('ref_code', $_POST['upline_username']);
         }
 
         $member = new User;
@@ -177,7 +179,19 @@ class IndexController extends Controller
         $member->birthday = $birthday;
         $upline = DB::table('users')->where('affiliate_code', $_POST['upline_username'])->first();
         if ($upline)
+        {
             $member->upline_id = $upline->id;
+            $credit_cf = new Transactions();
+            $credit_cf->user_id = $upline->id;
+            $credit_cf->status = 'confirm';
+            $credit_cf->direction = 'IN';
+            $credit_cf->type = 'INVITE';
+            $credit_cf->remark = 'คุณได้รับ 100 เครดิตจากการเชิญสมาชิก '.$member->username;
+            $credit_cf->amount = 100;
+            $credit_cf->save();
+            
+            User::where('id', $upline->id)->update(['credit' => ($upline->credit + 100)]);
+        }
 
         $member->save();
 

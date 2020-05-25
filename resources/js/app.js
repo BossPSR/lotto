@@ -26,6 +26,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('input-number', require('./components/inputNumberComponent.vue').default);
 Vue.component('poy-list', require('./components/PoysList.vue').default);
 Vue.component('my-number-set', require('./components/MyNumberSet.vue').default);
+Vue.component('view-poy', require('./components/ViewPoy.vue').default);
 Vue.use(VueAxios, axios)
 /**
  * Next, we will create a fresh Vue application instance and attach it to

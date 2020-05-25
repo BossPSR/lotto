@@ -332,11 +332,7 @@
                     </li>
 
                     <li class="nav-item {{ Request::segment(2) == 'chit_huay' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-delicious"></i><span class="menu-title" data-i18n="โพยหวย">โพยหวย</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.chit_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="โพยหวยทั่วไป">โพยหวยทั่วไป</span></a>
-                            </li>
-                        </ul>
+                        <a href="{{ route('admin.chit_huay') }}"><i class="fa fa-delicious"></i><span class="menu-title" data-i18n="โพยหวย">โพยหวย</span></a>
                     </li>
 
                 @endif

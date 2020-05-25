@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
 use App\Models\HuayRounds;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,6 +70,8 @@ class LotteryTransactionController extends Controller
                     $huay_round_by_id[$value->id] = $value;
                 }
             }
+
+            
 
             foreach ($poys as $index => $poy) {
                 $poys[$index]->round_info = isset($huay_round_by_id[$poy->huay_round_id]) ? $huay_round_by_id[$poy->huay_round_id] : array();
