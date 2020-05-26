@@ -207,6 +207,7 @@ $banks_array = array(
                                         <th style="width: 1px">#</th>
                                         <th style="width: 100px;">หลักฐาน</th>
                                         <th>รายการ</th>
+                                        <th class="text-center" style="width: auto;" nowrap>เมื่อ</th>
                                         <th class="text-right" style="width: auto;" nowrap>จำนวนเงิน</th>
                                         <th style="width: 1px" nowrap>สถานะ</th>
                                     </tr>
@@ -220,6 +221,7 @@ $banks_array = array(
                                         </td>
                                         <td>{{$transaction->remark}}</td>
                                         
+                                        <td class="text-center">{{date('d/m/Y H:i:s',strtotime($transaction->created_at))}}</td>
                                         <td class="text-right">{{number_format($transaction->amount, 2)}}</td>
                                         <td nowrap class="text-center"><?php echo $status_list[$transaction->status]['html']; ?></td>
                                     </tr>
@@ -235,6 +237,13 @@ $banks_array = array(
                                     รายได้คุณไม่เพียงพอ
                                 </div>
                                 @endif
+                                @if($commission_setting->min_withdraws >= $user_info->credit)
+                                <div class="alert alert-danger">
+                                    รายได้ของคุณยังไม่ถึงเกณฑ์ที่จะถอนได้ ({{number_format($commission_setting->min_withdraws, 2)}} ขึ้นไป)
+                                </div>
+                                @endif
+                                @if($commission_setting->min_withdraws <= $user_info->credit)
+
                                 @if($user_info->bank_name && $user_info->credit > 0)
                                 <div class="part-body">
                                     <div class="d-flex">
@@ -260,7 +269,7 @@ $banks_array = array(
                                                         <form action="" method="POST">
                                                             @csrf
                                                             <div>จำนวนเงินที่ต้องการถอน</div>
-                                                            <input type="number" name="amount" step="0.01" min="0" class="form-control form-group">
+                                                            <input type="number"  name="amount" step="0.01" min="{{$commission_setting->min_withdraws}}" class="form-control form-group">
                                                             <div>หมายเหตุ</div>
                                                             <textarea class="form-control form-group" name="remark" id="" cols="30" rows="5"></textarea>
                                                             <button type="submit" name="addWithdraw" class="btn btn-warning new_story">แจ้งถอน</button>
@@ -329,6 +338,7 @@ $banks_array = array(
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 @endif
                                 @endif
                             </div>

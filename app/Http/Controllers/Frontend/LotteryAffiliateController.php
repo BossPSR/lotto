@@ -89,9 +89,9 @@ class LotteryAffiliateController extends Controller
             $downline_poy_count = HuayRoundPoys::where('user_id', $downline_id_all)->where('is_my_poy', 0)->count();
         }
 
-        $commission_setting = CommissionSetting::first();
+    $commission_setting = CommissionSetting::first();
 
-        $total_income_list = Transactions::where('user_id', Auth::user()->id)->where('status', 'confirm')->whereIn('type', ['CREDIT', 'INVITE]'])->get('amount');
+        $total_income_list = Transactions::where('user_id', Auth::user()->id)->where('status', 'confirm')->whereIn('type', ['CREDIT', 'INVITE'])->get('amount');
         $total_income = 0;
         if($total_income_list)
         {
@@ -106,7 +106,7 @@ class LotteryAffiliateController extends Controller
             'total_income' => $total_income
         );
         if (isset($_GET['page']) && $_GET['page'] == 'revenue')
-            $data['transactions'] = Transactions::where('user_id', Auth::user()->id)->get();
+            $data['transactions'] = Transactions::where('user_id', Auth::user()->id)->whereIn('type', ['CREDIT', 'INVITE', 'CREDIT_WITHDRAW'])->get();
         return view('frontend.lottery_affiliate', $data);
     }
 }

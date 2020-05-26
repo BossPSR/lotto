@@ -22,7 +22,7 @@ class CommissionSetting extends Model
         if (count($has_setting) == 0) {
             $data = array(
                 'commission_percent' => 0.00,
-                'max_withdraws' => 0.00,
+                'min_withdraws' => 0.00,
             );
             DB::table('commission_setting')->insert($data);
         }

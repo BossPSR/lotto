@@ -31,8 +31,8 @@ Route::post('/lottery_withdraw','Frontend\IndexController@lottery_withdraw_post'
 Route::get('/lottery_play','Frontend\LotteryPlayController@index')->name('lottery_play');
 
 Route::get('/lottery_government','Frontend\LotteryPlayController@lottery_government')->name('lottery_government');
+Route::post('/lottery_government','Frontend\LotteryPlayController@lottery_government_post');// ข้อมูลหวย 
 Route::get('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee')->name('lottery_yeekee');
-Route::POST('/lottery_yeekee','Frontend\LotteryPlayController@lottery_yeekee_post');// ข้อมูลหวย Yeekee
 
 Route::get('/lottery_transaction','Frontend\LotteryTransactionController@index')->name('lottery_transaction');
 Route::POST('/lottery_transaction','Frontend\LotteryTransactionController@post');
@@ -67,7 +67,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/reward_huay_yeekee','Backend\RewardHuayController@reward_huay_yeekee')->name('reward_huay_yeekee'); //ออกผลหวยยี่กี
     Route::get('/reward_huay_yeekee_cf','Backend\RewardHuayController@reward_huay_yeekee_cf')->name('reward_huay_yeekee_cf'); //ออกผลหวยยี่กี CF
 
-    Route::get('/un_huay','Backend\UnHuayController@index')->name('un_huay'); //จัดการหวย
+    Route::get('/un_huay','Backend\UnHuayController@index')->name('un_huay'); //อั้นหวย
+    Route::post('/un_huay','Backend\UnHuayController@post'); //อั้นหวย
+
     Route::get('/un_huay_yeekee','Backend\UnHuayController@un_huay_yeekee')->name('un_huay_yeekee'); //จัดการหวยยี่กี
     Route::get('/un_huay_yeekee_cf','Backend\UnHuayController@un_huay_yeekee_cf')->name('un_huay_yeekee_cf'); //จัดการหวยยี่กี CF
 

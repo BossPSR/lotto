@@ -22,7 +22,7 @@ class CreateTransactions extends Migration
             $table->longText('proof_image')->nullable();
             $table->enum('status', ['pending','confirm','reject']);
             $table->enum('direction', ['IN','OUT']);
-            $table->enum('type', ['CREDIT','BONUS', 'CREDIT_WITHDRAW']);
+            $table->enum('type', ['CREDIT','BONUS', 'CREDIT_WITHDRAW', 'INVITE']);
             $table->string('bank_name')->nullable();
             $table->string('account_no')->nullable();
             $table->string('account_name')->nullable();

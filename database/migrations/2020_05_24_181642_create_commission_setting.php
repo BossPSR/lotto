@@ -16,7 +16,7 @@ class CreateCommissionSetting extends Migration
         Schema::create('commission_setting', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->decimal('commission_percent', 5, 2)->default(0);
-            $table->decimal('max_withdraws', 22, 2)->default(0);
+            $table->decimal('min_withdraws', 22, 2)->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -52,7 +52,7 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="card withdraws-background text-white">
                             <div class="card-header d-flex flex-column align-items-start pb-0">
-                                <h2 class="text-bold-700 mt-1 mb-25 text-white">{{number_format($setting->max_withdraws, 2)}} บาท</h2>
+                                <h2 class="text-bold-700 mt-1 mb-25 text-white">{{number_format($setting->min_withdraws, 2)}} บาท</h2>
                                 <p>ยอดกำหนดแจ้งถอน</p>
                             </div>
                             <!-- <div class="card-content">
@@ -88,7 +88,7 @@
                         <label>ค่าคอมมิชชั่น</label>
                         <input type="number" name="commission_percent" step="0.01" min="0" max='100' class="form-control" required>
                         <label>ยอดกำหนดแจ้งถอน</label>
-                        <input type="number" name="max_withdraws" step="0.01" min="0"  accept="image/*" class="form-control" required>
+                        <input type="number" name="min_withdraws" step="0.01" min="0"  accept="image/*" class="form-control" required>
                     </div>
 
                     <div class="form-group  mb-0">

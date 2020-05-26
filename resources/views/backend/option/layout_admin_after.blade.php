@@ -319,16 +319,7 @@
                     </li>
 
                     <li class="nav-item {{ Request::segment(2) == 'un_huay' || Request::segment(2) == 'un_huay_yeekee' || Request::segment(2) == 'un_huay_yeekee_cf' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-sort-numeric-asc"></i><span class="menu-title" data-i18n="จัดการเลขอ้น">จัดการเลขอ้น</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.un_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="หวยทั่วไป">หวยทั่วไป</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.un_huay_yeekee') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="หวยยี่กี">หวยยี่กี</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.un_huay_yeekee_cf') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="หวยยี่กี CF">หวยยี่กี CF</span></a>
-                            </li>
-
-                        </ul>
+                        <a href="{{ route('admin.un_huay') }}"><i class="fa fa-sort-numeric-asc"></i><span class="menu-title" data-i18n="จัดการเลขอั้น">จัดการเลขอั้น</span></a>
                     </li>
 
                     <li class="nav-item {{ Request::segment(2) == 'chit_huay' ? 'active' : '' }}">

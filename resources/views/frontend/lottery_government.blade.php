@@ -40,6 +40,7 @@ $_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
                         :price_run_up="{{$huay_round->price_run_up}}"
                         :price_run_down="{{$huay_round->price_run_down}}"
                         :huay_secret="'{{$huay_round->secret}}'"
+                        :huay_category_id="'{{$huay_round->huay_category_id}}'"
                         ></input-number>
                     </div>
                 </div>

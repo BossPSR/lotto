@@ -1899,10 +1899,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1924,9 +1924,234 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    huay_categorys: {
+      type: Array,
+      "default": []
+    }
+  },
+  data: function data() {
+    return {
+      view_id: 0,
+      huay_category_list: {},
+      page: 1,
+      type_name: {
+        price_tree_up: 'สามตัวบน',
+        price_tree_tod: 'สามตัวโต๊ด',
+        price_tree_front: 'สามตัวหน้า',
+        price_tree_down: 'สามตัวหลัง',
+        price_two_up: 'สองตัวบน',
+        price_two_down: 'สองตัวล่าง',
+        price_run_up: 'วิ่งบน',
+        price_run_down: 'วิ่งล่าง'
+      },
+      type_no: {
+        price_tree_up: 3,
+        price_tree_tod: 3,
+        price_tree_front: 3,
+        price_tree_down: 3,
+        price_two_up: 2,
+        price_two_down: 2,
+        price_run_up: 1,
+        price_run_down: 1
+      },
+      my_number: [{
+        number: "",
+        huay_type: "price_tree_up",
+        number_length: 3,
+        max_price: 0,
+        can_delete: false
+      }]
+    };
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  methods: {
+    clear_view_id: function clear_view_id() {
+      this.view_id = 0;
+    },
+    load_number_list: function load_number_list(id) {
+      var app = this;
+      app.my_number = [{
+        number: "",
+        huay_type: "price_tree_up",
+        number_length: 3,
+        max_price: 0,
+        can_delete: false
+      }];
+      app.view_id = id;
+      this.axios.post('/admin/un_huay', {
+        get_number_list: true,
+        huay_category_id: id
+      }).then(function (response) {
+        console.log(response.data);
+        if (response.data.length) app.my_number = response.data;
+        app.$forceUpdate();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      console.log(app.old_list);
+    },
+    change_page: function change_page(page) {
+      this.page = page;
+    },
+    check_input: function check_input(evt) {
+      evt = evt ? evt : window.event;
+      var charCode = evt.which ? evt.which : evt.keyCode;
+
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        event.preventDefault();
+        return false;
+      }
+
+      return true;
+    },
+    change_number: function change_number(evt, index) {
+      this.my_number[index].number = evt.target.value;
+    },
+    change_max_price: function change_max_price(evt, index) {
+      this.my_number[index].max_price = evt.target.value;
+    },
+    add_row: function add_row() {
+      var temp = {
+        number: "",
+        huay_type: "price_tree_up",
+        number_length: 3,
+        can_delete: true,
+        max_price: 0
+      };
+      this.my_number.push(temp);
+    },
+    change_huay_type: function change_huay_type(index, huay_type) {
+      this.my_number[index].huay_type = huay_type;
+      var old_length = this.my_number[index].number_length;
+      this.my_number[index].number_length = this.type_no[huay_type];
+      console.log(this.my_number[index].number.length);
+
+      if (old_length > this.type_no[huay_type]) {
+        var new_number = '';
+
+        if (this.my_number[index].number.length > 0) {
+          for (var i = 0; i < this.type_no[huay_type]; i++) {
+            new_number += this.my_number[index].number[i];
+            console.log(new_number);
+          }
+        }
+
+        this.my_number[index].number = new_number;
+      }
+    },
+    add_huay_category_un: function add_huay_category_un() {
+      var app = this;
+      this.axios.post('/admin/un_huay', {
+        add_huay_category_un: true,
+        huay_category_id: this.view_id,
+        number_array: this.my_number
+      }).then(function (response) {
+        console.log(response.data);
+        Swal.fire('เลขอั้น!', 'บันทึกสำเร็จแล้ว.', 'success');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      event.preventDefault();
+    },
+    delete_row: function delete_row(index) {
+      this.my_number.splice(index, 1);
+    },
+    clear_huay_uns: function clear_huay_uns(index) {
+      var _this = this;
+
+      var app = this;
+      Swal.fire({
+        title: 'แน่ใจที่จะล้าง?',
+        text: "เลขอั้นประเภทนี้ทั้งหมดจะหายไป!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ใช่, ลบมัน!',
+        cancelButtonText: 'ยกเลิก!'
+      }).then(function (result) {
+        if (result.value) {
+          _this.axios.post('/admin/un_huay', {
+            clear_huay_uns: true,
+            huay_category_id: app.view_id
+          }).then(function (response) {
+            Swal.fire('ล้าง!', 'สำเร็จแล้ว.', 'success');
+            app.view_id = 0;
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        }
+      });
+    }
   }
 });
 
@@ -3104,6 +3329,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     can_shoot: {
@@ -3142,7 +3371,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       type: Number,
       "default": 0
     },
-    huay_secret: String
+    huay_secret: String,
+    huay_category_id: String
   },
   data: function data() {
     return {
@@ -3190,8 +3420,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       old_list: []
     };
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  mounted: function mounted() {//console.log('Component mounted.')
   },
   created: function created() {
     window.addEventListener('keyup', this.keymonitor);
@@ -3203,14 +3432,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   methods: {
     pull_yee_kee_list: function pull_yee_kee_list() {
       var app = this;
-      this.axios.post('/lottery_yeekee', {
+      this.axios.post('/lottery_government', {
         huay_secret: this.huay_secret,
         shoot_list: true
       }).then(function (response) {
         app.yee_kee_list = response.data.list;
         app.yee_kee_sum = response.data.total;
-      })["catch"](function (error) {
-        console.log(error);
+      })["catch"](function (error) {//console.log(error)
       });
     },
     delete_duplicate: function delete_duplicate() {
@@ -3248,6 +3476,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.refesh_my_number();
       this.cal_duplicate();
       this.cal_total_price();
+      var count = 0;
+
+      for (var _i2 = 0, _Object$entries2 = Object.entries(this.my_number); _i2 < _Object$entries2.length; _i2++) {
+        var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+            huay_type = _Object$entries2$_i[0],
+            list = _Object$entries2$_i[1];
+
+        count += list.length;
+      }
+
+      if (count == 0) this.change_page(1);
     },
     change_multiple: function change_multiple(type_name, index, multiple) {
       this.my_number[type_name][index].multiple = multiple;
@@ -3259,10 +3498,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var change_input = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
       if (multiple > 0) {
-        for (var _i2 = 0, _Object$entries2 = Object.entries(this.my_number); _i2 < _Object$entries2.length; _i2++) {
-          var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
-              huay_type = _Object$entries2$_i[0],
-              list = _Object$entries2$_i[1];
+        for (var _i3 = 0, _Object$entries3 = Object.entries(this.my_number); _i3 < _Object$entries3.length; _i3++) {
+          var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+              huay_type = _Object$entries3$_i[0],
+              list = _Object$entries3$_i[1];
 
           if (list.length) {
             for (var i = 0; i < list.length; i++) {
@@ -3271,9 +3510,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               this.my_number[huay_type][i].total_price = numeral(multiple * list[i].price).format('0,0');
             }
           }
-        }
+        } //console.log(this.my_number)
 
-        console.log(this.my_number);
       }
 
       this.cal_total_price();
@@ -3301,17 +3539,47 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       } else if (index == 3) {
         this.page_index = index;
         var app = this;
-        this.axios.post('/lottery_yeekee', {
+        this.axios.post('/lottery_government', {
           get_user_pocket: true
         }).then(function (response) {
           app.money = response.data.money;
           app.money_txt = numeral(response.data.money).format('0,0');
-        })["catch"](function (error) {
-          console.log(error);
+        })["catch"](function (error) {//console.log(error)
         });
+        this.cal_total_price();
       } else if (index == 4) {
+        var app = this; //เช็ค Min
+
+        var error = '';
+
+        for (var _i4 = 0, _Object$entries4 = Object.entries(app.my_number); _i4 < _Object$entries4.length; _i4++) {
+          var _Object$entries4$_i = _slicedToArray(_Object$entries4[_i4], 2),
+              huay_type = _Object$entries4$_i[0],
+              list = _Object$entries4$_i[1];
+
+          if (list.length) {
+            for (var i = 0; i < list.length; i++) {
+              var row = list[i];
+              if (row.min > row.multiple) error += row.number + ' แทง > ' + row.min + " เท่านั้น, ";
+            }
+          }
+        } //console.log(error)
+
+
+        if (error) {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: error,
+            showConfirmButton: true,
+            backdrop: true,
+            width: 400
+          });
+          return false;
+        }
+
         var app = this;
-        this.axios.post('/lottery_yeekee', {
+        this.axios.post('/lottery_government', {
           total_price: this.total_multiple,
           check_money: true
         }).then(function (response) {
@@ -3334,15 +3602,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         this.axios.post('/lottery_number_set', {
           get_poy_list: true
         }).then(function (response) {
-          console.log(response.data);
+          //console.log(response.data)
           app.poy_list = response.data;
           app.page_index = 5;
-        })["catch"](function (error) {
-          console.log(error);
+        })["catch"](function (error) {//console.log(error)
         });
-      }
+      } //console.log(index)
 
-      console.log(index);
     },
     select_option: function select_option(key) {
       // หากเป็น วิ่ง จะ ปิดอันอื่นหมด
@@ -3361,10 +3627,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
         this.input_digi = 1;
 
-        for (var _i3 = 0, _Object$entries3 = Object.entries(this.option_huay); _i3 < _Object$entries3.length; _i3++) {
-          var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
-              key_obj = _Object$entries3$_i[0],
-              value = _Object$entries3$_i[1];
+        for (var _i5 = 0, _Object$entries5 = Object.entries(this.option_huay); _i5 < _Object$entries5.length; _i5++) {
+          var _Object$entries5$_i = _slicedToArray(_Object$entries5[_i5], 2),
+              key_obj = _Object$entries5$_i[0],
+              value = _Object$entries5$_i[1];
 
           if (key_obj != "price_run_up" && key_obj != 'price_run_down') {
             this.option_huay[key_obj] = false;
@@ -3392,10 +3658,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
         this.input_digi = 2;
 
-        for (var _i4 = 0, _Object$entries4 = Object.entries(this.option_huay); _i4 < _Object$entries4.length; _i4++) {
-          var _Object$entries4$_i = _slicedToArray(_Object$entries4[_i4], 2),
-              _key_obj = _Object$entries4$_i[0],
-              _value = _Object$entries4$_i[1];
+        for (var _i6 = 0, _Object$entries6 = Object.entries(this.option_huay); _i6 < _Object$entries6.length; _i6++) {
+          var _Object$entries6$_i = _slicedToArray(_Object$entries6[_i6], 2),
+              _key_obj = _Object$entries6$_i[0],
+              _value = _Object$entries6$_i[1];
 
           if (_key_obj !== "price_two_up" && _key_obj !== 'price_two_down' && _value == true) this.input_digi = 3;
         }
@@ -3404,10 +3670,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       var check = false;
 
-      for (var _i5 = 0, _Object$entries5 = Object.entries(this.option_huay); _i5 < _Object$entries5.length; _i5++) {
-        var _Object$entries5$_i = _slicedToArray(_Object$entries5[_i5], 2),
-            _key_obj2 = _Object$entries5$_i[0],
-            _value2 = _Object$entries5$_i[1];
+      for (var _i7 = 0, _Object$entries7 = Object.entries(this.option_huay); _i7 < _Object$entries7.length; _i7++) {
+        var _Object$entries7$_i = _slicedToArray(_Object$entries7[_i7], 2),
+            _key_obj2 = _Object$entries7$_i[0],
+            _value2 = _Object$entries7$_i[1];
 
         if (_value2 == true) {
           check = true;
@@ -3448,31 +3714,57 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
 
         $('#main-input').removeClass("hide");
-      } else $('#main-input').addClass("hide");
+      } else $('#main-input').addClass("hide"); //console.log(this.input_digi)
 
-      console.log(this.input_digi);
     },
     cal_total_price: function cal_total_price() {
+      var app = this;
       var total_price = 0;
       var total_multiple = 0;
 
-      for (var _i6 = 0, _Object$entries6 = Object.entries(this.my_number); _i6 < _Object$entries6.length; _i6++) {
-        var _Object$entries6$_i = _slicedToArray(_Object$entries6[_i6], 2),
-            huay_type = _Object$entries6$_i[0],
-            list = _Object$entries6$_i[1];
+      for (var _i8 = 0, _Object$entries8 = Object.entries(app.my_number); _i8 < _Object$entries8.length; _i8++) {
+        var _Object$entries8$_i = _slicedToArray(_Object$entries8[_i8], 2),
+            huay_type = _Object$entries8$_i[0],
+            list = _Object$entries8$_i[1];
 
         if (list.length) {
           for (var i = 0; i < list.length; i++) {
-            total_price += list[i].price * list[i].multiple;
-            total_multiple += list[i].multiple;
+            total_price += parseFloat(list[i].price * list[i].multiple);
+            total_multiple += parseInt(list[i].multiple);
           }
         }
       }
 
-      this.total_price = total_price;
-      this.total_price_txt = numeral(total_price).format('0,0');
-      this.total_multiple = total_multiple;
-      this.total_multiple_txt = numeral(total_multiple).format('0,0');
+      app.total_price = total_price;
+      app.total_price_txt = numeral(total_price).format('0,0');
+      app.total_multiple = total_multiple;
+      app.total_multiple_txt = numeral(total_multiple).format('0,0');
+      var uns = {};
+      this.axios.post('/lottery_government', {
+        get_uns: true,
+        huay_category_id: app.huay_category_id
+      }).then(function (response) {
+        uns = response.data;
+        console.log(uns);
+
+        if (uns) {
+          for (var _i9 = 0, _Object$entries9 = Object.entries(app.my_number); _i9 < _Object$entries9.length; _i9++) {
+            var _Object$entries9$_i = _slicedToArray(_Object$entries9[_i9], 2),
+                _huay_type = _Object$entries9$_i[0],
+                _list = _Object$entries9$_i[1];
+
+            if (_list.length) {
+              for (var i = 0; i < _list.length; i++) {
+                if (uns[_huay_type][_list[i].number] !== undefined) app.my_number[_huay_type][i].is_un = true;else app.my_number[_huay_type][i].is_un = false;
+              }
+            }
+          }
+
+          app.$forceUpdate();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     cal_duplicate: function cal_duplicate() {
       var pass = {
@@ -3486,10 +3778,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         price_run_down: {}
       };
 
-      for (var _i7 = 0, _Object$entries7 = Object.entries(this.my_number); _i7 < _Object$entries7.length; _i7++) {
-        var _Object$entries7$_i = _slicedToArray(_Object$entries7[_i7], 2),
-            huay_type = _Object$entries7$_i[0],
-            list = _Object$entries7$_i[1];
+      for (var _i10 = 0, _Object$entries10 = Object.entries(this.my_number); _i10 < _Object$entries10.length; _i10++) {
+        var _Object$entries10$_i = _slicedToArray(_Object$entries10[_i10], 2),
+            huay_type = _Object$entries10$_i[0],
+            list = _Object$entries10$_i[1];
 
         if (list.length) {
           for (var i = 0; i < list.length; i++) {
@@ -3499,16 +3791,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
       }
 
-      for (var _i8 = 0, _Object$entries8 = Object.entries(this.my_number); _i8 < _Object$entries8.length; _i8++) {
-        var _Object$entries8$_i = _slicedToArray(_Object$entries8[_i8], 2),
-            _huay_type = _Object$entries8$_i[0],
-            _list = _Object$entries8$_i[1];
+      for (var _i11 = 0, _Object$entries11 = Object.entries(this.my_number); _i11 < _Object$entries11.length; _i11++) {
+        var _Object$entries11$_i = _slicedToArray(_Object$entries11[_i11], 2),
+            _huay_type2 = _Object$entries11$_i[0],
+            _list2 = _Object$entries11$_i[1];
 
-        if (_list.length) {
-          for (var i = 0; i < _list.length; i++) {
-            if (pass[_huay_type][_list[i]['number']] == undefined) pass[_huay_type][_list[i]['number']] = 0;
-            pass[_huay_type][_list[i]['number']]++;
-            if (pass[_huay_type][_list[i]['number']] > 2) this.my_number[_huay_type][i].is_duplicate = true;else this.my_number[_huay_type][i].is_duplicate = false;
+        if (_list2.length) {
+          for (var i = 0; i < _list2.length; i++) {
+            if (pass[_huay_type2][_list2[i]['number']] == undefined) pass[_huay_type2][_list2[i]['number']] = 0;
+            pass[_huay_type2][_list2[i]['number']]++;
+            if (pass[_huay_type2][_list2[i]['number']] > 2) this.my_number[_huay_type2][i].is_duplicate = true;else this.my_number[_huay_type2][i].is_duplicate = false;
           }
         }
       }
@@ -3516,10 +3808,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     refesh_my_number: function refesh_my_number() {
       this.my_number_txt = "";
 
-      for (var _i9 = 0, _Object$entries9 = Object.entries(this.my_number); _i9 < _Object$entries9.length; _i9++) {
-        var _Object$entries9$_i = _slicedToArray(_Object$entries9[_i9], 2),
-            huay_type = _Object$entries9$_i[0],
-            list = _Object$entries9$_i[1];
+      for (var _i12 = 0, _Object$entries12 = Object.entries(this.my_number); _i12 < _Object$entries12.length; _i12++) {
+        var _Object$entries12$_i = _slicedToArray(_Object$entries12[_i12], 2),
+            huay_type = _Object$entries12$_i[0],
+            list = _Object$entries12$_i[1];
 
         if (list.length) {
           for (var i = 1; i <= list.length; i++) {
@@ -3527,8 +3819,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           }
         }
       }
-
-      console.log(this.my_number);
     },
     clear_last: function clear_last() {
       var input1 = $("#input1");
@@ -3574,21 +3864,26 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         if (input_full) {
           var total_number = '';
 
-          for (var _i10 = 0, _Object$entries10 = Object.entries(this.option_huay); _i10 < _Object$entries10.length; _i10++) {
-            var _Object$entries10$_i = _slicedToArray(_Object$entries10[_i10], 2),
-                key_obj = _Object$entries10$_i[0],
-                value = _Object$entries10$_i[1];
+          for (var _i13 = 0, _Object$entries13 = Object.entries(this.option_huay); _i13 < _Object$entries13.length; _i13++) {
+            var _Object$entries13$_i = _slicedToArray(_Object$entries13[_i13], 2),
+                key_obj = _Object$entries13$_i[0],
+                value = _Object$entries13$_i[1];
 
             if (value == true) {
-              if (key_obj != 'price_two_up' && key_obj != 'price_two_down') var number = input1.text() + input2.text() + input3.text();else if (key_obj == 'price_two_up' && this.input_digi == 3) var number = input2.text() + input3.text();else if (key_obj == 'price_two_down' && this.input_digi == 3) var number = input2.text() + input3.text();else if (key_obj == 'price_two_up' && this.input_digi == 2) var number = input1.text() + input2.text();else if (key_obj == 'price_two_down' && this.input_digi == 2) var number = input1.text() + input2.text();else var number = input1.text() + input2.text();
+              if (key_obj != 'price_two_up' && key_obj != 'price_two_down') var number = input1.text() + input2.text() + input3.text();else if (key_obj == 'price_two_up' && this.input_digi == 3) var number = input2.text() + input3.text();else if (key_obj == 'price_two_down' && this.input_digi == 3) var number = input2.text() + input3.text();else if (key_obj == 'price_two_up' && this.input_digi == 2) var number = input1.text() + input2.text();else if (key_obj == 'price_two_down' && this.input_digi == 2) var number = input1.text() + input2.text();else var number = input1.text() + input2.text(); //ฟิกค่าขั้นต่ำ
+
+              if (this.huay_category_id == '3') var min = 10;else var min = 0;
+              var multiple = 1;
+              if (min) multiple = min;
               total_number += number + ",";
               this.my_number[key_obj].push({
                 number: number,
                 number_type: key_obj,
                 is_duplicate: false,
-                multiple: 1,
-                multiple_txt: 1,
-                total_price: numeral(this[key_obj] * 1).format('0,0'),
+                multiple: multiple,
+                min: min,
+                multiple_txt: numeral(multiple).format('0,0'),
+                total_price: numeral(this[key_obj] * multiple).format('0,0'),
                 price: this[key_obj],
                 date: new Date()
               });
@@ -3605,8 +3900,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               showConfirmButton: false,
               timer: 1000,
               backdrop: true
-            });
-            console.log(app.my_number);
+            }); // //console.log(app.my_number)
+
             app.refesh_my_number();
             app.cal_duplicate();
             input1.text("");
@@ -3648,12 +3943,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         });
       } else if (number == -3) {
         var app = this;
-        this.axios.post('/lottery_yeekee', {
+        this.axios.post('/lottery_government', {
           huay_secret: app.huay_secret,
           number: app.my_number,
           send_poy: true
         }).then(function (response) {
-          console.log(response.data);
+          //console.log(response.data)
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -3679,7 +3974,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           app.refesh_my_number();
           app.change_page(1);
         })["catch"](function (error) {
-          console.log(error);
+          //console.log(error)
           Swal.fire({
             position: 'center',
             icon: 'error',
@@ -3727,12 +4022,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         if (input5.text() != "") {
           var number = input1.text() + input2.text() + input3.text() + input4.text() + input5.text();
           var app = this;
-          this.axios.post('/lottery_yeekee', {
+          this.axios.post('/lottery_government', {
             huay_secret: this.huay_secret,
             number: number,
             shoot_number: true
           }).then(function (response) {
-            console.log(response);
+            //console.log(response)
             Swal.fire({
               position: 'center',
               icon: 'success',
@@ -3774,7 +4069,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               makeTimer();
             }, 1000);
           })["catch"](function (error) {
-            console.log(error);
+            //console.log(error)
             Swal.fire({
               position: 'center',
               icon: 'error',
@@ -3807,8 +4102,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }).then(function (response) {
           app.old_list[id] = response.data;
           app.$forceUpdate();
-        })["catch"](function (error) {
-          console.log(error);
+        })["catch"](function (error) {//console.log(error)
         });
       }
     },
@@ -3822,36 +4116,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }).then(function (response) {
           app.set_to_variable(response.data); // app.old_list[id] = response.data;
           // app.$forceUpdate();
-        })["catch"](function (error) {// console.log(error)
+        })["catch"](function (error) {// //console.log(error)
         });
       } else {
-        console.log(app.old_list);
+        //console.log(app.old_list)
         app.set_to_variable(app.old_list[id]);
       }
     },
     // เอาเลข จาก Set มาใส่ Array แทง
     set_to_variable: function set_to_variable(datas) {
-      console.log("LOGGG");
-      console.log(datas);
-
-      for (var _i11 = 0, _Object$entries11 = Object.entries(datas); _i11 < _Object$entries11.length; _i11++) {
-        var _Object$entries11$_i = _slicedToArray(_Object$entries11[_i11], 2),
-            huay_type = _Object$entries11$_i[0],
-            list = _Object$entries11$_i[1];
+      //console.log("LOGGG")
+      //console.log(datas)
+      for (var _i14 = 0, _Object$entries14 = Object.entries(datas); _i14 < _Object$entries14.length; _i14++) {
+        var _Object$entries14$_i = _slicedToArray(_Object$entries14[_i14], 2),
+            huay_type = _Object$entries14$_i[0],
+            list = _Object$entries14$_i[1];
 
         if (list.length) {
           for (var i = 0; i < list.length; i++) {
-            var info = list[i];
-            console.log('-------');
-            console.log(info);
-            console.log('-------');
+            var info = list[i]; //console.log('-------')
+            //console.log(info);
+            //console.log('-------')
+            //ฟิกค่าขั้นต่ำ
+
+            if (this.huay_category_id == '3') var min = 10;else var min = 0;
+            var multiple = 1;
+            if (min) multiple = min;
             this.my_number[huay_type].push({
               number: info.number,
               number_type: length,
               is_duplicate: false,
-              multiple: 1,
-              multiple_txt: numeral(info.multiple).format('0,0'),
-              total_price: numeral(this[huay_type] * 1).format('0,0'),
+              multiple: multiple,
+              min: min,
+              multiple_txt: numeral(multiple).format('0,0'),
+              total_price: numeral(this[huay_type] * multiple).format('0,0'),
               price: this[huay_type],
               date: new Date()
             });
@@ -40055,10 +40353,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc& ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40070,26 +40368,337 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm.page == 1
+        ? _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "text-right mb-2" }, [
+              _vm.huay_category_list.length > 0
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-success ",
+                      on: {
+                        click: function($event) {
+                          return _vm.change_page(2)
+                        }
+                      }
+                    },
+                    [_vm._v("สร้างเลขชุด")]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm.huay_category_list.length == 0
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "alert alert-danger",
+                    staticStyle: {
+                      display: "flex",
+                      "justify-content": "space-between"
+                    }
+                  },
+                  [
+                    _c("label", [_vm._v("ยังไม่มีเลขชุด")]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-success",
+                        on: {
+                          click: function($event) {
+                            return _vm.change_page(2)
+                          }
+                        }
+                      },
+                      [_vm._v("สร้างเลขชุด")]
+                    )
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table data-list-view" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.huay_categorys, function(huay_category, index) {
+                    return _c("tr", [
+                      _c("td", { staticStyle: { display: "none" } }),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "product-name" }, [
+                        _vm._v(_vm._s(index + 1) + ".")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "product-name" }, [
+                        _vm._v(_vm._s(huay_category.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-right" }, [
+                        huay_category.id == _vm.view_id
+                          ? _c(
+                              "button",
+                              { staticClass: "btn btn-info btn-sm" },
+                              [_c("i", { staticClass: "fa fa-search" })]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        huay_category.id != _vm.view_id
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-default btn-sm",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.load_number_list(
+                                      huay_category.id
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fa fa-search" })]
+                            )
+                          : _vm._e()
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.view_id != 0
+        ? _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "form",
+              {
+                staticClass: "border p-2 rounded bg-white",
+                attrs: { methods: "POST" },
+                on: {
+                  submit: function($event) {
+                    return _vm.add_huay_category_un()
+                  }
+                }
+              },
+              [
+                _vm.my_number.length > 0 && _vm.my_number[0].number != ""
+                  ? _c(
+                      "a",
+                      {
+                        staticClass:
+                          "btn btn-danger text-white btn-sm col-md-4",
+                        on: {
+                          click: function($event) {
+                            return _vm.clear_huay_uns()
+                          }
+                        }
+                      },
+                      [_vm._v("ล้างเลขอั้น")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { id: "number-add-list" } },
+                  [
+                    _vm._l(_vm.my_number, function(data, index) {
+                      return _c("div", { staticClass: "row mb-2" }, [
+                        _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  return _vm.change_huay_type(
+                                    index,
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.type_name, function(name, huay_type) {
+                              return _c(
+                                "option",
+                                { domProps: { value: huay_type } },
+                                [_vm._v(_vm._s(name))]
+                              )
+                            }),
+                            0
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "number[]",
+                              placeholder: "ใส่ตัวเลขเท่านั้น",
+                              maxlength: data.number_length,
+                              minlength: data.number_length,
+                              required: ""
+                            },
+                            domProps: { value: data.number },
+                            on: {
+                              keypress: function($event) {
+                                return _vm.check_input($event)
+                              },
+                              keyup: function($event) {
+                                return _vm.change_number($event, index)
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+                          data.max_price > 0
+                            ? _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "number",
+                                  name: "max_price[]",
+                                  min: "0",
+                                  step: "0.01",
+                                  placeholder: "ยอดรวมการแทงต่องวด"
+                                },
+                                domProps: { value: data.max_price },
+                                on: {
+                                  keyup: function($event) {
+                                    return _vm.change_max_price($event, index)
+                                  }
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          data.max_price == 0
+                            ? _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "number",
+                                  name: "max_price[]",
+                                  min: "0",
+                                  step: "0.01",
+                                  placeholder: "ยอดรวมการแทงต่องวด"
+                                },
+                                on: {
+                                  keyup: function($event) {
+                                    return _vm.change_max_price($event, index)
+                                  }
+                                }
+                              })
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        data.can_delete
+                          ? _c("div", { staticClass: "col-md-2" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn-sm btn btn-danger text-white mt-1",
+                                  attrs: { type: "text" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.delete_row(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("ลบ")]
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-info btn-sm text-white",
+                        on: {
+                          click: function($event) {
+                            return _vm.add_row()
+                          }
+                        }
+                      },
+                      [_vm._v("เพิ่มรายการ")]
+                    )
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "row m-0 mt-2" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-warning text-white btn-sm col-md-6",
+                      on: {
+                        click: function($event) {
+                          return _vm.clear_view_id()
+                        }
+                      }
+                    },
+                    [_vm._v("ย้อนกลับ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn btn-primary btn-sm text-white col-md-6 float-right"
+                    },
+                    [_vm._v("บันทึก")]
+                  )
+                ])
+              ]
+            )
+          ])
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticStyle: { display: "none" } }),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("หวย")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+        _c("label", [_vm._v("เลขอั้น")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+        _c("label", [_vm._v("เลข")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+        _c("label", [
+          _vm._v("ยอดรวมการแทงต่องวด "),
+          _c("small", { staticClass: "text-danger" }, [
+            _vm._v(" (0 คือไม่จำกัด)")
           ])
         ])
       ])
@@ -42424,11 +43033,8 @@ var render = function() {
                                 staticClass:
                                   "form-control bg-black text-gold border-right-gold",
                                 attrs: {
-                                  type: "tel",
-                                  placeholder: "ระบุจำนวนเงิน",
-                                  minlength: "6",
-                                  maxlength: "6",
-                                  pattern: "[0-9]*",
+                                  type: "number",
+                                  min: item.min,
                                   "data-duplicate": item.is_duplicate
                                 },
                                 domProps: { value: item.multiple },
@@ -42486,7 +43092,27 @@ var render = function() {
                                   [_vm._v("ลบ")]
                                 )
                               ])
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            item.min > item.multiple
+                              ? _c(
+                                  "div",
+                                  { staticClass: "alert alert-danger p-1" },
+                                  [
+                                    _vm._v(
+                                      "ขั้นต่ำ " + _vm._s(item.min) + " บาท"
+                                    )
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            item.is_un
+                              ? _c(
+                                  "div",
+                                  { staticClass: "alert alert-danger p-1" },
+                                  [_vm._v("เลขนี้ถูกอั้น ชนะจ่ายครึ่งราคา")]
+                                )
+                              : _vm._e()
                           ])
                         ])
                       })
@@ -55327,10 +55953,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('input-number', __webpack_require__(/*! ./components/inputNumberComponent.vue */ "./resources/js/components/inputNumberComponent.vue")["default"]);
 Vue.component('poy-list', __webpack_require__(/*! ./components/PoysList.vue */ "./resources/js/components/PoysList.vue")["default"]);
 Vue.component('my-number-set', __webpack_require__(/*! ./components/MyNumberSet.vue */ "./resources/js/components/MyNumberSet.vue")["default"]);
+Vue.component('huay-uns', __webpack_require__(/*! ./components/HuayUns.vue */ "./resources/js/components/HuayUns.vue")["default"]);
 Vue.component('view-poy', __webpack_require__(/*! ./components/ViewPoy.vue */ "./resources/js/components/ViewPoy.vue")["default"]);
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTED_MODULE_0___default.a);
 /**
@@ -55390,17 +56016,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
+/***/ "./resources/js/components/HuayUns.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/HuayUns.vue ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HuayUns.vue?vue&type=template&id=d813e0cc& */ "./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc&");
+/* harmony import */ var _HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HuayUns.vue?vue&type=script&lang=js& */ "./resources/js/components/HuayUns.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -55410,9 +56036,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -55422,38 +56048,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ExampleComponent.vue"
+component.options.__file = "resources/js/components/HuayUns.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/HuayUns.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/HuayUns.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HuayUns.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc& ***!
+  \****************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./HuayUns.vue?vue&type=template&id=d813e0cc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

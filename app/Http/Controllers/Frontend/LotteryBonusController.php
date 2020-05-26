@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Transactions;
+use Auth;
 
 class LotteryBonusController extends Controller
 {
@@ -14,6 +15,9 @@ class LotteryBonusController extends Controller
 
     public function index()
     {
-        return view('frontend.lottery_bonus');
+        $transactions = Transactions::where('type', 'BONUS')->where('user_id', Auth::user()->id)->get();
+
+        $data = array('transactions' => $transactions);
+        return view('frontend.lottery_bonus', $data);
     }
 }

@@ -137,7 +137,7 @@
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <a href="{{ route('lottery_credit') }}" style="display:block; color:#3d5169;">
-                                        <div class="single-jackpot">
+                                        <div class="single-jackpot text-success">
                                             <div class="part-head">
                                                 <svg class="bi bi-list-ol" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M5 11.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
@@ -154,7 +154,7 @@
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <a href="{{ route('lottery_affiliate') }}" style="display:block; color:#3d5169;">
-                                        <div class="single-jackpot">
+                                        <div class="single-jackpot text-success">
                                             <div class="part-head">
                                                 <svg class="bi bi-people-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 100-6 3 3 0 000 6zm-5.784 6A2.238 2.238 0 015 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 005 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>
@@ -210,7 +210,7 @@
 
                                 <div class="col-xl-4 col-lg-4 col-sm-12">
                                     <a href="{{ route('lottery_bonus') }}" style="display:block; color:#3d5169;">
-                                        <div class="single-jackpot">
+                                        <div class="single-jackpot text-success">
                                             <div class="part-head">
                                                 <svg class="bi bi-award-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>

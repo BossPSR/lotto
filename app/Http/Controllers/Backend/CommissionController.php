@@ -51,7 +51,7 @@ class CommissionController extends Controller
         if (isset($_POST['updateCommissionSetting'])) {
             $data = array(
                 'commission_percent' => $request->commission_percent,
-                'max_withdraws' => $request->max_withdraws,
+                'min_withdraws' => $request->min_withdraws,
             );
             CommissionSetting::where('id', $request->id)->update($data);
             return redirect('admin/commission_manage')->with('message', 'แก้ไขข้อมูลสำเร็จ!')->with('status', 'success');

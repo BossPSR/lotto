@@ -491,12 +491,15 @@
                         <div class="input-group">
                             <div class="input-group-append"><span class="input-group-text bg-white" style="min-width:45px;" align="center">{{  index+1}}.</span></div>
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
-                            <input v-on:keyup="change_multiple(huay_type, index, $event.target.value)" type="tel" placeholder="ระบุจำนวนเงิน" minlength="6" maxlength="6" pattern="[0-9]*" class="form-control bg-black text-gold border-right-gold" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
+                            <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ : {{ item.total_price }} ฿</span></div>
                             <div class="input-group-append">
                                 <div class="btn btn-danger" v-on:click="remove_number(huay_type, index)">ลบ</div>
                             </div>
                         </div>
+                        <div v-if="item.min > item.multiple" class="alert alert-danger p-1">ขั้นต่ำ {{item.min}} บาท</div>
+                        <div v-if="item.is_un" class="alert alert-danger p-1">เลขนี้ถูกอั้น ชนะจ่ายครึ่งราคา</div>
+    
                     </div>
                 </div>
             </div>
@@ -533,6 +536,7 @@
                             <button class="btn btn-primary w-100" v-on:click="change_page(4)">แทงพนัน</button>
                         </div>
                     </div>
+    
                 </div>
             </section>
         </div>
@@ -670,6 +674,7 @@ export default {
             default: 0
         },
         huay_secret: String,
+        huay_category_id: String,
     },
     data: function() {
         return {
@@ -722,7 +727,7 @@ export default {
         }
     },
     mounted() {
-        console.log('Component mounted.')
+        //console.log('Component mounted.')
     },
     created: function() {
         window.addEventListener('keyup', this.keymonitor)
@@ -735,7 +740,7 @@ export default {
     methods: {
         pull_yee_kee_list() {
             var app = this
-            this.axios.post('/lottery_yeekee', {
+            this.axios.post('/lottery_government', {
                     huay_secret: this.huay_secret,
                     shoot_list: true
                 })
@@ -744,7 +749,7 @@ export default {
                     app.yee_kee_sum = response.data.total;
                 })
                 .catch(function(error) {
-                    console.log(error)
+                    //console.log(error)
                 });
         },
         delete_duplicate() {
@@ -759,6 +764,7 @@ export default {
             }
             this.cal_duplicate();
             this.cal_total_price();
+
         },
         show_duplicate(set = null) {
             var result = $("*[data-duplicate='true']");
@@ -782,6 +788,13 @@ export default {
             this.refesh_my_number();
             this.cal_duplicate();
             this.cal_total_price();
+            var count = 0;
+            for (const [huay_type, list] of Object.entries(this.my_number)) {
+                count += list.length;
+            }
+            if (count == 0)
+                this.change_page(1)
+
         },
         change_multiple(type_name, index, multiple) {
             this.my_number[type_name][index].multiple = multiple
@@ -801,7 +814,7 @@ export default {
                         }
                     }
                 }
-                console.log(this.my_number)
+                //console.log(this.my_number)
             }
             this.cal_total_price();
 
@@ -809,6 +822,7 @@ export default {
                 $('#change_price_input').val(multiple)
         },
         change_page(index) {
+
             if (index == 1) {
                 this.page_index = index;
                 $("#shoot-number-btn").removeClass("btn-primary text-white").addClass("btn-outline-primary")
@@ -832,7 +846,7 @@ export default {
             } else if (index == 3) {
                 this.page_index = index;
                 var app = this
-                this.axios.post('/lottery_yeekee', {
+                this.axios.post('/lottery_government', {
                         get_user_pocket: true
                     })
                     .then(function(response) {
@@ -840,11 +854,38 @@ export default {
                         app.money_txt = numeral(response.data.money).format('0,0');
                     })
                     .catch(function(error) {
-                        console.log(error)
+                        //console.log(error)
                     });
+
+                this.cal_total_price();
             } else if (index == 4) {
                 var app = this;
-                this.axios.post('/lottery_yeekee', {
+                //เช็ค Min
+                var error = '';
+                for (const [huay_type, list] of Object.entries(app.my_number)) {
+                    if (list.length) {
+                        for (var i = 0; i < list.length; i++) {
+                            var row = list[i];
+
+                            if (row.min > row.multiple)
+                                error += row.number + ' แทง > ' + row.min + " เท่านั้น, "
+                        }
+                    }
+                }
+                //console.log(error)
+                if (error) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: error,
+                        showConfirmButton: true,
+                        backdrop: true,
+                        width: 400,
+                    });
+                    return false;
+                }
+                var app = this;
+                this.axios.post('/lottery_government', {
                         total_price: this.total_multiple,
                         check_money: true
                     })
@@ -873,15 +914,16 @@ export default {
                         get_poy_list: true,
                     })
                     .then(function(response) {
-                        console.log(response.data)
+                        //console.log(response.data)
                         app.poy_list = response.data;
                         app.page_index = 5;
                     })
                     .catch(function(error) {
-                        console.log(error)
+                        //console.log(error)
                     });
             }
-            console.log(index)
+
+            //console.log(index)
         },
         select_option(key) {
             // หากเป็น วิ่ง จะ ปิดอันอื่นหมด
@@ -990,26 +1032,56 @@ export default {
             } else
                 $('#main-input').addClass("hide");
 
-            console.log(this.input_digi)
+            //console.log(this.input_digi)
 
 
         },
         cal_total_price() {
+
+            var app = this
+
             var total_price = 0
             var total_multiple = 0
-            for (const [huay_type, list] of Object.entries(this.my_number)) {
+            for (const [huay_type, list] of Object.entries(app.my_number)) {
                 if (list.length) {
                     for (var i = 0; i < list.length; i++) {
-                        total_price += (list[i].price * list[i].multiple);
-                        total_multiple += list[i].multiple;
+                        total_price += parseFloat(list[i].price * list[i].multiple);
+                        total_multiple += parseInt(list[i].multiple);
                     }
                 }
             }
-            this.total_price = total_price;
-            this.total_price_txt = numeral((total_price)).format('0,0')
+            app.total_price = total_price;
+            app.total_price_txt = numeral((total_price)).format('0,0')
 
-            this.total_multiple = total_multiple;
-            this.total_multiple_txt = numeral((total_multiple)).format('0,0')
+            app.total_multiple = total_multiple;
+            app.total_multiple_txt = numeral((total_multiple)).format('0,0')
+
+            var uns = {};
+            this.axios.post('/lottery_government', {
+                    get_uns: true,
+                    huay_category_id: app.huay_category_id
+                })
+                .then(function(response) {
+                    uns = response.data
+                    console.log(uns)
+                    if (uns) {
+                        for (const [huay_type, list] of Object.entries(app.my_number)) {
+                            if (list.length) {
+                                for (var i = 0; i < list.length; i++) {
+                                    if (uns[huay_type][list[i].number] !== undefined)
+                                        app.my_number[huay_type][i].is_un = true;
+                                    else
+                                        app.my_number[huay_type][i].is_un = false;
+
+                                }
+                            }
+                        }
+                        app.$forceUpdate();
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
         },
         cal_duplicate() {
             var pass = {
@@ -1057,7 +1129,6 @@ export default {
                     }
                 }
             }
-            console.log(this.my_number)
         },
         clear_last() {
             var input1 = $("#input1");
@@ -1129,14 +1200,25 @@ export default {
                             else
                                 var number = input1.text() + input2.text();
 
+                            //ฟิกค่าขั้นต่ำ
+
+                            if (this.huay_category_id == '3')
+                                var min = 10;
+                            else
+                                var min = 0;
+
+                            var multiple = 1;
+                            if (min)
+                                multiple = min;
                             total_number += number + ",";
                             this.my_number[key_obj].push({
                                 number: number,
                                 number_type: key_obj,
                                 is_duplicate: false,
-                                multiple: 1,
-                                multiple_txt: 1,
-                                total_price: numeral((this[key_obj] * 1)).format('0,0'),
+                                multiple: multiple,
+                                min: min,
+                                multiple_txt: numeral(multiple).format('0,0'),
+                                total_price: numeral((this[key_obj] * multiple)).format('0,0'),
                                 price: this[key_obj],
                                 date: new Date(),
                             });
@@ -1153,7 +1235,7 @@ export default {
                             timer: 1000,
                             backdrop: true,
                         })
-                        console.log(app.my_number)
+                        // //console.log(app.my_number)
                         app.refesh_my_number();
                         app.cal_duplicate();
                         input1.text("");
@@ -1201,13 +1283,13 @@ export default {
                 })
             } else if (number == -3) {
                 var app = this;
-                this.axios.post('/lottery_yeekee', {
+                this.axios.post('/lottery_government', {
                         huay_secret: app.huay_secret,
                         number: app.my_number,
                         send_poy: true
                     })
                     .then(function(response) {
-                        console.log(response.data)
+                        //console.log(response.data)
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -1236,7 +1318,7 @@ export default {
 
                     })
                     .catch(function(error) {
-                        console.log(error)
+                        //console.log(error)
                         Swal.fire({
                             position: 'center',
                             icon: 'error',
@@ -1285,13 +1367,13 @@ export default {
                     var number = input1.text() + input2.text() + input3.text() + input4.text() + input5.text();
 
                     var app = this;
-                    this.axios.post('/lottery_yeekee', {
+                    this.axios.post('/lottery_government', {
                             huay_secret: this.huay_secret,
                             number: number,
                             shoot_number: true
                         })
                         .then(function(response) {
-                            console.log(response)
+                            //console.log(response)
 
                             Swal.fire({
                                 position: 'center',
@@ -1339,7 +1421,7 @@ export default {
                             intervalHandle = setInterval(function() { makeTimer(); }, 1000);
                         })
                         .catch(function(error) {
-                            console.log(error)
+                            //console.log(error)
 
                             Swal.fire({
                                 position: 'center',
@@ -1379,7 +1461,7 @@ export default {
                         app.$forceUpdate();
                     })
                     .catch(function(error) {
-                        console.log(error)
+                        //console.log(error)
                     });
             }
         },
@@ -1396,34 +1478,46 @@ export default {
                         // app.$forceUpdate();
                     })
                     .catch(function(error) {
-                        // console.log(error)
+                        // //console.log(error)
                     });
             } else {
-                console.log(app.old_list)
+                //console.log(app.old_list)
                 app.set_to_variable(app.old_list[id])
             }
         },
         // เอาเลข จาก Set มาใส่ Array แทง
         set_to_variable(datas) {
 
-            console.log("LOGGG")
-            console.log(datas)
+            //console.log("LOGGG")
+            //console.log(datas)
             for (const [huay_type, list] of Object.entries(datas)) {
-                
+
 
                 if (list.length) {
                     for (var i = 0; i < list.length; i++) {
                         var info = list[i];
-                        console.log('-------')
-                        console.log(info);
-                        console.log('-------')
+                        //console.log('-------')
+                        //console.log(info);
+                        //console.log('-------')
+
+                        //ฟิกค่าขั้นต่ำ
+
+                        if (this.huay_category_id == '3')
+                            var min = 10;
+                        else
+                            var min = 0;
+
+                        var multiple = 1;
+                        if (min)
+                            multiple = min;
                         this.my_number[huay_type].push({
                             number: info.number,
                             number_type: length,
                             is_duplicate: false,
-                            multiple: 1,
-                            multiple_txt: numeral(info.multiple).format('0,0'),
-                            total_price: numeral((this[huay_type] * 1)).format('0,0'),
+                            multiple: multiple,
+                            min: min,
+                            multiple_txt: numeral(multiple).format('0,0'),
+                            total_price: numeral((this[huay_type] * multiple)).format('0,0'),
                             price: this[huay_type],
                             date: new Date(),
                         });

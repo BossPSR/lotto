@@ -224,9 +224,6 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-8">
-                        <a data-toggle="modal" class="float-right btn btn-success btn text-white" data-target="#addRound"><i class="fa fa-plus"></i> เพิ่ม</a>
-                    </div>
                    
                     <div class="col-md-12" id="app">
                         <view-poy :poy_list="{{json_encode($poys)}}"></view-poy>

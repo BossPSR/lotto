@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CommissionSetting;
 use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
 use App\Models\HuayRounds;
 use App\Models\HuayRoundShoots;
+use App\Models\HuayUns;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -56,7 +59,7 @@ class LotteryPlayController extends Controller
         return view('frontend.lottery_yeekee');
     }
 
-    public function lottery_yeekee_post(Request $request)
+    public function lottery_government_post(Request $request)
     {
         if (isset($request->shoot_number)) {
             $check = HuayRounds::where('secret', $request->huay_secret)->where('is_active', 1)->first();
@@ -115,6 +118,19 @@ class LotteryPlayController extends Controller
                 'credit' => Auth::user()->credit,
             );
             return response()->json($wrap, 200);
+        } else if (isset($request->get_uns)) {
+            $numbers = HuayUns::where('huay_category_id', $request->huay_category_id)->get();
+            $wrap = array();
+            if ($numbers) {
+                foreach ($numbers as $value) {
+                    if (!isset($wrap[$value->huay_type]))
+                        $wrap[$value->huay_type] = array();
+
+                    $wrap[$value->huay_type][$value->number] =  1;
+                }
+            }
+
+            return response()->json($wrap, 200);
         } else if (isset($request->check_money)) {
             $wrap = array(
                 'money' => Auth::user()->money,
@@ -128,23 +144,49 @@ class LotteryPlayController extends Controller
         } else if (isset($request->send_poy)) {
             $check = HuayRounds::where('secret', $request->huay_secret)->where('is_active', 1)->first();
             if ($check) {
-                
-
                 $total_price = 0;
-
                 foreach ($request->number as $huay_type => $list) {
                     if ($list) {
                         foreach ($list as $info) {
-                            $total_price+= ($info['multiple']);
+                            $total_price += ($info['multiple']);
                         }
                     }
                 }
 
                 if (Auth::user()->money - $total_price < 0)
-                    return response()->json(array('a'=> Auth::user()->money ,'b' => $total_price), 401);
-                
+                    return response()->json(array('a' => Auth::user()->money, 'b' => $total_price), 401);
+
+                $commission_setting = CommissionSetting::first();
+                if (Auth::user()->upline_id && $commission_setting->commission_percent > 0) {
+
+                    $commission = (($total_price / 100) * $commission_setting->commission_percent);
+                    $credit_cf = new Transactions();
+                    $credit_cf->user_id = Auth::user()->upline_id;
+                    $credit_cf->status = 'confirm';
+                    $credit_cf->direction = 'IN';
+                    $credit_cf->type = 'CREDIT';
+                    $credit_cf->remark = 'คุณได้รับ ' . $commission . ' (' . $commission_setting->commission_percent . '%)เครดิตจากแทงหวยของ ' . Auth::user()->username;
+                    $credit_cf->amount = $commission;
+                    $credit_cf->save();
+                    DB::table("users")->where('id', Auth::user()->upline_id)->increment('credit', $commission);
+                }
+
+
                 DB::table("users")->where('id', Auth::user()->id)->decrement('money', $total_price);
 
+                // ดึงเลขอั้น 
+                $numbers = HuayUns::where('huay_category_id', $check->huay_category_id)->get();
+                $uns = array();
+                if ($numbers) {
+                    foreach ($numbers as $value) {
+                        if (!isset($uns[$value->huay_type]))
+                            $uns[$value->huay_type] = array();
+
+                        $uns[$value->huay_type][$value->number] =  1;
+                    }
+                }
+
+                // สร้างโพย
                 $poy = new HuayRoundPoys();
                 $poy->name = '';
                 $poy->user_id = Auth::user()->id;
@@ -171,6 +213,9 @@ class LotteryPlayController extends Controller
                                 $poy_number->multiple = $info['multiple'];
                                 $poy_number->huay_price = $info['price'];
                                 $poy_number->total_price = ($info['multiple'] * $info['price']);
+                                if (isset($uns[$huay_type][$info['number']]))
+                                    $poy_number->is_un = 1;
+
                                 $poy_number->save();
                             }
                         }

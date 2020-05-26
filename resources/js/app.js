@@ -22,10 +22,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('input-number', require('./components/inputNumberComponent.vue').default);
 Vue.component('poy-list', require('./components/PoysList.vue').default);
 Vue.component('my-number-set', require('./components/MyNumberSet.vue').default);
+Vue.component('huay-uns', require('./components/HuayUns.vue').default);
 Vue.component('view-poy', require('./components/ViewPoy.vue').default);
 Vue.use(VueAxios, axios)
 /**
