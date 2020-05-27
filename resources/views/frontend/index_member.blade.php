@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
-                    <a href="{{ route('plus_story') }}" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">เพิ่มบทความใหม่</button></a>
+                    <!-- <a href="" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">เพิ่มบทความใหม่</button></a> -->
                 </div>
             </div>
         </div>

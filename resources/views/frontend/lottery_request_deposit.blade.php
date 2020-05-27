@@ -103,7 +103,7 @@
                                         </div>
                                         @else
                                         <div class="text">
-                                            <span class="text-danger">ไม่สามารถดำเนินการได้ขนาดนี้</span>
+                                            <span class="text-danger">ไม่สามารถดำเนินการได้ขณะนี้</span>
                                             <span class="draw-date"></span>
                                         </div>
                                         @endif

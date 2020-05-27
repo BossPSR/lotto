@@ -26,6 +26,8 @@ class CreateHuayRounds extends Migration
             $table->string('name');
             $table->string('secret')->nullable();
             $table->tinyInteger('can_shoot')->default(0);
+            $table->enum('round_status', ['pending','complete','cancel', 'close']);
+
 
             $table->decimal('price_tree_up', 22, 2)->default(0);
             $table->decimal('price_tree_tod', 22, 2)->default(0);
@@ -35,15 +37,16 @@ class CreateHuayRounds extends Migration
             $table->decimal('price_two_down', 22, 2)->default(0);
             $table->decimal('price_run_up', 22, 2)->default(0);
             $table->decimal('price_run_down', 22, 2)->default(0);
+            $table->decimal('price_shoot', 22, 2)->default(0);
 
-            $table->decimal('result_tree_up', 6, 0)->default(-1);
-            $table->decimal('result_tree_tod', 6, 0)->default(-1);
-            $table->decimal('result_tree_front', 6, 0)->default(-1);
-            $table->decimal('result_tree_down', 6, 0)->default(-1);
-            $table->decimal('result_two_up', 6, 0)->default(-1);
-            $table->decimal('result_two_down', 6, 0)->default(-1);
-            $table->decimal('result_run_up', 6, 0)->default(-1);
-            $table->decimal('result_run_down', 6, 0)->default(-1);
+            $table->string('result_tree_up', 6, 0)->default("");
+            $table->string('result_tree_tod', 6, 0)->default("");
+            $table->string('result_tree_front', 6, 0)->default("");
+            $table->string('result_tree_down', 6, 0)->default("");
+            $table->string('result_two_up', 6, 0)->default("");
+            $table->string('result_two_down', 6, 0)->default("");
+            $table->string('result_run_up', 6, 0)->default("");
+            $table->string('result_run_down', 6, 0)->default("");
 
             $table->softDeletes();
             $table->timestamps();

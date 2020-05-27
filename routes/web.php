@@ -64,6 +64,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/manage_huay_yeekee_cf','Backend\ManageHuayController@manage_huay_yeekee_cf')->name('manage_huay_yeekee_cf'); //จัดการหวยยี่กี CF
 
     Route::get('/reward_huay','Backend\RewardHuayController@index')->name('reward_huay'); //ออกผลหวย
+    Route::post('/reward_huay','Backend\RewardHuayController@post'); //ออกผลหวย
+   
     Route::get('/reward_huay_yeekee','Backend\RewardHuayController@reward_huay_yeekee')->name('reward_huay_yeekee'); //ออกผลหวยยี่กี
     Route::get('/reward_huay_yeekee_cf','Backend\RewardHuayController@reward_huay_yeekee_cf')->name('reward_huay_yeekee_cf'); //ออกผลหวยยี่กี CF
 

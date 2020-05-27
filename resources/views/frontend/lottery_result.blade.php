@@ -67,27 +67,45 @@
                                                 <small>ปิดรับ : {{date('d/m/Y H:i:s',strtotime($huay_round->end_datetime))}}</small>
                                             </span>
                                             <div class="part-body">
-                                                <div class="lotto_list_colum_2 form-group">
+                                                <div class="lotto_list_colum_2">
                                                     <div class="lotto_list_colum_2_detail">
-                                                        <div>รางวัลใหญ่</div>
-                                                        <div>{{($huay_round->result_tree_up > -1 ? $huay_round->result_tree_up : 'xxxxxx')}}</div>
+                                                        <div>3 ตัวบน</div>
+                                                        <div>{{(($huay_round->result_tree_up != "") ? $huay_round->result_tree_up : 'xxx')}}</div>
+                                                    </div>
+                                                    <div class="lotto_list_colum_2_detail">
+                                                        <div>3 ตัวโต้ด</div>
+                                                        <div>{{(($huay_round->result_tree_tod !="") ? $huay_round->result_tree_tod : 'xxx')}}</div>
+                                                    </div>
+
+                                                    <div class="lotto_list_colum_2_detail">
+                                                        <div>3 ตัวหน้า</div>
+                                                        <div>{{(($huay_round->result_tree_front  != "") ? $huay_round->result_tree_front : 'xxx')}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="lotto_list_colum_2 mt-2">
+                                                    <div class="lotto_list_colum_2_detail">
+                                                        <div>3 ตัวล่าง</div>
+                                                        <div>{{(($huay_round->result_tree_down != "") ? $huay_round->result_tree_down : 'xxx')}}</div>
+                                                    </div>
+                                                    <div class="lotto_list_colum_2_detail">
+                                                        <div>2 ตัวบน</div>
+                                                        <div>{{(($huay_round->result_two_up !="") ? $huay_round->result_two_up : 'xx')}}</div>
+                                                    </div>
+
+                                                    <div class="lotto_list_colum_2_detail">
+                                                        <div>2 ตัวล่าง</div>
+                                                        <div>{{(($huay_round->result_two_down  != "") ? $huay_round->result_two_down : 'xx')}}</div>
                                                     </div>
                                                 </div>
 
-                                                <div class="lotto_list_colum_2">
+                                                <div class="lotto_list_colum_2 mt-2">
                                                     <div class="lotto_list_colum_2_detail">
-                                                        <div>3ตัวบน</div>
-                                                        <div>{{($huay_round->result_tree_up > -1 ? $huay_round->result_tree_up : 'xxx')}}</div>
+                                                        <div>วิ่งบน</div>
+                                                        <div>{{(($huay_round->result_run_up != "") ? $huay_round->result_run_up : 'x')}}</div>
                                                     </div>
-
                                                     <div class="lotto_list_colum_2_detail">
-                                                        <div>3ตัวล่าง</div>
-                                                        <div>{{($huay_round->result_tree_down > -1 ? $huay_round->result_tree_down : 'xxx')}}</div>
-                                                    </div>
-
-                                                    <div class="lotto_list_colum_2_detail">
-                                                        <div>2ตัวล่าง</div>
-                                                        <div>{{($huay_round->result_two_down > -1 ? $huay_round->result_two_down : 'xx')}}</div>
+                                                        <div>วิ่งล่าง</div>
+                                                        <div>{{(($huay_round->result_run_down !="") ? $huay_round->result_run_down : 'x')}}</div>
                                                     </div>
                                                 </div>
                                             </div>

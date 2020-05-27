@@ -49,7 +49,10 @@ class HuayRounds extends Model
             foreach ($huay_round_need_to_stops as $info)
                 array_push($id_all, $info->id);
 
-            $data = array('is_active' => 0);
+            $data = array(
+                'is_active' => 0,
+                'round_status' => 'close',
+            );
             DB::table($this->table)
                 ->where('id', $id_all)
                 ->update($data);

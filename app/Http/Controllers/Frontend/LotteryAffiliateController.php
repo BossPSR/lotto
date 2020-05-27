@@ -36,7 +36,8 @@ class LotteryAffiliateController extends Controller
             return redirect()->route('lottery_affiliate')->with('message', 'คุณได้ตั้งค่าเสร็จสมบูรณ์แล้ว!')->with('status', 'success')->with('page', $_GET['page']);
         } else if (isset($_POST['addWithdraw'])) {
             $user = auth()->user();
-            if ($user->credit - $_POST['amount'] >= 0) {
+            $commission_setting = CommissionSetting::first();
+            if ($user->credit - $_POST['amount'] >= 0 && $_POST['amount'] >= $commission_setting->min_withdraws) {
                 $withdraw = new Transactions();
                 $withdraw->remark = 'ได้ทำการแจ้งถอนรายได้ ' . $_POST['remark'];
                 $withdraw->amount = $_POST['amount'];

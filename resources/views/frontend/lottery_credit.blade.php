@@ -16,7 +16,7 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
     }
 </style>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#FED63E;">
+<div class="jackpot" style="background:#FED63E; min-height:100vh">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
@@ -93,15 +93,15 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
                             <tr>
                                 <td>{{$index+1}}</td>
                                 <td class="product-name">
-                                    @if($transaction->proof_image)
-                                    <a target="_blank" href="{{url($transaction->proof_image)}}"><img src="{{url($transaction->proof_image)}}" class="image_rules"></a>
+                                    @if($transaction['proof_image'])
+                                    <a target="_blank" href="{{url($transaction['proof_image'])}}"><img src="{{url($transaction['proof_image'])}}" class="image_rules"></a>
                                     @endif
                                 </td>
-                                <td>{{$transaction->remark}}</td>
-                                <td class="text-center">{{date('d/m/Y H:i:s',strtotime($transaction->created_at))}}</td>
+                                <td>{{$transaction['remark']}}</td>
+                                <td class="text-center">{{date('d/m/Y H:i:s',strtotime($transaction['created_at']))}}</td>
 
-                                <td class="text-right">{{number_format($transaction->amount, 2)}}</td>
-                                <td nowrap class="text-center"><?php echo $status_list[$transaction->status]['html']; ?></td>
+                                <td class="text-right">{{number_format($transaction['amount'], 2)}}</td>
+                                <td nowrap class="text-center"><?php echo $status_list[$transaction['status']]['html']; ?></td>
                             </tr>
                             @endforeach
                         </table>

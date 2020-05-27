@@ -281,16 +281,7 @@
                     </li>
 
                     <li class="nav-item {{ Request::segment(2) == 'reward_huay' || Request::segment(2) == 'reward_huay_yeekee' || Request::segment(2) == 'reward_huay_yeekee_cf' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.reward_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวย">ออกผลหวย</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.reward_huay_yeekee') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี">ออกผลหวยยี่กี</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.reward_huay_yeekee_cf') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="ออกผลหวยยี่กี CF">ออกผลหวยยี่กี CF</span></a>
-                            </li>
-
-                        </ul>
+                        <a href="{{route('admin.reward_huay') }}"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
                     </li>
 
                     <li class="nav-item {{ Request::segment(2) == 'un_huay' || Request::segment(2) == 'un_huay_yeekee' || Request::segment(2) == 'un_huay_yeekee_cf' ? 'active' : '' }}">
