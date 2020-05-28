@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Models\Deposits;
+use App\Models\HuayRounds;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -23,7 +24,25 @@ class IndexController extends Controller
     public function index()
     {
         if (!Auth::check()) {
-            return view('frontend.login');
+            $huay_rounds = HuayRounds::whereBetween('start_datetime', array(date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')))
+                ->join('huay_categorys', 'huay_rounds.huay_category_id', '=', 'huay_categorys.id')
+                ->select('huay_rounds.*', 'huay_categorys.name as category_name')
+                ->get();
+
+            $huay_round_by_category = array();
+            if ($huay_rounds) {
+                foreach ($huay_rounds as $round) {
+                    if (!isset($huay_round_by_category[$round->category_name]))
+                        $huay_round_by_category[$round->category_name] = array();
+
+                    array_push($huay_round_by_category[$round->category_name], $round);
+                }
+            }
+
+            $data = array(
+                'huay_round_by_category' => $huay_round_by_category
+            );
+            return view('frontend.login', $data);
         } else {
             return redirect()->route('index_member');
         }
@@ -178,18 +197,17 @@ class IndexController extends Controller
         $member->tel = $tel;
         $member->birthday = $birthday;
         $upline = DB::table('users')->where('affiliate_code', $_POST['upline_username'])->first();
-        if ($upline)
-        {
+        if ($upline) {
             $member->upline_id = $upline->id;
             $credit_cf = new Transactions();
             $credit_cf->user_id = $upline->id;
             $credit_cf->status = 'confirm';
             $credit_cf->direction = 'IN';
             $credit_cf->type = 'INVITE';
-            $credit_cf->remark = 'คุณได้รับ 100 เครดิตจากการเชิญสมาชิก '.$member->username;
+            $credit_cf->remark = 'คุณได้รับ 100 เครดิตจากการเชิญสมาชิก ' . $member->username;
             $credit_cf->amount = 100;
             $credit_cf->save();
-            
+
             User::where('id', $upline->id)->update(['credit' => ($upline->credit + 100)]);
         }
 

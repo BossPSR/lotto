@@ -159,7 +159,7 @@
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_tree_up')" id="price_tree_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
-                            สามตัวบบน ({{price_tree_up}})
+                            สามตัวบน ({{price_tree_up}})
                         </div>
                     </div>
                 </div>
@@ -492,7 +492,11 @@
                             <div class="input-group-append"><span class="input-group-text bg-white" style="min-width:45px;" align="center">{{  index+1}}.</span></div>
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
-                            <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ : {{ item.total_price }} ฿</span></div>
+                            <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp; 
+                            <span v-if="item.is_un == true"><del>{{ item.total_price }} ฿</del></span>
+                            <span v-if="item.is_un == true">{{ parseFloat(item.total_price)/2 }} ฿ </span>
+                            <span v-if="item.is_un == false">{{ item.total_price }} ฿</span>
+                            </span></div>
                             <div class="input-group-append">
                                 <div class="btn btn-danger" v-on:click="remove_number(huay_type, index)">ลบ</div>
                             </div>
@@ -1068,11 +1072,18 @@ export default {
                         for (const [huay_type, list] of Object.entries(app.my_number)) {
                             if (list.length) {
                                 for (var i = 0; i < list.length; i++) {
-                                    if (uns[huay_type][list[i].number] !== undefined)
-                                        app.my_number[huay_type][i].is_un = true;
-                                    else
+
+                                    try{
+                                        if (uns[huay_type][list[i].number] !== undefined)
+                                            app.my_number[huay_type][i].is_un = true;
+                                        else
+                                            app.my_number[huay_type][i].is_un = false;
+                                    }
+                                    catch
+                                    {
                                         app.my_number[huay_type][i].is_un = false;
 
+                                    }
                                 }
                             }
                         }
@@ -1318,7 +1329,13 @@ export default {
 
                     })
                     .catch(function(error) {
-                        //console.log(error)
+                        var error_txt  = '';
+                        try{
+                        error_txt = error.response.data.error
+                        }
+                        catch{
+                            error_txt = '?'
+                        }
                         Swal.fire({
                             position: 'center',
                             icon: 'error',
@@ -1326,6 +1343,7 @@ export default {
                             showConfirmButton: true,
                             backdrop: true,
                             width: 300,
+                            html: "<small class='text-center'>"+error_txt+"</small>"
                         });
                     });
             }

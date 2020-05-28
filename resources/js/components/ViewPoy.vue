@@ -45,7 +45,7 @@
                 </a>
                 <div v-bind:id="'poy-'+poy.id" v-if="old_list[poy.id] && old_list[poy.id].show">
                     <div v-for="(list, huay_type) in old_list[poy.id]">
-                        <table class="table table-sm border">
+                        <table class="table table-sm border" v-if="huay_type != 'show'">
                             <tr class="thead-dark">
                                 <th style="width:1px"></th>
                                 <th>{{type_name[huay_type]}}</th>
@@ -55,7 +55,10 @@
                             </tr>
                             <tr v-for="(item, index) in list">
                                 <td nowrap>{{ index+1}}.</td>
-                                <td>{{ item.number }}</td>
+                                <td>
+                                    {{ item.number }}
+                                    <label v-if="item.is_un == 1" class='text-danger'>(เลขอั้น)</label>
+                                </td>
                                 <td v-if="item.is_won == -1" class='text-warning'>รอผล</td>
                                 <td v-if="item.is_won == 1" class='text-success'>ชนะ</td>
                                 <td v-if="item.is_won == 0" class='text-danger'>แพ้</td>
@@ -84,7 +87,7 @@ export default {
     },
     data: function() {
         return {
-            view_id : 0,
+            view_id: 0,
             old_list: [],
             type_name: {
                 price_tree_up: 'สามตัวบน',
@@ -123,8 +126,7 @@ export default {
                     .catch(function(error) {
                         console.log(error)
                     });
-            }
-            else
+            } else
                 this.old_list[id].show = true;
 
             console.log(app.old_list)

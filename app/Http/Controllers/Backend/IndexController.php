@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\HuayRoundPoyNumbers;
+use App\Models\HuayRoundPoys;
+use App\Models\HuayRounds;
+use App\Models\User;
 use File;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +23,51 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('backend.index_admin');
+        $won_by_user_id = array();
+        $play_by_user_id = array();
+
+        $numbers = HuayRoundPoyNumbers::get();
+
+        if ($numbers) {
+            foreach ($numbers as $value) {
+                if ($value->is_won == 1) {
+                    if (!isset($won_by_user_id[$value->user_id]))
+                        $won_by_user_id[$value->user_id] = 0;
+                    $won_by_user_id[$value->user_id] += $value->total_price;
+                } else if ($value->is_won != 1) {
+                    if (!isset($play_by_user_id[$value->user_id]))
+                        $play_by_user_id[$value->user_id] = 0;
+                    $play_by_user_id[$value->user_id] += $value->multiple;
+                }
+            }
+        }
+       $user_active =  User::where('status', 'อนุมัติ')->get();
+
+       if($user_active)
+       {
+           foreach($user_active as $key => $value)
+           {
+               $user_active[$key]->won = isset($won_by_user_id[$value->id]) ? $won_by_user_id[$value->id] : 0;
+               $user_active[$key]->play = isset($play_by_user_id[$value->id]) ? $play_by_user_id[$value->id] : 0;
+           }
+       }
+
+
+        $data = array(
+            'count_user' => User::count(),
+            'count_user_pending' => User::where('status', 'รอการตรวจสอบ')->count(),
+            'count_user_approved' => User::where('status', 'อนุมัติ')->count(),
+            'count_user_reject' => User::where('status', 'แบนสมาชิก')->count(),
+            'count_user_ban' => User::where('status', 'แบนสมาชิก')->count(),
+            'count_user_blacklist' => User::where('status', 'บัญชีดำ')->count(),
+            'total_play' => HuayRoundPoyNumbers::whereIn('is_won', [-1, 0])->sum('multiple'),
+            'total_won' => HuayRoundPoyNumbers::where('is_won', 1)->sum('total_price'),
+            'total_won_shoot' => HuayRounds::sum('total_won_shoot'),
+            'user_approved' => $user_active,
+
+        );
+
+        return view('backend.index_admin', $data);
     }
 
     public function post_admin(Request $request)
@@ -66,16 +114,16 @@ class IndexController extends Controller
         } else if (isset($_POST['deleteAdmins'])) {
 
             $old = DB::table('admins')
-            ->where('id', $_POST['id'])
-            ->first();
+                ->where('id', $_POST['id'])
+                ->first();
 
             $data = array(
-                "username" => $old->username.'_delete',
-                "email" => $old->email.'_delete',
+                "username" => $old->username . '_delete',
+                "email" => $old->email . '_delete',
             );
             $affected = DB::table('admins')
-            ->where('id', $_POST['id'])
-            ->update($data);
+                ->where('id', $_POST['id'])
+                ->update($data);
 
             Admin::where('id', $_POST['id'])
                 ->delete();

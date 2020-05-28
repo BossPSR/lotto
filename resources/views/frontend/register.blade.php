@@ -63,7 +63,7 @@ if(session()-> has('ref_code'))
                                                     <div>นามสกุล</div>
                                                     <input type="text" name="last_name" class="form-control form-group" required>
                                                     
-                                                    <div>วัน/เดืิอน/ปี เกิด</div>
+                                                    <div>วัน/เดือน/ปี เกิด</div>
                                                     <input type="date" name="birthday" class="form-control form-group" required>
 
                                                     <div>อีเมล</div>

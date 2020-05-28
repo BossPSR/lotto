@@ -66,7 +66,7 @@ class LotteryCreditController extends Controller
                     'status' => $transaction->status,
                     'amount' => $transaction->amount,
                     'created_at' => $transaction->created_at,
-                    'remark' => $withdraw->remark,
+                    'remark' => $transaction->remark,
                 );
                 array_push($wrap, $temp);
             }

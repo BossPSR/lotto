@@ -63,7 +63,8 @@ class LotteryPlayController extends Controller
     {
         if (isset($request->shoot_number)) {
             $check = HuayRounds::where('secret', $request->huay_secret)->where('is_active', 1)->first();
-            if ($check) {
+            $last = HuayRoundShoots::where('secret', $request->huay_secret)->where('user_id', Auth::user()->id)->OrderBy('id', 'DESC')->first();
+            if ($check && date('Y-m-d H:i:s', strtotime($last->created_at.' +9 seconds')) < now()) {
                 $hidden_username = Auth::user()->username;
                 if (strlen($hidden_username) <= 3) {
                     if (isset($hidden_username[0]))
@@ -171,9 +172,6 @@ class LotteryPlayController extends Controller
                     DB::table("users")->where('id', Auth::user()->upline_id)->increment('credit', $commission);
                 }
 
-
-                DB::table("users")->where('id', Auth::user()->id)->decrement('money', $total_price);
-
                 // ดึงเลขอั้น 
                 $numbers = HuayUns::where('huay_category_id', $check->huay_category_id)->get();
                 $uns = array();
@@ -182,8 +180,80 @@ class LotteryPlayController extends Controller
                         if (!isset($uns[$value->huay_type]))
                             $uns[$value->huay_type] = array();
 
-                        $uns[$value->huay_type][$value->number] =  1;
+                        $uns[$value->huay_type][$value->number] =  $value;
                     }
+                }
+
+                // ถ้ามีอั้นจะฟิวเตอร์ก่อน
+
+                $uns_number_in_this_poy = array();
+                $error_txt = '';
+                if ($uns) {
+                    foreach ($request->number as $huay_type => $list) {
+                        foreach ($list as $info) {
+                            if (isset($uns[$huay_type][$info['number']]) && $uns[$huay_type][$info['number']]->max_price > 0) {
+
+                                if (!isset($uns_number_in_this_poy[$huay_type])) {
+                                    $uns_number_in_this_poy[$huay_type] = array(
+                                        'number_list' => array(),
+                                        'uns_info' => $uns[$huay_type][$info['number']],
+                                        'play_price' => array()
+                                    );
+                                }
+                                array_push($uns_number_in_this_poy[$huay_type]['number_list'], $info['number']);
+
+                                if (!isset($uns_number_in_this_poy[$huay_type]['play_price'][$info['number']]))
+                                    $uns_number_in_this_poy[$huay_type]['play_price'][$info['number']] = 0;
+
+                                $uns_number_in_this_poy[$huay_type]['play_price'][$info['number']] += $info['multiple'];
+
+                                // เช็คว่าเล่นเกิน ที่ตั้งไว้ไหม
+                                if ($uns_number_in_this_poy[$huay_type]['play_price'][$info['number']] > $uns[$huay_type][$info['number']]->max_price) {
+                                    $error_txt .= $info['number'] . ', ';
+                                }
+                            }
+                        }
+                    }
+                }
+                if ($error_txt != '') {
+                    $error = array('error' => $error_txt.'<br>มีคนแทงมาเกินที่ระบบกำหนดไว้แล้ว<br><b>กรุณาแก้ไขแล้วลองใหม่อีกครั้ง</b>');
+                    return response()->json($error, 422);
+                }
+
+                // เอาเลขที่บิลนี้มี ไป หาว่าเกิน Limit หรือยัง
+                if ($uns_number_in_this_poy) {
+                    
+                    $error_number_array = array();
+
+                    foreach ($uns_number_in_this_poy as $huay_type => $info) {
+                        //ฟิวเตอร์ โพยตัวเองก่อน
+                        $field = array('number', 'multiple');
+                        $number_list = HuayRoundPoyNumbers::where('huay_round_id', $check->id)->where('huay_type', $huay_type)->whereIn('number', $info['number_list'])->get($field);
+
+                        $total_multiple_by_number_id = array();
+                        if ($number_list) {
+                            foreach ($number_list as $number_info) {
+                                if (!isset($total_multiple_by_number_id[$number_info->number]))
+                                    $total_multiple_by_number_id[$number_info->number] = 0;
+                                $total_multiple_by_number_id[$number_info->number] += $number_info->multiple;
+
+
+                                // เช็คว่าเล่นเกิน ที่ตั้งไว้ไหม
+                                if (($total_multiple_by_number_id[$number_info->number] + $info['play_price'][$number_info->number]) > $info['uns_info']->max_price)
+                                    $error_number_array[$number_info->number] = 1;
+                            }
+                        }
+                    }
+                    // เอาเลขที่มีปัญหามาใส่ txt
+                    if($error_number_array)
+                    {
+                        foreach ($error_number_array as $number => $nothing)
+                            $error_txt .= $number.',';
+                    }
+                }
+                if ($error_txt != '') {
+                    $error = array('error' => $error_txt.'<br>มีคนแทงมาเกินที่ระบบกำหนดไว้แล้ว<br><b>กรุณาแก้ไขแล้วลองใหม่อีกครั้ง</b>');
+                    return response()->json($error, 422);
                 }
 
                 // สร้างโพย
@@ -196,6 +266,18 @@ class LotteryPlayController extends Controller
                 $poy->secret = $request->huay_secret;
 
                 $poy->save();
+
+
+                DB::table("users")->where('id', Auth::user()->id)->decrement('money', $total_price);
+
+                $tran = new Transactions();
+                $tran->user_id = Auth::user()->id;
+                $tran->status = 'confirm';
+                $tran->direction = 'OUT';
+                $tran->type = 'CREDIT';
+                $tran->remark = 'จ่ายเงินจากการแทงหวยโพย '.'PY'.sprintf('%04d', $poy->id);
+                $tran->amount = $total_price;
+                $tran->save();
 
                 if ($poy->id) {
                     foreach ($request->number as $huay_type => $list) {
@@ -214,7 +296,10 @@ class LotteryPlayController extends Controller
                                 $poy_number->huay_price = $info['price'];
                                 $poy_number->total_price = ($info['multiple'] * $info['price']);
                                 if (isset($uns[$huay_type][$info['number']]))
+                                {
                                     $poy_number->is_un = 1;
+                                    $poy_number->total_price  = $poy_number->total_price / 2;
+                                }
 
                                 $poy_number->save();
                             }

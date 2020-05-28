@@ -315,23 +315,23 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                     <form method="POST" onsubmit="doSubmit(this)">
                                                         <input type="hidden" name="id" value="{{$huay_round->id}}" class="thincell">
                                                         <?php
-                                                        if ($huay_round->is_active) {
-                                                            echo '<a name="on" class="btn btn-success btn-sm text-white" >เปิด</a>';
-                                                            echo '<button name="off" class="btn btn-outline-danger btn-sm">ปิด</button>';
-                                                        } else {
-                                                            echo '<button name="on" class="btn btn-outline-success btn-sm ">เปิด</button>';
-                                                            echo '<a name="off" class="btn btn-danger btn-sm text-white" >ปิด</a>';
+                                                        if($huay_round->round_status  != 'complete' and $huay_round->round_status != 'cancel')
+                                                        {
+                                                            if ($huay_round->is_active) {
+                                                                echo '<a name="on" class="btn btn-success btn-sm text-white" >เปิด</a>';
+                                                                echo '<button name="off" class="btn btn-outline-danger btn-sm">ปิด</button>';
+                                                            } else {
+                                                                echo '<button name="on" class="btn btn-outline-success btn-sm ">เปิด</button>';
+                                                                echo '<a name="off" class="btn btn-danger btn-sm text-white" >ปิด</a>';
+                                                            }
                                                         }
-
-
                                                         ?>
-
                                                     </form>
                                                 </td>
                                                 <td class="product-category"><?php echo $huay_round->status_name ?></td>
 
                                                 <td class="text-right">
-                                                    @if($huay_round->round_status != 'complete' && $huay_round->huay_category_id == 1)
+                                                    @if($huay_round->round_status != 'complete' and $huay_round->round_status != 'cancel' && $huay_round->huay_category_id == 1)
                                                         <span data-toggle="modal" data-edit-id="{{$huay_round->id}}" data-target="#updateRound" class="text-success"><i class="fa fa-bullhorn" style="font-size: 25px;"></i></span>
                                                     @endif
                                                     @if($huay_round->huay_category_id != 1 && $huay_round->round_status != 'complete' && $huay_round->is_active == 0)
@@ -456,7 +456,7 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <a style="padding: 5px" class="bg-warning rounded text-white" onclick="copy('unknow')">แบบไม่กำหนดเลข</a>
-                                                <legend style="font-size: 30px;" class="text-center" id="unknow-yeekee_six"><span>XXXXXX</span></legend>
+                                                <legend style="font-size: 30px;" class="text-center p-2" id="unknow-yeekee_six"><span>XXXXXX</span></legend>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>สามตัวบน</label>
@@ -476,15 +476,15 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                 <hr>
 
                                                 <a style="padding: 5px" class="bg-warning rounded text-white" onclick="copy('rand')">แบบกำหนดเลข</a>
-                                                <legend style="font-size: 30px;" class="text-center" id="rand-yeekee_six"><span>XXXXXX</span></legend>
+                                                <legend style="font-size: 30px;" class="text-center p-2" id="rand-yeekee_six"><span>XXXXXX</span></legend>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>สามตัวบน</label>
-                                                        <legend style="font-size: 20px;" class="text-center" id="rand-three_up">XXX</legend>
+                                                        <legend style="font-size: 20px;" class="text-center"  id="rand-three_up">XXX</legend>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>สองตัวบน</label>
-                                                        <legend style="font-size: 20px;" class="text-center" id="rand-two_up">XX</legend>
+                                                        <legend style="font-size: 20px;" class="text-center"  id="rand-two_up">XX</legend>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>สองตัวล่าง</label>
@@ -496,13 +496,13 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label>สามตัวบน</label>
-                                                    <input type="text" pattern="[0-9]*"  minlength="3"  maxlength="3" id="result_tree_up" class="form-control" id="" required>
+                                                    <input type="text" pattern="[0-9]*"  minlength="3"  name="result_tree_up" maxlength="3" id="result_tree_up" class="form-control" id="" required>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label>สามตัวโต้ด</label>
-                                                    <input type="text" pattern="[0-9]*"  minlength="3"  maxlength="3" name="result_tree_tod" class="form-control" id="" required>
+                                                    <input type="text" pattern="[0-9]*"  minlength="3" name="result_tree_tod" maxlength="3" name="result_tree_tod" class="form-control" id="" required>
                                                 </div>
                                             </div>
                                             <div class="col-6">

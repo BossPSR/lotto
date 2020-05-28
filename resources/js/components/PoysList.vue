@@ -28,7 +28,10 @@
                                 </tr>
                                 <tr v-for="(item, index) in list">
                                     <td nowrap>{{ index+1}}.</td>
-                                    <td>{{ item.number }}</td>
+                                    <td>
+                                    {{ item.number }}
+                                    <label v-if="item.is_un == 1" class='text-danger'>(เลขอั้น)</label>
+                                    </td>
                                     <td v-if="item.is_won == -1" class='text-warning'>รอผล</td>
                                     <td v-if="item.is_won == 1" class='text-success'>ชนะ</td>
                                     <td v-if="item.is_won == 0" class='text-danger'>แพ้</td>

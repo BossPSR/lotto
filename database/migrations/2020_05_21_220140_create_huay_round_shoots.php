@@ -19,6 +19,7 @@ class CreateHuayRoundShoots extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('huay_id');
             $table->bigInteger('huay_round_id');
+            $table->tinyInteger('is_won')->default(0);
             $table->string('secret')->nullable();
             $table->string('user_name_secret')->nullable();
             $table->string('number')->nullable();

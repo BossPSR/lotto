@@ -48,6 +48,10 @@ class CreateHuayRounds extends Migration
             $table->string('result_run_up', 6, 0)->default("");
             $table->string('result_run_down', 6, 0)->default("");
 
+            $table->decimal('total_play', 22, 2)->default(0);
+            $table->decimal('total_won', 22, 2)->default(0);
+            $table->decimal('total_won_shoot', 22, 2)->default(0);
+
             $table->softDeletes();
             $table->timestamps();
         });

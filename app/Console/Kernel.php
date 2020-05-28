@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Transactions;
+use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -26,6 +28,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command('cron:birthday')->dailyAt('00:00:01');
     }
 
     /**

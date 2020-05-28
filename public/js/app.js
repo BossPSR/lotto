@@ -2470,6 +2470,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     poy_list: {
@@ -2540,6 +2543,9 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
+//
+//
 //
 //
 //
@@ -2697,6 +2703,10 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -3755,7 +3765,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
             if (_list.length) {
               for (var i = 0; i < _list.length; i++) {
-                if (uns[_huay_type][_list[i].number] !== undefined) app.my_number[_huay_type][i].is_un = true;else app.my_number[_huay_type][i].is_un = false;
+                try {
+                  if (uns[_huay_type][_list[i].number] !== undefined) app.my_number[_huay_type][i].is_un = true;else app.my_number[_huay_type][i].is_un = false;
+                } catch (_unused) {
+                  app.my_number[_huay_type][i].is_un = false;
+                }
               }
             }
           }
@@ -3974,14 +3988,22 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           app.refesh_my_number();
           app.change_page(1);
         })["catch"](function (error) {
-          //console.log(error)
+          var error_txt = '';
+
+          try {
+            error_txt = error.response.data.error;
+          } catch (_unused2) {
+            error_txt = '?';
+          }
+
           Swal.fire({
             position: 'center',
             icon: 'error',
             title: "<small class='text-center'>ส่งโพยไม่สำเร็จ</small>",
             showConfirmButton: true,
             backdrop: true,
-            width: 300
+            width: 300,
+            html: "<small class='text-center'>" + error_txt + "</small>"
           });
         });
       }
@@ -41163,7 +41185,20 @@ var render = function() {
                                   _vm._v(_vm._s(index + 1) + ".")
                                 ]),
                                 _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(item.number))]),
+                                _c("td", [
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(item.number) +
+                                      "\n                                "
+                                  ),
+                                  item.is_un == 1
+                                    ? _c(
+                                        "label",
+                                        { staticClass: "text-danger" },
+                                        [_vm._v("(เลขอั้น)")]
+                                      )
+                                    : _vm._e()
+                                ]),
                                 _vm._v(" "),
                                 item.is_won == -1
                                   ? _c("td", { staticClass: "text-warning" }, [
@@ -41344,76 +41379,95 @@ var render = function() {
                 [
                   _vm._l(_vm.old_list[poy.id], function(list, huay_type) {
                     return _c("div", [
-                      _c(
-                        "table",
-                        { staticClass: "table table-sm border" },
-                        [
-                          _c("tr", { staticClass: "thead-dark" }, [
-                            _c("th", { staticStyle: { width: "1px" } }),
-                            _vm._v(" "),
-                            _c("th", [
-                              _vm._v(_vm._s(_vm.type_name[huay_type]))
-                            ]),
-                            _vm._v(" "),
-                            _c("th", { staticStyle: { width: "1px" } }),
-                            _vm._v(" "),
-                            _c("th", { staticStyle: { width: "1px" } }, [
-                              _vm._v("เล่น")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "th",
-                              {
-                                staticStyle: { width: "1px" },
-                                attrs: { nowrap: "" }
-                              },
-                              [_vm._v("ชนะ")]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(list, function(item, index) {
-                            return _c("tr", [
-                              _c("td", { attrs: { nowrap: "" } }, [
-                                _vm._v(_vm._s(index + 1) + ".")
+                      huay_type != "show"
+                        ? _c(
+                            "table",
+                            { staticClass: "table table-sm border" },
+                            [
+                              _c("tr", { staticClass: "thead-dark" }, [
+                                _c("th", { staticStyle: { width: "1px" } }),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _vm._v(_vm._s(_vm.type_name[huay_type]))
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticStyle: { width: "1px" } }),
+                                _vm._v(" "),
+                                _c("th", { staticStyle: { width: "1px" } }, [
+                                  _vm._v("เล่น")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "th",
+                                  {
+                                    staticStyle: { width: "1px" },
+                                    attrs: { nowrap: "" }
+                                  },
+                                  [_vm._v("ชนะ")]
+                                )
                               ]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(item.number))]),
-                              _vm._v(" "),
-                              item.is_won == -1
-                                ? _c("td", { staticClass: "text-warning" }, [
-                                    _vm._v("รอผล")
+                              _vm._l(list, function(item, index) {
+                                return _c("tr", [
+                                  _c("td", { attrs: { nowrap: "" } }, [
+                                    _vm._v(_vm._s(index + 1) + ".")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                " +
+                                        _vm._s(item.number) +
+                                        "\n                                "
+                                    ),
+                                    item.is_un == 1
+                                      ? _c(
+                                          "label",
+                                          { staticClass: "text-danger" },
+                                          [_vm._v("(เลขอั้น)")]
+                                        )
+                                      : _vm._e()
+                                  ]),
+                                  _vm._v(" "),
+                                  item.is_won == -1
+                                    ? _c(
+                                        "td",
+                                        { staticClass: "text-warning" },
+                                        [_vm._v("รอผล")]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  item.is_won == 1
+                                    ? _c(
+                                        "td",
+                                        { staticClass: "text-success" },
+                                        [_vm._v("ชนะ")]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  item.is_won == 0
+                                    ? _c("td", { staticClass: "text-danger" }, [
+                                        _vm._v("แพ้")
+                                      ])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass: "text-right",
+                                      attrs: { nowrap: "" }
+                                    },
+                                    [_vm._v(_vm._s(item.multiple_txt) + " ฿")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "text-right" }, [
+                                    _vm._v(_vm._s(item.total_price_txt))
                                   ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              item.is_won == 1
-                                ? _c("td", { staticClass: "text-success" }, [
-                                    _vm._v("ชนะ")
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              item.is_won == 0
-                                ? _c("td", { staticClass: "text-danger" }, [
-                                    _vm._v("แพ้")
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                {
-                                  staticClass: "text-right",
-                                  attrs: { nowrap: "" }
-                                },
-                                [_vm._v(_vm._s(item.multiple_txt) + " ฿")]
-                              ),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-right" }, [
-                                _vm._v(_vm._s(item.total_price_txt))
-                              ])
-                            ])
-                          })
-                        ],
-                        2
-                      )
+                                ])
+                              })
+                            ],
+                            2
+                          )
+                        : _vm._e()
                     ])
                   }),
                   _vm._v(" "),
@@ -41538,7 +41592,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        สามตัวบบน (" +
+                            "\n                        สามตัวบน (" +
                               _vm._s(_vm.price_tree_up) +
                               ")\n                    "
                           )
@@ -43066,10 +43120,35 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "ชนะ : " +
-                                          _vm._s(item.total_price) +
-                                          " ฿"
-                                      )
+                                        "ชนะ :  \n                        "
+                                      ),
+                                      item.is_un == true
+                                        ? _c("span", [
+                                            _c("del", [
+                                              _vm._v(
+                                                _vm._s(item.total_price) + " ฿"
+                                              )
+                                            ])
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      item.is_un == true
+                                        ? _c("span", [
+                                            _vm._v(
+                                              _vm._s(
+                                                parseFloat(item.total_price) / 2
+                                              ) + " ฿ "
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      item.is_un == false
+                                        ? _c("span", [
+                                            _vm._v(
+                                              _vm._s(item.total_price) + " ฿"
+                                            )
+                                          ])
+                                        : _vm._e()
                                     ]
                                   )
                                 ]
