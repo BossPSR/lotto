@@ -47,7 +47,9 @@ Route::post('/lottery_number_set','Frontend\LotteryNumberSetController@post');
 Route::get('/lottery_news','Frontend\LotteryNewsController@index')->name('lottery_news');
 Route::get('/lottery_bonus','Frontend\LotteryBonusController@index')->name('lottery_bonus');
 Route::get('/help','Frontend\HelpController@index')->name('help');
+Route::get('/help_visitor','Frontend\HelpController@index_visitor')->name('help_visitor');
 Route::get('/contact','Frontend\ContactController@index')->name('contact');
+Route::get('/contact_visitor','Frontend\ContactController@index_visitor')->name('contact_visitor');
 
 //admin
 Route::prefix('/admin')->name('admin.')->group(function () {

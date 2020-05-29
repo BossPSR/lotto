@@ -67,7 +67,7 @@
                                             <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
                                         </div>
                                         <div>
-                                            <a href=""><i class="fas fa-headset"></i>ติดต่อเรา</a>
+                                            <a href="{{ route('contact_visitor') }}" ><i class="fas fa-headset"></i>ติดต่อเรา</a>
                                         </div>
                                     </div>
                                 </div>
@@ -107,12 +107,12 @@
                                                                 <div class="form_user">
                                                                     <div>ชื่อผู้ใช้งาน</div>
                                                                     <input class="form-control" type="text" name="username" id="">
-                                                                    <a href="" tabindex="-1"><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
+                                                                    <a href="{{ route('help_visitor') }}" tabindex="-1"><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
                                                                 </div>
                                                                 <div class="form_user">
                                                                     <div>รหัสผ่าน</div>
                                                                     <input class="form-control" type="password" name="password" id="">
-                                                                    <a href=""><i class="fas fa-unlock"></i> ลืมรหัสผ่าน</a>
+                                                                    <!-- <a href=""><i class="fas fa-unlock"></i> ลืมรหัสผ่าน</a> -->
                                                                 </div>
                                                                 <div class="form_user_send">
                                                                     <button class="btn btn-warning button_login" type="submit">เข้าสู่ระบบ</button>

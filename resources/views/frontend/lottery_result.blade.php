@@ -119,6 +119,14 @@
                 <?php
                     }
                 }
+                else
+                {
+                    ?>
+                    <div class="container shape-container">
+                        <div class="alert alert-danger">ยังไม่มีข้อมูล</div>
+                    </div>
+                    <?php
+                }
                 ?>
             </div>
         </div>

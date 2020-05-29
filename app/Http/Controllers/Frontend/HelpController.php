@@ -7,14 +7,16 @@ use App\Models\PlayerRules;
 
 class HelpController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
+        $this->middleware('auth');
         $player_rules = PlayerRules::where("deleted_at", null)->OrderBy('sort_order_id')->get();
         return view('frontend.help', [ 'player_rules' => $player_rules]);
+    }
+
+    public function index_visitor()
+    {
+        $player_rules = PlayerRules::where("deleted_at", null)->OrderBy('sort_order_id')->get();
+        return view('frontend.help_visitor', [ 'player_rules' => $player_rules]);
     }
 }

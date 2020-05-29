@@ -2,7 +2,7 @@
 @section('contact_member')
 
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#FED63E;">
+<div class="jackpot" style="background:#FED63E; min-height:100vh">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">

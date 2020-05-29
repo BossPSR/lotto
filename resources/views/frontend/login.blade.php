@@ -118,6 +118,11 @@
                 <?php
                     }
                 }
+                else{
+                    ?>
+                    <div class="alert alert-danger mb-0">ยังไม่มีข้อมูล</div>
+                    <?php
+                }
                 ?>
             </div>
         </div>

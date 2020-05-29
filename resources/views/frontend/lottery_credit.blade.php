@@ -46,12 +46,6 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
                         </form>
                     </div>
                     <div class="part-body">
-                        @if(count($transactions) == 0)
-                        <div class="alert alert-danger">
-                            คุณยังไม่มีรายได้
-                        </div>
-                        @endif
-
                         <?php
                         $status_list = array(
                             'pending' => array(
