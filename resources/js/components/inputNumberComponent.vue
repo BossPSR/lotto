@@ -171,7 +171,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_tree_front')" id="price_tree_front" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
@@ -188,7 +188,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_two_up')" id="price_two_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
@@ -205,7 +205,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_run_up')" id="price_run_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
@@ -222,7 +222,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex ">
                 <div class="col-xl-12 col-lg-12 col-sm-12 hide" id="main-input">
                     <div class="single-jackpot disableSelection">
@@ -482,7 +482,7 @@
         <div v-if="page_index==3">
             <a id="input-number-btn" v-on:click="change_page(1)" class="btn btn-sm btn-warning text-white col-md-2">กลับ</a>
             <div v-for="(list, huay_type) in my_number">
-    
+
                 <div v-if="list.length">
                     <label class="mt--2"> {{type_name[huay_type]}}</label>
                 </div>
@@ -492,7 +492,7 @@
                             <div class="input-group-append"><span class="input-group-text bg-white" style="min-width:45px;" align="center">{{  index+1}}.</span></div>
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
-                            <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp; 
+                            <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
                             <span v-if="item.is_un == true"><del>{{ item.total_price }} ฿</del></span>
                             <span v-if="item.is_un == true">{{ parseFloat(item.total_price)/2 }} ฿ </span>
                             <span v-if="item.is_un == false">{{ item.total_price }} ฿</span>
@@ -503,7 +503,7 @@
                         </div>
                         <div v-if="item.min > item.multiple" class="alert alert-danger p-1">ขั้นต่ำ {{item.min}} บาท</div>
                         <div v-if="item.is_un" class="alert alert-danger p-1">เลขนี้ถูกอั้น ชนะจ่ายครึ่งราคา</div>
-    
+
                     </div>
                 </div>
             </div>
@@ -540,7 +540,7 @@
                             <button class="btn btn-primary w-100" v-on:click="change_page(4)">แทงพนัน</button>
                         </div>
                     </div>
-    
+
                 </div>
             </section>
         </div>
@@ -577,7 +577,7 @@
             <div class="alert alert-danger" v-if="poy_list.length == 0" style="display: flex; justify-content: space-between;">
                 <label>ยังไม่มีเลขชุด</label>
             </div>
-    
+
             <div v-for="(poy, index) in poy_list">
                 <a v-on:click="load_number_list(poy.id)" style="cursor:pointer;">
                     <div class="row border shadow rounded mb-3 p-2">
@@ -627,11 +627,11 @@
                     <button class="btn btn-light mt-2" v-on:click="change_page(5)">เลขชุด/ดึงโพย</button>
                 </div>
             </div>
-    
+
             <div id="lottery_all">
                 {{my_number_txt}}
             </div>
-    
+
         </div>
     </div>
 </template>

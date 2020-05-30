@@ -76,9 +76,9 @@
                         <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-7">
-                                    <div class="logo">
+                                    <div class="logo" style="width:30%">
 
-                                            <img id="logo-2" src="{{ asset('logo2.png') }}" alt="">
+                                        <img id="logo-2" src="assets/img/logo-2.png" alt="">
 
                                     </div>
                                 </div>
