@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Models\Deposits;
+use App\Models\HuayRoundPoyNumbers;
+use App\Models\HuayRoundPoys;
 use App\Models\HuayRounds;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
@@ -21,7 +23,8 @@ class IndexController extends Controller
     {
         $this->middleware('auth')->except('index', 'login_process', 'register', 'register_process');
     }
-    public function index()
+
+    public function index(Request $request)
     {
         if (!Auth::check()) {
             $huay_rounds = HuayRounds::whereBetween('start_datetime', array(date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')))
@@ -103,6 +106,14 @@ class IndexController extends Controller
             return redirect()->route('lottery_withdraw')->with('message', 'คุณได้ตั้งค่าเสร็จสมบูรณ์แล้ว!')->with('status', 'success');
         } else if (isset($_POST['addWithdraw'])) {
             $user = auth()->user();
+
+            $last_poy = HuayRoundPoys::where('user_id', $user->id)->orderBy('id', 'DESC')->first();
+            if (!$last_poy)
+                return redirect()->route('lottery_withdraw')->with('message', 'คุณยังไม่มีการเล่นในระบบ ยอดที่คุณสามารถถอนได้คือ 50% ของการเล่นล่าสุด')->with('status', 'error');
+
+            if (($last_poy->total_price*0.5) != $_POST['amount'])
+                return redirect()->route('lottery_withdraw')->with('message', 'ยอดที่คุณสามารถถอนได้คือ 50% ของการเล่นล่าสุด คือ '.number_format(($last_poy->total_price * 0.5), 2).' บาท')->with('status', 'error');
+
             if ($user->money - $_POST['amount'] >= 0) {
                 $withdraw = new Withdraws();
                 $withdraw->remark = $_POST['remark'];

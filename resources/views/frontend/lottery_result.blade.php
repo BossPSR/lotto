@@ -135,5 +135,7 @@
 <!-- jackpot end -->
 <script src="https://code.jquery.com/jquery-git.min.js"></script>
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
-
+<script>
+    var csrf_token = '{{ csrf_token() }}';
+</script>
 @endsection

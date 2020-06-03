@@ -264,6 +264,7 @@ class LotteryPlayController extends Controller
                 $poy->huay_id = $check->huay_id;
                 $poy->huay_round_id = $check->id;
                 $poy->secret = $request->huay_secret;
+                $poy->total_price = $total_price;
 
                 $poy->save();
 

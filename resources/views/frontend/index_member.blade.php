@@ -268,6 +268,7 @@
     <!-- jackpot end -->
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
+    var csrf_token = '{{ csrf_token() }}';
     @if(session()->has('message'))
     Swal.fire({
         type: '{{ session()->get("status") }}',

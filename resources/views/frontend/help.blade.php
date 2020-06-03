@@ -64,6 +64,8 @@
 </div>
 <!-- jackpot end -->
 <script>
+    var csrf_token = '{{ csrf_token() }}';
+
     function toggle(id) {
         $('.player-info').css('display', 'none');
         $('#' + id).css('display', 'block');

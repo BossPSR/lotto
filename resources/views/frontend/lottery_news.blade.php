@@ -51,5 +51,9 @@
         </div>
     </div>
 </div>
+<script>
+    var csrf_token = '{{ csrf_token() }}';
+
+</script>
 <!-- jackpot end -->
 @endsection

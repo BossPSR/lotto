@@ -42,6 +42,7 @@ $banks_array = array(
     td {
         padding: 0px;
     }
+
     .image_rules {
         width: 80px;
         height: 60px;
@@ -72,7 +73,7 @@ $banks_array = array(
                                     </div>
                                 </div>
                                 @if($_GET['page'] == 'index')
-
+                                @csrf
                                 <div class="row">
                                     <div class="col-6 mb-2 pr-1">
                                         <div class="border pt-3 pb-3 rounded">
@@ -148,6 +149,8 @@ $banks_array = array(
                                 @endif
 
                                 @if($_GET['page'] == 'members')
+                                @csrf
+
                                 <hr>
                                 <h1 class="text-center"><i class="fa fa-users"></i> สมาชิก</h1>
                                 @if(count($downlines) == 0)
@@ -166,6 +169,8 @@ $banks_array = array(
                                 @endif
 
                                 @if($_GET['page'] == 'revenue')
+                                @csrf
+
                                 <hr>
                                 <h1 class="text-center"><i class="fa fa-money-bill"></i> รายได้</h1>
                                 @if(count($transactions) == 0)
@@ -220,7 +225,7 @@ $banks_array = array(
                                             @endif
                                         </td>
                                         <td>{{$transaction->remark}}</td>
-                                        
+
                                         <td class="text-center">{{date('d/m/Y H:i:s',strtotime($transaction->created_at))}}</td>
                                         <td class="text-right">{{number_format($transaction->amount, 2)}}</td>
                                         <td nowrap class="text-center"><?php echo $status_list[$transaction->status]['html']; ?></td>
@@ -233,114 +238,119 @@ $banks_array = array(
                                 <hr>
                                 <h1 class="text-center"><i class="fa fa-bell"></i> แจ้งถอนรายได้</h1>
                                 @if($user_info->credit == 0)
+                                @csrf
+
                                 <div class="alert alert-danger">
                                     รายได้คุณไม่เพียงพอ
                                 </div>
                                 @endif
                                 @if($commission_setting->min_withdraws >= $user_info->credit)
+                                @csrf
+
                                 <div class="alert alert-danger">
                                     รายได้ของคุณยังไม่ถึงเกณฑ์ที่จะถอนได้ ({{number_format($commission_setting->min_withdraws, 2)}} ขึ้นไป)
                                 </div>
                                 @endif
                                 @if($commission_setting->min_withdraws <= $user_info->credit)
 
-                                @if($user_info->bank_name && $user_info->credit > 0)
-                                <div class="part-body">
-                                    <div class="d-flex">
+                                    @if($user_info->bank_name && $user_info->credit > 0)
+                                    <div class="part-body">
+                                        <div class="d-flex">
 
-                                        <div class="col-xl-12 col-lg-12 col-sm-12">
+                                            <div class="col-xl-12 col-lg-12 col-sm-12">
 
-                                            <div class="single-jackpot">
-                                                <div class="part-body">
-                                                    <div class="form-group">
-                                                        <div>ธนาคาร</div>
-                                                        <div class="d-flex" style="padding: 15px; border: 1px solid rgba(0, 0, 0, 0.125);">
-                                                            <div style="margin-right: 15px;"><img src="{{url('assets/img/banks/'.$user_info->bank_name.'.png')}}" style="max-height: 200px; max-width:200px; object-fit:contain" alt=""></div>
-                                                            <div>
-                                                                <div><b>{{$user_info->bank_name}}</b></div>
-                                                                <div><b>ชื่อบัญชี:</b></div>
-                                                                <div>{{$user_info->account_no}}</div>
-                                                                <div><b>เลขที่บัญชี:</b></div>
-                                                                <div>{{$user_info->account_name}}</div>
+                                                <div class="single-jackpot">
+                                                    <div class="part-body">
+                                                        <div class="form-group">
+                                                            <div>ธนาคาร</div>
+                                                            <div class="d-flex" style="padding: 15px; border: 1px solid rgba(0, 0, 0, 0.125);">
+                                                                <div style="margin-right: 15px;"><img src="{{url('assets/img/banks/'.$user_info->bank_name.'.png')}}" style="max-height: 200px; max-width:200px; object-fit:contain" alt=""></div>
+                                                                <div>
+                                                                    <div><b>{{$user_info->bank_name}}</b></div>
+                                                                    <div><b>ชื่อบัญชี:</b></div>
+                                                                    <div>{{$user_info->account_no}}</div>
+                                                                    <div><b>เลขที่บัญชี:</b></div>
+                                                                    <div>{{$user_info->account_name}}</div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <form action="" method="POST">
-                                                            @csrf
-                                                            <div>จำนวนเงินที่ต้องการถอน</div>
-                                                            <input type="number"  name="amount" step="0.01" min="{{$commission_setting->min_withdraws}}" class="form-control form-group">
-                                                            <div>หมายเหตุ</div>
-                                                            <textarea class="form-control form-group" name="remark" id="" cols="30" rows="5"></textarea>
-                                                            <button type="submit" name="addWithdraw" class="btn btn-warning new_story">แจ้งถอน</button>
-                                                            <button type="reset" class="btn btn-danger ">ยกเลิก</button>
-                                                        </form>
+                                                        <div class="form-group">
+                                                            <form action="" method="POST">
+                                                                @csrf
+                                                                <div>จำนวนเงินที่ต้องการถอน</div>
+                                                                <input type="number" name="amount" step="0.01" min="{{$commission_setting->min_withdraws}}" class="form-control form-group">
+                                                                <div>หมายเหตุ</div>
+                                                                <textarea class="form-control form-group" name="remark" id="" cols="30" rows="5"></textarea>
+                                                                <button type="submit" name="addWithdraw" class="btn btn-warning new_story">แจ้งถอน</button>
+                                                                <button type="reset" class="btn btn-danger ">ยกเลิก</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @elseif(!$user_info->bank_name)
-                                <div class="part-head">
+                                    @elseif(!$user_info->bank_name)
+                                    
+                                    <div class="part-head">
 
-                                    <div class="text" style="margin-left:25px;">
-                                        <span class="amount">ตั้งค่าธนาคาร</span>
-                                        <span class="draw-date"></span>
-                                    </div>
-                                </div>
-                                <div class="part-body">
-                                    <div class="d-flex">
-
-                                        <div class="col-xl-12 col-lg-12 col-sm-12">
-
-                                            <div class="single-jackpot">
-                                                <div class="part-head">
-
-                                                </div>
-                                                <div class="part-body">
-
-                                                    <div class="form-group">
-                                                        <div>*กรุณาตั้งค่าธนาคารก่อนจะทำการถอนได้ </div>
-
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <form action="" method="POST">
-                                                            @csrf
-                                                            <div class="form-group">
-                                                                <label>ธนาคาร</label>
-                                                                <select class="form-control" name="bank_name">
-                                                                    <?php
-                                                                    foreach ($banks_array as $bank)
-                                                                        echo '<option>' . $bank . '</option>';
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>เลขที่บัญชี</label>
-                                                                <input pattern="[0-9, -]+" maxlength="255" type="text" name="account_no" class="form-control" id="" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>ชื่อบัญชี</label>
-                                                                <input maxlength="255" type="text" name="account_name" class="form-control" id="" required>
-                                                            </div>
-                                                            <span class="text-danger">หากทำการบันทึกแล้วจะไม่สามารถเปลี่ยนแปลงได้ภายหลัง</span>
-                                                            <br>
-                                                            <button type="submit" name="updateUserBank" class="btn btn-success">บันทึกข้อมูล</button>
-                                                            <button type="reset" class="btn btn-danger ">ยกเลิก</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                        <div class="text" style="margin-left:25px;">
+                                            <span class="amount">ตั้งค่าธนาคาร</span>
+                                            <span class="draw-date"></span>
                                         </div>
                                     </div>
-                                </div>
-                                @endif
-                                @endif
-                                @endif
+                                    <div class="part-body">
+                                        <div class="d-flex">
+
+                                            <div class="col-xl-12 col-lg-12 col-sm-12">
+
+                                                <div class="single-jackpot">
+                                                    <div class="part-head">
+
+                                                    </div>
+                                                    <div class="part-body">
+
+                                                        <div class="form-group">
+                                                            <div>*กรุณาตั้งค่าธนาคารก่อนจะทำการถอนได้ </div>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <form action="" method="POST">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <label>ธนาคาร</label>
+                                                                    <select class="form-control" name="bank_name">
+                                                                        <?php
+                                                                        foreach ($banks_array as $bank)
+                                                                            echo '<option>' . $bank . '</option>';
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>เลขที่บัญชี</label>
+                                                                    <input pattern="[0-9, -]+" maxlength="255" type="text" name="account_no" class="form-control" id="" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>ชื่อบัญชี</label>
+                                                                    <input maxlength="255" type="text" name="account_name" class="form-control" id="" required>
+                                                                </div>
+                                                                <span class="text-danger">หากทำการบันทึกแล้วจะไม่สามารถเปลี่ยนแปลงได้ภายหลัง</span>
+                                                                <br>
+                                                                <button type="submit" name="updateUserBank" class="btn btn-success">บันทึกข้อมูล</button>
+                                                                <button type="reset" class="btn btn-danger ">ยกเลิก</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endif
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -353,7 +363,8 @@ $banks_array = array(
 <!-- jackpot end -->
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
-    @if(session()->has('message'))
+    var csrf_token = document.getElementsByName('_token')[0].value;
+    @if(session()-> has('message'))
     Swal.fire({
         type: '{{ session()->get("status") }}',
         title: '<small> {{ session()->get("message") }} </small>',

@@ -22,6 +22,8 @@ class CreateHuayRoundPoys extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('huay_id');
             $table->bigInteger('huay_round_id');
+            $table->decimal('total_price', 22, 2)->default(0);
+            $table->decimal('total_won', 22, 2)->default(0);
             $table->string('secret')->nullable();
             $table->softDeletes();
             $table->timestamps();

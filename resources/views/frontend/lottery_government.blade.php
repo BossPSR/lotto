@@ -53,4 +53,7 @@ $_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript" src="js/app.js"></script>
+<script>
+    var csrf_token = '{{ csrf_token() }}';
+</script>
 @endsection

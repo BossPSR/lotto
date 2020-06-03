@@ -1,11 +1,35 @@
 (function ($) {
     "use strict";
 
-    $(document).ready(function(){
-        
+    $(document).ready(function () {
+
+        try {
+            $.ajax({
+                /* the route pointing to the post function */
+                url: '/getFingerprint',
+                type: 'POST',
+                /* send the csrf-token and the input to the controller */
+                data: {
+                    _token: csrf_token,
+                },
+                dataType: 'JSON',
+                /* remind that 'data' is the response of the AjaxController */
+                success: function (data) {
+                    console.log(data)
+                }
+            })
+                .fail(function (data) {
+                    console.log(data.responseText);
+                });
+            
+        } catch (error) {
+            
+        }
+            
+
         $('.Vertical-Slider').css('overflow', 'hidden');
 
-        $(function(){
+        $(function () {
             let thizHeight = $('.get-thiz-height').height();
             $('.winners-list').css({
                 'height': thizHeight,
@@ -15,9 +39,9 @@
 
         // dropdown menu scroll
         var x = $('.dropdown-item');
-        $('.dropdown-menu').each(function(){
+        $('.dropdown-menu').each(function () {
             var v = $(this).find(x).length;
-            if(v <= 6) {
+            if (v <= 6) {
                 $(this).css('height', 'auto');
             } else {
                 $(this).css('height', '260px');
@@ -25,20 +49,20 @@
         });
 
         // anchor tag disabled
-        $(".lottery-result .result-board .table tbody tr td ul li a").on('click', function(e) {
+        $(".lottery-result .result-board .table tbody tr td ul li a").on('click', function (e) {
             e.preventDefault();
         });
-        $(".sold").on('click', function(e) {
+        $(".sold").on('click', function (e) {
             e.preventDefault();
         });
 
         // cart order function
-        var item = $('.single-order'); 
+        var item = $('.single-order');
         $('#cart-number').text(item.length);
-        
-        $('.tooltip-bottom').on('click', function(){
+
+        $('.tooltip-bottom').on('click', function () {
             $(this).closest(".single-order").remove();
-            var item = $('.single-order'); 
+            var item = $('.single-order');
             $('#cart-number').text(item.length);
             if (item.length < 1) {
                 $('.all-orders').append("<h2>You don't have any tickets. Play now to add tickets to your order.</h2>");
@@ -48,7 +72,7 @@
         });
 
         // megamenu fixing for lottery 
-        $('.for-lottery-btn').on('mouseover', function(){
+        $('.for-lottery-btn').on('mouseover', function () {
             $('.for-lottery').css("position", "initial");
             if ($(window).width() < 960) {
                 $('.for-lottery').css("position", "relative");
@@ -57,8 +81,8 @@
 
         // modal video
         $(".js-video-button").modalVideo({
-            youtube:{
-                controls:0,
+            youtube: {
+                controls: 0,
                 nocookie: true
             }
         });
@@ -174,12 +198,12 @@
         });
 
         bannerSlide.on("translate.owl.carousel", function () {
-            jQuery(this).find(".owl-item .banner-content > *").removeClass("fadeInUp animated").css("opacity","0");
-            jQuery(this).find(".owl-item .part-img").removeClass("fadeInRight animated").css("opacity","0");
-        });          
+            jQuery(this).find(".owl-item .banner-content > *").removeClass("fadeInUp animated").css("opacity", "0");
+            jQuery(this).find(".owl-item .part-img").removeClass("fadeInRight animated").css("opacity", "0");
+        });
         bannerSlide.on("translated.owl.carousel", function () {
-            jQuery(this).find(".owl-item.active .banner-content > *").addClass("fadeInUp animated").css("opacity","1");
-            jQuery(this).find(".owl-item.active .part-img").addClass("fadeInRight animated").css("opacity","1");
+            jQuery(this).find(".owl-item.active .banner-content > *").addClass("fadeInUp animated").css("opacity", "1");
+            jQuery(this).find(".owl-item.active .part-img").addClass("fadeInRight animated").css("opacity", "1");
         });
 
         // brand slider
@@ -221,14 +245,14 @@
 
         $('.brand-list .owl-item.active').eq(2).addClass("target");
 
-        barndSlider.on('changed.owl.carousel', function(event) {
-            setTimeout(function(){
+        barndSlider.on('changed.owl.carousel', function (event) {
+            setTimeout(function () {
                 var activeEls = $('.brand-list .owl-item.active').eq(2); // .eq(1) to get the "middle image out of 3 actives"
-                setCarouselCaption( activeEls ); 
-            },1);
+                setCarouselCaption(activeEls);
+            }, 1);
         });
-    
-        function setCarouselCaption(el){
+
+        function setCarouselCaption(el) {
             $(".brand-list .owl-item").removeClass("target");
             el.addClass("target");
         }
@@ -270,14 +294,14 @@
 
         $('.jackpot-slider .owl-item.active').eq(1).addClass("target");
 
-        jackpotSlider.on('changed.owl.carousel', function(event) {
-            setTimeout(function(){
+        jackpotSlider.on('changed.owl.carousel', function (event) {
+            setTimeout(function () {
                 var activeEls = $('.jackpot-slider .owl-item.active').eq(1); // .eq(1) to get the "middle image out of 3 actives"
-                setCarouselCaption( activeEls ); 
-            },1);
+                setCarouselCaption(activeEls);
+            }, 1);
         });
-    
-        function setCarouselCaption(el){
+
+        function setCarouselCaption(el) {
             $(".jackpot-slider .owl-item").removeClass("target");
             el.addClass("target");
         }
@@ -295,7 +319,7 @@
             scrollable: false,
             scrollableHeight: "350px"
         });
-        
+
         // testimonial slider
         var testimonialSlider = $('.testimonial-slider');
         testimonialSlider.owlCarousel({
@@ -370,30 +394,30 @@
                 }
             }
         });
-        $('.owl-next').on('click', function() {
+        $('.owl-next').on('click', function () {
             testimonialSlider2.trigger('next.owl.carousel');
         })
-        $('.owl-prev').on('click', function() {
+        $('.owl-prev').on('click', function () {
             testimonialSlider2.trigger('prev.owl.carousel', [300]);
         })
     });
-    
+
     /* initilization preloader & setInterval */
-    $(window).on('load',function(){
+    $(window).on('load', function () {
         var preLoder = $(".preloader");
         preLoder.fadeOut(1000);
 
-        setInterval(function(){ 
+        setInterval(function () {
             $(".banner .part-img").addClass("active")
         }, 1000);
-       
+
     });
 
     /* logo changing for index-2 & navbar fixed */
-    $(window).on("scroll", function(){
+    $(window).on("scroll", function () {
         var fixed_top = $(".header");
         var topbar = $('.topbar');
-        if( $(window).scrollTop() > 500){  
+        if ($(window).scrollTop() > 500) {
             fixed_top.addClass("animated fadeInDown fixed-header");
             topbar.hide();
             $("#logo-2").attr("src", "assets/img/logo.png");
@@ -402,7 +426,7 @@
                 $("#logo-2").attr("src", "assets/img/logo-2.png");
             }
         }
-        else{
+        else {
             fixed_top.removeClass("animated fadeInDown fixed-header");
             topbar.show();
             $("#logo-2").attr("src", "assets/img/logo-2.png");
@@ -413,7 +437,7 @@
         }
     });
 
-}(jQuery));	
+}(jQuery));
 
 
 

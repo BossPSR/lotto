@@ -45,7 +45,7 @@
                 <div class="single-jackpot">
                     <div class="part-head">
 
-                        <div class="text"  style="margin-left:25px;">
+                        <div class="text" style="margin-left:25px;">
                             <span class="amount">แจ้งเติมเครดิต</span>
                             <span class="draw-date"></span>
                         </div>
@@ -96,7 +96,7 @@
                                                             <img id="blah" src="{{url('assets/img/dollar-symbol.png')}}">
                                                         </label>
                                                     </div>
-                                                    <button type="submit" name="addDeposit" class="btn btn-warning new_story">แจ้งเติมเครดิต</button>
+                                                    <button type="submit" name="addDeposit" class="btn btn-warning text-white">แจ้งเติมเครดิต</button>
                                                     <button type="reset" class="btn btn-danger ">ยกเลิก</button>
                                                 </div>
                                             </form>
@@ -121,6 +121,8 @@
     <!-- jackpot end -->
     <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
     <script>
+        var csrf_token = document.getElementsByName('_token')[0].value;
+
         @if(session()-> has('message'))
 
         var status = "{{session()->get('status')}}"

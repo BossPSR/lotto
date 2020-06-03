@@ -12,6 +12,7 @@
 */
 
 Route::get('/','Frontend\IndexController@index')->name('index');
+Route::post('/getFingerprint','Frontend\ChatController@getFingerprint');
 Route::get('/index','Frontend\IndexController@index')->name('index');
 Route::get('/register','Frontend\IndexController@register')->name('register');
 Route::post('/register_process','Frontend\IndexController@register_process')->name('register_process');

@@ -30,5 +30,8 @@
     </div>
 </div>
 <script src="js/app.js"></script>
+<script>
+    var csrf_token = '{{ csrf_token() }}';
+</script>
 <!-- jackpot end -->
 @endsection

@@ -106,5 +106,8 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
         </div>
     </div>
 </div>
+<script>
+    var csrf_token = '{{ csrf_token() }}';
+</script>
 <!-- jackpot end -->
 @endsection

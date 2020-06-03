@@ -72,10 +72,10 @@ $banks_array = array(
                                             <form action="" method="POST">
                                                 @csrf
                                                 <div>จำนวนเงินที่ต้องการถอน</div>
-                                                <input type="number" name="amount"  step="0.01" min="0" class="form-control form-group">
+                                                <input type="number" name="amount"  step="0.01" min="0" class="form-control form-group" required>
                                                 <div>หมายเหตุ</div>
                                                 <textarea class="form-control form-group" name="remark" id="" cols="30" rows="5"></textarea>
-                                                <button type="submit" name="addWithdraw" class="btn btn-warning new_story">แจ้งถอน</button>
+                                                <button type="submit" name="addWithdraw" class="btn btn-warning text-white">แจ้งถอน</button>
                                                 <button type="reset" class="btn btn-danger ">ยกเลิก</button>
                                             </form>
                                         </div>
@@ -151,8 +151,8 @@ $banks_array = array(
 <!-- jackpot end -->
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
+    var csrf_token = document.getElementsByName('_token')[0].value;
     @if(session()-> has('message'))
-
     var status = "{{session()->get('status')}}"
     var status_name = (status == "success" ? 'สำเร็จ' : 'ไม่สำเร็จ')
     Swal.fire(
