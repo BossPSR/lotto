@@ -3,30 +3,6 @@
 
     $(document).ready(function () {
 
-        try {
-            $.ajax({
-                /* the route pointing to the post function */
-                url: '/getFingerprint',
-                type: 'POST',
-                /* send the csrf-token and the input to the controller */
-                data: {
-                    _token: csrf_token,
-                },
-                dataType: 'JSON',
-                /* remind that 'data' is the response of the AjaxController */
-                success: function (data) {
-                    console.log(data)
-                }
-            })
-                .fail(function (data) {
-                    console.log(data.responseText);
-                });
-            
-        } catch (error) {
-            
-        }
-            
-
         $('.Vertical-Slider').css('overflow', 'hidden');
 
         $(function () {

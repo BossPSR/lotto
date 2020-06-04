@@ -1,4 +1,6 @@
 @extends('frontend/option/layout_member')
+@extends('frontend.option.layout_chat')
+
 @section('contact_member')
 
        <!-- jackpot begin -->

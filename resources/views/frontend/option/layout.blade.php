@@ -135,6 +135,7 @@
     <!-- header end -->
     @yield('content')
 
+    @extends('frontend.option.layout_chat')
 
     <!-- copyright begin -->
     <div class="copyright">
@@ -170,36 +171,7 @@
     </div>
     <!-- mobile navbar end -->
 
-    <!--- CHAT -->
-    <div style="position: fixed; right: 10px; bottom:0px; height:40px; margin-left:10px" class="col-md-3 col-sm-5 col-7 border bg-white">
-        <a class="w-100 btn">
-            <label style="cursor:pointer"><i class="fa fa-comment-dots"></i> CHAT</label>
-        </a>
-        <div style="">
-            <div style="height: 410px; overflow-y:scroll">
-                <?php
-                for ($i = 0; $i < 100; $i++) {
-                ?>
-                    <div class="text-right">
-                        <label>A</label>
-                    </div>
-                    <div class="text-left">
-                        <label>B</label>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-            <div class="row" style="max-height: 50px;;">
-                <div class="col-md-8 col-sm-8 col-8">
-                    <input type="text" class="form-control" style="height: 30px !important">
-                </div>
-                <div class="col-md-4 col-sm-4 col-4 pl-0">
-                    <a class="btn btn-success text-white btn-sm w-100 ">ส่ง</a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- jquery -->
     <script src="{{asset('assets/js/jquery.js')}}"></script>

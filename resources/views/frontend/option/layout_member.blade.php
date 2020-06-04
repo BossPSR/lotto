@@ -164,6 +164,7 @@
         @yield('contact_member')
 
 
+
         <!-- jquery -->
         <script src="{{asset('assets/js/jquery.js')}}"></script>
         <!-- proper js -->

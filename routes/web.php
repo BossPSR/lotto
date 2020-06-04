@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/','Frontend\IndexController@index')->name('index');
-Route::post('/getFingerprint','Frontend\ChatController@getFingerprint');
+
+Route::post('/get_chat_list','Frontend\ChatController@get_chat_list');
+Route::post('/add_chat_list','Frontend\ChatController@add_chat_list');
+Route::post('/get_fingerprint','Frontend\ChatController@get_fingerprint');
+
 Route::get('/index','Frontend\IndexController@index')->name('index');
 Route::get('/register','Frontend\IndexController@register')->name('register');
 Route::post('/register_process','Frontend\IndexController@register_process')->name('register_process');
@@ -86,6 +89,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/blacklist_user','Backend\UserController@blacklist_user')->name('blacklist_user'); //บัญชีดำ
 
     Route::get('/news_huay','Backend\NewsHuayController@index')->name('news_huay'); //จัดการข่าวสาร
+    Route::get('/chat','Backend\chatController@index')->name('chat'); //chat
 
     Route::get('/rule_huay','Backend\RuleHuayController@index')->name('rule_huay'); //จัดการกฏติกา
 

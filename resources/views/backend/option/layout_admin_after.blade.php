@@ -296,6 +296,10 @@
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลสมาชิก" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
 
+                    <li class="nav-item {{ Request::segment(2) == 'chat' ? 'active' : '' }}">
+                        <a href="{{ route('admin.chat') }}"><i class="fa fa-comments"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">CHAT</span></a>
+                    </li>
+
                     <li class="nav-item {{ Request::segment(2) == 'approve_user' || Request::segment(2) == 'list_user' || Request::segment(2) == 'blacklist_user' ? 'active' : '' }}">
                         <a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="ระบบจัดการผู้เล่น">ระบบจัดการผู้เล่น</span></a>
                         <ul class="menu-content">
