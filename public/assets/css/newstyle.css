@@ -11,7 +11,7 @@
 }
 
 .button_login{
-   background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
+   background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
    color: #ffffff;
    font-size: 25px;
 }
@@ -21,7 +21,7 @@
 }
 
 .form_user > div{
-    color: #000000;
+    color: #fff;
 }
 
 

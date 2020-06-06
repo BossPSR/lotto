@@ -31,7 +31,7 @@
 <script src="{{asset('assets/js/preview_img.js')}}"></script>
 
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#FED63E;">
+<div class="jackpot" style="background:#7A58BF;">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">

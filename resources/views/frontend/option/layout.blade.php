@@ -43,7 +43,7 @@
     <!-- preloader end -->
 
     <!-- header begin -->
-    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);">
+    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);">
         <div class="topbar" style="border-bottom: 1px solid #fff;">
             <div class="container">
                 <div class="row">
@@ -64,10 +64,10 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="select-lang" style="font-size: 20px;">
                             <div>
-                                <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
+                                <a href="{{ route('register') }}" style="color: #fff "><i class="fas fa-user-plus" ></i>สมัครสมาชิก</a>
                             </div>
                             <div>
-                                <a href="{{ route('contact_visitor') }}"><i class="fas fa-headset"></i>ติดต่อเรา</a>
+                                <a href="{{ route('contact_visitor') }}"  style="color: #fff "><i class="fas fa-headset"></i>ติดต่อเรา</a>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                                                     <div class="form_user">
                                                         <div>ชื่อผู้ใช้งาน</div>
                                                         <input class="form-control" type="text" name="username" id="">
-                                                        <a href="{{ route('help_visitor') }}" tabindex="-1"><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
+                                                        <a href="{{ route('help_visitor') }}" tabindex="-1" style="color: #fff "><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
                                                     </div>
                                                     <div class="form_user">
                                                         <div>รหัสผ่าน</div>

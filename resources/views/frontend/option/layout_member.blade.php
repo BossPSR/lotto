@@ -43,7 +43,7 @@
         </div>
         <!-- preloader end -->
         <!-- header begin -->
-        <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);">
+        <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);">
             <div class="topbar" style="border-bottom: 1px solid #fff;">
                 <div class="container">
                     <div class="row">
