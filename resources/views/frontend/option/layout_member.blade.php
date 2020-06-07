@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
+<?php
+
+use App\Models\ContactHeader;
+
+$contact_header = ContactHeader::first();
+?>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -48,15 +55,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
-                            <div class="support-area">
+                            <div class="support-area mt-2 mb-2">
                                 <ul>
-                                    <li>
-                                        <span class="icon"><i class="fas fa-headphones-alt"></i></span>
-                                        +00 564 834 58
+                                    <li class=" text-white">
+                                        <span class=""><i class="fas fa-headphones-alt"></i></span>
+                                        {{$contact_header->tel}}
                                     </li>
-                                    <li>
-                                        <span class="icon"><i class="far fa-envelope"></i></span>
-                                        support24@gmail.com
+                                    <li class=" text-white">
+                                        <span class=""><i class="far fa-envelope"></i></span>
+                                        {{$contact_header->email}}
                                     </li>
                                 </ul>
                             </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\HuayCategorys;
 use App\Models\HuayRoundPoyNumbers;
+use App\Models\Huays;
 use App\Models\HuayUns;
 use File;
 use Auth;
@@ -22,7 +23,7 @@ class UnHuayController extends Controller
     {
         if (isset($request->get_number_list)) {
             $wrap = array();
-            $numbers = HuayUns::where('huay_category_id', $request->huay_category_id)->get();
+            $numbers = HuayUns::where('huay_id', $request->huay_id)->where('huay_type', $request->huay_type)->get();
             if ($numbers) {
                 foreach ($numbers as $key => $number) {
                     if ($key == 0)
@@ -35,15 +36,18 @@ class UnHuayController extends Controller
             return response()->json($numbers, 200);
         } else if (isset($request->add_huay_category_un)) {
 
-            HuayUns::where('huay_category_id', $request->huay_category_id)->delete();
+            HuayUns::where('huay_id', $request->huay_id)->where('huay_type', $request->huay_type)->delete();
 
             $number_array = array();
             foreach ($request->number_array as $info) {
                 $number = new HuayUns();
                 $number->huay_category_id = $request->huay_category_id;
+                $number->huay_id = $request->huay_id;
                 $number->huay_type = $info['huay_type'];
                 $number->number = $info['number'];
                 $number->max_price = $info['max_price'];
+                $number->over_percent = $info['over_percent'];
+                $number->is_enable = $info['is_enable'];
                 $number->save();
                 array_push($number_array, $info['number']);
             }
@@ -54,10 +58,6 @@ class UnHuayController extends Controller
             // if ($number_array)
             //     HuayRoundPoyNumbers::where('huay_category_id', $request->huay_category_id)->where('is_won', -1)->whereIn('number', $number_array)->update(['is_un' => 0]);
             return response()->json(true, 200);
-        } else if (isset($request->clear_huay_uns)) {
-            $numbers = HuayUns::where('huay_category_id', $request->huay_category_id)->delete();
-            // HuayRoundPoyNumbers::where('huay_category_id', $request->huay_category_id)->where('is_un', 1)->where('is_won', -1)->update(['is_un'=> 0]);
-            return response()->json(true, 200);
         } else
             return response()->json(null, 401);
     }
@@ -65,8 +65,20 @@ class UnHuayController extends Controller
     public function index()
     {
         $huay_category = HuayCategorys::where('deleted_at', null)->get();
+        $huays = Huays::where('deleted_at', null)->get();
+
+        $huay_by_category_id = array();
+        foreach($huays as $huay)
+        {
+            if(!isset($huay_by_category_id[$huay->huay_category_id]))
+                $huay_by_category_id[$huay->huay_category_id] = array();
+
+            array_push($huay_by_category_id[$huay->huay_category_id], $huay);
+        }
+        
         $data = array(
             'huay_category' => $huay_category,
+            'huay_by_category_id' => $huay_by_category_id,
         );
         return view('backend.un_huay.huay.huay_un', $data);
     }

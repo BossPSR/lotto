@@ -134,7 +134,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 {{-- <a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a> --}}
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="feather icon-power"></i> Logout</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="feather icon-power"></i> Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -230,11 +230,11 @@
 
                         <h2 class="brand-text mb-0">Lucky Lotto</h2>
                     </a></li>
-                    <style>
-                        #tippy-1{
-                            display: none;
-                        }
-                    </style>
+                <style>
+                    #tippy-1 {
+                        display: none;
+                    }
+                </style>
                 {{-- <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li> --}}
             </ul>
         </div>
@@ -250,117 +250,126 @@
                 <li class=" navigation-header">
                     <span>
                         @if (Auth::user()->status == "คนออกผลหวย")
-                            คนออกผลห่วย
+                        คนออกผลห่วย
                         @elseif (Auth::user()->status == "ผู้ดูแลสมาชิก")
-                            ผู้ดูแลสมาชิก
+                        ผู้ดูแลสมาชิก
                         @elseif (Auth::user()->status == "ผู้ดูแลฝากถอน")
-                            ผู้ดูแลฝากถอน
+                        ผู้ดูแลฝากถอน
                         @elseif (Auth::user()->status == "ผู้ดูแลระบบใหญ่")
-                            ผู้ดูแลระบบใหญ่
+                        ผู้ดูแลระบบใหญ่
                         @endif
                     </span>
                 </li>
 
                 @if (Auth::user()->status == "คนออกผลหวย" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
-                    @if(Auth::user()->status == "ผู้ดูแลระบบใหญ่")
-                    <li class="nav-item {{ Request::segment(2) == 'index_admin' ? 'active' : '' }}">
-                        <a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
-                    </li>
-                    <li class="nav-item {{ Request::segment(2) == 'manage_admin' ? 'active' : '' }}">
-                        <a href="{{ route('admin.manage_admin') }}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="ระบบจัดการผู้ดูแล">ระบบจัดการผู้ดูแล</span></a>
-                    </li>
-                    @endif
+                @if(Auth::user()->status == "ผู้ดูแลระบบใหญ่")
+                <li class="nav-item {{ Request::segment(2) == 'index_admin' ? 'active' : '' }}">
+                    <a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) == 'manage_admin' ? 'active' : '' }}">
+                    <a href="{{ route('admin.manage_admin') }}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="ระบบจัดการผู้ดูแล">ระบบจัดการผู้ดูแล</span></a>
+                </li>
+                @endif
 
-                    <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_round' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.manage_huay') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.manage_huay_round') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการรอบหวย">รอบหวย</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_round' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
+                    <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ '/admin/manage_huay?category_id=1' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย-ทั่วไป</span></a>
+                        <li><a href="{{ '/admin/manage_huay?category_id=2' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย-ยี่กี</span></a>
+                        <li><a href="{{ '/admin/manage_huay?category_id=3' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย-ยี่กี Big Money</span></a>
+                        </li>
+                        <li><a href="{{ '/admin/manage_huay_round?category_id=1' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ทั่วไป</span></a>
+                        <li><a href="{{ '/admin/manage_huay_round?category_id=2' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี</span></a>
+                        <li><a href="{{ '/admin/manage_huay_round?category_id=3' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี Big Money</span></a>
+                        </li>
+                    </ul>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'reward_huay' || Request::segment(2) == 'reward_huay_yeekee' || Request::segment(2) == 'reward_huay_yeekee_cf' ? 'active' : '' }}">
-                        <a href="{{route('admin.reward_huay') }}"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'reward_huay' || Request::segment(2) == 'reward_huay_yeekee' || Request::segment(2) == 'reward_huay_yeekee_cf' ? 'active' : '' }}">
+                    <a href="๒"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ '/admin/reward_huay?category_id=1' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ทั่วไป</span></a>
+                        <li><a href="{{ '/admin/reward_huay?category_id=2' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี</span></a>
+                        <li><a href="{{ '/admin/reward_huay?category_id=3' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี Big Money</span></a>
+                    </ul>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'un_huay' || Request::segment(2) == 'un_huay_yeekee' || Request::segment(2) == 'un_huay_yeekee_cf' ? 'active' : '' }}">
-                        <a href="{{ route('admin.un_huay') }}"><i class="fa fa-sort-numeric-asc"></i><span class="menu-title" data-i18n="จัดการเลขอั้น">จัดการเลขอั้น</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'un_huay' || Request::segment(2) == 'un_huay_yeekee' || Request::segment(2) == 'un_huay_yeekee_cf' ? 'active' : '' }}">
+                    <a href="{{ route('admin.un_huay') }}"><i class="fa fa-sort-numeric-asc"></i><span class="menu-title" data-i18n="จัดการเลขอั้น">จัดการเลขอั้น</span></a>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'chit_huay' ? 'active' : '' }}">
-                        <a href="{{ route('admin.chit_huay') }}"><i class="fa fa-delicious"></i><span class="menu-title" data-i18n="โพยหวย">โพยหวย</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'chit_huay' ? 'active' : '' }}">
+                    <a href="{{ route('admin.chit_huay') }}"><i class="fa fa-delicious"></i><span class="menu-title" data-i18n="โพยหวย">โพยหวย</span></a>
+                </li>
 
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลสมาชิก" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
 
-                    <li class="nav-item {{ Request::segment(2) == 'chat' ? 'active' : '' }}">
-                        <a href="{{ route('admin.chat') }}"><i class="fa fa-comments"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">CHAT</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'chat' ? 'active' : '' }}">
+                    <a href="{{ route('admin.chat') }}"><i class="fa fa-comments"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">CHAT</span></a>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'approve_user' || Request::segment(2) == 'list_user' || Request::segment(2) == 'blacklist_user' ? 'active' : '' }}">
-                        <a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="ระบบจัดการผู้เล่น">ระบบจัดการผู้เล่น</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.approve_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติสมัครสมาชิก">อนุมัติสมัครสมาชิก</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.list_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการผู้เล่น">รายการผู้เล่น</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.blacklist_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="บัญชีดำ">บัญชีดำ</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'approve_user' || Request::segment(2) == 'list_user' || Request::segment(2) == 'blacklist_user' ? 'active' : '' }}">
+                    <a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="ระบบจัดการผู้เล่น">ระบบจัดการผู้เล่น</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.approve_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติสมัครสมาชิก">อนุมัติสมัครสมาชิก</span></a>
+                        </li>
+                        <li><a href="{{ route('admin.list_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการผู้เล่น">รายการผู้เล่น</span></a>
+                        </li>
+                        <li><a href="{{ route('admin.blacklist_user') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="บัญชีดำ">บัญชีดำ</span></a>
+                        </li>
+                    </ul>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'news_huay' ? 'active' : '' }}">
-                        <a href="{{ route('admin.news_huay') }}"><i class="fa fa-newspaper-o"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">จัดการข่าวสาร</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'news_huay' ? 'active' : '' }}">
+                    <a href="{{ route('admin.news_huay') }}"><i class="fa fa-newspaper-o"></i><span class="menu-title" data-i18n="จัดการข่าวสาร">จัดการข่าวสาร</span></a>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'rule_huay' ? 'active' : '' }}">
-                        <a href="{{ route('admin.rule_huay') }}"><i class="fa fa-list-alt"></i><span class="menu-title" data-i18n="จัดการกฎกติกา">จัดการกฎกติกา</span></a>
-                    </li>
-                    <li class="nav-item {{ Request::segment(2) == 'contact_huay' ? 'active' : '' }}">
-                        <a href="{{ route('admin.contact_huay') }}"><i class="feather icon-phone-outgoing"></i><span class="menu-title" data-i18n="จัดการข้อมูลติดต่อ">จัดการข้อมูลติดต่อ</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'rule_huay' ? 'active' : '' }}">
+                    <a href="{{ route('admin.rule_huay') }}"><i class="fa fa-list-alt"></i><span class="menu-title" data-i18n="จัดการกฎกติกา">จัดการกฎกติกา</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) == 'contact_huay' ? 'active' : '' }}">
+                    <a href="{{ route('admin.contact_huay') }}"><i class="feather icon-phone-outgoing"></i><span class="menu-title" data-i18n="จัดการข้อมูลติดต่อ">จัดการข้อมูลติดต่อ</span></a>
+                </li>
                 @endif
                 @if (Auth::user()->status == "ผู้ดูแลฝากถอน" || Auth::user()->status == "ผู้ดูแลระบบใหญ่")
 
-                    <li class="nav-item {{ Request::segment(2) == 'deposit_approve' || Request::segment(2) == 'deposit_list' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-money"></i><span class="menu-title" data-i18n="จัดการฝากเงิน">จัดการฝากเงิน</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.deposit_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งฝาก">อนุมัติแจ้งฝาก</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.deposit_list') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งฝากเงิน">รายการแจ้งฝากเงิน</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'deposit_approve' || Request::segment(2) == 'deposit_list' ? 'active' : '' }}">
+                    <a href="#"><i class="fa fa-money"></i><span class="menu-title" data-i18n="จัดการฝากเงิน">จัดการฝากเงิน</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.deposit_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งฝาก">อนุมัติแจ้งฝาก</span></a>
+                        </li>
+                        <li><a href="{{ route('admin.deposit_list') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งฝากเงิน">รายการแจ้งฝากเงิน</span></a>
+                        </li>
+                    </ul>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'withdraw_approve' || Request::segment(2) == 'withdraw_list' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-credit-card-alt"></i><span class="menu-title" data-i18n="จัดการถอนเงิน">จัดการถอนเงิน</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.withdraw_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งถอน">อนุมัติแจ้งถอน</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.withdraw_list') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งถอนเงิน">รายการแจ้งถอนเงิน</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'withdraw_approve' || Request::segment(2) == 'withdraw_list' ? 'active' : '' }}">
+                    <a href="#"><i class="fa fa-credit-card-alt"></i><span class="menu-title" data-i18n="จัดการถอนเงิน">จัดการถอนเงิน</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.withdraw_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="อนุมัติแจ้งถอน">อนุมัติแจ้งถอน</span></a>
+                        </li>
+                        <li><a href="{{ route('admin.withdraw_list') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการแจ้งถอนเงิน">รายการแจ้งถอนเงิน</span></a>
+                        </li>
+                    </ul>
+                </li>
 
 
-                    <li class="nav-item {{ Request::segment(2) == 'bank_huay' ? 'active' : '' }}">
-                        <a href="{{ route('admin.bank_huay') }}"><i class="fa fa-university"></i><span class="menu-title" data-i18n="จัดการบัญชีธนาคาร">จัดการบัญชีธนาคาร</span></a>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'bank_huay' ? 'active' : '' }}">
+                    <a href="{{ route('admin.bank_huay') }}"><i class="fa fa-university"></i><span class="menu-title" data-i18n="จัดการบัญชีธนาคาร">จัดการบัญชีธนาคาร</span></a>
+                </li>
 
-                    <li class="nav-item {{ Request::segment(2) == 'commission_manage' || Request::segment(2) == 'commission_credit' || Request::segment(2) == 'commission_approve' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-percent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
-                        <ul class="menu-content">
-                            <li><a href="{{ route('admin.commission_manage') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการคอมมิชชั่น">จัดการคอมมิชชั่น</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.commission_credit') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายงานเครดิตแนะนำ">รายงานเครดิตแนะนำ</span></a>
-                            </li>
-                            <li><a href="{{ route('admin.commission_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการอนุมัติถอนเงิน">รายการอนุมัติถอนเงิน</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item {{ Request::segment(2) == 'commission_manage' || Request::segment(2) == 'commission_credit' || Request::segment(2) == 'commission_approve' ? 'active' : '' }}">
+                    <a href="#"><i class="fa fa-percent"></i><span class="menu-title" data-i18n="ระบบคอมมิชชั่น">ระบบคอมมิชชั่น</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.commission_manage') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการคอมมิชชั่น">จัดการคอมมิชชั่น</span></a>
+                        </li>
+                        <li><a href="{{ route('admin.commission_credit') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายงานเครดิตแนะนำ">รายงานเครดิตแนะนำ</span></a>
+                        </li>
+                        <li><a href="{{ route('admin.commission_approve') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="รายการอนุมัติถอนเงิน">รายการอนุมัติถอนเงิน</span></a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
 
 

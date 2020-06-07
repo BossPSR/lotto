@@ -37,7 +37,10 @@
         </div>
         <div class="content-body">
             <div id="app">
-                <huay-uns :huay_categorys="{{json_encode($huay_category)}}"></huay-uns>
+                <huay-uns 
+                :huay_categorys="{{json_encode($huay_category)}}"
+                :huay_by_category_id="{{json_encode($huay_by_category_id)}}"
+                ></huay-uns>
             </div>
         </div>
     </div>

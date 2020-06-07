@@ -164,8 +164,7 @@
     }
 </style>
 <?php
-if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GET['end_date'])))
-    $_GET['end_date'] =  $_GET['start_date'];
+
 ?>
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -203,30 +202,20 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
 
                     <div class="col-md-4">
                         <form method="GET">
-                            <label>เลือกประเภทหวย</label>
-                            <select class="form-control" name="category_id" onchange="this.form.submit()">
-                                <option value="0" selected>ทั้งหมด</option>
-                                <?php
-                                if (count($huay_categorys)) {
-                                    foreach ($huay_categorys as $category) {
-                                        if ($_GET['category_id'] == $category->id)
-                                            echo '<option value="' . $category->id . '" selected>' . $category->name . '</option>';
-                                        else
-                                            echo '<option value="' . $category->id . '">' . $category->name . '</option>';
-                                    }
-                                }
-                                ?>
-                            </select>
-                            <label>ช่วงเวลา</label>
+                            <label>วันที่</label>
                             <div class="row m-0">
-                                <input class="form-control col-md-6" type="date" name="start_date" value="{{$_GET['start_date']}}" onchange="this.form.submit()">
-                                <input class="form-control col-md-6" type="date" name="end_date" value="{{$_GET['end_date']}}" onchange="this.form.submit()">
+                                <input class="form-control col-md-12" type="date" name="date" value="{{$_GET['date']}}" onchange="this.form.submit()">
                             </div>
                         </form>
                     </div>
+                    @if(count($huay_rounds) == 0)
                     <div class="col-md-8">
-                        <a data-toggle="modal" class="float-right btn btn-success btn text-white" data-target="#addRound"><i class="fa fa-plus"></i> เพิ่ม</a>
+                        <form method="POST" onsubmit="doSubmit(this)">
+                        <input type="hidden" name="date" value="{{$_GET['date']}}" >
+                            <button  class="float-right btn btn-success btn text-white" name="generate" ><i class="fa fa-plus"></i> GENERATE รอบวันที่นี้</button>
+                        </form>
                     </div>
+                    @endif
                     <div class="col-md-12">
 
                         <!-- DataTable starts -->
@@ -347,7 +336,7 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label>วันที่</label>
-                                                    <input type="date" name="date" class="form-control" value="{{$_GET['start_date']}}" required>
+                                                    <input type="date" name="date" class="form-control" value="{{$_GET['date']}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -461,7 +450,7 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label>วันที่</label>
-                                                    <input type="date" name="date" class="form-control" value="{{$_GET['start_date']}}" required>
+                                                    <input type="date" name="date" class="form-control" value="{{$_GET['date']}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-3">

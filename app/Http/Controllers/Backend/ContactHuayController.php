@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactHeader;
 use Illuminate\Http\Request;
 use App\Models\Contacts;
 use File;
@@ -107,13 +108,22 @@ class ContactHuayController extends Controller
 
                 return redirect(self::$view)->with('message', 'แก้ไขลำดับสำเร็จ!')->with('status', 'success');
             }
+        }else if(isset($_POST['updateContactHeader']))
+        {
+            $data = array(
+                'tel' => $_POST['tel'],
+                'email' => $_POST['email'],
+            );
+            ContactHeader::where('id', $_POST['id'])->update($data);
+            return redirect(self::$view)->with('message', 'แก้ไขลำดับสำเร็จ!')->with('status', 'success');
         }
         return redirect(self::$view)->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
     }
 
     public function index()
     {
+        $contact_header = ContactHeader::first();
         $contacts = DB::table(self::$table)->where('deleted_at', null)->orderBy('sort_order_id')->get();
-        return view('backend.contact_huay.huay_contact', ['contacts' => $contacts]);
+        return view('backend.contact_huay.huay_contact', ['contacts' => $contacts, 'contact_header' => $contact_header]);
     }
 }

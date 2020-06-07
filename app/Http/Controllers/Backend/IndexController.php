@@ -23,10 +23,23 @@ class IndexController extends Controller
 
     public function index()
     {
+
+        $user_all =  User::get();
+        $user_by_id = array();
+        if ($user_all) {
+            foreach ($user_all as $user) {
+                $user_by_id[$user->id] = $user;
+            }
+        }
+
+
         $won_by_user_id = array();
         $play_by_user_id = array();
-
+        
         $numbers = HuayRoundPoyNumbers::get();
+
+        $stat_by_number = array();
+        $stat_number_by_user_id = array();
 
         if ($numbers) {
             foreach ($numbers as $value) {
@@ -39,18 +52,26 @@ class IndexController extends Controller
                         $play_by_user_id[$value->user_id] = 0;
                     $play_by_user_id[$value->user_id] += $value->multiple;
                 }
+
+                if (!isset($stat_by_number[$value->number]))
+                    $stat_by_number[$value->number] = 0;
+
+                if (!isset($stat_number_by_user_id[$value->user_id][$value->number]))
+                    $stat_number_by_user_id[$value->user_id][$value->number] = 0;
+
+                $stat_by_number[$value->number]++;
+                $stat_number_by_user_id[$value->user_id][$value->number]++;
             }
         }
-       $user_active =  User::where('status', 'อนุมัติ')->get();
+        $user_active =  User::where('status', 'อนุมัติ')->get();
 
-       if($user_active)
-       {
-           foreach($user_active as $key => $value)
-           {
-               $user_active[$key]->won = isset($won_by_user_id[$value->id]) ? $won_by_user_id[$value->id] : 0;
-               $user_active[$key]->play = isset($play_by_user_id[$value->id]) ? $play_by_user_id[$value->id] : 0;
-           }
-       }
+        if ($user_active) {
+            foreach ($user_active as $key => $value) {
+                $user_active[$key]->won = isset($won_by_user_id[$value->id]) ? $won_by_user_id[$value->id] : 0;
+                $user_active[$key]->play = isset($play_by_user_id[$value->id]) ? $play_by_user_id[$value->id] : 0;
+            }
+        }
+       
 
 
         $data = array(
@@ -64,7 +85,9 @@ class IndexController extends Controller
             'total_won' => HuayRoundPoyNumbers::where('is_won', 1)->sum('total_price'),
             'total_won_shoot' => HuayRounds::sum('total_won_shoot'),
             'user_approved' => $user_active,
-
+            'stat_number_by_user_id' => $stat_number_by_user_id,
+            'stat_by_number' => $stat_by_number,
+            'user_by_id' => $user_by_id,
         );
 
         return view('backend.index_admin', $data);

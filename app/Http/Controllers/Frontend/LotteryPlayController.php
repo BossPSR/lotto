@@ -8,6 +8,7 @@ use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
 use App\Models\HuayRounds;
 use App\Models\HuayRoundShoots;
+use App\Models\Huays;
 use App\Models\HuayUns;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
@@ -120,7 +121,8 @@ class LotteryPlayController extends Controller
             );
             return response()->json($wrap, 200);
         } else if (isset($request->get_uns)) {
-            $numbers = HuayUns::where('huay_category_id', $request->huay_category_id)->get();
+            $huay_round = HuayRounds::where('secret', $request->huay_secret)->first();
+            $numbers = HuayUns::where('huay_category_id', $request->huay_category_id)->where('huay_id', $huay_round->huay_id)->where('is_enable', 1)->get();
             $wrap = array();
             if ($numbers) {
                 foreach ($numbers as $value) {
@@ -173,7 +175,7 @@ class LotteryPlayController extends Controller
                 }
 
                 // ดึงเลขอั้น 
-                $numbers = HuayUns::where('huay_category_id', $check->huay_category_id)->get();
+                $numbers = HuayUns::where('huay_category_id', $check->huay_category_id)->where('huay_id', $check->huay_id)->where('is_enable', 1)->get();
                 $uns = array();
                 if ($numbers) {
                     foreach ($numbers as $value) {

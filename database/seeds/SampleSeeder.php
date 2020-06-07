@@ -75,10 +75,33 @@ class SampleSeeder extends Seeder
             'created_at' => now(),
         ]);
 
+        $general_huay = array(
+            'หุ้นเกาหลี',
+            'นิเคอิรอบเช้า',
+            'นิเคอิรอบบ่าย',
+            'ฮั่งเส็งรอบเช้า',
+            'ฮั่งเส็งรอบบ่าย',
+            'จีนรอบเช้า',
+            'จีนรอบบ่าย',
+            'หุ้นไต้หวัน',
+            'หุ้นสิงคโปร์',
+            'หุ้นอิยิปต์',
+            'หุ้นเยอรมัน',
+            'หุ้นอังกฤษ',
+            'หุ้นรัสเซีย',
+            'หุ้นอินเดีย',
+            'หุ้นดาวน์โจน',
+            'หวยมาเลย์',
+            'หวยลาว',
+            'หวยเวียดนาม / ฮานอย',
+            'ฮานอยพิเศษ'
+        );
 
-        for ($i = 1; $i <= 10; $i++) {
+        
+        foreach ($general_huay as $name)
+        {
             DB::table('huays')->insert([
-                'name' => 'หวยทั่วไป ' . $i,
+                'name' => $name,
                 'huay_category_id' => 1,
                 'price_tree_up' => 900,
                 'price_tree_tod' => 150,
@@ -90,8 +113,8 @@ class SampleSeeder extends Seeder
                 'price_run_down' => 4.5,
                 'created_at' => now(),
             ]);
-        }
 
+        }
 
         DB::table('huay_categorys')->insert([
             'name' => 'หวยยี่กี',
@@ -99,9 +122,9 @@ class SampleSeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             DB::table('huays')->insert([
-                'name' => 'หวยยี่กี ' . $i,
+                'name' => 'หวยยี่กี ',
                 'huay_category_id' => 2,
                 'price_tree_up' => 900,
                 'can_shoot' => 1,
@@ -122,9 +145,9 @@ class SampleSeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             DB::table('huays')->insert([
-                'name' => 'หวยยี่กี Big Money ' . $i,
+                'name' => 'หวยยี่กี Big Money ',
                 'huay_category_id' => 3,
                 'price_tree_up' => 900,
                 'can_shoot' => 1,

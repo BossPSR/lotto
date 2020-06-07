@@ -66,8 +66,8 @@
                             <th>ลูกค้า</th>
                             <th>บัญชีผู้ใช้งาน</th>
                             <th>ผู้แนะนำ</th>
-                            <th>สมัครวันที่</th>
-                            <th>สมัครเวลา</th>
+                            <th>เงิน</th>
+                            <th>สมัครเมื่อ</th>
                             <th class="thincell">ผู้ทำรายการ</th>
                             <th class="thincell">สถานะ</th>
                             <th class="thincell">ACTION</th>
@@ -93,8 +93,8 @@
                                     <td class="product-name">{{$user_list->first_name}} {{$user_list->last_name}}<br><small>{{$user_list->tel}}</small></td>
                                     <td class="product-name">{{$user_list->username}}</td>
                                     <td class="product-name">{{($user_list->upline_info->username ? $user_list->upline_info->username : "-")}}</td>
-                                    <td>{{date('d/m/Y', strtotime($user_list->created_at))}}</td>
-                                    <td>{{date('H:i:s', strtotime($user_list->created_at))}}</td>
+                                    <td>{{$user_list->money}} B. <br>{{$user_list->credit}} CF</td>
+                                    <td class="text-center">{{date('d/m/Y', strtotime($user_list->created_at))}}<br>{{date('H:i:s', strtotime($user_list->created_at))}}</td>
                                     <td class="product-name">{{$user_list->admin_info->username}}</td>
                                     <td class="text-center" nowrap><?php echo $user_list->status_name ?></td>
                                     <td class="text-center">

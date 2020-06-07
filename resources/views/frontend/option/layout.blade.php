@@ -52,7 +52,7 @@
                             {{-- <ul>
                                             <li>
                                                 <span class="icon"><i class="fas fa-headphones-alt"></i></span>
-                                                +00 564 834 58
+                                                +00 564 834 58s
                                             </li>
                                             <li>
                                                 <span class="icon"><i class="far fa-envelope"></i></span>

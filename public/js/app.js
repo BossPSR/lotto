@@ -2130,10 +2130,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     huay_categorys: {
       type: Array,
+      "default": []
+    },
+    huay_by_category_id: {
+      type: Object,
       "default": []
     }
   },
@@ -2141,7 +2181,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       view_id: 0,
       huay_category_list: {},
-      page: 1,
+      page: 0,
+      huay_id: 0,
       type_name: {
         price_tree_up: 'สามตัวบน',
         price_tree_tod: 'สามตัวโต๊ด',
@@ -2162,136 +2203,133 @@ __webpack_require__.r(__webpack_exports__);
         price_run_up: 1,
         price_run_down: 1
       },
-      my_number: [{
-        number: "",
-        huay_type: "price_tree_up",
-        number_length: 3,
-        max_price: 0,
-        can_delete: false
-      }]
+      my_number: [],
+      huay_type: ""
     };
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  mounted: function mounted() {// console.log('Component mounted.')
   },
   methods: {
+    change_huay_id: function change_huay_id(id) {
+      this.huay_id = id;
+      this.view_id = id;
+      $('#select_type option').each(function () {
+        if (this.defaultSelected) {
+          this.selected = true;
+          return false;
+        }
+      });
+      this.my_number = [];
+    },
     clear_view_id: function clear_view_id() {
       this.view_id = 0;
+      this.my_number = [];
     },
-    load_number_list: function load_number_list(id) {
-      var app = this;
-      app.my_number = [{
-        number: "",
-        huay_type: "price_tree_up",
-        number_length: 3,
-        max_price: 0,
-        can_delete: false
-      }];
-      app.view_id = id;
+    load_number_list: function load_number_list(huay_type) {
+      var app = this; // console.log(this.huay_id)
+      // console.log(huay_type)
+
       this.axios.post('/admin/un_huay', {
         get_number_list: true,
-        huay_category_id: id
+        huay_category_id: this.page,
+        huay_id: this.huay_id,
+        huay_type: huay_type
       }).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data)
         if (response.data.length) app.my_number = response.data;
         app.$forceUpdate();
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      console.log(app.old_list);
+      })["catch"](function (error) {// console.log(error)
+      }); // console.log(app.old_list)
     },
     change_page: function change_page(page) {
       this.page = page;
     },
-    check_input: function check_input(evt) {
-      evt = evt ? evt : window.event;
-      var charCode = evt.which ? evt.which : evt.keyCode;
-
-      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        event.preventDefault();
-        return false;
+    change_number_all: function change_number_all(amount) {
+      for (var i = 0; i < this.my_number.length; i++) {
+        this.my_number[i].max_price = amount;
       }
-
-      return true;
     },
-    change_number: function change_number(evt, index) {
-      this.my_number[index].number = evt.target.value;
+    add_row: function add_row(type_name, number, length) {
+      var temp = {
+        number: number,
+        huay_type: type_name,
+        number_length: length,
+        can_delete: true,
+        max_price: 0,
+        over_percent: 0,
+        is_enable: 0
+      };
+      this.my_number.push(temp);
     },
     change_max_price: function change_max_price(evt, index) {
       this.my_number[index].max_price = evt.target.value;
     },
-    add_row: function add_row() {
-      var temp = {
-        number: "",
-        huay_type: "price_tree_up",
-        number_length: 3,
-        can_delete: true,
-        max_price: 0
-      };
-      this.my_number.push(temp);
+    change_over_percent: function change_over_percent(evt, index) {
+      this.my_number[index].over_percent = evt.target.value;
     },
-    change_huay_type: function change_huay_type(index, huay_type) {
-      this.my_number[index].huay_type = huay_type;
-      var old_length = this.my_number[index].number_length;
-      this.my_number[index].number_length = this.type_no[huay_type];
-      console.log(this.my_number[index].number.length);
+    change_is_enable: function change_is_enable(evt, index) {
+      console.log(evt);
+      this.my_number[index].is_enable = evt;
+    },
+    change_huay_type: function change_huay_type(huay_type) {
+      this.my_number = [];
+      this.huay_type = huay_type;
+      $('#change_all').val(""); // this.my_number[index].huay_type = huay_type;
+      // var old_length = this.my_number[index].number_length;
+      // this.my_number[index].number_length = this.type_no[huay_type];
+      //// console.log(this.my_number[index].number.length)
+      // if (old_length > this.type_no[huay_type]) {
+      //     var new_number = '';
+      //     if (this.my_number[index].number.length > 0) {
+      //         for (var i = 0; i < this.type_no[huay_type]; i++) {
+      //             new_number += this.my_number[index].number[i];
+      //            // console.log(new_number)
+      //         }
+      //     }
+      //     this.my_number[index].number = new_number;
+      // }
+      // console.log(huay_type)
+      // console.log(this.type_no[huay_type])
 
-      if (old_length > this.type_no[huay_type]) {
-        var new_number = '';
-
-        if (this.my_number[index].number.length > 0) {
-          for (var i = 0; i < this.type_no[huay_type]; i++) {
-            new_number += this.my_number[index].number[i];
-            console.log(new_number);
-          }
+      if (this.type_no[huay_type] == 3) {
+        for (var i = 0; i < 1000; i++) {
+          var str = "" + i;
+          var pad = "000";
+          var ans = pad.substring(0, pad.length - str.length) + str;
+          this.add_row(huay_type, ans, 3);
         }
-
-        this.my_number[index].number = new_number;
+      } else if (this.type_no[huay_type] == 2) {
+        for (var i = 0; i < 100; i++) {
+          var str = "" + i;
+          var pad = "00";
+          var ans = pad.substring(0, pad.length - str.length) + str;
+          this.add_row(huay_type, ans, 2);
+        }
+      } else if (this.type_no[huay_type] == 1) {
+        for (var i = 0; i < 10; i++) {
+          var str = "" + i;
+          var pad = "0";
+          var ans = pad.substring(0, pad.length - str.length) + str;
+          this.add_row(huay_type, ans, 1);
+        }
       }
+
+      this.load_number_list(huay_type);
     },
     add_huay_category_un: function add_huay_category_un() {
       var app = this;
       this.axios.post('/admin/un_huay', {
         add_huay_category_un: true,
         huay_category_id: this.view_id,
-        number_array: this.my_number
+        huay_id: this.huay_id,
+        number_array: this.my_number,
+        huay_type: this.huay_type
       }).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data)
         Swal.fire('เลขอั้น!', 'บันทึกสำเร็จแล้ว.', 'success');
-      })["catch"](function (error) {
-        console.log(error);
+      })["catch"](function (error) {// console.log(error)
       });
       event.preventDefault();
-    },
-    delete_row: function delete_row(index) {
-      this.my_number.splice(index, 1);
-    },
-    clear_huay_uns: function clear_huay_uns(index) {
-      var _this = this;
-
-      var app = this;
-      Swal.fire({
-        title: 'แน่ใจที่จะล้าง?',
-        text: "เลขอั้นประเภทนี้ทั้งหมดจะหายไป!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'ใช่, ลบมัน!',
-        cancelButtonText: 'ยกเลิก!'
-      }).then(function (result) {
-        if (result.value) {
-          _this.axios.post('/admin/un_huay', {
-            clear_huay_uns: true,
-            huay_category_id: app.view_id
-          }).then(function (response) {
-            Swal.fire('ล้าง!', 'สำเร็จแล้ว.', 'success');
-            app.view_id = 0;
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        }
-      });
     }
   }
 });
@@ -3484,6 +3522,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     can_shoot: {
@@ -3893,7 +3932,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var uns = {};
       this.axios.post('/lottery_government', {
         get_uns: true,
-        huay_category_id: app.huay_category_id
+        huay_category_id: app.huay_category_id,
+        huay_secret: app.huay_secret
       }).then(function (response) {
         uns = response.data;
         console.log(uns);
@@ -3985,11 +4025,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     },
     keymonitor: function keymonitor(event) {
       if (this.page_index == 1) {
-        if (event.keyCode >= 49 && event.keyCode <= 57) {
+        if (event.keyCode >= 48 && event.keyCode <= 57) {
           this.numpad(event.key);
         } else if (event.keyCode == 8) this.clear_last();
       } else if (this.page_index == 2) {
-        if (event.keyCode >= 49 && event.keyCode <= 57) {
+        if (event.keyCode >= 48 && event.keyCode <= 57) {
           this.numpad_shoot(event.key);
           this.pull_yee_kee_list();
         } else if (event.keyCode == 8) this.clear_last();
@@ -8760,6 +8800,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputNumberComponent.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputNumberComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -8772,7 +8831,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hide {\n    display: none;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
+exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height{\n   height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
 
 // exports
 
@@ -39889,6 +39948,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./HuayUns.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputNumberComponent.vue?vue&type=style&index=0&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputNumberComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -40691,54 +40780,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row" }, [
-      _vm.page == 1
-        ? _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "text-right mb-2" }, [
-              _vm.huay_category_list.length > 0
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-success ",
-                      on: {
-                        click: function($event) {
-                          return _vm.change_page(2)
-                        }
-                      }
-                    },
-                    [_vm._v("สร้างเลขชุด")]
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _vm.huay_category_list.length == 0
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "alert alert-danger",
-                    staticStyle: {
-                      display: "flex",
-                      "justify-content": "space-between"
-                    }
-                  },
-                  [
-                    _c("label", [_vm._v("ยังไม่มีเลขชุด")]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-sm btn-success",
-                        on: {
-                          click: function($event) {
-                            return _vm.change_page(2)
-                          }
-                        }
-                      },
-                      [_vm._v("สร้างเลขชุด")]
-                    )
-                  ]
-                )
-              : _vm._e(),
-            _vm._v(" "),
+      _vm.page == 0
+        ? _c("div", { staticClass: "col-md-4" }, [
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", { staticClass: "table data-list-view" }, [
                 _vm._m(0),
@@ -40773,9 +40816,76 @@ var render = function() {
                                 staticClass: "btn btn-default btn-sm",
                                 on: {
                                   click: function($event) {
-                                    return _vm.load_number_list(
-                                      huay_category.id
-                                    )
+                                    return _vm.change_page(huay_category.id)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fa fa-search" })]
+                            )
+                          : _vm._e()
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.page != 0
+        ? _c("div", { staticClass: "col-md-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-warning btn-sm text-white",
+                on: {
+                  click: function($event) {
+                    return _vm.change_page(0)
+                  }
+                }
+              },
+              [_vm._v("ย้อนกลับ")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table data-list-view" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.huay_by_category_id[_vm.page], function(
+                    huay,
+                    index
+                  ) {
+                    return _c("tr", [
+                      _c("td", { staticStyle: { display: "none" } }),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "product-name" }, [
+                        _vm._v(_vm._s(index + 1) + ".")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "product-name" }, [
+                        _vm._v(_vm._s(huay.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-right" }, [
+                        huay.id == _vm.view_id
+                          ? _c(
+                              "button",
+                              { staticClass: "btn btn-info btn-sm" },
+                              [_c("i", { staticClass: "fa fa-search" })]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        huay.id != _vm.view_id
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-default btn-sm",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.change_huay_id(huay.id)
                                   }
                                 }
                               },
@@ -40793,11 +40903,10 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.view_id != 0
-        ? _c("div", { staticClass: "col-md-6" }, [
+        ? _c("div", { staticClass: "col-md-8" }, [
             _c(
               "form",
               {
-                staticClass: "border p-2 rounded bg-white",
                 attrs: { methods: "POST" },
                 on: {
                   submit: function($event) {
@@ -40806,80 +40915,92 @@ var render = function() {
                 }
               },
               [
-                _vm.my_number.length > 0 && _vm.my_number[0].number != ""
-                  ? _c(
-                      "a",
-                      {
-                        staticClass:
-                          "btn btn-danger text-white btn-sm col-md-4",
-                        on: {
-                          click: function($event) {
-                            return _vm.clear_huay_uns()
-                          }
-                        }
-                      },
-                      [_vm._v("ล้างเลขอั้น")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
                 _c(
-                  "div",
-                  { attrs: { id: "number-add-list" } },
+                  "select",
+                  {
+                    staticClass: "form-control mb-2",
+                    attrs: { id: "select_type", required: "" },
+                    on: {
+                      change: function($event) {
+                        return _vm.change_huay_type($event.target.value)
+                      }
+                    }
+                  },
                   [
-                    _vm._l(_vm.my_number, function(data, index) {
-                      return _c("div", { staticClass: "row mb-2" }, [
-                        _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
-                          _c(
-                            "select",
-                            {
-                              staticClass: "form-control",
-                              attrs: { required: "" },
+                    _c(
+                      "option",
+                      { attrs: { value: "", disabled: "", selected: "" } },
+                      [_vm._v("เลือกประเภทเลข")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.type_name, function(name, huay_type) {
+                      return _c("option", { domProps: { value: huay_type } }, [
+                        _vm._v(_vm._s(name))
+                      ])
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "border p-2 rounded bg-white" }, [
+                  _vm.my_number.length > 0
+                    ? _c("div", { staticClass: "row" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-md-4 col-sm-4 col-4 text-center"
+                          },
+                          [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control mb-1",
+                              attrs: {
+                                id: "change_all",
+                                type: "number",
+                                min: "0",
+                                step: "0.01",
+                                placeholder: "เปลี่ยนทั้งหมด"
+                              },
                               on: {
-                                change: function($event) {
-                                  return _vm.change_huay_type(
-                                    index,
+                                keyup: function($event) {
+                                  return _vm.change_number_all(
                                     $event.target.value
                                   )
                                 }
                               }
-                            },
-                            _vm._l(_vm.type_name, function(name, huay_type) {
-                              return _c(
-                                "option",
-                                { domProps: { value: huay_type } },
-                                [_vm._v(_vm._s(name))]
-                              )
-                            }),
-                            0
-                          )
-                        ]),
+                            })
+                          ]
+                        ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+                        _vm._m(4)
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { attrs: { id: "number-add-list" } },
+                    _vm._l(_vm.my_number, function(data, index) {
+                      return _c("div", { staticClass: "row mb-1" }, [
+                        _c("div", { staticClass: "col-md-2 col-sm-2 col-2" }, [
                           _c("input", {
-                            staticClass: "form-control",
+                            staticClass: "text-center form-control",
                             attrs: {
                               type: "text",
                               name: "number[]",
                               placeholder: "ใส่ตัวเลขเท่านั้น",
                               maxlength: data.number_length,
                               minlength: data.number_length,
-                              required: ""
+                              required: "",
+                              readonly: ""
                             },
-                            domProps: { value: data.number },
-                            on: {
-                              keypress: function($event) {
-                                return _vm.check_input($event)
-                              },
-                              keyup: function($event) {
-                                return _vm.change_number($event, index)
-                              }
-                            }
+                            domProps: { value: data.number }
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
+                        _c("div", { staticClass: "col-md-4 col-sm-4 col-4" }, [
                           data.max_price > 0
                             ? _c("input", {
                                 staticClass: "form-control",
@@ -40918,65 +41039,122 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
-                        data.can_delete
-                          ? _c("div", { staticClass: "col-md-2" }, [
-                              _c(
+                        _c("div", { staticClass: "col-md-4 col-sm-4 col-4" }, [
+                          data.over_percent > 0
+                            ? _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "number",
+                                  name: "over_percent[]",
+                                  min: "0",
+                                  step: "0.01",
+                                  placeholder: "ราคาเมื่อเกินยอดรวม"
+                                },
+                                domProps: { value: data.over_percent },
+                                on: {
+                                  keyup: function($event) {
+                                    return _vm.change_over_percent(
+                                      $event,
+                                      index
+                                    )
+                                  }
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          data.over_percent == 0
+                            ? _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "number",
+                                  name: "over_percent[]",
+                                  min: "0",
+                                  step: "0.01",
+                                  value: "0",
+                                  placeholder: "ราคาเมื่อเกินยอดรวม"
+                                },
+                                on: {
+                                  keyup: function($event) {
+                                    return _vm.change_over_percent(
+                                      $event,
+                                      index
+                                    )
+                                  }
+                                }
+                              })
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-2 col-sm-2 col-2" }, [
+                          data.is_enable == 1
+                            ? _c(
                                 "a",
                                 {
-                                  staticClass:
-                                    "btn-sm btn btn-danger text-white mt-1",
-                                  attrs: { type: "text" },
+                                  staticClass: "btn btn-success btn-sm",
+                                  attrs: {
+                                    type: "checkbox",
+                                    name: "is_enable[]"
+                                  },
                                   on: {
                                     click: function($event) {
-                                      return _vm.delete_row(index)
+                                      return _vm.change_is_enable(0, index)
                                     }
                                   }
                                 },
-                                [_vm._v("ลบ")]
+                                [_c("i", { staticClass: "fa fa-check" })]
                               )
-                            ])
-                          : _vm._e()
+                            : _vm._e(),
+                          _vm._v(" "),
+                          data.is_enable == 0
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-light btn-sm",
+                                  attrs: {
+                                    type: "checkbox",
+                                    name: "is_enable[]"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.change_is_enable(1, index)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-check" })]
+                              )
+                            : _vm._e()
+                        ])
                       ])
                     }),
-                    _vm._v(" "),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row m-0 mt-2" }, [
                     _c(
                       "a",
                       {
-                        staticClass: "btn btn-info btn-sm text-white",
+                        staticClass:
+                          "btn btn-warning text-white btn-sm col-md-6",
                         on: {
                           click: function($event) {
-                            return _vm.add_row()
+                            return _vm.clear_view_id()
                           }
                         }
                       },
-                      [_vm._v("เพิ่มรายการ")]
-                    )
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "row m-0 mt-2" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-warning text-white btn-sm col-md-6",
-                      on: {
-                        click: function($event) {
-                          return _vm.clear_view_id()
-                        }
-                      }
-                    },
-                    [_vm._v("ย้อนกลับ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "btn btn-primary btn-sm text-white col-md-6 float-right"
-                    },
-                    [_vm._v("บันทึก")]
-                  )
+                      [_vm._v("ย้อนกลับ")]
+                    ),
+                    _vm._v(" "),
+                    _vm.my_number.length > 0
+                      ? _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-primary btn-sm text-white col-md-6 float-right"
+                          },
+                          [_vm._v("บันทึก")]
+                        )
+                      : _vm._e()
+                  ])
                 ])
               ]
             )
@@ -41006,23 +41184,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
-        _c("label", [_vm._v("เลขอั้น")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
-        _c("label", [_vm._v("เลข")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 col-sm-3 col-3" }, [
-        _c("label", [
-          _vm._v("ยอดรวมการแทงต่องวด "),
-          _c("small", { staticClass: "text-danger" }, [
-            _vm._v(" (0 คือไม่จำกัด)")
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticStyle: { display: "none" } }),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("หวย")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("Action")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 col-sm-2 col-2" }, [
+      _c("label", [_vm._v("เลข")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _vm._v("ยอดรวมต่องวด "),
+      _c("small", { staticClass: "text-danger" }, [
+        _c("br"),
+        _vm._v(" (0 คือไม่จำกัด)")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4 col-sm-4 col-4" }, [
+      _c("label", [_vm._v("อั้น")])
     ])
   }
 ]
@@ -43384,7 +43583,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("input", {
                                 staticClass:
-                                  "form-control bg-black text-gold border-right-gold",
+                                  "input-auto-height form-control bg-black text-gold border-right-gold",
                                 attrs: {
                                   type: "number",
                                   min: item.min,
@@ -43423,19 +43622,9 @@ var render = function() {
                                       ),
                                       item.is_un == true
                                         ? _c("span", [
-                                            _c("del", [
-                                              _vm._v(
-                                                _vm._s(item.total_price) + " ฿"
-                                              )
-                                            ])
-                                          ])
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      item.is_un == true
-                                        ? _c("span", [
                                             _vm._v(
                                               _vm._s(
-                                                parseFloat(item.total_price) / 2
+                                                parseFloat(item.total_price)
                                               ) + " ฿ "
                                             )
                                           ])
@@ -43488,7 +43677,7 @@ var render = function() {
                               ? _c(
                                   "div",
                                   { staticClass: "alert alert-danger p-1" },
-                                  [_vm._v("เลขนี้ถูกอั้น ชนะจ่ายครึ่งราคา")]
+                                  [_vm._v("เลขนี้ถูกอั้น")]
                                 )
                               : _vm._e()
                           ])
@@ -43543,7 +43732,7 @@ var render = function() {
                     _c("div", { staticClass: "form__price" }, [
                       _c("div", { staticClass: "input-group mb-3" }, [
                         _c("input", {
-                          staticClass: "form-control",
+                          staticClass: "form-control input-auto-height",
                           attrs: {
                             id: "change_price_input",
                             type: "tel",
@@ -56475,7 +56664,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HuayUns.vue?vue&type=template&id=d813e0cc& */ "./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc&");
 /* harmony import */ var _HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HuayUns.vue?vue&type=script&lang=js& */ "./resources/js/components/HuayUns.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HuayUns.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -56483,7 +56674,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__["render"],
   _HuayUns_vue_vue_type_template_id_d813e0cc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -56512,6 +56703,22 @@ component.options.__file = "resources/js/components/HuayUns.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HuayUns.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./HuayUns.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HuayUns_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
+use App\Models\ContactHeader;
 use App\Models\Deposits;
 use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
@@ -253,7 +254,8 @@ class IndexController extends Controller
         }
 
         $user_info = Auth::user();
-        return view('frontend.index_member', ['user_info' => $user_info]);
+        $contact_header = ContactHeader::first();
+        return view('frontend.index_member', ['user_info' => $user_info, 'contact_header' => $contact_header]);
     }
 
     public function plus_story()

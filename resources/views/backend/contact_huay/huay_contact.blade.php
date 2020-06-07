@@ -15,6 +15,16 @@
     .thincell {
         width: 1px;
     }
+
+    .commission-background {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    }
+
+    .withdraws-background {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(13deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 18, 1) 0%, rgba(255, 0, 0, 1) 100%);
+    }
 </style>
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -43,6 +53,28 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="content-body">
+            <!-- Dashboard Analytics Start -->
+            <section id="dashboard-analytics">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card commission-background text-white pl-3 pr-3">
+                            <h2 class="text-bold-700 mt-1 mb-1 text-white"><i class="fa fa-phone-square-alt"></i> {{$contact_header->tel}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card withdraws-background text-white pl-3 pr-3">
+                            <h2 class="text-bold-700 mt-1 mb-1 text-white"><i class="fa fa-envelope"></i> {{$contact_header->email}} </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <a class="btn btn-sm btn-warning text-white w-100" data-toggle="modal" data-target="#edit_fix" data-edit-id="{{$contact_header->id}}"><i class="fa fa-cog"></i> แก้ไขขข้อมูลติดต่อหลัก</a>
+                    </div>
+                </div>
+            </section>
+            <!-- Dashboard Analytics end -->
+
         </div>
         <div class="content-body">
             <!-- Data list view starts -->
@@ -174,6 +206,38 @@
                                 </div>
                             </div>
                             <!-- Modal Edit-->
+
+                            <!-- Modal EDIT -->
+                            <div class="modal fade text-left" id="edit_fix" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel1">แก้ไขข้อมูลติดต่อหลัก</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="/admin/contact_huay" onsubmit="doSubmit(this)" enctype="multipart/form-data">
+                                                <input name="id" type="hidden">
+                                                <div class="form-group">
+                                                    <label>เบอร์โทร</label>
+                                                    <input type="tel" name="tel"  class="form-control" required>
+                                                    <label>Email</label>
+                                                    <input type="email" name="email" class="form-control" required>
+                                                </div>
+
+                                                <div class="form-group  mb-0">
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-success" name="updateContactHeader">บันทึก</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal EDIT -->
                         </tbody>
                     </table>
                 </div>
@@ -232,6 +296,73 @@
                     data: {
                         _token: csrf_token,
                         'target_secret': '{{md5("get-contacts")}}',
+                        'get-id': id
+                    },
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function(data) {
+
+                        if (debug) {
+                            console.log(data);
+                        }
+                        var input_all = modal.find('input')
+
+                        var gen_image_all = modal.find('.gen-auto');
+
+                        var element;
+                        if (gen_image_all.length)
+                            gen_image_all.remove();
+
+                        for (let index = 0; index < input_all.length; index++) {
+                            element = input_all[index];
+                            if (debug) {
+                                console.log(index)
+                                console.log('type')
+                                console.log(element.type)
+                            }
+
+                            if (data[element.name] && element.type == 'text')
+                                element.value = data[element.name]
+                            if (data[element.name] && element.type == 'number')
+                                element.value = data[element.name]
+                            else if (data[element.name] && element.type == 'color')
+                                $(element).spectrum("set", data[element.name]);
+                            else if (data[element.name] && element.type == 'file') {
+                                var file = data[element.name];
+                                var div_out = $(element).closest("div")
+
+                            } else
+                                element.value = data[element.name]
+                        }
+                        var input_all = modal.find('textarea')
+                        for (let index = 0; index < input_all.length; index++) {
+                            element = input_all[index];
+                            if (data[element.name])
+                                element.value = data[element.name]
+                        }
+                    }
+                })
+                .fail(function(data) {
+                    console.log(data.responseText);
+                });
+        });
+        
+        $('#edit_fix').on('show.bs.modal', function(event) {
+
+            var modal = $(this)
+            var button = $(event.relatedTarget)
+
+            var id = $(button).data('editId');
+            debug = false;
+
+            $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/admin/get-data',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {
+                        _token: csrf_token,
+                        'target_secret': '{{md5("get-contact-header")}}',
                         'get-id': id
                     },
                     dataType: 'JSON',

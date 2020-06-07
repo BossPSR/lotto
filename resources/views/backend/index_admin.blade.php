@@ -116,6 +116,84 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="mb-0">สถิติการแทงเลข</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="table-responsive mt-1">
+                                    <table class="table table-hover-animation mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1%;" nowrap>#</th>
+                                                <th class="text-center">เลข</th>
+                                                <th style="width: 1%;" nowrap>จำนวนการแทง</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $i = 0;
+                                            ?>
+                                            @foreach ($stat_by_number as  $number => $count)
+                                            <?php 
+                                            $i++;
+                                            ?>
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td class="text-center" nowrap>{{$number}}</td>
+                                                <td class="text-center" nowrap>{{$count}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="mb-0">สถิติการแทงเลขราย User</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="table-responsive mt-1">
+                                    <table class="table table-hover-animation mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1%;" nowrap>#</th>
+                                                <th>User</th>
+                                                <th>เลข</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $i = 0;
+                                            ?>
+                                            @foreach ($stat_number_by_user_id as  $user_id => $number_list)
+                                            <?php 
+                                            $i++;
+                                            ?>
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td>{{$user_by_id[$user_id]->username}}</td>
+                                                <td>
+                                                        @foreach ($number_list as  $number => $count)
+                                                            <label class="text-center" nowrap>{{$number.'x'.$count}}</label>&nbsp;,
+                                                        @endforeach
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- Dashboard Analytics end -->
 

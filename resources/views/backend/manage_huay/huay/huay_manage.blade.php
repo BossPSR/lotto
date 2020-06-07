@@ -44,26 +44,6 @@ $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null
         <div class="content-body">
             <!-- Data list view starts -->
             <section id="data-list-view" class="data-list-view-header">
-                <div class="col-md-4 p-0">
-                    <form method="GET">
-                        <label>เลือกประเภทหวย</label>
-                        <select class="form-control" name="category_id" onchange="this.form.submit()">
-                            <option value="0" selected>ทั้งหมด</option>
-                            <?php
-                            if (count($huay_categorys)) {
-                                foreach ($huay_categorys as $category) {
-                                    if ($_GET['category_id'] == $category->id)
-                                        echo '<option value="' . $category->id . '" selected>' . $category->name . '</option>';
-                                    else
-                                        echo '<option value="' . $category->id . '">' . $category->name . '</option>';
-                                }
-                            }
-                            ?>
-                        </select>
-                    </form>
-                </div>
-
-
                 <!-- DataTable starts -->
                 <div class="table-responsive">
                     <table class="table data-list-view">

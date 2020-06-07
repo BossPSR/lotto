@@ -2,7 +2,9 @@
 .hide {
     display: none;
 }
-
+.input-auto-height{
+   height: auto !important;
+}
 .disableSelection {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -491,10 +493,9 @@
                         <div class="input-group">
                             <div class="input-group-append"><span class="input-group-text bg-white" style="min-width:45px;" align="center">{{  index+1}}.</span></div>
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
-                            <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
+                            <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="input-auto-height form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
-                            <span v-if="item.is_un == true"><del>{{ item.total_price }} ฿</del></span>
-                            <span v-if="item.is_un == true">{{ parseFloat(item.total_price)/2 }} ฿ </span>
+                            <span v-if="item.is_un == true">{{ parseFloat(item.total_price) }} ฿ </span>
                             <span v-if="item.is_un == false">{{ item.total_price }} ฿</span>
                             </span></div>
                             <div class="input-group-append">
@@ -502,7 +503,7 @@
                             </div>
                         </div>
                         <div v-if="item.min > item.multiple" class="alert alert-danger p-1">ขั้นต่ำ {{item.min}} บาท</div>
-                        <div v-if="item.is_un" class="alert alert-danger p-1">เลขนี้ถูกอั้น ชนะจ่ายครึ่งราคา</div>
+                        <div v-if="item.is_un" class="alert alert-danger p-1">เลขนี้ถูกอั้น</div>
 
                     </div>
                 </div>
@@ -516,7 +517,7 @@
                 </div>
                 <h3>เดิมพันราคาเท่ากัน</h3>
                 <div class="form__price">
-                    <div class="input-group mb-3"><input id="change_price_input" v-on:keyup="change_multiple_all($event.target.value)" type="tel" pattern="[0-9]*" placeholder="ใส่ราคา" class="form-control">
+                    <div class="input-group mb-3"><input id="change_price_input" v-on:keyup="change_multiple_all($event.target.value)" type="tel" pattern="[0-9]*" placeholder="ใส่ราคา" class="form-control input-auto-height">
                         <div class="input-group-append"><button type="button" class="btn btn-primary">ตกลง</button></div>
                     </div>
                     <div class="row m-0">
@@ -1063,7 +1064,8 @@ export default {
             var uns = {};
             this.axios.post('/lottery_government', {
                     get_uns: true,
-                    huay_category_id: app.huay_category_id
+                    huay_category_id: app.huay_category_id,
+                    huay_secret: app.huay_secret
                 })
                 .then(function(response) {
                     uns = response.data
@@ -1161,12 +1163,12 @@ export default {
         },
         keymonitor: function(event) {
             if (this.page_index == 1) {
-                if (event.keyCode >= 49 && event.keyCode <= 57) {
+                if (event.keyCode >= 48 && event.keyCode <= 57) {
                     this.numpad(event.key);
                 } else if (event.keyCode == 8)
                     this.clear_last();
             } else if (this.page_index == 2) {
-                if (event.keyCode >= 49 && event.keyCode <= 57) {
+                if (event.keyCode >= 48 && event.keyCode <= 57) {
                     this.numpad_shoot(event.key);
                     this.pull_yee_kee_list();
                 } else if (event.keyCode == 8)
