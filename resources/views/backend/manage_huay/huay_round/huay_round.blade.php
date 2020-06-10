@@ -202,6 +202,7 @@
 
                     <div class="col-md-4">
                         <form method="GET">
+                        <input type="hidden" name="category_id" value="{{$_GET['category_id']}}">
                             <label>วันที่</label>
                             <div class="row m-0">
                                 <input class="form-control col-md-12" type="date" name="date" value="{{$_GET['date']}}" onchange="this.form.submit()">
@@ -297,121 +298,6 @@
                     </div>
                     <!-- DataTable ends -->
 
-
-                    <!-- Modal add round-->
-                    <div class="modal fade text-left" id="addRound" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="myModalLabel1">เพิ่มรอบ</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="POST" action="/admin/manage_huay_round" onsubmit="doSubmit(this)" enctype="multipart/form-data">
-                                        <input name="id" type="hidden">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label>เลือกหวย</label>
-                                                    <select class="form-control" name="huay_id" id="select_huay" required>
-                                                        <option selected disabled value="">เลือกประเภทหวย</option>
-                                                        <?php
-                                                        if (count($huays)) {
-                                                            foreach ($huays as $huay) {
-                                                                echo "<option value='" . $huay->id . "'>" . $huay->category_name . '-' . $huay->name . "</option>";
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label>ชื่อที่แสดง</label>
-                                                    <input type="text" name="name" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>วันที่</label>
-                                                    <input type="date" name="date" class="form-control" value="{{$_GET['date']}}" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="form-group">
-                                                    <label>เวลาเริ่มต้น</label>
-                                                    <input type="time" name="start_time" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="form-group">
-                                                    <label>เวลาสิ้นสุด</label>
-                                                    <input type="time" name="end_time" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>สามตัวบน</label>
-                                                    <input type="number" step="0.01" min="0" name="price_tree_up" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>สามตัวโต้ด</label>
-                                                    <input type="number" step="0.01" min="0" name="price_tree_tod" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>สามตัวหน้า</label>
-                                                    <input type="number" step="0.01" min="0" name="price_tree_front" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>สามตัวล่าง</label>
-                                                    <input type="number" step="0.01" min="0" name="price_tree_down" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>สองตัวบน</label>
-                                                    <input type="number" step="0.01" min="0" name="price_two_up" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>สองตัวล่าง</label>
-                                                    <input type="number" step="0.01" min="0" name="price_two_down" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>วิ่งบน</label>
-                                                    <input type="number" step="0.01" min="0" name="price_run_up" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label>วิ่งล่าง</label>
-                                                    <input type="number" step="0.01" min="0" name="price_run_down" class="form-control" id="" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group  mb-0">
-                                            <div class="text-right" style="display: flex;flex-direction: row-reverse;">
-                                                <button type="submit" class="btn btn-primary" name="addRound">เพิ่มรอบ</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal add-->
-
                     <!-- Modal edit round-->
                     <div class="modal fade text-left" id="updateRound" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -423,7 +309,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="/admin/manage_huay_round" onsubmit="doSubmit(this)" enctype="multipart/form-data">
+                                    <form method="POST" action="/admin/manage_huay_round?category_id={{$_GET['category_id']}}&date={{$_GET['date']}}" onsubmit="doSubmit(this)" enctype="multipart/form-data">
                                         <input name="id" type="hidden">
                                         <div class="row">
                                             <div class="col-12">
@@ -640,74 +526,7 @@
                 });
         });
 
-        $('#select_huay').on('change', function(event) {
 
-            var modal = $("#addRound")
-            var button = $(event.relatedTarget)
-
-            var id = this.value;
-            debug = false;
-
-            $.ajax({
-                    /* the route pointing to the post function */
-                    url: '/admin/get-data',
-                    type: 'POST',
-                    /* send the csrf-token and the input to the controller */
-                    data: {
-                        _token: csrf_token,
-                        'target_secret': '{{md5("get-huays")}}',
-                        'get-id': id
-                    },
-                    dataType: 'JSON',
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function(data) {
-
-                        if (debug) {
-                            console.log(id);
-                            console.log(data);
-                        }
-                        var input_all = modal.find('input')
-
-                        var gen_image_all = modal.find('.gen-auto');
-
-                        var element;
-                        if (gen_image_all.length)
-                            gen_image_all.remove();
-
-                        for (let index = 0; index < input_all.length; index++) {
-                            element = input_all[index];
-                            if (debug) {
-                                console.log(index)
-                                console.log('type')
-                                console.log(element.type)
-                                console.log(element.name)
-                            }
-
-                            if (data[element.name] && element.type == 'text')
-                                element.value = data[element.name]
-                            if (data[element.name] && element.type == 'number')
-                                element.value = data[element.name]
-                            else if (data[element.name] && element.type == 'color')
-                                $(element).spectrum("set", data[element.name]);
-                            else if (data[element.name] && element.type == 'file') {
-                                var file = data[element.name];
-                                var div_out = $(element).closest("div")
-
-                            } else if (data[element.name])
-                                element.value = data[element.name]
-                        }
-                        var input_all = modal.find('textarea')
-                        for (let index = 0; index < input_all.length; index++) {
-                            element = input_all[index];
-                            if (data[element.name])
-                                element.value = data[element.name]
-                        }
-                    }
-                })
-                .fail(function(data) {
-                    console.log(data.responseText);
-                });
-        });
 
         $('#select_huay2').on('change', function(event) {
 

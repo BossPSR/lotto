@@ -193,7 +193,7 @@ class LotteryPlayController extends Controller
                 if ($uns) {
                     foreach ($request->number as $huay_type => $list) {
                         foreach ($list as $info) {
-                            if (isset($uns[$huay_type][$info['number']]) && $uns[$huay_type][$info['number']]->max_price > 0) {
+                            if (isset($uns[$huay_type][$info['number']]) && ($uns[$huay_type][$info['number']]->max_price - 100) > 0) {
 
                                 if (!isset($uns_number_in_this_poy[$huay_type])) {
                                     $uns_number_in_this_poy[$huay_type] = array(
@@ -210,7 +210,7 @@ class LotteryPlayController extends Controller
                                 $uns_number_in_this_poy[$huay_type]['play_price'][$info['number']] += $info['multiple'];
 
                                 // เช็คว่าเล่นเกิน ที่ตั้งไว้ไหม
-                                if ($uns_number_in_this_poy[$huay_type]['play_price'][$info['number']] > $uns[$huay_type][$info['number']]->max_price) {
+                                if ($uns_number_in_this_poy[$huay_type]['play_price'][$info['number']] > ($uns[$huay_type][$info['number']]->max_price - 100) &&  $uns[$huay_type][$info['number']]->over_percent == 0) {
                                     $error_txt .= $info['number'] . ', ';
                                 }
                             }
@@ -234,14 +234,18 @@ class LotteryPlayController extends Controller
 
                         $total_multiple_by_number_id = array();
                         if ($number_list) {
+
+                            // เก็บทั้งหมดก่อน
                             foreach ($number_list as $number_info) {
                                 if (!isset($total_multiple_by_number_id[$number_info->number]))
                                     $total_multiple_by_number_id[$number_info->number] = 0;
                                 $total_multiple_by_number_id[$number_info->number] += $number_info->multiple;
+                            }
 
-
-                                // เช็คว่าเล่นเกิน ที่ตั้งไว้ไหม
-                                if (($total_multiple_by_number_id[$number_info->number] + $info['play_price'][$number_info->number]) > $info['uns_info']->max_price)
+                            
+                            // เช็คว่าเล่นเกิน ที่ตั้งไว้ไหม
+                            foreach ($number_list as $number_info) {
+                                if (($total_multiple_by_number_id[$number_info->number] + $info['play_price'][$number_info->number]) > ($info['uns_info']->max_price - 100) && $info['uns_info']->over_percent == 0)
                                     $error_number_array[$number_info->number] = 1;
                             }
                         }
@@ -296,13 +300,46 @@ class LotteryPlayController extends Controller
                                 $poy_number->secret = $request->huay_secret;
                                 $poy_number->number = $info['number'];
                                 $poy_number->multiple = $info['multiple'];
-                                $poy_number->huay_price = $info['price'];
-                                $poy_number->total_price = ($info['multiple'] * $info['price']);
+                                $poy_number->huay_price = $check->$huay_type;
+                                $poy_number->total_price = ($info['multiple'] * $check->$huay_type);
                                 if (isset($uns[$huay_type][$info['number']]))
                                 {
+                                    $max_uns = ($uns[$huay_type][$info['number']]->max_price - 100);
+                                    $total_play = HuayRoundPoyNumbers::where('huay_round_id', $check->id)->where('number', $info['number'])->sum('total_price');
+
+                                    $left_slot = $max_uns - $total_play;
                                     $poy_number->is_un = 1;
-                                    $poy_number->total_price  = $poy_number->total_price / 2;
+
+                                    if($total_play > $max_uns)
+                                    {
+                                        $poy_number->total_price  = $info['multiple'] * $uns[$huay_type][$info['number']]->over_percent;
+                                        $poy_number->remark_price  = 'เกินจากที่ระบบกำหนดไว้จะได้ '.number_format($info['multiple'], 2).' x '.number_format($uns[$huay_type][$info['number']]->over_percent, 2).' = '.number_format($poy_number->total_price, 2);
+
+                                    }
+                                    else if(($total_play + $info['multiple']) <= $max_uns)
+                                    {
+                                        $poy_number->total_price  = $info['multiple'] * 90;
+                                        $poy_number->remark_price  = number_format($info['multiple'], 2).' x 90 = '.number_format($poy_number->total_price);
+                                    }
+                                    else if($left_slot > 0 && $uns[$huay_type][$info['number']]->over_percent > 0)
+                                    {
+                                        $over = $info['multiple'] - $left_slot;
+
+                                        $full_price = $left_slot * 90;
+                                        $poy_number->total_price  = $full_price;
+
+                                        $over_price = $over * $uns[$huay_type][$info['number']]->over_percent;
+                                        $poy_number->total_price  +=  $over_price;
+
+                                        $poy_number->remark_price  = number_format($left_slot, 2).' x 90 = '.number_format($full_price);
+                                        $poy_number->remark_price  .= ', เกินจากที่ระบบกำหนดไว้จะได้ '.number_format($over, 2).' x '.number_format($uns[$huay_type][$info['number']]->over_percent).' = '.number_format($over_price);
+
+                                    }
                                 }
+                                else
+                                    $poy_number->remark_price  = number_format($info['multiple'], 2).' x '.number_format($check->$huay_type, 2).' = '.number_format($poy_number->total_price);
+
+
 
                                 $poy_number->save();
                             }

@@ -480,6 +480,7 @@ class RewardHuayController extends Controller
 
         $number_all = HuayRoundPoyNumbers::where('huay_round_id', $huay_round_id)->whereIn('number', $answer)->get($field);
 
+      
         // GROUP BY TYPE
         $number_group_by_type = array();
         if ($number_all) {
@@ -500,9 +501,11 @@ class RewardHuayController extends Controller
             foreach ($merge_array_huay_type as $huay_type => $answer) {
                 if (isset($number_group_by_type[$huay_type])) {
                     foreach ($number_group_by_type[$huay_type] as $index => $number_info) {
-                        if ($number_info->number == $huay_round->$answer) {
+                        if ($number_info['number'] == $huay_round->$answer) {
                             array_push($won_id_array, $number_info->id);
                             array_push($won_info_array, $number_info);
+
+                            
 
                             if (!isset($won_by_user_id[$number_info->user_id])) {
                                 $won_by_user_id[$number_info->user_id] = array(
@@ -526,6 +529,7 @@ class RewardHuayController extends Controller
                 }
             }
         }
+
         if ($won_by_user_id) {
             foreach ($won_by_user_id as $user_id => $info) {
                 // สร้าง Transaction

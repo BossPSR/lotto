@@ -2652,6 +2652,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     poy_list: {
@@ -2722,6 +2723,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
 //
 //
 //
@@ -3523,6 +3525,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     can_shoot: {
@@ -3680,8 +3684,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     },
     change_multiple: function change_multiple(type_name, index, multiple) {
       this.my_number[type_name][index].multiple = multiple;
-      this.my_number[type_name][index].multiple_txt = numeral(multiple).format('0,0');
-      this.my_number[type_name][index].total_price = numeral(multiple * this.my_number[type_name][index].price).format('0,0');
+      this.my_number[type_name][index].multiple_txt = numeral(multiple).format('0,0.00');
+      this.my_number[type_name][index].total_price = numeral(multiple * this.my_number[type_name][index].price).format('0,0.00');
       this.cal_total_price();
     },
     change_multiple_all: function change_multiple_all(multiple) {
@@ -3696,8 +3700,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           if (list.length) {
             for (var i = 0; i < list.length; i++) {
               this.my_number[huay_type][i].multiple = multiple;
-              this.my_number[huay_type][i].multiple_txt = numeral(multiple).format('0,0');
-              this.my_number[huay_type][i].total_price = numeral(multiple * list[i].price).format('0,0');
+              this.my_number[huay_type][i].multiple_txt = numeral(multiple).format('0,0.00');
+              this.my_number[huay_type][i].total_price = numeral(multiple * list[i].price).format('0,0.00');
             }
           }
         } //console.log(this.my_number)
@@ -3733,7 +3737,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           get_user_pocket: true
         }).then(function (response) {
           app.money = response.data.money;
-          app.money_txt = numeral(response.data.money).format('0,0');
+          app.money_txt = numeral(response.data.money).format('0,0.00');
         })["catch"](function (error) {//console.log(error)
         });
         this.cal_total_price();
@@ -3774,7 +3778,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           check_money: true
         }).then(function (response) {
           app.money = response.data.money;
-          app.money_txt = numeral(response.data.money).format('0,0');
+          app.money_txt = numeral(response.data.money).format('0,0.00');
 
           if (response.data.pass) {
             app.page_index = index;
@@ -3926,9 +3930,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       app.total_price = total_price;
-      app.total_price_txt = numeral(total_price).format('0,0');
+      app.total_price_txt = numeral(total_price).format('0,0.00');
       app.total_multiple = total_multiple;
-      app.total_multiple_txt = numeral(total_multiple).format('0,0');
+      app.total_multiple_txt = numeral(total_multiple).format('0,0.00');
       var uns = {};
       this.axios.post('/lottery_government', {
         get_uns: true,
@@ -4077,8 +4081,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
                 is_duplicate: false,
                 multiple: multiple,
                 min: min,
-                multiple_txt: numeral(multiple).format('0,0'),
-                total_price: numeral(this[key_obj] * multiple).format('0,0'),
+                multiple_txt: numeral(multiple).format('0,0.00'),
+                total_price: numeral(this[key_obj] * multiple).format('0,0.00'),
                 price: this[key_obj],
                 date: new Date()
               });
@@ -4351,8 +4355,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               is_duplicate: false,
               multiple: multiple,
               min: min,
-              multiple_txt: numeral(multiple).format('0,0'),
-              total_price: numeral(this[huay_type] * multiple).format('0,0'),
+              multiple_txt: numeral(multiple).format('0,0.00'),
+              total_price: numeral(this[huay_type] * multiple).format('0,0.00'),
               price: this[huay_type],
               date: new Date()
             });
@@ -8831,7 +8835,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height{\n   height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
+exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height {\n    height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
 
 // exports
 
@@ -41695,6 +41699,14 @@ var render = function() {
                                         { staticClass: "text-danger" },
                                         [_vm._v("(เลขอั้น)")]
                                       )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  item.is_won == 1
+                                    ? _c(
+                                        "label",
+                                        { staticClass: "text-danger" },
+                                        [_vm._v(_vm._s(item.remark_price))]
+                                      )
                                     : _vm._e()
                                 ]),
                                 _vm._v(" "),
@@ -41922,6 +41934,14 @@ var render = function() {
                                           "label",
                                           { staticClass: "text-danger" },
                                           [_vm._v("(เลขอั้น)")]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.is_won == 1
+                                      ? _c(
+                                          "label",
+                                          { staticClass: "text-danger" },
+                                          [_vm._v(_vm._s(item.remark_price))]
                                         )
                                       : _vm._e()
                                   ]),
@@ -43618,25 +43638,11 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "ชนะ : \n                        "
+                                        "ชนะ : \n                            "
                                       ),
-                                      item.is_un == true
-                                        ? _c("span", [
-                                            _vm._v(
-                                              _vm._s(
-                                                parseFloat(item.total_price)
-                                              ) + " ฿ "
-                                            )
-                                          ])
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      item.is_un == false
-                                        ? _c("span", [
-                                            _vm._v(
-                                              _vm._s(item.total_price) + " ฿"
-                                            )
-                                          ])
-                                        : _vm._e()
+                                      _c("span", [
+                                        _vm._v(_vm._s(item.total_price) + " ฿ ")
+                                      ])
                                     ]
                                   )
                                 ]

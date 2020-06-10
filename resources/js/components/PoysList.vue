@@ -31,6 +31,7 @@
                                     <td>
                                     {{ item.number }}
                                     <label v-if="item.is_un == 1" class='text-danger'>(เลขอั้น)</label>
+                                    <label v-if="item.is_won == 1" class='text-danger'>{{item.remark_price}}</label>
                                     </td>
                                     <td v-if="item.is_won == -1" class='text-warning'>รอผล</td>
                                     <td v-if="item.is_won == 1" class='text-success'>ชนะ</td>

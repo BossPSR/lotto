@@ -2,9 +2,11 @@
 .hide {
     display: none;
 }
-.input-auto-height{
-   height: auto !important;
+
+.input-auto-height {
+    height: auto !important;
 }
+
 .disableSelection {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -173,7 +175,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_tree_front')" id="price_tree_front" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
@@ -190,7 +192,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_two_up')" id="price_two_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
@@ -207,7 +209,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-sm-6">
                     <div v-on:click="select_option('price_run_up')" id="price_run_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
@@ -224,7 +226,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="d-flex ">
                 <div class="col-xl-12 col-lg-12 col-sm-12 hide" id="main-input">
                     <div class="single-jackpot disableSelection">
@@ -484,7 +486,7 @@
         <div v-if="page_index==3">
             <a id="input-number-btn" v-on:click="change_page(1)" class="btn btn-sm btn-warning text-white col-md-2">กลับ</a>
             <div v-for="(list, huay_type) in my_number">
-
+    
                 <div v-if="list.length">
                     <label class="mt--2"> {{type_name[huay_type]}}</label>
                 </div>
@@ -495,16 +497,16 @@
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="input-auto-height form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
-                            <span v-if="item.is_un == true">{{ parseFloat(item.total_price) }} ฿ </span>
-                            <span v-if="item.is_un == false">{{ item.total_price }} ฿</span>
-                            </span></div>
+                                <span >{{ (item.total_price) }} ฿ </span>
+                                </span>
+                            </div>
                             <div class="input-group-append">
                                 <div class="btn btn-danger" v-on:click="remove_number(huay_type, index)">ลบ</div>
                             </div>
                         </div>
                         <div v-if="item.min > item.multiple" class="alert alert-danger p-1">ขั้นต่ำ {{item.min}} บาท</div>
                         <div v-if="item.is_un" class="alert alert-danger p-1">เลขนี้ถูกอั้น</div>
-
+    
                     </div>
                 </div>
             </div>
@@ -541,7 +543,7 @@
                             <button class="btn btn-primary w-100" v-on:click="change_page(4)">แทงพนัน</button>
                         </div>
                     </div>
-
+    
                 </div>
             </section>
         </div>
@@ -578,7 +580,7 @@
             <div class="alert alert-danger" v-if="poy_list.length == 0" style="display: flex; justify-content: space-between;">
                 <label>ยังไม่มีเลขชุด</label>
             </div>
-
+    
             <div v-for="(poy, index) in poy_list">
                 <a v-on:click="load_number_list(poy.id)" style="cursor:pointer;">
                     <div class="row border shadow rounded mb-3 p-2">
@@ -628,11 +630,11 @@
                     <button class="btn btn-light mt-2" v-on:click="change_page(5)">เลขชุด/ดึงโพย</button>
                 </div>
             </div>
-
+    
             <div id="lottery_all">
                 {{my_number_txt}}
             </div>
-
+    
         </div>
     </div>
 </template>
@@ -803,8 +805,8 @@ export default {
         },
         change_multiple(type_name, index, multiple) {
             this.my_number[type_name][index].multiple = multiple
-            this.my_number[type_name][index].multiple_txt = numeral(multiple).format('0,0');
-            this.my_number[type_name][index].total_price = numeral((multiple * this.my_number[type_name][index].price)).format('0,0');
+            this.my_number[type_name][index].multiple_txt = numeral(multiple).format('0,0.00');
+            this.my_number[type_name][index].total_price = numeral((multiple * this.my_number[type_name][index].price)).format('0,0.00');
             this.cal_total_price();
 
         },
@@ -814,8 +816,8 @@ export default {
                     if (list.length) {
                         for (var i = 0; i < list.length; i++) {
                             this.my_number[huay_type][i].multiple = multiple;
-                            this.my_number[huay_type][i].multiple_txt = numeral(multiple).format('0,0');
-                            this.my_number[huay_type][i].total_price = numeral((multiple * list[i].price)).format('0,0');
+                            this.my_number[huay_type][i].multiple_txt = numeral(multiple).format('0,0.00');
+                            this.my_number[huay_type][i].total_price = numeral((multiple * list[i].price)).format('0,0.00');
                         }
                     }
                 }
@@ -856,7 +858,7 @@ export default {
                     })
                     .then(function(response) {
                         app.money = response.data.money;
-                        app.money_txt = numeral(response.data.money).format('0,0');
+                        app.money_txt = numeral(response.data.money).format('0,0.00');
                     })
                     .catch(function(error) {
                         //console.log(error)
@@ -896,7 +898,7 @@ export default {
                     })
                     .then(function(response) {
                         app.money = response.data.money;
-                        app.money_txt = numeral(response.data.money).format('0,0');
+                        app.money_txt = numeral(response.data.money).format('0,0.00');
                         if (response.data.pass) {
                             app.page_index = index;
                         } else
@@ -1056,10 +1058,10 @@ export default {
                 }
             }
             app.total_price = total_price;
-            app.total_price_txt = numeral((total_price)).format('0,0')
+            app.total_price_txt = numeral((total_price)).format('0,0.00')
 
             app.total_multiple = total_multiple;
-            app.total_multiple_txt = numeral((total_multiple)).format('0,0')
+            app.total_multiple_txt = numeral((total_multiple)).format('0,0.00')
 
             var uns = {};
             this.axios.post('/lottery_government', {
@@ -1075,14 +1077,12 @@ export default {
                             if (list.length) {
                                 for (var i = 0; i < list.length; i++) {
 
-                                    try{
+                                    try {
                                         if (uns[huay_type][list[i].number] !== undefined)
                                             app.my_number[huay_type][i].is_un = true;
                                         else
                                             app.my_number[huay_type][i].is_un = false;
-                                    }
-                                    catch
-                                    {
+                                    } catch {
                                         app.my_number[huay_type][i].is_un = false;
 
                                     }
@@ -1230,8 +1230,8 @@ export default {
                                 is_duplicate: false,
                                 multiple: multiple,
                                 min: min,
-                                multiple_txt: numeral(multiple).format('0,0'),
-                                total_price: numeral((this[key_obj] * multiple)).format('0,0'),
+                                multiple_txt: numeral(multiple).format('0,0.00'),
+                                total_price: numeral((this[key_obj] * multiple)).format('0,0.00'),
                                 price: this[key_obj],
                                 date: new Date(),
                             });
@@ -1331,11 +1331,10 @@ export default {
 
                     })
                     .catch(function(error) {
-                        var error_txt  = '';
-                        try{
-                        error_txt = error.response.data.error
-                        }
-                        catch{
+                        var error_txt = '';
+                        try {
+                            error_txt = error.response.data.error
+                        } catch {
                             error_txt = '?'
                         }
                         Swal.fire({
@@ -1345,7 +1344,7 @@ export default {
                             showConfirmButton: true,
                             backdrop: true,
                             width: 300,
-                            html: "<small class='text-center'>"+error_txt+"</small>"
+                            html: "<small class='text-center'>" + error_txt + "</small>"
                         });
                     });
             }
@@ -1536,8 +1535,8 @@ export default {
                             is_duplicate: false,
                             multiple: multiple,
                             min: min,
-                            multiple_txt: numeral(multiple).format('0,0'),
-                            total_price: numeral((this[huay_type] * multiple)).format('0,0'),
+                            multiple_txt: numeral(multiple).format('0,0.00'),
+                            total_price: numeral((this[huay_type] * multiple)).format('0,0.00'),
                             price: this[huay_type],
                             date: new Date(),
                         });

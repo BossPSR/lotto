@@ -26,6 +26,7 @@ class CreateHuayRoundPoyNumbers extends Migration
             $table->decimal('multiple', 22, 2)->default(0);
             $table->decimal('huay_price', 22, 2)->default(0);
             $table->decimal('total_price', 22, 2)->default(0);
+            $table->string('remark_price')->nullable();
             $table->tinyInteger('is_won')->default(-1);
             $table->tinyInteger('is_un')->default(0);
             $table->softDeletes();
