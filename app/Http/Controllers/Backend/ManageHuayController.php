@@ -34,7 +34,9 @@ class ManageHuayController extends Controller
             DB::table('huays')
                 ->where('id', $request->id)
                 ->update($data);
-            return redirect('admin/manage_huay')->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
+
+            $huays = DB::table('huays')->where('id', $request->id)->first();
+            return redirect('admin/manage_huay?category_id='.$huays->huay_category_id)->with('message', 'ทำรายการสำเร็จแล้ว!')->with('status', 'success');
         }
         return redirect('admin/manage_huay')->with('message', 'ไม่สำเร็จ!')->with('status', 'error');
     }

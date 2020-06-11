@@ -197,6 +197,7 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
 
                     <div class="col-md-4">
                         <form method="GET">
+                        <input type="hidden" name="category_id" value="<?Php echo $_GET['category_id'] ?>">
                             <label>เลือกสถานะ</label>
                             <select class="form-control" name="round_status" onchange="this.form.submit()">
                                 <option value="" selected>ทั้งหมด</option>
@@ -575,6 +576,24 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
         inputElem.type = 'hidden';
         inputElem.name = '_token';
         inputElem.value = csrf_token;
+        form.append(inputElem)
+
+        var inputElem = document.createElement('input');
+        inputElem.type = 'hidden';
+        inputElem.name = 'category_id';
+        inputElem.value = "{{$_GET['category_id']}}";
+        form.append(inputElem)
+
+        var inputElem = document.createElement('input');
+        inputElem.type = 'hidden';
+        inputElem.name = 'start_date';
+        inputElem.value = "{{$_GET['start_date']}}";
+        form.append(inputElem)
+
+        var inputElem = document.createElement('input');
+        inputElem.type = 'hidden';
+        inputElem.name = 'end_date';
+        inputElem.value = "{{$_GET['end_date']}}";
         form.append(inputElem)
 
     };

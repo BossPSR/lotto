@@ -286,7 +286,7 @@
                 </li>
 
                 <li class="nav-item {{ Request::segment(2) == 'reward_huay' || Request::segment(2) == 'reward_huay_yeekee' || Request::segment(2) == 'reward_huay_yeekee_cf' ? 'active' : '' }}">
-                    <a href="๒"><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
+                    <a ><i class="fa fa-trophy"></i><span class="menu-title" data-i18n="ออกผลรางวัล">ออกผลรางวัล</span></a>
                     <ul class="menu-content">
                         <li><a href="{{ '/admin/reward_huay?category_id=1' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ทั่วไป</span></a>
                         <li><a href="{{ '/admin/reward_huay?category_id=2' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี</span></a>

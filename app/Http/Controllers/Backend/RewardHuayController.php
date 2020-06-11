@@ -59,11 +59,6 @@ class RewardHuayController extends Controller
 
     public function post(Request $request)
     {
-        $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null;
-        $_GET['start_date'] = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-d');
-        $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d');
-        $_GET['round_status'] = isset($_GET['round_status']) ? $_GET['round_status'] : '';
-
         if (isset($_POST['updateRound'])) {
             $data = array(
                 'result_tree_up' => $_POST['result_tree_up'],
@@ -82,7 +77,7 @@ class RewardHuayController extends Controller
                 ->update($data);
 
             self::processHuay($request->id);
-            return redirect('admin/reward_huay?category_id=' . $_GET['category_id'] . '&start_date=' . $_GET['start_date'] . '&end_date=' . $_GET['end_date'])->with('message', 'สำเร็จ!')->with('status', 'success');
+            return redirect('admin/reward_huay?category_id=' . $_POST['category_id'] . '&start_date=' . $_POST['start_date'] . '&end_date=' . $_POST['end_date'])->with('message', 'สำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['updateRoundYeekee'])) {
 
             $data = array(
@@ -104,7 +99,7 @@ class RewardHuayController extends Controller
 
             self::processHuay($request->id);
             self::processHuayYeeKee($request->id);
-            return redirect('admin/reward_huay?category_id=' . $_GET['category_id'] . '&start_date=' . $_GET['start_date'] . '&end_date=' . $_GET['end_date'])->with('message', 'สำเร็จ!')->with('status', 'success');
+            return redirect('admin/reward_huay?category_id=' . $_POST['category_id'] . '&start_date=' . $_POST['start_date'] . '&end_date=' . $_POST['end_date'])->with('message', 'สำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['returnPoys'])) {
         } else if (isset($_POST['on'])) {
             $data = array(
@@ -115,7 +110,7 @@ class RewardHuayController extends Controller
                 ->where('id', $request->id)
                 ->update($data);
 
-            return redirect('admin/reward_huay?category_id=' . $_GET['category_id'] . '&start_date=' . $_GET['start_date'] . '&end_date=' . $_GET['end_date'])->with('message', 'เปิดสำเร็จ!')->with('status', 'success');
+            return redirect('admin/reward_huay?category_id=' . $_POST['category_id'] . '&start_date=' . $_POST['start_date'] . '&end_date=' . $_POST['end_date'])->with('message', 'เปิดสำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['off'])) {
             $data = array(
                 'is_active' => 0,
@@ -124,7 +119,7 @@ class RewardHuayController extends Controller
             DB::table('huay_rounds')
                 ->where('id', $request->id)
                 ->update($data);
-            return redirect('admin/reward_huay?category_id=' . $_GET['category_id'] . '&start_date=' . $_GET['start_date'] . '&end_date=' . $_GET['end_date'])->with('message', 'ปิดสำเร็จ!')->with('status', 'success');
+            return redirect('admin/reward_huay?category_id=' . $_POST['category_id'] . '&start_date=' . $_POST['start_date'] . '&end_date=' . $_POST['end_date'])->with('message', 'ปิดสำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['id'])) {
             $data = array(
                 'is_active' => 0,
