@@ -39,7 +39,7 @@
         background-color: #C97902;
     }
 </style>
-<div style="background:#7A58BF;  min-height: calc(100vh - 100px);">
+<div style="background:#6f39d5;  min-height: calc(100vh - 100px);">
     <div class="container">
         <div class="row">
             <div class="w-100 bg-white p-2 m-0 rounded mt-2">

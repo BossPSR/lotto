@@ -41,7 +41,7 @@
 .lotto_list_colum_2 > .lotto_list_colum_2_detail{
     flex-grow: 1;
     text-align: center;
-    border: 1px solid #ffce4f;
+    border: 1px solid #6f39d5;
     margin: 0 5px;
     border-radius: 10px;
     overflow: hidden;
@@ -53,7 +53,7 @@
 }
 
 .lotto_list_colum_2 > .lotto_list_colum_2_detail > div:first-child{
-    background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
+    background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);
     color: #ffffff;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .button_plus_story{
-    background: -webkit-linear-gradient(473deg, #fa8900 20%, #ffce4f 100%);
+    background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);
     color: #ffffff;
     font-size: 25px;
  }

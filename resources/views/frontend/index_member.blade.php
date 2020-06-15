@@ -4,15 +4,15 @@
 @section('contact_member')
 
        <!-- jackpot begin -->
-       <div class="jackpot" style="background:#7A58BF;  min-height: calc(100vh - 100px);">
-        <div class="container">
+       <div class="jackpot" style="background:#6f39d5;  min-height: calc(100vh - 100px);">
+        <div class="container" >
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
                     <!-- <a href="" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">เพิ่มบทความใหม่</button></a> -->
                 </div>
             </div>
         </div>
-        <div class="container shape-container">
+        <div class="container shape-container" >
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                     <div class="single-jackpot">

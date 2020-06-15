@@ -396,19 +396,19 @@
         if ($(window).scrollTop() > 500) {
             fixed_top.addClass("animated fadeInDown fixed-header");
             topbar.hide();
-            $("#logo-2").attr("src", "assets/img/logo.png");
+            $("#logo-2").attr("src", "assets/img/LOGOV2.png");
             if ($(window).width() < 960) {
                 $('.header').removeClass('fixed-header');
-                $("#logo-2").attr("src", "assets/img/logo-2.png");
+                $("#logo-2").attr("src", "assets/img/LOGOV2.png");
             }
         }
         else {
             fixed_top.removeClass("animated fadeInDown fixed-header");
             topbar.show();
-            $("#logo-2").attr("src", "assets/img/logo-2.png");
+            $("#logo-2").attr("src", "assets/img/LOGOV2.png");
             if ($(window).width() < 960) {
                 topbar.hide();
-                $("#logo-2").attr("src", "assets/img/logo-2.png");
+                $("#logo-2").attr("src", "assets/img/LOGOV2.png");
             }
         }
     });

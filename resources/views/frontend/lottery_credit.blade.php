@@ -16,7 +16,7 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
     }
 </style>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#7A58BF; min-height:100vh">
+<div class="jackpot" style="background:#6f39d5; min-height:100vh">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">

@@ -43,9 +43,9 @@
     <!-- preloader end -->
 
     <!-- header begin -->
-    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);">
+    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);" >
         <div class="topbar" style="border-bottom: 1px solid #fff;">
-            <div class="container">
+            <div class="container" >
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
                         <div class="support-area">
@@ -75,15 +75,15 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" >
             <div class="menu-bar" style="margin:15px 0;">
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-7">
-                                <div class="logo" style="width:30%">
+                                <div class="logo" style="width:40%">
 
-                                    <img id="logo-2" src="assets/img/logo-2.png" alt="">
+                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
 
                                 </div>
                             </div>

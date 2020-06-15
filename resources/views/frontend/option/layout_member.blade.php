@@ -15,7 +15,7 @@ $contact_header = ContactHeader::first();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Lotter</title>
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset('logo2.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('LOGOV2.png') }}" type="image/x-icon">
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <!-- fontawesome icon  -->
@@ -50,7 +50,7 @@ $contact_header = ContactHeader::first();
         </div>
         <!-- preloader end -->
         <!-- header begin -->
-        <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);">
+        <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);">
             <div class="topbar" style="border-bottom: 1px solid #fff;">
                 <div class="container">
                     <div class="row">
@@ -85,7 +85,7 @@ $contact_header = ContactHeader::first();
                                 <div class="col-xl-12 col-lg-12 col-7">
                                     <div class="logo" style="width:30%">
 
-                                        <img id="logo-2" src="assets/img/logo-2.png" alt="">
+                                        <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
 
                                     </div>
                                 </div>

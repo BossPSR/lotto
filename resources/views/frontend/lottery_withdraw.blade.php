@@ -23,7 +23,7 @@ $banks_array = array(
 );
 ?>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#7A58BF;">
+<div class="jackpot" style="background:#6f39d5;">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
