@@ -7,24 +7,33 @@
 $_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
 ?>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#6f39d5; min-height: calc(100vh - 50px);" >
+<div class="jackpot" style="background:#FFF; min-height: calc(100vh - 50px);" >
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group" id="test">
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group" id="test">
                 <a href="/lottery_play" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="container shape-container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
-                    <div class="part-head">
-                        <div class="text">
-                            <span class="amount">{{$huay_round->name}}</span>
+                    <div class="part-head" style="display: block;">
+                        <div class="text row" >
+                            <div class="col-6" >
+
+                                <span class="amount" style="color:#6f39d5">{{$huay_round->name}}</span>
+
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="/lottery_play" style="display: inline-block; font-size: 20px; background-color: #6f39d5; color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                             </div>
+                         
                             <span class="draw-date"></span>
                         </div>
                     </div>
+                    <br>
                     <?php
 
                     ?>

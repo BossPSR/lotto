@@ -40,23 +40,33 @@
         background-color: #C97902;
     }
 </style>
-<div class="jackpot" style="background:#6f39d5;  min-height: calc(100vh - 100px);">
-    <div class="container">
+<div class="jackpot" style="background:#FFF;  min-height: calc(100vh - 100px);">
+    <div class="container" style="max-width: 90%">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
-                <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+                <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning ">ย้อนกลับ</button></a>
+            </div> --}}
         </div>
     </div>
-    <div class="container shape-container">
+    <div class="container shape-container" style="max-width: 90%">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot m-0 p-3">
-                    <div class="part-head m-0">
+                    <div class="part-head m-0" style="display: block;">
 
-                        <div class="text" style="margin-left:25px;">
-                            <span class="amount">แทงหวย</span>
+                        <div class="text row" style="margin-left:25px;">
+
+                            <div class="col-6" >
+                            <span class="amount" style="color:#6f39d5">แทงหวย</span>
+                            </div>
+                            <div class="col-6 text-right ">
+                                <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+
+                            </div>
+                           
+                            
                         </div>
+                     
                     </div>
                 </div>
             </div>
@@ -68,13 +78,14 @@
     if (count($huay_round_by_category) > 0) {
         foreach ($huay_round_by_category as $category_name => $huay_list) {
     ?>
-            <div class="container shape-container">
+            <div class="container shape-container" style="max-width: 90%">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                         <div class="single-jackpot m-0">
                             <div class="part-head p-2 rounded button_plus_story">
                                 {{$category_name}}
                             </div>
+                            <br>
                             <div class="row">
                                 <?php
                                 foreach ($huay_list as $huay_round) {

@@ -49,29 +49,37 @@ $banks_array = array(
         object-fit: contain;
     }
 </style>
-<div class="jackpot" style="background:#6f39d5; min-height:100vh">
+<div class="jackpot" style="background:#FFF; min-height:100vh">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
-                <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+                <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story text-right">ย้อนกลับ</button></a>
+            </div> --}}
         </div>
     </div>
-    <div class="container shape-container">
+    <div class="container shape-container" style="max-width: 90%">
         <div class="row">
             <div class="container-fluid content__af">
                 <div class="row no-gutters">
                     <div class="col-12">
                         <div class="card rounded-0 mb-2">
-                            <div class="card-body">
-                                <div class=" text-center mb-2">
-                                    <div style="display: inline-flex;">
-                                        <a href="?page=index" class="nav-link {{($_GET['page'] == 'index' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-globe-asia"></i> ภาพรวม</a>
-                                        <a href="?page=members" class="nav-link {{($_GET['page'] == 'members' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-users"></i> สมาชิก</a>
-                                        <a href="?page=revenue" class="nav-link {{($_GET['page'] == 'revenue' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-money-bill"></i> รายได้</a>
-                                        <a href="?page=withdraw" class="nav-link {{($_GET['page'] == 'withdraw' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-bell"></i> แจ้งถอนรายได้</a>
+                            <div class="card-body" style="display: block;">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class=" text-left mb-2">
+                                            <div style="display: inline-flex;">
+                                                <a href="?page=index" class="nav-link {{($_GET['page'] == 'index' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-globe-asia"></i> ภาพรวม</a>
+                                                <a href="?page=members" class="nav-link {{($_GET['page'] == 'members' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-users"></i> สมาชิก</a>
+                                                <a href="?page=revenue" class="nav-link {{($_GET['page'] == 'revenue' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-money-bill"></i> รายได้</a>
+                                                <a href="?page=withdraw" class="nav-link {{($_GET['page'] == 'withdraw' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-bell"></i> แจ้งถอนรายได้</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
                                     </div>
                                 </div>
+                                <br>
                                 @if($_GET['page'] == 'index')
                                 @csrf
                                 <div class="row">

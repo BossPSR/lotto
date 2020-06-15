@@ -39,19 +39,29 @@
         background-color: #C97902;
     }
 </style>
-<div style="background:#6f39d5;  min-height: calc(100vh - 100px);">
-    <div class="container">
+<div style="background:#FFF;  min-height: calc(100vh - 100px);">
+    <div class="container"style="max-width: 90%">
         <div class="row">
             <div class="w-100 bg-white p-2 m-0 rounded mt-2">
-                <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
+                {{-- <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a> --}}
                 <legend class="text-center mt-3" style="font-size: 45px;">ผลรางวัล</legend>
                 <?php
                 $index = 0;
                 if (count($huay_round_by_category) > 0) {
                     foreach ($huay_round_by_category as $category_name => $huay_list) {
                 ?>
+
                         <div class="part-head p-2 rounded button_plus_story">
-                            {{$category_name}}
+                            <div class="row">
+                                <div class="col-6">
+                                    {{$category_name}}
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a href="/index_member" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                                </div>
+
+                            </div>
+                            
                         </div>
                         <div class="row m-0 mt-2">
                             <?php

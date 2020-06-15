@@ -2,24 +2,30 @@
 @section('contact_member')
 
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#6f39d5; min-height:100vh">
+<div class="jackpot" style="background:#FFF; min-height:100vh">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
                 <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="container shape-container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
-                    <div class="part-head">
-                        <div class="text" style="margin-left:25px;">
-                            <span class="amount">รายการโพย</span>
+                    <div class="part-head" style="display: block;">
+                        <div class="text row" style="margin-left:25px;">
+                            <div class="col-6">
+                                <span class="amount" style="color:#6f39d5">รายการโพย</span>
+                            </div>
+                           <div class="col-6 text-right" >
+                            <a href="/index_member" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+
+                           </div>
                         </div>
                     </div>
-                    
+                    <br>
                     <div id="app">
                         <poy-list
                         :poy_list="{{json_encode($poy_list)}}"></poy-list>

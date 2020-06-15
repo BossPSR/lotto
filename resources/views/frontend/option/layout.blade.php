@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Lotter</title>
     <!-- favicon -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{ asset('logo2.png') }}" type="image/x-icon">
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">

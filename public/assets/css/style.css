@@ -1438,15 +1438,15 @@ ul {
     jackpot
 ===========================================*/
 .jackpot {
-  padding: 75px 0 90px;
+  padding: 40px 0 90px;
   position: relative;
   z-index: 2; }
   .jackpot .single-jackpot {
-    padding: 45px 30px;
+    padding: 25px 40px;
     -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.08);
     box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.08);
-    border-radius: 5px;
-    margin-bottom: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
     background: #fff; }
     .jackpot .single-jackpot .part-head {
       display: -webkit-box;
@@ -1459,7 +1459,7 @@ ul {
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
-      margin-bottom: 32px; }
+      margin-bottom: 0px; }
       .jackpot .single-jackpot .part-head .icon {
         width: 70px;
         height: 70px;

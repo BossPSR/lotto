@@ -68,8 +68,8 @@
 }
 
 .button_plus_story{
-    background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);
-    color: #ffffff;
+    background: -webkit-linear-gradient(473deg, #FFF 20%, #FFF 100%);
+    color: #6f39d5;
     font-size: 25px;
  }
 
@@ -111,7 +111,7 @@
     bottom: 0;
     width: 100%;
     height: 90px;
-    background:  #fa8900;
+    background:  #6f39d5;
     padding: 15px;
     color: #fff;
  }

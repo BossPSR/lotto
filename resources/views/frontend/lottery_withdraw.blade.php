@@ -23,12 +23,12 @@ $banks_array = array(
 );
 ?>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#6f39d5;">
+<div class="jackpot" style="background:#FFF;">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
                 <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="container shape-container">
@@ -36,13 +36,20 @@ $banks_array = array(
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
                     @if($user_info->bank_name)
-                    <div class="part-head">
+                    <div class="part-head" style="display: block;">
 
-                        <div class="text" style="margin-left:25px;">
-                            <span class="amount">แจ้งถอนเครดิต</span>
-                            <span class="draw-date"></span>
+                        <div class="text row" style="margin-left:25px;">
+                            <div class="col-6">
+                                <span class="amount" style="color:#6f39d5">แจ้งถอนเครดิต</span>
+                            </div>
+                            <div class="col-6 text-right" >
+                                <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>   
+                            </div>
+                            
+                           
                         </div>
                     </div>
+                    <br>
                     <div class="part-body">
                         <div class="d-flex">
 
@@ -86,13 +93,20 @@ $banks_array = array(
                         </div>
                     </div>
                     @else
-                    <div class="part-head">
+                    <div class="part-head" style="display: block;">
 
-                        <div class="text"  style="margin-left:25px;">
-                            <span class="amount">ตั้งค่าธนาคาร</span>
-                            <span class="draw-date"></span>
+                        <div class="text row"  style="margin-left:25px;">
+                            <div class="col-6">
+                                <span class="amount" style="color:#6f39d5">ตั้งค่าธนาคาร</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>   
+                            </div>
+                         
+                           
                         </div>
                     </div>
+                    <br>
                     <div class="part-body">
                         <div class="d-flex">
 

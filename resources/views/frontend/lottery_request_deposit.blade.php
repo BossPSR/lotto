@@ -31,25 +31,32 @@
 <script src="{{asset('assets/js/preview_img.js')}}"></script>
 
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#6f39d5;">
+<div class="jackpot" style="background:#FFF;">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
                 <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            </div> --}}
         </div>
     </div>
-    <div class="container shape-container">
+    <div class="container shape-container" >
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
-                    <div class="part-head">
+                    <div class="part-head"style="display: block;">
 
-                        <div class="text" style="margin-left:25px;">
-                            <span class="amount">แจ้งเติมเครดิต</span>
-                            <span class="draw-date"></span>
+                        <div class="text row" style="margin-left:25px;">
+                            <div class="col-6">
+                                <span class="amount" style="color:#6f39d5">แจ้งเติมเครดิต</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                            </div>
+                          
+                         
                         </div>
                     </div>
+                    <br>
                     <div class="part-body">
                         <div class="d-flex">
 
@@ -91,11 +98,11 @@
 
                                                     <div>หลักฐานการโอน</div>
                                                     <input type="file" name="file_name" class="form-control form-group" id="imgInp" accept="image/*" required>
-                                                    <div style="width:30%; margin:auto;">
+                                                    <div style="width:30%; ">
                                                         <label for="imgInp" style="cursor: pointer">
-                                                            <img id="blah" src="{{url('assets/img/dollar-symbol.png')}}">
+                                                            <img id="blah" src="{{url('assets/img/dollar-symbol.png')}}" style="max-width: 20%">
                                                         </label>
-                                                    </div>
+                                                    </div><br>
                                                     <button type="submit" name="addDeposit" class="btn btn-warning text-white">แจ้งเติมเครดิต</button>
                                                     <button type="reset" class="btn btn-danger ">ยกเลิก</button>
                                                 </div>

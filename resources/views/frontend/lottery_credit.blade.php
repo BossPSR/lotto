@@ -16,24 +16,27 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
     }
 </style>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#6f39d5; min-height:100vh">
+<div class="jackpot" style="background:#FFf; min-height:100vh">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
                 <a href="/index_member" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            </div> --}}
         </div>
     </div>
-    <div class="container shape-container">
+    <div class="container shape-container" style="max-width: 90%">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
-                    <div class="part-head">
-
-                        <div class="text" style="margin-left:25px;">
-                            <span class="amount">รายงานเครดิต</span>
-                            <span class="draw-date"></span>
-                        </div>
+                    <div class="part-head" style="display: block;">
+                        <div class="text row" style="margin-left:25px;">
+                            <div class="col-6" >
+                                <span class="amount" style="color:#6f39d5">รายงานเครดิต</span>
+                            </div>
+                            <div class="col-6 text-right ">
+                                <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                            </div>
+                     
                     </div>
                     <div class="col-md-5">
                         <form method="GET">
@@ -41,7 +44,7 @@ $_GET['end_date'] = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d')
                             <div class="row m-0 mb-2">
                                 <input class="form-control col-md-5" type="date" name="start_date" value="{{$_GET['start_date']}}" >
                                 <input class="form-control col-md-5" type="date" name="end_date" value="{{$_GET['end_date']}}" >
-                                <button class="btn btn-sm btn-info col-md-2"><i class="fa fa-search"></i> ค้นหา</button>
+                                <button class="btn btn-sm btn-info col-md-2" style="background-color: #6f39d5;color:#FFF"><i class="fa fa-search"></i> ค้นหา</button>
                             </div>
                         </form>
                     </div>
