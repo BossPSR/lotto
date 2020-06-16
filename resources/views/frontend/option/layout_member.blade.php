@@ -83,7 +83,7 @@ $contact_header = ContactHeader::first();
                         <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-7">
-                                    <div class="logo" style="width:30%">
+                                    <div class="logo" style="width:100%">
 
                                         <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
 

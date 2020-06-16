@@ -9,7 +9,7 @@
     <title>Lucky Lotter</title>
     <!-- favicon -->
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="{{ asset('logo2.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/LOGOV2.png') }}" type="image/x-icon">
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <!-- fontawesome icon  -->
@@ -82,7 +82,7 @@
                     <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-7">
-                                <div class="logo" style="width:40%">
+                                <div class="logo" style="width:70%">
 
                                     <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
 
