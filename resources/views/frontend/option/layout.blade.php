@@ -84,7 +84,7 @@
                             <div class="col-xl-12 col-lg-12 col-7">
                                 <div class="logo" style="width:70%">
 
-                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
+                                    <img id="logo-2" src="assets/img/LOGOV2-02.png" alt="">
 
                                 </div>
                             </div>
