@@ -34,4 +34,10 @@ class LotteryResultController extends Controller
         );
         return view('frontend.lottery_result', $data);
     }
+
+    public function result_yeekee()
+    {
+    
+        return view('frontend.lottery_result_yeekee');
+    }
 }

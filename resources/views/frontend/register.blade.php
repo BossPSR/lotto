@@ -8,25 +8,32 @@ if(session()-> has('ref_code'))
 
 <script src="{{asset('assets/js/preview_img.js')}}"></script>
 <!-- jackpot begin -->
-<div class="jackpot" style="background:#6f39d5;">
+<div class="jackpot" style="background:#FFF;">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
+            {{-- <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
                 <a href="/" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="container shape-container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
-                    <div class="part-head">
+                    <div class="part-head"  style="display: block;">
 
-                        <div class="text" style="margin-left:25px;">
-                            <span class="amount">สมัครสมาชิก</span>
-                            <span class="draw-date"></span>
+                        <div class="text row" style="margin-left:25px;">
+                            <div class="col-6">
+                                <span class="amount" style="color:#6f39d5">สมัครสมาชิก</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="/" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                            </div>
+                           
+                           
                         </div>
                     </div>
+                    <br>
                     <div class="part-body">
                         <div class="d-flex">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
@@ -39,42 +46,63 @@ if(session()-> has('ref_code'))
                                             <div class="col-xl-12 col-lg-12 col-sm-12 register_form">
                                                 <form action="{{route('register_process')}}" method="post" onsubmit="validateForm(this)" enctype="multipart/form-data">
                                                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
-                                                    <div>รูปโปรไฟล์</div>
+                                                    {{-- <div>รูปโปรไฟล์</div>
                                                     <input accept="image/*" type="file" name="file_name" class="form-control form-group" id="imgInp" required>
                                                     <div style="width:30%; margin:auto;">
                                                         <label for="imgInp" style="cursor: pointer">
                                                             <img id="blah" src="{{url('assets/img/upload.png')}}">
                                                         </label>
+                                                    </div> --}}
+
+                                                  
+                                                    <div class="row">
+                                                    <div class="col-12">
+                                                        <label>ชื่อเข้าสู่ระบบ</label>
+                                                        <input type="text" name="username" class="form-control form-group" required placeholder="ชื่อเข้าสู่ระบบ">
                                                     </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label>รหัสผ่าน</label>
+                                                            <input type="password" id="password" name="password" class="form-control form-group" required placeholder="รหัสผ่าน">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>ยืนยันรหัสผ่าน</label>
+                                                            <input type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required placeholder="ยืนยันรหัสผ่าน">
 
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label>ชื่อจริง</label> 
+                                                             <input type="text" name="first_name" class="form-control form-group" required placeholder="ชื่อจริง">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>นามสกุล</label> 
+                                                            <input type="text" name="last_name" class="form-control form-group" required placeholder="นามสกุล"> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label>อีเมล</label> 
+                                                            <input type="email" name="email" class="form-control form-group" required placeholder="อีเมล">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>วัน/เดือน/ปี เกิด</label> 
+                                                            <input type="date" name="birthday" class="form-control form-group" required placeholder="วัน/เดือน/ปี เกิด">
+                                                        </div>
 
-                                                    <div>ชื่อเข้าสู่ระบบ</div>
-                                                    <input type="text" name="username" class="form-control form-group" required>
-
-                                                    <div>รหัสผ่าน</div>
-                                                    <input type="password" id="password" name="password" class="form-control form-group" required>
-
-                                                    <div>ยืนยันรหัสผ่าน</div>
-                                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required>
-
-                                                    <div>ชื่อจริง</div>
-                                                    <input type="text" name="first_name" class="form-control form-group" required>
-
-                                                    <div>นามสกุล</div>
-                                                    <input type="text" name="last_name" class="form-control form-group" required>
-                                                    
-                                                    <div>วัน/เดือน/ปี เกิด</div>
-                                                    <input type="date" name="birthday" class="form-control form-group" required>
-
-                                                    <div>อีเมล</div>
-                                                    <input type="email" name="email" class="form-control form-group" required>
-
-                                                    <div>โทรศัพท์ติดต่อ</div>
-                                                    <input type="text" name="tel" pattern="[0-9]+" class="form-control form-group" required>
-
-                                                    <div>Code ผู้แนะนำ</div>
-                                                    <input type="text" name="upline_username" class="form-control form-group" value="{{$_GET['ref_code']}}">
-
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label>โทรศัพท์ติดต่อ</label> 
+                                                            <input type="text" name="tel" pattern="[0-9]+" class="form-control form-group" required placeholder="โทรศัพท์ติดต่อ">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>Code ผู้แนะนำ</label> 
+                                                            <input type="text" name="upline_username" class="form-control form-group" value="{{$_GET['ref_code']}}" placeholder="Code ผู้แนะนำ">
+                                                        </div>
+                                                    </div>
                                                     <button type="submit" class="btn btn-warning new_story">สมัครสมาชิก</button>
                                                     <button type="reset" class="btn btn-danger new_story_cancel">ยกเลิก</button>
                                                 </form>

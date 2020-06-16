@@ -54,6 +54,7 @@ Route::get('/help','Frontend\HelpController@index')->name('help');
 Route::get('/help_visitor','Frontend\HelpController@index_visitor')->name('help_visitor');
 Route::get('/contact','Frontend\ContactController@index')->name('contact');
 Route::get('/contact_visitor','Frontend\ContactController@index_visitor')->name('contact_visitor');
+Route::get('/lottery_result_yeekee','Frontend\LotteryResultController@result_yeekee')->name('lottery_result_yeekee');
 
 //admin
 Route::prefix('/admin')->name('admin.')->group(function () {
