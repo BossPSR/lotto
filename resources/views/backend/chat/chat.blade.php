@@ -5,9 +5,12 @@
     #DataTables_Table_0_length {
         display: none;
     }
-
     .thincell {
         width: 1px;
+    }
+    label{
+        font-size: 25px;
+        margin-bottom: 10px;
     }
 </style>
 
@@ -104,7 +107,7 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
                     if($_GET['fingerprint'])
                     {
                     ?>
-                    <div class="col-md-6 bg-white" id="app">
+                    <div class="col-md-6 bg-white text-white" id="app" style="font-size: 25px !important;">
                         <chat 
                         :fingerprint="{{json_encode($_GET['fingerprint'])}}" 
                         :position="{{json_encode('admin')}}"

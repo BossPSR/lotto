@@ -17,6 +17,7 @@ class CreateChat extends Migration
             $table->bigIncrements('id');
             $table->string('fingerprint')->nullable();
             $table->string('text')->nullable();
+            $table->string('image')->nullable();
             $table->tinyInteger('is_admin')->default(0);
             $table->tinyInteger('is_admin_read')->default(0);
             $table->tinyInteger('is_member_read')->default(0);

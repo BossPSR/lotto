@@ -65,7 +65,7 @@ class LotteryPlayController extends Controller
         if (isset($request->shoot_number)) {
             $check = HuayRounds::where('secret', $request->huay_secret)->where('is_active', 1)->first();
             $last = HuayRoundShoots::where('secret', $request->huay_secret)->where('user_id', Auth::user()->id)->OrderBy('id', 'DESC')->first();
-            if ($check && date('Y-m-d H:i:s', strtotime($last->created_at.' +9 seconds')) < now()) {
+            if ($check && $last && date('Y-m-d H:i:s', strtotime($last->created_at.' +9 seconds')) < now() or !$last) {
                 $hidden_username = Auth::user()->username;
                 if (strlen($hidden_username) <= 3) {
                     if (isset($hidden_username[0]))

@@ -1946,6 +1946,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     position: {
@@ -2020,15 +2039,19 @@ __webpack_require__.r(__webpack_exports__);
     send: function send($event) {
       var app = this;
       $event.preventDefault();
-      var data = {
-        fingerprint: this.fingerprint,
-        text: $('#inputChat').val()
-      };
-      console.log(app.position);
-      if (app.position == "admin") data['is_admin'] = 1;
-      this.axios.post('/add_chat_list', data).then(function (response) {
+      var formData = new FormData();
+      formData.append('image', $('#inputFileChat').prop('files')[0]);
+      formData.append('fingerprint', app.fingerprint);
+      formData.append('text', $('#inputChat').val());
+      if (app.position == "admin") formData.append('is_admin', 1); // You should have a server side REST API 
+
+      this.axios.post('/add_chat_list', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
         $('#inputChat').val("");
-        console.log(response.data);
+        $('#inputFileChat').val("");
         app.reloadChat();
       })["catch"](function (error) {
         console.log(error);
@@ -2166,6 +2189,108 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     huay_categorys: {
@@ -2184,14 +2309,14 @@ __webpack_require__.r(__webpack_exports__);
       page: 0,
       huay_id: 0,
       type_name: {
-        price_tree_up: 'สามตัวบน',
-        price_tree_tod: 'สามตัวโต๊ด',
-        price_tree_front: 'สามตัวหน้า',
-        price_tree_down: 'สามตัวหลัง',
-        price_two_up: 'สองตัวบน',
-        price_two_down: 'สองตัวล่าง',
-        price_run_up: 'วิ่งบน',
-        price_run_down: 'วิ่งล่าง'
+        price_tree_up: "สามตัวบน",
+        price_tree_tod: "สามตัวโต๊ด",
+        price_tree_front: "สามตัวหน้า",
+        price_tree_down: "สามตัวหลัง",
+        price_two_up: "สองตัวบน",
+        price_two_down: "สองตัวล่าง",
+        price_run_up: "วิ่งบน",
+        price_run_down: "วิ่งล่าง"
       },
       type_no: {
         price_tree_up: 3,
@@ -2213,13 +2338,37 @@ __webpack_require__.r(__webpack_exports__);
     change_huay_id: function change_huay_id(id) {
       this.huay_id = id;
       this.view_id = id;
-      $('#select_type option').each(function () {
+      $("#select_type option").each(function () {
         if (this.defaultSelected) {
           this.selected = true;
           return false;
         }
       });
       this.my_number = [];
+      this.type_name = {
+        price_tree_up: "สามตัวบน",
+        price_tree_tod: "สามตัวโต๊ด",
+        price_tree_front: "สามตัวหน้า",
+        price_tree_down: "สามตัวหลัง",
+        price_two_up: "สองตัวบน",
+        price_two_down: "สองตัวล่าง",
+        price_run_up: "วิ่งบน",
+        price_run_down: "วิ่งล่าง"
+      };
+      var app = this;
+      this.axios.post("/admin/un_huay", {
+        get_huay_info: true,
+        huay_id: this.huay_id
+      }).then(function (response) {
+        for (var k in app.type_name) {
+          if (response.data[k] == -1.0) {
+            delete app.type_name[k];
+          }
+        }
+
+        app.$forceUpdate();
+      })["catch"](function (error) {// console.log(error)
+      });
     },
     clear_view_id: function clear_view_id() {
       this.view_id = 0;
@@ -2229,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
       var app = this; // console.log(this.huay_id)
       // console.log(huay_type)
 
-      this.axios.post('/admin/un_huay', {
+      this.axios.post("/admin/un_huay", {
         get_number_list: true,
         huay_category_id: this.page,
         huay_id: this.huay_id,
@@ -2274,7 +2423,7 @@ __webpack_require__.r(__webpack_exports__);
     change_huay_type: function change_huay_type(huay_type) {
       this.my_number = [];
       this.huay_type = huay_type;
-      $('#change_all').val(""); // this.my_number[index].huay_type = huay_type;
+      $("#change_all").val(""); // this.my_number[index].huay_type = huay_type;
       // var old_length = this.my_number[index].number_length;
       // this.my_number[index].number_length = this.type_no[huay_type];
       //// console.log(this.my_number[index].number.length)
@@ -2318,7 +2467,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     add_huay_category_un: function add_huay_category_un() {
       var app = this;
-      this.axios.post('/admin/un_huay', {
+      this.axios.post("/admin/un_huay", {
         add_huay_category_un: true,
         huay_category_id: this.view_id,
         huay_id: this.huay_id,
@@ -2326,7 +2475,7 @@ __webpack_require__.r(__webpack_exports__);
         huay_type: this.huay_type
       }).then(function (response) {
         // console.log(response.data)
-        Swal.fire('เลขอั้น!', 'บันทึกสำเร็จแล้ว.', 'success');
+        Swal.fire("เลขอั้น!", "บันทึกสำเร็จแล้ว.", "success");
       })["catch"](function (error) {// console.log(error)
       });
       event.preventDefault();
@@ -2884,15 +3033,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -8816,7 +8956,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
+exports.push([module.i, "\ntd {\n  padding: 10px !important;\n}\ninput {\n  height: 30px !important;\n}\n", ""]);
 
 // exports
 
@@ -40643,7 +40783,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticStyle: { height: "410px", "overflow-y": "scroll" },
+              staticStyle: { height: "400px", "overflow-y": "scroll" },
               attrs: { id: "chat-div" }
             },
             _vm._l(_vm.chat, function(data, index) {
@@ -40652,9 +40792,7 @@ var render = function() {
                   ? _c("div", { staticClass: "text-left" }, [
                       _c(
                         "label",
-                        {
-                          staticClass: "bg-warning text-white rounded pl-2 pr-2"
-                        },
+                        { staticClass: "bg-info text-white rounded pl-2 pr-2" },
                         [_vm._v(_vm._s(data.text))]
                       )
                     ])
@@ -40688,10 +40826,68 @@ var render = function() {
                   ? _c("div", { staticClass: "text-left" }, [
                       _c(
                         "label",
-                        {
-                          staticClass: "bg-warning text-white rounded pl-2 pr-2"
-                        },
+                        { staticClass: "bg-info text-white rounded pl-2 pr-2" },
                         [_vm._v(_vm._s(data.text))]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                data.is_admin == 1 && _vm.position == "member" && data.image
+                  ? _c("div", { staticClass: "text-left" }, [
+                      _c(
+                        "a",
+                        { attrs: { target: "_blank", href: data.image } },
+                        [
+                          _c("img", {
+                            staticStyle: { width: "80%", height: "auto" },
+                            attrs: { src: data.image }
+                          })
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                data.is_admin == 0 && _vm.position == "member" && data.image
+                  ? _c("div", { staticClass: "text-right" }, [
+                      _c(
+                        "a",
+                        { attrs: { target: "_blank", href: data.image } },
+                        [
+                          _c("img", {
+                            staticStyle: { width: "80%", height: "auto" },
+                            attrs: { src: data.image }
+                          })
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                data.is_admin == 1 && _vm.position == "admin" && data.image
+                  ? _c("div", { staticClass: "text-right" }, [
+                      _c(
+                        "a",
+                        { attrs: { target: "_blank", href: data.image } },
+                        [
+                          _c("img", {
+                            staticStyle: { width: "80%", height: "auto" },
+                            attrs: { src: data.image }
+                          })
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                data.is_admin == 0 && _vm.position == "admin" && data.image
+                  ? _c("div", { staticClass: "text-left" }, [
+                      _c(
+                        "a",
+                        { attrs: { target: "_blank", href: data.image } },
+                        [
+                          _c("img", {
+                            staticStyle: { width: "80%", height: "auto" },
+                            attrs: { src: data.image }
+                          })
+                        ]
                       )
                     ])
                   : _vm._e()
@@ -40712,15 +40908,45 @@ var render = function() {
             [
               _c(
                 "div",
-                { staticClass: "row", staticStyle: { "max-height": "50px" } },
+                { staticClass: "row pt-2", staticStyle: { height: "80px" } },
                 [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4 col-sm-4 col-4 pl-0" }, [
+                  _c("div", { staticClass: "col-md-2 col-md-2 col-2 pl-0" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "btn btn-light w-100",
+                        staticStyle: { height: "40px !important" },
+                        attrs: { for: "inputFileChat" }
+                      },
+                      [_vm._v("รูป")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      staticStyle: {
+                        height: "40px !important",
+                        display: "none"
+                      },
+                      attrs: {
+                        type: "file",
+                        accept: "image/*",
+                        id: "inputFileChat"
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.send($event)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-2 col-md-2 col-2 pl-0" }, [
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-success text-white btn-sm w-100 ",
+                        staticClass: "btn btn-success text-white btn-md w-100 ",
                         on: {
                           click: function($event) {
                             return _vm.send($event)
@@ -40752,10 +40978,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8 col-sm-8 col-8" }, [
+    return _c("div", { staticClass: "col-md-8 col-md-8 col-8" }, [
       _c("input", {
         staticClass: "form-control",
-        staticStyle: { height: "30px !important" },
+        staticStyle: { height: "40px !important" },
         attrs: { type: "text", id: "inputChat" }
       })
     ])
@@ -41213,10 +41439,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [
-      _vm._v("ยอดรวมต่องวด "),
+      _vm._v("\n                ยอดรวมต่องวด\n                "),
       _c("small", { staticClass: "text-danger" }, [
         _c("br"),
-        _vm._v(" (0 คือไม่จำกัด)")
+        _vm._v("(0 คือไม่จำกัด)\n                ")
       ])
     ])
   },
@@ -42087,268 +42313,278 @@ var render = function() {
         _vm._v(" "),
         _vm.page_index == 1
           ? _c("div", [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_tree_up" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_tree_up")
-                        }
-                      }
-                    },
-                    [
+              _c("div", { staticClass: "row" }, [
+                _vm.price_tree_up != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
                       _c(
                         "div",
                         {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_tree_up" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_tree_up")
+                            }
+                          }
                         },
                         [
-                          _vm._v(
-                            "\n                        สามตัวบน (" +
-                              _vm._s(_vm.price_tree_up) +
-                              ")\n                    "
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        สามตัวบน (" +
+                                  _vm._s(_vm.price_tree_up) +
+                                  ")\n                    "
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]
-                  )
-                ]),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_tree_tod" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_tree_tod")
-                        }
-                      }
-                    },
-                    [
+                _vm.price_tree_tod != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
                       _c(
                         "div",
                         {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_tree_tod" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_tree_tod")
+                            }
+                          }
                         },
                         [
-                          _vm._v(
-                            "\n                        สามตัวโต๊ด (" +
-                              _vm._s(_vm.price_tree_tod) +
-                              ")\n                    "
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        สามตัวโต๊ด (" +
+                                  _vm._s(_vm.price_tree_tod) +
+                                  ")\n                    "
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_tree_front" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_tree_front")
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        สามตัวหน้า (" +
-                              _vm._s(_vm.price_tree_front) +
-                              ")\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_tree_down" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_tree_down")
-                        }
-                      }
-                    },
-                    [
+                _vm.price_tree_front != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
                       _c(
                         "div",
                         {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_tree_front" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_tree_front")
+                            }
+                          }
                         },
                         [
-                          _vm._v(
-                            "\n                        สามตัวหลัง (" +
-                              _vm._s(_vm.price_tree_down) +
-                              ")\n                    "
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        สามตัวหน้า (" +
+                                  _vm._s(_vm.price_tree_front) +
+                                  ")\n                    "
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_two_up" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_two_up")
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        สองตัวบน (" +
-                              _vm._s(_vm.price_two_up) +
-                              ")\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_two_down" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_two_down")
-                        }
-                      }
-                    },
-                    [
+                _vm.price_tree_down != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
                       _c(
                         "div",
                         {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_tree_down" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_tree_down")
+                            }
+                          }
                         },
                         [
-                          _vm._v(
-                            "\n                        สองตัวล่าง (" +
-                              _vm._s(_vm.price_two_down) +
-                              ")\n                    "
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        สามตัวหลัง (" +
+                                  _vm._s(_vm.price_tree_down) +
+                                  ")\n                    "
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_run_up" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_run_up")
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        วิ่งบน (" +
-                              _vm._s(_vm.price_run_up) +
-                              ")\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "single-jackpot disableSelection",
-                      staticStyle: { padding: "0", cursor: "pointer" },
-                      attrs: { id: "price_run_down" },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_option("price_run_down")
-                        }
-                      }
-                    },
-                    [
+                _vm.price_two_up != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
                       _c(
                         "div",
                         {
-                          staticClass: "part-body",
-                          staticStyle: { padding: "15px 15px" }
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_two_up" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_two_up")
+                            }
+                          }
                         },
                         [
-                          _vm._v(
-                            "\n                        วิ่งล่าง (" +
-                              _vm._s(_vm.price_run_down) +
-                              ")\n                    "
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        สองตัวบน (" +
+                                  _vm._s(_vm.price_two_up) +
+                                  ")\n                    "
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]
-                  )
-                ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.price_two_down != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_two_down" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_two_down")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        สองตัวล่าง (" +
+                                  _vm._s(_vm.price_two_down) +
+                                  ")\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.price_run_up != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_run_up" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_run_up")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        วิ่งบน (" +
+                                  _vm._s(_vm.price_run_up) +
+                                  ")\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.price_run_down != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "price_run_down" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("price_run_down")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        วิ่งล่าง (" +
+                                  _vm._s(_vm.price_run_down) +
+                                  ")\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex " }, [

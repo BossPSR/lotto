@@ -52,12 +52,12 @@ class UnHuayController extends Controller
                 array_push($number_array, $info['number']);
             }
 
-            // $update = array('is_un' => 0);
-
-            // HuayRoundPoyNumbers::where('huay_category_id', $request->huay_category_id)->where('is_un', 1)->where('is_won', -1)->update($update);
-            // if ($number_array)
-            //     HuayRoundPoyNumbers::where('huay_category_id', $request->huay_category_id)->where('is_won', -1)->whereIn('number', $number_array)->update(['is_un' => 0]);
             return response()->json(true, 200);
+        } else if (isset($request->get_huay_info)) {
+            
+            $huay = Huays::where('id', $request->huay_id)->first();
+
+            return response()->json($huay, 200);
         } else
             return response()->json(null, 401);
     }

@@ -42,107 +42,108 @@ $contact_header = ContactHeader::first();
     <link rel="stylesheet" href="{{asset('assets/css/newstyle.css')}}">
 </head>
 
-    <body>
-        @php $user = Auth::user(); @endphp
-        <!-- preloader begin -->
-        <div class="preloader">
-            <div id="nest1"></div>
-        </div>
-        <!-- preloader end -->
-        <!-- header begin -->
-        <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);">
-            <div class="topbar" style="border-bottom: 1px solid #fff;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
-                            <div class="support-area mt-2 mb-2">
-                                <ul>
-                                    <li class=" text-white">
-                                        <span class=""><i class="fas fa-headphones-alt"></i></span>
-                                        {{$contact_header->tel}}
-                                    </li>
-                                    <li class=" text-white">
-                                        <span class=""><i class="far fa-envelope"></i></span>
-                                        {{$contact_header->email}}
-                                    </li>
-                                </ul>
-                            </div>
+<body>
+    @php $user = Auth::user(); @endphp
+    <!-- preloader begin -->
+    <div class="preloader">
+        <div id="nest1"></div>
+    </div>
+    <!-- preloader end -->
+    <!-- header begin -->
+    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);">
+        <div class="topbar" style="border-bottom: 1px solid #fff;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
+                        <div class="support-area mt-2 mb-2">
+                            <ul>
+                                <li class=" text-white">
+                                    <span class=""><i class="fas fa-headphones-alt"></i></span>
+                                    {{$contact_header->tel}}
+                                </li>
+                                <li class=" text-white">
+                                    <span class=""><i class="far fa-envelope"></i></span>
+                                    {{$contact_header->email}}
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="select-lang">
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="select-lang">
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-                <div class="menu-bar" style="margin:15px 0;">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-7">
-                                    <div class="logo" style="width:100%">
+        <div class="container">
+            <div class="menu-bar" style="margin:15px 0;">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-7">
+                                <div class="logo" style="width:100%">
 
-                                        <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
+                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
 
-                                    </div>
-                                </div>
-                                <div class="d-xl-none d-lg-none d-block col-5">
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
-                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-9 for-lottery text-white">
-                            <div class="mainmenu">
-                                <nav class="navbar navbar-expand-lg for-lottery">
+                            <div class="d-xl-none d-lg-none d-block col-5">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <ul class="navbar-nav ml-auto">
-                                            <li class="nav-item">
-                                                <div class="header_login">
-                                                    <div class="d-flex">
-                                                        <div class="header_after_login">
-                                                          {{number_format(Auth::user()->money, 2)}}
-                                                          <i class="fa fa-coins"></i>
-                                                          |
-                                                          {{number_format(Auth::user()->credit, 2)}}
-                                                          <i class="fa fa-coins"></i>
-                                                          CF
-                                                        </div>
-                                                        <div class="header_after_login">
-                                                            <i class="fa fa-bell" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="header_after_login" data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                                        </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 for-lottery text-white">
+                        <div class="mainmenu">
+                            <nav class="navbar navbar-expand-lg for-lottery">
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item">
+                                            <div class="header_login">
+                                                <div class="d-flex">
+                                                    <div class="header_after_login">
+                                                        {{number_format(Auth::user()->money, 2)}}
+                                                        <i class="fa fa-coins"></i>
+                                                        |
+                                                        {{number_format(Auth::user()->credit, 2)}}
+                                                        <i class="fa fa-coins"></i>
+                                                        CF
+                                                    </div>
+                                                    <div class="header_after_login">
+                                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="header_after_login" data-toggle="modal" data-target="#exampleModal">
+                                                        <i class="fa fa-user" aria-hidden="true"></i>
                                                     </div>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </nav>
-                            </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-
+                    <label for="" style="font-weight: bold;font-size: 28px;color: #8d55ff;">ข้อมูลส่วนตัว</label>
                 </div>
-                <div class="modal-body">
-                    <div class="text-center" style="padding-bottom:15px;">
+                <div class="modal-body row">
+                    <!-- <div class="text-center" style="padding-bottom:15px;">
                         <img src="{{ $user->path_cover}}" style="width: 30%;">
-                    </div>
+                    </div> -->
+
                     <!-- <div style="padding:15px;">
                         <a href="{{ route('profile_user') }}" style="display: inline-block;">
                         <span class="set_profile" style="cursor:pointer;">
@@ -150,62 +151,92 @@ $contact_header = ContactHeader::first();
                         </span>
                         </a>
                     </div> -->
-
-                    <div id="logout_user" style="padding:15px;">
-                        <a href="{{ route('logout') }}" style="display: inline-block;">
-                            <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="sign-out" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-sign-out fa-w-16 fa-fw fa-2x"><path fill="currentColor" d="M96 64h84c6.6 0 12 5.4 12 12v24c0 6.6-5.4 12-12 12H96c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h84c6.6 0 12 5.4 12 12v24c0 6.6-5.4 12-12 12H96c-53 0-96-43-96-96V160c0-53 43-96 96-96zm231.1 19.5l-19.6 19.6c-4.8 4.8-4.7 12.5.2 17.1L420.8 230H172c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h248.8L307.7 391.7c-4.8 4.7-4.9 12.4-.2 17.1l19.6 19.6c4.7 4.7 12.3 4.7 17 0l164.4-164c4.7-4.7 4.7-12.3 0-17l-164.4-164c-4.7-4.6-12.3-4.6-17 .1z" class=""></path></svg> ออกจากระบบ
-                        </a>
+                   
+                    <div class="col-12">
+                        <label for="" style="font-size: 20px;">ชื่อเข้าสู่ระบบ</label>
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="">ชื่อจริง</label>
+                        <input type="text" name="fname" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="" style="font-size: 20px;">นามสกุล</label>
+                        <input type="text" name="lname" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="" style="font-size: 20px;">อีเมล</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="" style="font-size: 20px;">วัน/เดือน/ปี เกิด</label>
+                        <input type="text" name="bit" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="" style="font-size: 20px;">โทรศัพท์ติดต่อ</label>
+                        <input type="text" name="tel" class="form-control">
                     </div>
 
-                </div>
-                <div class="modal-footer">
 
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
-            </div>
+                <div class="modal-footer" style="display: block;">
+                    <div class="row">
+                        <div class="col-6" id="logout_user">
+                            <a href="{{ route('logout') }}" style="display: flex;align-items: center;font-size: 22px;">
+                                <i class="fas fa-sign-out-alt" style="font-size:40px;padding-right: 5px;"></i> ออกจากระบบ
+                            </a>
+                        </div>
+
+                        <div class="col-6 text-right">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- header end -->
+    <!-- header end -->
 
-        @yield('contact_member')
+    @yield('contact_member')
 
 
 
-        <!-- jquery -->
-        <script src="{{asset('assets/js/jquery.js')}}"></script>
-        <!-- proper js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <!-- bootstrap -->
-        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <!-- jquery -->
+    <script src="{{asset('assets/js/jquery.js')}}"></script>
+    <!-- proper js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- bootstrap -->
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
-        <!-- owl carousel -->
-        <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-        <script src="{{asset('assets/js/owl.carousel2.thumbs.min.js')}}"></script>
+    <!-- owl carousel -->
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel2.thumbs.min.js')}}"></script>
 
-        <!-- modal video js -->
-        <script src="{{asset('assets/js/jquery-modal-video.min.js')}}"></script>
-        <!-- filterizr js -->
-        <script src="{{asset('assets/js/jquery.filterizr.min.js')}}"></script>
-        <!-- way poin js-->
-        <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
-        <!-- wow js-->
-        <script src="{{asset('assets/js/wow.min.js')}}"></script>
-        <!-- flgstrap js -->
-        <script src="{{asset('assets/js/jquery.flagstrap.min.js')}}"></script>
-        <!-- vector map js -->
-        <script src="{{asset('assets/js/jquery-jvectormap-2.0.3.min.js')}}"></script>
-        <script src="{{asset('assets/js/jquery-jvectormap-world-mill.js')}}"></script>
-        <script src="{{asset('assets/js/gdp-data.js')}}"></script>
-        <script src="{{asset('assets/js/vector-map-activated.js')}}"></script>
-        <!-- niceScroll js -->
-        <script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
-        <!-- slick js -->
-        <script src="{{asset('assets/js/slick.js')}}"></script>
-        <script src="{{asset('assets/js/slick-slider.js')}}"></script>
-        <!-- main -->
-        <script src="{{asset('assets/js/main.js')}}"></script>
+    <!-- modal video js -->
+    <script src="{{asset('assets/js/jquery-modal-video.min.js')}}"></script>
+    <!-- filterizr js -->
+    <script src="{{asset('assets/js/jquery.filterizr.min.js')}}"></script>
+    <!-- way poin js-->
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <!-- wow js-->
+    <script src="{{asset('assets/js/wow.min.js')}}"></script>
+    <!-- flgstrap js -->
+    <script src="{{asset('assets/js/jquery.flagstrap.min.js')}}"></script>
+    <!-- vector map js -->
+    <script src="{{asset('assets/js/jquery-jvectormap-2.0.3.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-jvectormap-world-mill.js')}}"></script>
+    <script src="{{asset('assets/js/gdp-data.js')}}"></script>
+    <script src="{{asset('assets/js/vector-map-activated.js')}}"></script>
+    <!-- niceScroll js -->
+    <script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
+    <!-- slick js -->
+    <script src="{{asset('assets/js/slick.js')}}"></script>
+    <script src="{{asset('assets/js/slick-slider.js')}}"></script>
+    <!-- main -->
+    <script src="{{asset('assets/js/main.js')}}"></script>
 
-    </body>
+</body>
 
 </html>
