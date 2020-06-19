@@ -28,6 +28,7 @@ Vue.component('my-number-set', require('./components/MyNumberSet.vue').default);
 Vue.component('huay-uns', require('./components/HuayUns.vue').default);
 Vue.component('view-poy', require('./components/ViewPoy.vue').default);
 Vue.component('chat', require('./components/Chat.vue').default);
+Vue.component('dashboard', require('./components/DashboardHuay.vue').default);
 Vue.use(VueAxios, axios)
 /**
  * Next, we will create a fresh Vue application instance and attach it to

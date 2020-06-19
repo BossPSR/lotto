@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="display: none;">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -194,6 +194,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="row" id="app">
+                    <dashboard
+                    :huay_categorys="{{json_encode($huay_category)}}"
+                    :huay_by_category_id="{{json_encode($huay_by_category_id)}}"
+                    ></dashboard>
+                </div>
+                <script src="../js/app.js"></script>
             </section>
             <!-- Dashboard Analytics end -->
 

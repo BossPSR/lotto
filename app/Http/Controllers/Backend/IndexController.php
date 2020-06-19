@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\HuayCategorys;
 use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
 use App\Models\HuayRounds;
+use App\Models\Huays;
 use App\Models\User;
 use File;
 use Auth;
@@ -20,9 +22,58 @@ class IndexController extends Controller
     {
         $this->middleware('auth:admin');
     }
+    public function post(Request $request)
+    {
+        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+            $sort_col = array();
+            foreach ($arr as $key=> $row) {
+                $sort_col[$key] = $row[$col];
+            }
+        
+            array_multisort($sort_col, $dir, $arr);
+        }
+
+        if (isset($request->get_huay_rounds)) {
+            $rounds = HuayRounds::where('huay_id', $request->huay_id)->get();
+            return response()->json($rounds, 200);
+        }
+        if (isset($request->get_stat_number_by_round_id)) {
+            
+            $query = HuayRoundPoyNumbers::query();
+            $query->where('huay_round_id', $request->huay_round_id);
+            if ($request->huay_type)
+                $query->where('huay_type', $request->huay_type);
+            $numbers = $query->get('number');
+
+            $wrap = array();
+            if ($numbers) {
+                foreach ($numbers as $data) {
+                    if (!isset($wrap[$data->number]))
+                    {
+                        $data->count = 0;
+                        $wrap[$data->number] = $data;
+                    }
+
+                    $wrap[$data->number]->count++;
+                }
+            }
+            $wrap = array_values($wrap);
+            array_sort_by_column($wrap, 'count', SORT_DESC);
+            return response()->json($wrap, 200);
+        }
+    }
 
     public function index()
     {
+
+        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+            $sort_col = array();
+            foreach ($arr as $key=> $row) {
+                $sort_col[$key] = $row[$col];
+            }
+        
+            array_multisort($sort_col, $dir, $arr);
+        }
 
         $user_all =  User::get();
         $user_by_id = array();
@@ -35,7 +86,7 @@ class IndexController extends Controller
 
         $won_by_user_id = array();
         $play_by_user_id = array();
-        
+
         $numbers = HuayRoundPoyNumbers::get();
 
         $stat_by_number = array();
@@ -71,8 +122,17 @@ class IndexController extends Controller
                 $user_active[$key]->play = isset($play_by_user_id[$value->id]) ? $play_by_user_id[$value->id] : 0;
             }
         }
-       
 
+        $huay_category = HuayCategorys::where('deleted_at', null)->get();
+        $huays = Huays::where('deleted_at', null)->get();
+
+        $huay_by_category_id = array();
+        foreach ($huays as $huay) {
+            if (!isset($huay_by_category_id[$huay->huay_category_id]))
+                $huay_by_category_id[$huay->huay_category_id] = array();
+
+            array_push($huay_by_category_id[$huay->huay_category_id], $huay);
+        }
 
         $data = array(
             'count_user' => User::count(),
@@ -88,6 +148,8 @@ class IndexController extends Controller
             'stat_number_by_user_id' => $stat_number_by_user_id,
             'stat_by_number' => $stat_by_number,
             'user_by_id' => $user_by_id,
+            'huay_category' => $huay_category,
+            'huay_by_category_id' => $huay_by_category_id,
         );
 
         return view('backend.index_admin', $data);

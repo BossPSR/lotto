@@ -125,4 +125,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::POST('/manage_huay','Backend\ManageHuayController@huay_manage_post');//จัดการราคาหวย
     Route::POST('/manage_huay_round','Backend\ManageHuayController@manage_huay_round_post');//จัดการรอบหวย
+
+    Route::post('/index_admin','Backend\IndexController@post'); //Dashboard
+
 });

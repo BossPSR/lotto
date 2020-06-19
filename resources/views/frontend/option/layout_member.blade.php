@@ -151,31 +151,32 @@ $contact_header = ContactHeader::first();
                         </span>
                         </a>
                     </div> -->
-                   
-                    <div class="col-12">
-                        <label for="" style="font-size: 20px;">ชื่อเข้าสู่ระบบ</label>
-                        <input type="text" value="{{$user->username}}" class="form-control" readonly>
-                    </div>
-                    <div class="col-12">
-                        <label for="">ชื่อจริง</label>
-                        <input type="text" name="fname" class="form-control" value="{{$user->first_name}}">
-                    </div>
-                    <div class="col-12">
-                        <label for="" style="font-size: 20px;">นามสกุล</label>
-                        <input type="text" name="lname" class="form-control" value="{{$user->last_name}}">
-                    </div>
-                    <div class="col-12">
-                        <label for="" style="font-size: 20px;">อีเมล</label>
-                        <input type="text" class="form-control" value="{{$user->email}}" readonly>
-                    </div>
-                    <div class="col-12">
-                        <label for="" style="font-size: 20px;">วัน/เดือน/ปี เกิด</label>
-                        <input type="date"  class="form-control" value="{{$user->birthday}}" readonly>
-                    </div>
-                    <div class="col-12">
-                        <label for="" style="font-size: 20px;">โทรศัพท์ติดต่อ</label>
-                        <input type="text"  class="form-control" value="{{$user->first_name}}" readonly>
-                    </div>
+                    <form>
+                        <div class="col-12">
+                            <label for="" style="font-size: 20px;">ชื่อเข้าสู่ระบบ : </label>
+                            <label>{{$user->username}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="" style="font-size: 20px;">ชื่อจริง : </label>
+                            <label>{{$user->first_name}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="" style="font-size: 20px;">นามสกุล : </label>
+                            <label>{{$user->last_name}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="" style="font-size: 20px;">อีเมล : </label>
+                            <label>{{$user->email}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="" style="font-size: 20px;">วัน/เดือน/ปี เกิด : </label>
+                            <label>{{date('d/m/Y', strtotime($user->birthday))}}</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="" style="font-size: 20px;">โทรศัพท์ติดต่อ : </label>
+                            <label>{{$user->tel}}</label>
+                        </div>
+                    </form>
 
 
                 </div>

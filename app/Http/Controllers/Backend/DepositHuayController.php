@@ -85,7 +85,7 @@ class DepositHuayController extends Controller
 
     public function deposit_approve()
     {
-        $deposit_list = DB::table(self::$table)->where('deleted_at', null)->where('status', 'pending')->orderBy('sort_order_id')->get();
+        $deposit_list = DB::table(self::$table)->where('deleted_at', null)->where('status', 'pending')->orderBy('id', 'desc')->get();
 
         $user_id_all = [];
 
@@ -111,7 +111,7 @@ class DepositHuayController extends Controller
 
     public function deposit_list()
     {
-        $deposit_list = DB::table(self::$table)->where('deleted_at', null)->whereIn('status', ['confirm', 'reject'])->orderBy('sort_order_id')->get();
+        $deposit_list = DB::table(self::$table)->where('deleted_at', null)->whereIn('status', ['confirm', 'reject'])->orderBy('id', 'desc')->get();
 
         $user_id_all = [];
         $admin_id_all = [];

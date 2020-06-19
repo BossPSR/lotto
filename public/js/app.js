@@ -2063,6 +2063,308 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DashboardHuay.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    huay_categorys: {
+      type: Array,
+      "default": []
+    },
+    huay_by_category_id: {
+      type: Object,
+      "default": []
+    }
+  },
+  data: function data() {
+    return {
+      view_id: 0,
+      huay_category_list: {},
+      page: 0,
+      huay_id: 0,
+      huay_round_id: 0,
+      type_name: {
+        price_tree_up: "สามตัวบน",
+        price_tree_tod: "สามตัวโต๊ด",
+        price_tree_front: "สามตัวหน้า",
+        price_tree_down: "สามตัวหลัง",
+        price_two_up: "สองตัวบน",
+        price_two_down: "สองตัวล่าง",
+        price_run_up: "วิ่งบน",
+        price_run_down: "วิ่งล่าง"
+      },
+      type_no: {
+        price_tree_up: 3,
+        price_tree_tod: 3,
+        price_tree_front: 3,
+        price_tree_down: 3,
+        price_two_up: 2,
+        price_two_down: 2,
+        price_run_up: 1,
+        price_run_down: 1
+      },
+      my_number: [],
+      huay_rounds: [],
+      huay_type: ""
+    };
+  },
+  mounted: function mounted() {// console.log('Component mounted.')
+  },
+  methods: {
+    change_huay_id: function change_huay_id(id) {
+      this.huay_id = id;
+      this.view_id = id;
+      var app = this;
+      this.axios.post("/admin/index_admin", {
+        get_huay_rounds: true,
+        huay_id: this.huay_id
+      }).then(function (response) {
+        app.huay_rounds = response.data;
+        app.$forceUpdate();
+      })["catch"](function (error) {// console.log(error)
+      });
+      $("#select_round option").each(function () {
+        if (this.defaultSelected) {
+          this.selected = true;
+          return false;
+        }
+      });
+      this.my_number = [];
+    },
+    change_round: function change_round() {
+      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var huay_type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      if (id) this.huay_round_id = id;
+      var app = this;
+
+      if (id) {
+        $("#select_type option").each(function () {
+          if (this.defaultSelected) {
+            this.selected = true;
+            return false;
+          }
+        });
+      }
+
+      this.axios.post("/admin/index_admin", {
+        get_stat_number_by_round_id: true,
+        huay_round_id: this.huay_round_id,
+        huay_type: huay_type
+      }).then(function (response) {
+        app.my_number = response.data;
+        console.log(response.data);
+        app.$forceUpdate();
+      })["catch"](function (error) {// console.log(error)
+      });
+    },
+    clear_view_id: function clear_view_id() {
+      this.view_id = 0;
+      this.my_number = [];
+    },
+    load_number_list: function load_number_list(huay_type) {
+      var app = this; // console.log(this.huay_id)
+      // console.log(huay_type)
+
+      this.axios.post("/admin/un_huay", {
+        get_number_list: true,
+        huay_category_id: this.page,
+        huay_id: this.huay_id,
+        huay_type: huay_type
+      }).then(function (response) {
+        // console.log(response.data)
+        if (response.data.length) app.my_number = response.data;
+        app.$forceUpdate();
+      })["catch"](function (error) {// console.log(error)
+      }); // console.log(app.old_list)
+    },
+    change_page: function change_page(page) {
+      this.page = page;
+    },
+    change_number_all: function change_number_all(amount) {
+      for (var i = 0; i < this.my_number.length; i++) {
+        this.my_number[i].max_price = amount;
+      }
+    },
+    change_max_price: function change_max_price(evt, index) {
+      this.my_number[index].max_price = evt.target.value;
+    },
+    change_over_percent: function change_over_percent(evt, index) {
+      this.my_number[index].over_percent = evt.target.value;
+    },
+    change_is_enable: function change_is_enable(evt, index) {
+      console.log(evt);
+      this.my_number[index].is_enable = evt;
+    },
+    change_huay_type: function change_huay_type(huay_type) {
+      this.my_number = [];
+      this.huay_type = huay_type;
+      $("#change_all").val("");
+
+      if (this.type_no[huay_type] == 3) {
+        for (var i = 0; i < 1000; i++) {
+          var str = "" + i;
+          var pad = "000";
+          var ans = pad.substring(0, pad.length - str.length) + str;
+          this.add_row(huay_type, ans, 3);
+        }
+      } else if (this.type_no[huay_type] == 2) {
+        for (var i = 0; i < 100; i++) {
+          var str = "" + i;
+          var pad = "00";
+          var ans = pad.substring(0, pad.length - str.length) + str;
+          this.add_row(huay_type, ans, 2);
+        }
+      } else if (this.type_no[huay_type] == 1) {
+        for (var i = 0; i < 10; i++) {
+          var str = "" + i;
+          var pad = "0";
+          var ans = pad.substring(0, pad.length - str.length) + str;
+          this.add_row(huay_type, ans, 1);
+        }
+      }
+
+      this.load_number_list(huay_type);
+    },
+    add_huay_category_un: function add_huay_category_un() {
+      var app = this;
+      this.axios.post("/admin/un_huay", {
+        add_huay_category_un: true,
+        huay_category_id: this.view_id,
+        huay_id: this.huay_id,
+        number_array: this.my_number,
+        huay_type: this.huay_type
+      }).then(function (response) {
+        // console.log(response.data)
+        Swal.fire("เลขอั้น!", "บันทึกสำเร็จแล้ว.", "success");
+      })["catch"](function (error) {// console.log(error)
+      });
+      event.preventDefault();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=script&lang=js& ***!
@@ -9473,6 +9775,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
+
+// exports
 
 
 /***/ }),
@@ -40625,6 +40946,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardHuay.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=style&index=0&lang=css& ***!
@@ -41526,6 +41877,320 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=template&id=43bfd444&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DashboardHuay.vue?vue&type=template&id=43bfd444& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-content row p-2" }, [
+            _vm.page == 0
+              ? _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.huay_categorys, function(
+                          huay_category,
+                          index
+                        ) {
+                          return _c("tr", [
+                            _c("td", { staticStyle: { display: "none" } }),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(index + 1) + ".")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(huay_category.name))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-right" }, [
+                              huay_category.id == _vm.view_id
+                                ? _c(
+                                    "button",
+                                    { staticClass: "btn btn-info btn-md" },
+                                    [_c("i", { staticClass: "fa fa-search" })]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              huay_category.id != _vm.view_id
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-default btn-md",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.change_page(
+                                            huay_category.id
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "fa fa-search" })]
+                                  )
+                                : _vm._e()
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.page != 0
+              ? _c("div", { staticClass: "col-md-4" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-warning btn-md text-white",
+                      on: {
+                        click: function($event) {
+                          return _vm.change_page(0)
+                        }
+                      }
+                    },
+                    [_vm._v("ย้อนกลับ")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table data-list-view" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.huay_by_category_id[_vm.page], function(
+                          huay,
+                          index
+                        ) {
+                          return _c("tr", [
+                            _c("td", { staticStyle: { display: "none" } }),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(index + 1) + ".")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(huay.name))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-right" }, [
+                              huay.id == _vm.view_id
+                                ? _c(
+                                    "button",
+                                    { staticClass: "btn btn-info btn-md" },
+                                    [_c("i", { staticClass: "fa fa-search" })]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              huay.id != _vm.view_id
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-default btn-md",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.change_huay_id(huay.id)
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "fa fa-search" })]
+                                  )
+                                : _vm._e()
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.view_id != 0
+              ? _c("div", { staticClass: "col-md-8" }, [
+                  _c("form", { attrs: { methods: "POST" } }, [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control mb-2",
+                        attrs: { id: "select_round", required: "" },
+                        on: {
+                          change: function($event) {
+                            return _vm.change_round($event.target.value)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { value: "", disabled: "", selected: "" } },
+                          [_vm._v("เลือกรอบหวย")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.huay_rounds, function(data, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: data.id } },
+                            [
+                              _vm._v(
+                                _vm._s(data.name + " " + data.end_datetime)
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("form", { attrs: { methods: "POST" } }, [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control mb-2",
+                        attrs: { id: "select_type", required: "" },
+                        on: {
+                          change: function($event) {
+                            return _vm.change_round(null, $event.target.value)
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "", selected: "" } }, [
+                          _vm._v("แสดงประเภทเลขตัวเลขทั้งหมด")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.type_name, function(name, huay_type) {
+                          return _c(
+                            "option",
+                            { domProps: { value: huay_type } },
+                            [_vm._v(_vm._s(name))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "border p-2 rounded bg-white" }, [
+                    _c(
+                      "div",
+                      { attrs: { id: "number-add-list" } },
+                      _vm._l(_vm.my_number, function(data, index) {
+                        return _c(
+                          "div",
+                          {
+                            staticClass: "row mb-1",
+                            staticStyle: { "font-size": "25px" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-md-6 col-md-6 col-6 text-center rounded border"
+                              },
+                              [
+                                _c("b", {}, [
+                                  _vm._v(" " + _vm._s(data.number) + " ")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-md-6 col-md-6 col-6  text-center"
+                              },
+                              [
+                                _c("b", { staticClass: "text-success" }, [
+                                  _vm._v("แทง " + _vm._s(data.count) + " ครั้ง")
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("สถิติการแทงแต่ละรอบ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticStyle: { display: "none" } }),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("หวย")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticStyle: { display: "none" } }),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("หวย")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("Action")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HuayUns.vue?vue&type=template&id=d813e0cc& ***!
@@ -41567,7 +42232,7 @@ var render = function() {
                         huay_category.id == _vm.view_id
                           ? _c(
                               "button",
-                              { staticClass: "btn btn-info btn-sm" },
+                              { staticClass: "btn btn-info btn-md" },
                               [_c("i", { staticClass: "fa fa-search" })]
                             )
                           : _vm._e(),
@@ -41576,7 +42241,7 @@ var render = function() {
                           ? _c(
                               "button",
                               {
-                                staticClass: "btn btn-default btn-sm",
+                                staticClass: "btn btn-default btn-md",
                                 on: {
                                   click: function($event) {
                                     return _vm.change_page(huay_category.id)
@@ -41601,7 +42266,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "btn btn-warning btn-sm text-white",
+                staticClass: "btn btn-warning btn-md text-white",
                 on: {
                   click: function($event) {
                     return _vm.change_page(0)
@@ -41636,7 +42301,7 @@ var render = function() {
                         huay.id == _vm.view_id
                           ? _c(
                               "button",
-                              { staticClass: "btn btn-info btn-sm" },
+                              { staticClass: "btn btn-info btn-md" },
                               [_c("i", { staticClass: "fa fa-search" })]
                             )
                           : _vm._e(),
@@ -41645,7 +42310,7 @@ var render = function() {
                           ? _c(
                               "button",
                               {
-                                staticClass: "btn btn-default btn-sm",
+                                staticClass: "btn btn-default btn-md",
                                 on: {
                                   click: function($event) {
                                     return _vm.change_huay_id(huay.id)
@@ -41713,7 +42378,7 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "col-md-4 col-sm-4 col-4 text-center"
+                            staticClass: "col-md-4 col-md-4 col-4 text-center"
                           },
                           [
                             _vm._m(3),
@@ -41747,7 +42412,7 @@ var render = function() {
                     { attrs: { id: "number-add-list" } },
                     _vm._l(_vm.my_number, function(data, index) {
                       return _c("div", { staticClass: "row mb-1" }, [
-                        _c("div", { staticClass: "col-md-2 col-sm-2 col-2" }, [
+                        _c("div", { staticClass: "col-md-2 col-md-2 col-2" }, [
                           _c("input", {
                             staticClass: "text-center form-control",
                             attrs: {
@@ -41763,7 +42428,7 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4 col-sm-4 col-4" }, [
+                        _c("div", { staticClass: "col-md-4 col-md-4 col-4" }, [
                           data.max_price > 0
                             ? _c("input", {
                                 staticClass: "form-control",
@@ -41802,7 +42467,7 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4 col-sm-4 col-4" }, [
+                        _c("div", { staticClass: "col-md-4 col-md-4 col-4" }, [
                           data.over_percent > 0
                             ? _c("input", {
                                 staticClass: "form-control",
@@ -41848,12 +42513,12 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-2 col-sm-2 col-2" }, [
+                        _c("div", { staticClass: "col-md-2 col-md-2 col-2" }, [
                           data.is_enable == 1
                             ? _c(
                                 "a",
                                 {
-                                  staticClass: "btn btn-success btn-sm",
+                                  staticClass: "btn btn-success btn-md",
                                   attrs: {
                                     type: "checkbox",
                                     name: "is_enable[]"
@@ -41872,7 +42537,7 @@ var render = function() {
                             ? _c(
                                 "a",
                                 {
-                                  staticClass: "btn btn-light btn-sm",
+                                  staticClass: "btn btn-light btn-md",
                                   attrs: {
                                     type: "checkbox",
                                     name: "is_enable[]"
@@ -41897,7 +42562,7 @@ var render = function() {
                       "a",
                       {
                         staticClass:
-                          "btn btn-warning text-white btn-sm col-md-6",
+                          "btn btn-warning text-white btn-md col-md-6",
                         on: {
                           click: function($event) {
                             return _vm.clear_view_id()
@@ -41912,7 +42577,7 @@ var render = function() {
                           "button",
                           {
                             staticClass:
-                              "btn btn-primary btn-sm text-white col-md-6 float-right"
+                              "btn btn-primary btn-md text-white col-md-6 float-right"
                           },
                           [_vm._v("บันทึก")]
                         )
@@ -41963,7 +42628,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-sm-2 col-2" }, [
+    return _c("div", { staticClass: "col-md-2 col-md-2 col-2" }, [
       _c("label", [_vm._v("เลข")])
     ])
   },
@@ -41983,7 +42648,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4 col-sm-4 col-4" }, [
+    return _c("div", { staticClass: "col-md-4 col-md-4 col-4" }, [
       _c("label", [_vm._v("อั้น")])
     ])
   }
@@ -57693,6 +58358,7 @@ Vue.component('my-number-set', __webpack_require__(/*! ./components/MyNumberSet.
 Vue.component('huay-uns', __webpack_require__(/*! ./components/HuayUns.vue */ "./resources/js/components/HuayUns.vue")["default"]);
 Vue.component('view-poy', __webpack_require__(/*! ./components/ViewPoy.vue */ "./resources/js/components/ViewPoy.vue")["default"]);
 Vue.component('chat', __webpack_require__(/*! ./components/Chat.vue */ "./resources/js/components/Chat.vue")["default"]);
+Vue.component('dashboard', __webpack_require__(/*! ./components/DashboardHuay.vue */ "./resources/js/components/DashboardHuay.vue")["default"]);
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTED_MODULE_0___default.a);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -57815,6 +58481,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Chat_vue_vue_type_template_id_0d66c37a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Chat_vue_vue_type_template_id_0d66c37a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/DashboardHuay.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/DashboardHuay.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DashboardHuay_vue_vue_type_template_id_43bfd444___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardHuay.vue?vue&type=template&id=43bfd444& */ "./resources/js/components/DashboardHuay.vue?vue&type=template&id=43bfd444&");
+/* harmony import */ var _DashboardHuay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardHuay.vue?vue&type=script&lang=js& */ "./resources/js/components/DashboardHuay.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DashboardHuay.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _DashboardHuay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DashboardHuay_vue_vue_type_template_id_43bfd444___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DashboardHuay_vue_vue_type_template_id_43bfd444___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DashboardHuay.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DashboardHuay.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/DashboardHuay.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardHuay.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardHuay.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DashboardHuay.vue?vue&type=template&id=43bfd444&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/DashboardHuay.vue?vue&type=template&id=43bfd444& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_template_id_43bfd444___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardHuay.vue?vue&type=template&id=43bfd444& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DashboardHuay.vue?vue&type=template&id=43bfd444&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_template_id_43bfd444___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardHuay_vue_vue_type_template_id_43bfd444___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

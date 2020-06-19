@@ -79,7 +79,6 @@ class RewardHuayController extends Controller
             self::processHuay($request->id);
             return redirect('admin/reward_huay?category_id=' . $_POST['category_id'] . '&start_date=' . $_POST['start_date'] . '&end_date=' . $_POST['end_date'])->with('message', 'สำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['updateRoundYeekee'])) {
-
             $data = array(
                 'result_tree_up' => $_POST['result_tree_up'],
                 'result_tree_tod' => $_POST['result_tree_tod'],
@@ -88,8 +87,12 @@ class RewardHuayController extends Controller
                 'result_two_up' => $_POST['result_two_up'],
                 'result_two_down' => $_POST['result_two_down'],
                 'result_run_up' => $_POST['result_run_up'],
-                'price_shoot' => $_POST['price_shoot'],
                 'result_run_down' => $_POST['result_run_down'],
+                'price_shoot' => $_POST['price_shoot'],
+                'result_total_shoot' => $_POST['result_total_shoot'],
+                'result_row_sixteen' => $_POST['result_row_sixteen'],
+                'result_user_firt' => $_POST['result_user_firt'],
+                'result_user_sixteen' => $_POST['result_user_sixteen'],
                 'round_status' => 'complete',
                 'is_active' => 0
             );
@@ -218,14 +221,23 @@ class RewardHuayController extends Controller
                     $three_up = 'xxx';
                     $two_up = 'xx';
                     $two_down = 'xx';
+
+                    $pos_sixteen = "---";
+                    $result_user_firt = "---";
+                    $result_user_sixteen = "---";
+
                     if ($total_shoot && $shoot_by_round_id[$info->id][15]) {
                         $yeekee_six = $total_shoot - intval($shoot_by_round_id[$info->id][15]->number);
-
+                        
                         $yeekee_six = strval($yeekee_six);
                         $three_up = $yeekee_six[(strlen($yeekee_six)) - 3] . $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
                         $two_up = $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
                         $two_down = $yeekee_six[(strlen($yeekee_six)) - 5] . $yeekee_six[(strlen($yeekee_six)) - 4];
                         $log .= $total_shoot . " - " . intval($shoot_by_round_id[$info->id][15]->number) . " = " . $yeekee_six;
+
+                        $pos_sixteen= ($shoot_by_round_id[$info->id][15]->number);
+                        $result_user_firt= ($shoot_by_round_id[$info->id][0]->user_name_secret);
+                        $result_user_sixteen= ($shoot_by_round_id[$info->id][15]->user_name_secret);
                     }
 
                     $huay_rounds[$key]->unknow = new stdClass;
@@ -236,31 +248,32 @@ class RewardHuayController extends Controller
                     $huay_rounds[$key]->unknow->two_up = $two_up;
                     $huay_rounds[$key]->unknow->two_down = $two_down;
 
+
+
                     $log = '';
                     $yeekee_six = 'คำนวนไม่เสร็จเร็จเนื่องจาก ผู้ยิงไม่ถึง 16 คน';
                     $three_up = 'xxx';
                     $two_up = 'xx';
                     $two_down = 'xx';
+                    
                     if ($total_shoot && $shoot_by_round_id[$info->id][15]) {
-
                         $two = '00';
                         if (!$avalable_number_by_round_id[$info->id]['two'])
                             $two = sprintf('%03d', rand(0, 99));
                         else {
                             $avalable_number_by_round_id[$info->id]['two'] = array_values($avalable_number_by_round_id[$info->id]['two']);
-                            $index_rand = rand(0, count($avalable_number_by_round_id[$info->id]['two']));
+                            $index_rand = rand(0, count($avalable_number_by_round_id[$info->id]['two'])-1);
                             $two = $avalable_number_by_round_id[$info->id]['two'][$index_rand];
                         }
-
+                       
                         $three = '000';
                         if (!$avalable_number_by_round_id[$info->id]['three'])
                             $three = sprintf('%03d', rand(0, 999));
                         else {
                             $avalable_number_by_round_id[$info->id]['three'] = array_values($avalable_number_by_round_id[$info->id]['three']);
-                            $index_rand = rand(0, count($avalable_number_by_round_id[$info->id]['three']));
+                            $index_rand = rand(0, count($avalable_number_by_round_id[$info->id]['three'])-1);
                             $three = $avalable_number_by_round_id[$info->id]['three'][$index_rand];
                         }
-                        // $pos_sixteen= intval($shoot_by_round_id[$info->id][15]->number);
 
                         $yeekee_six = (strval($total_shoot)[0] + 1) . strval($two) . strval($three);
 
@@ -268,12 +281,18 @@ class RewardHuayController extends Controller
                         $two_up = $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
                         $two_down = $yeekee_six[(strlen($yeekee_six)) - 5] . $yeekee_six[(strlen($yeekee_six)) - 4];
                         $log .= $total_shoot . " - " . intval($shoot_by_round_id[$info->id][15]->number) . " = " . $yeekee_six;
+
                     }
+
+                    $huay_rounds[$key]->unknow->result_row_sixteen = $pos_sixteen;
+                    $huay_rounds[$key]->unknow->result_user_firt = $result_user_firt;
+                    $huay_rounds[$key]->unknow->result_user_sixteen = $result_user_sixteen;
 
                     $huay_rounds[$key]->rand->yeekee_six = $yeekee_six;
                     $huay_rounds[$key]->rand->three_up = $three_up;
                     $huay_rounds[$key]->rand->two_up = $two_up;
                     $huay_rounds[$key]->rand->two_down = $two_down;
+                  
                 }
             }
         }

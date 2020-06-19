@@ -89,7 +89,7 @@ class WithdrawHuayController extends Controller
 
     public function Withdraw_approve()
     {
-        $withdraw_list = DB::table(self::$table)->where('deleted_at', null)->where('status', 'pending')->orderBy('sort_order_id')->get();
+        $withdraw_list = DB::table(self::$table)->where('deleted_at', null)->where('status', 'pending')->orderBy('id', 'desc')->get();
 
         $user_id_all = [];
 
@@ -115,7 +115,7 @@ class WithdrawHuayController extends Controller
 
     public function Withdraw_list()
     {
-        $withdraw_list = DB::table(self::$table)->where('deleted_at', null)->whereIn('status', ['confirm', 'reject'])->orderBy('sort_order_id')->get();
+        $withdraw_list = DB::table(self::$table)->where('deleted_at', null)->whereIn('status', ['confirm', 'reject'])->orderBy('id','DESC')->get();
 
         $user_id_all = [];
         $user_id_all = [];

@@ -29,12 +29,12 @@ input {
                 <td class="product-name">{{index+1}}.</td>
                 <td class="product-name">{{huay_category.name}}</td>
                 <td class="text-right">
-                  <button v-if="huay_category.id == view_id" class="btn btn-info btn-sm">
+                  <button v-if="huay_category.id == view_id" class="btn btn-info btn-md">
                     <i class="fa fa-search"></i>
                   </button>
                   <button
                     v-if="huay_category.id != view_id"
-                    class="btn btn-default btn-sm"
+                    class="btn btn-default btn-md"
                     v-on:click="change_page(huay_category.id)"
                   >
                     <i class="fa fa-search"></i>
@@ -46,7 +46,7 @@ input {
         </div>
       </div>
       <div class="col-md-4" v-if="page != 0">
-        <a class="btn btn-warning btn-sm text-white" v-on:click="change_page(0)">ย้อนกลับ</a>
+        <a class="btn btn-warning btn-md text-white" v-on:click="change_page(0)">ย้อนกลับ</a>
         <div class="table-responsive">
           <table class="table data-list-view">
             <thead>
@@ -63,13 +63,13 @@ input {
                 <td class="product-name">{{index+1}}.</td>
                 <td class="product-name">{{huay.name}}</td>
                 <td class="text-right">
-                  <button v-if="huay.id == view_id" class="btn btn-info btn-sm">
+                  <button v-if="huay.id == view_id" class="btn btn-info btn-md">
                     <i class="fa fa-search"></i>
                   </button>
                   <button
                     v-if="huay.id != view_id"
                     v-on:click="change_huay_id(huay.id)"
-                    class="btn btn-default btn-sm"
+                    class="btn btn-default btn-md"
                   >
                     <i class="fa fa-search"></i>
                   </button>
@@ -92,10 +92,10 @@ input {
           </select>
           <div class="border p-2 rounded bg-white">
             <div class="row" v-if="my_number.length > 0">
-              <div class="col-md-2 col-sm-2 col-2">
+              <div class="col-md-2 col-md-2 col-2">
                 <label>เลข</label>
               </div>
-              <div class="col-md-4 col-sm-4 col-4 text-center">
+              <div class="col-md-4 col-md-4 col-4 text-center">
                 <label>
                   ยอดรวมต่องวด
                   <small class="text-danger">
@@ -112,13 +112,13 @@ input {
                   placeholder="เปลี่ยนทั้งหมด"
                 />
               </div>
-              <div class="col-md-4 col-sm-4 col-4">
+              <div class="col-md-4 col-md-4 col-4">
                 <label>อั้น</label>
               </div>
             </div>
             <div id="number-add-list">
               <div class="row mb-1" v-for="(data, index) in my_number">
-                <div class="col-md-2 col-sm-2 col-2">
+                <div class="col-md-2 col-md-2 col-2">
                   <input
                     type="text"
                     class="text-center form-control"
@@ -131,7 +131,7 @@ input {
                     readonly
                   />
                 </div>
-                <div class="col-md-4 col-sm-4 col-4">
+                <div class="col-md-4 col-md-4 col-4">
                   <input
                     v-if="data.max_price > 0"
                     type="number"
@@ -154,7 +154,7 @@ input {
                     placeholder="ยอดรวมการแทงต่องวด"
                   />
                 </div>
-                <div class="col-md-4 col-sm-4 col-4">
+                <div class="col-md-4 col-md-4 col-4">
                   <input
                     v-if="data.over_percent > 0"
                     type="number"
@@ -178,11 +178,11 @@ input {
                     placeholder="ราคาเมื่อเกินยอดรวม"
                   />
                 </div>
-                <div class="col-md-2 col-sm-2 col-2">
+                <div class="col-md-2 col-md-2 col-2">
                   <a
                     v-if="data.is_enable == 1"
                     type="checkbox"
-                    class="btn btn-success btn-sm"
+                    class="btn btn-success btn-md"
                     name="is_enable[]"
                     v-on:click="change_is_enable(0, index)"
                   >
@@ -191,7 +191,7 @@ input {
                   <a
                     v-if="data.is_enable == 0"
                     type="checkbox"
-                    class="btn btn-light btn-sm"
+                    class="btn btn-light btn-md"
                     name="is_enable[]"
                     v-on:click="change_is_enable(1, index)"
                   >
@@ -202,11 +202,11 @@ input {
             </div>
             <div class="row m-0 mt-2">
               <a
-                class="btn btn-warning text-white btn-sm col-md-6"
+                class="btn btn-warning text-white btn-md col-md-6"
                 v-on:click="clear_view_id()"
               >ย้อนกลับ</a>
               <button
-                class="btn btn-primary btn-sm text-white col-md-6 float-right"
+                class="btn btn-primary btn-md text-white col-md-6 float-right"
                 v-if="my_number.length > 0"
               >บันทึก</button>
             </div>

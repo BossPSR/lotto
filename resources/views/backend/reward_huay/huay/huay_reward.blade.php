@@ -280,19 +280,15 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                     <?php
                                                     $index = 0;
                                                     foreach ($result_array as $key => $name) {
-                                                        $index++;
-                                                        if ($index == 5)
-                                                            echo '<br>';
-
-                                                        if($huay_round->$key == '')
+                                                        if($huay_round->$key )
                                                         {
-                                                            for ($i=0; $i < $result_length[$key] ; $i++)  
-                                                                $huay_round->$key.= 'X';
+                                                            $index++;
+                                                            if ($index == 4)
+                                                                echo '<br>';
+                                                            echo '   <small>' . $name . ' <b style="font-size:15px;" class="text-warning">' . $huay_round->$key . '</b></small>';
+                                                            if($key != 'result_run_down')
+                                                                echo',';
                                                         }
-
-                                                        echo '   <small>' . $name . ' <b style="font-size:15px;" class="text-warning">' . $huay_round->$key . '</b></small>';
-                                                        if($key != 'result_run_down')
-                                                            echo',';
                                                     }
                                                     ?>
                                                 </td>
@@ -305,11 +301,11 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                         if($huay_round->round_status  != 'complete' and $huay_round->round_status != 'cancel')
                                                         {
                                                             if ($huay_round->is_active) {
-                                                                echo '<a name="on" class="btn btn-success btm-md text-white" >เปิด</a>';
-                                                                echo '<button name="off" class="btn btn-outline-danger btm-md">ปิด</button>';
+                                                                echo '<a name="on" class="btn btn-success btm-md text-white w-100" >เปิด</a>';
+                                                                echo '<button name="off" class="btn btn-outline-danger btm-md w-100">ปิด</button>';
                                                             } else {
-                                                                echo '<button name="on" class="btn btn-outline-success btm-md ">เปิด</button>';
-                                                                echo '<a name="off" class="btn btn-danger btm-md text-white" >ปิด</a>';
+                                                                echo '<button name="on" class="btn btn-outline-success btm-md w-100 ">เปิด</button>';
+                                                                echo '<a name="off" class="btn btn-danger btm-md text-white w-100" >ปิด</a>';
                                                             }
                                                         }
                                                         ?>
@@ -329,6 +325,10 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                         data-unknow-three_up="<?php echo $huay_round->unknow->three_up ?>" 
                                                         data-unknow-two_up="<?php echo $huay_round->unknow->two_up ?>" 
                                                         data-unknow-two_down="<?php echo $huay_round->unknow->two_down ?>" 
+
+                                                        data-result_row_sixteen="<?php echo $huay_round->unknow->result_row_sixteen ?>" 
+                                                        data-result_user_firt="<?php echo $huay_round->unknow->result_user_firt ?>" 
+                                                        data-result_user_sixteen="<?php echo $huay_round->unknow->result_user_sixteen ?>" 
 
                                                         data-rand-yeekee_six="<?php echo $huay_round->rand->yeekee_six ?>" 
                                                         data-rand-three_up="<?php echo $huay_round->rand->three_up ?>" 
@@ -444,6 +444,11 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                             <div class="col-md-12">
                                                 <a style="padding: 5px" class="bg-warning rounded text-white" onclick="copy('unknow')">แบบไม่กำหนดเลข</a>
                                                 <legend style="font-size: 30px;" class="text-center p-2" id="unknow-yeekee_six"><span>XXXXXX</span></legend>
+                                                <input id="result_total_shoot" name="result_total_shoot" type="hidden">
+                                                <input id="result_row_sixteen" name="result_row_sixteen" type="hidden">
+                                                <input id="result_user_firt" name="result_user_firt" type="hidden">
+                                                <input id="result_user_sixteen" name="result_user_sixteen" type="hidden">
+
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>สามตัวบน</label>
@@ -636,6 +641,40 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                         if (debug) {
                             console.log(data);
                         }
+
+                        var result_check = {
+                            result_run_down:'price_run_down',
+                            result_run_up:'price_run_up',
+                            result_tree_down:'price_tree_down',
+                            result_tree_front:'price_tree_front',
+                            result_tree_tod:'price_tree_tod',
+                            result_tree_up:'price_tree_up',
+                            result_two_down:'price_two_down',
+                            result_two_up:'price_two_up',
+                        }
+
+                        for (key in result_check)
+                        {   
+                            console.log(key)
+                            console.log(data[result_check[key]])
+                            el = modal.find('[name="'+key+'"]')[0].closest(".col-6");
+                            element = modal.find('[name="'+key+'"]')[0];
+                            if(data[result_check[key]] == -1.00)
+                            {
+                                console.log(el)
+                                console.log('hide')
+                                $(el).hide()
+                                element.required = false;    
+                                element.min = null;    
+                            }
+                            else
+                            {
+                                $(el).show()
+                                element.required = true;  
+                                element.min = 0;    
+                            }
+
+                        }
                         var input_all = modal.find('input')
 
                         var gen_image_all = modal.find('.gen-auto');
@@ -691,6 +730,17 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
         var button = $(event.relatedTarget)
 
         $('#unknow-yeekee_six').text($(button).data('unknow-yeekee_six'));
+
+        var result_total_shoot = $(button).data('unknow-yeekee_six')
+        var result_row_sixteen = $(button).data('result_row_sixteen')
+        var result_user_firt = $(button).data('result_user_firt')
+        var result_user_sixteen = $(button).data('result_user_sixteen')
+
+        $('#result_total_shoot').val(result_total_shoot);
+        $('#result_row_sixteen').val(result_row_sixteen);
+        $('#result_user_firt').val(result_user_firt);
+        $('#result_user_sixteen').val(result_user_sixteen);
+
         $('#unknow-three_up').text($(button).data('unknow-three_up'));
         $('#unknow-two_up').text($(button).data('unknow-two_up'));
         $('#unknow-two_down').text($(button).data('unknow-two_down'));
@@ -699,7 +749,6 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
         $('#rand-three_up').text($(button).data('rand-three_up'));
         $('#rand-two_up').text($(button).data('rand-two_up'));
         $('#rand-two_down').text($(button).data('rand-two_down'));
-
 
         var id = $(button).data('editId');
         debug = true;
@@ -717,6 +766,40 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                 dataType: 'JSON',
                 /* remind that 'data' is the response of the AjaxController */
                 success: function(data) {
+                    
+                    var result_check = {
+                        result_run_down:'price_run_down',
+                        result_run_up:'price_run_up',
+                        result_tree_down:'price_tree_down',
+                        result_tree_front:'price_tree_front',
+                        result_tree_tod:'price_tree_tod',
+                        result_tree_up:'price_tree_up',
+                        result_two_down:'price_two_down',
+                        result_two_up:'price_two_up',
+                    }
+
+                    for (key in result_check)
+                    {   
+                        console.log(key)
+                        console.log(data[result_check[key]])
+                        el = modal.find('[name="'+key+'"]')[0].closest(".col-6");
+                        element = modal.find('[name="'+key+'"]')[0];
+                        if(data[result_check[key]] == -1.00)
+                        {
+                            console.log(el)
+                            console.log('hide')
+                            $(el).hide()
+                            element.required = false;    
+                            element.min = null;    
+                        }
+                        else
+                        {
+                            $(el).show()
+                            element.required = true;  
+                            element.min = 0;    
+                        }
+
+                    }
 
                     if (debug) {
                         console.log(data);
@@ -732,9 +815,6 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                     for (let index = 0; index < input_all.length; index++) {
                         element = input_all[index];
                         if (debug) {
-                            console.log(index)
-                            console.log('type')
-                            console.log(element.type)
                         }
 
                         if (data[element.name] && element.type == 'text')
@@ -747,7 +827,7 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                             var file = data[element.name];
                             var div_out = $(element).closest("div")
 
-                        } else
+                        } else if(!element.value)
                             element.value = data[element.name]
                     }
                     var input_all = modal.find('textarea')
