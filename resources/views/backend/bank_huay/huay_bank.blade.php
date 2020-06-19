@@ -56,7 +56,7 @@ $banks_array = array(
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown" style="display: none;">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <button class="btn-icon btn btn-primary btn-round btm-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                     </div>
                 </div>
@@ -99,11 +99,11 @@ $banks_array = array(
                                             echo "<div class='row' style='display: flex; flex-flow: row;'>";
                                             echo "<form onsubmit='doSubmit(this)' method='POST'>";
                                             if ($before)
-                                                echo "<button name='sort' class='btn btn-sm btn-warning pl-1 pr-1'><i class='fa fa-chevron-up'></i></button><input type='hidden' name='from' value='" . $before->sort_order_id . "'><input type='hidden' name='to' value='" . $bank->sort_order_id . "'>";
+                                                echo "<button name='sort' class='btn btm-md btn-warning pl-1 pr-1'><i class='fa fa-chevron-up'></i></button><input type='hidden' name='from' value='" . $before->sort_order_id . "'><input type='hidden' name='to' value='" . $bank->sort_order_id . "'>";
                                             echo '</form>';
                                             echo "<form onsubmit='doSubmit(this)' method='POST'>";
                                             if ($after)
-                                                echo "<button name='sort' class='btn btn-sm btn-warning pl-1 pr-1'><i class='fa fa-chevron-down'></i></button><input type='hidden' name='from' value='" . $after->sort_order_id . "'><input type='hidden' name='to' value='" . $bank->sort_order_id . "'>";
+                                                echo "<button name='sort' class='btn btm-md btn-warning pl-1 pr-1'><i class='fa fa-chevron-down'></i></button><input type='hidden' name='from' value='" . $after->sort_order_id . "'><input type='hidden' name='to' value='" . $bank->sort_order_id . "'>";
                                             echo '</form>';
                                             echo '</div>';
 

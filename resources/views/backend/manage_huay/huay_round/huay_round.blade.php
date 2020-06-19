@@ -188,7 +188,7 @@
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown" style="display: none;">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <button class="btn-icon btn btn-primary btn-round btm-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
 
                     <div class="col-md-4">
                         <form method="GET">
-                        <input type="hidden" name="category_id" value="{{$_GET['category_id']}}">
+                            <input type="hidden" name="category_id" value="{{$_GET['category_id']}}">
                             <label>วันที่</label>
                             <div class="row m-0">
                                 <input class="form-control col-md-12" type="date" name="date" value="{{$_GET['date']}}" onchange="this.form.submit()">
@@ -212,13 +212,12 @@
                     @if(count($huay_rounds) == 0)
                     <div class="col-md-8">
                         <form method="POST" onsubmit="doSubmit(this)">
-                        <input type="hidden" name="date" value="{{$_GET['date']}}" >
-                            <button  class="float-right btn btn-success btn text-white" name="generate" ><i class="fa fa-plus"></i> GENERATE รอบวันที่นี้</button>
+                            <input type="hidden" name="date" value="{{$_GET['date']}}">
+                            <button class="float-right btn btn-success btn text-white" name="generate"><i class="fa fa-plus"></i> GENERATE รอบวันที่นี้</button>
                         </form>
                     </div>
                     @endif
                     <div class="col-md-12">
-
                         <!-- DataTable starts -->
                         <div class="table-responsive">
                             <table class="table data-list-view">
@@ -258,8 +257,10 @@
                                                     <?php
                                                     $index = 0;
                                                     foreach ($price_array as $key => $name) {
+                                                        if ($huay_round->$key == -1)
+                                                            continue;
                                                         $index++;
-                                                        if ($index == 5)
+                                                        if ($index == 4)
                                                             echo '<br>';
                                                         echo ' <small>' . $name . ' ' . $huay_round->$key . '</small>,   ';
                                                     }
@@ -272,11 +273,11 @@
                                                         <input type="hidden" name="id" value="{{$huay_round->id}}" class="thincell">
                                                         <?php
                                                         if ($huay_round->is_active) {
-                                                            echo '<a name="on" class="btn btn-success btn-sm text-white" >เปิด</a>';
-                                                            echo '<button name="off" class="btn btn-outline-danger btn-sm">ปิด</button>';
+                                                            echo '<a name="on" class="btn btn-success btm-md text-white" >เปิด</a>';
+                                                            echo '<button name="off" class="btn btn-outline-danger btm-md">ปิด</button>';
                                                         } else {
-                                                            echo '<button name="on" class="btn btn-outline-success btn-sm ">เปิด</button>';
-                                                            echo '<a name="off" class="btn btn-danger btn-sm text-white" >ปิด</a>';
+                                                            echo '<button name="on" class="btn btn-outline-success btm-md ">เปิด</button>';
+                                                            echo '<a name="off" class="btn btn-danger btm-md text-white" >ปิด</a>';
                                                         }
 
 
@@ -342,13 +343,13 @@
                                             <div class="col-3">
                                                 <div class="form-group">
                                                     <label>เวลาเริ่มต้น</label>
-                                                    <input type="time" name="start_time" class="form-control" required>
+                                                    <input type="time" step="1" name="start_time" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="form-group">
                                                     <label>เวลาสิ้นสุด</label>
-                                                    <input type="time" name="end_time" class="form-control" required>
+                                                    <input type="time" step="1" name="end_time" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-6">
@@ -440,7 +441,7 @@
     };
     $(document).ready(function() {
 
-        @if(session()-> has('message'))
+        @if(session()->has('message'))
         Swal.fire({
             position: 'bottom-end',
             type: '{{ session()->get("status") }}',
@@ -496,7 +497,24 @@
                             if (data[element.name] && element.type == 'text')
                                 element.value = data[element.name]
                             if (data[element.name] && element.type == 'number')
+                            {
+                                el = $('[name="'+element.name+'"]')[0].closest(".col-6");
+                                if(data[element.name] == -1)
+                                {
+                                   $(el).hide()
+                                   element.required = false;    
+                                   element.min = null;    
+                                }
+                                else
+                                {
+                                    $(el).show()
+                                    element.required = true;  
+                                   element.min = 0;    
+
+                                }
                                 element.value = data[element.name]
+
+                            }
                             else if (data[element.name] && element.type == 'color')
                                 $(element).spectrum("set", data[element.name]);
                             else if (data[element.name] && element.type == 'file') {

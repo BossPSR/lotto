@@ -44,9 +44,9 @@
     <!-- preloader end -->
 
     <!-- header begin -->
-    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);" >
+    <div class="header style-2" style="border-bottom: 1px solid #fff;background: -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%);">
         <div class="topbar" style="border-bottom: 1px solid #fff;">
-            <div class="container" >
+            <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
                         <div class="support-area">
@@ -65,10 +65,10 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="select-lang" style="font-size: 20px;">
                             <div>
-                                <a href="{{ route('register') }}" style="color: #fff "><i class="fas fa-user-plus" ></i>สมัครสมาชิก</a>
+                                <a href="{{ route('register') }}" style="color: #fff "><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
                             </div>
                             <div>
-                                <a href="{{ route('contact_visitor') }}"  style="color: #fff "><i class="fas fa-headset"></i>ติดต่อเรา</a>
+                                <a href="{{ route('contact_visitor') }}" style="color: #fff "><i class="fas fa-headset"></i>ติดต่อเรา</a>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="container" >
+        <div class="container">
             <div class="menu-bar" style="margin:15px 0;">
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
@@ -112,7 +112,34 @@
                                                     </div>
                                                     <div class="form_user">
                                                         <div>รหัสผ่าน</div>
-                                                        <input class="form-control" type="password" name="password" id="">
+                                                        <label class="sr-only" for="inlineFormInputGroupPassword">Username</label>
+                                                        <div class="input-group">
+                                                            <input  class="form-control" type="password" name="password" id="inlineFormInputGroupPassword">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text" >
+                                                                    <a id="showPass" style="cursor: pointer;" onclick="
+                                                                    input = document.getElementById('inlineFormInputGroupPassword')
+                                                                    input.type = 'text'
+                                                                    eye =  document.getElementById('hidePass')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('showPass')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye"></i></a>
+                                                                    <a id="hidePass" style="cursor: pointer; display:none" onclick="
+                                                                    input = document.getElementById('inlineFormInputGroupPassword')
+                                                                    input.type = 'password'
+                                                                    eye =  document.getElementById('showPass')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('hidePass')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye-slash"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username"> -->
+                                                        </div>
+                                                        <script>
+
+                                                        </script>
                                                         <!-- <a href=""><i class="fas fa-unlock"></i> ลืมรหัสผ่าน</a> -->
                                                     </div>
                                                     <div class="form_user_send">
@@ -135,8 +162,6 @@
     </div>
     <!-- header end -->
     @yield('content')
-
-    @extends('frontend.option.layout_chat')
 
     <!-- copyright begin -->
     <div class="copyright">
@@ -172,7 +197,7 @@
     </div>
     <!-- mobile navbar end -->
 
-   
+
 
     <!-- jquery -->
     <script src="{{asset('assets/js/jquery.js')}}"></script>

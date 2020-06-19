@@ -41,7 +41,7 @@
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown" style="display: none;">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <button class="btn-icon btn btn-primary btn-round btm-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                     </div>
                 </div>
@@ -60,6 +60,7 @@
                                 <th>หลักฐานการโอนเงิน</th>
                                 <th>ลูกค้า</th>
                                 <th>บัญชีผู้ใช้งาน</th>
+                                <th>ผู้อนุมัติ</th>
                                 <th>รายละเอียดการโอน</th>
                                 <th>วันที่</th>
                                 <th>เวลา</th>
@@ -86,6 +87,7 @@
                                         </td>
                                         <td class="product-name">{{$withdraw_list->user_info->first_name}} {{$withdraw_list->user_info->last_name}}</td>
                                         <td class="product-name">{{$withdraw_list->user_info->username}}</td>
+                                        <td class="product-name">{{$withdraw_list->admin_info->username}}</td>
                                         <td>{{date('d/m/Y', strtotime($withdraw_list->created_at))}}</td>
                                         <td>{{date('H:i:s', strtotime($withdraw_list->created_at))}}</td>
                                         <td class="text-right">{{number_format($withdraw_list->amount, 2)}}</td>

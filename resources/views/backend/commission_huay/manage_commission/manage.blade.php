@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <a class="btn btn-sm btn-warning text-white w-100" data-toggle="modal" data-target="#edit" 
+                        <a class="btn btm-md btn-warning text-white w-100" data-toggle="modal" data-target="#edit" 
                                             data-edit-id="{{$setting->id}}" ><i class="fa fa-cog"></i> แก้ไขค่าคอมมิชชั่น</a>
                     </div>
                 </div>

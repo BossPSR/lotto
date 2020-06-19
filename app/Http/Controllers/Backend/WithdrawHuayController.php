@@ -118,27 +118,37 @@ class WithdrawHuayController extends Controller
         $withdraw_list = DB::table(self::$table)->where('deleted_at', null)->whereIn('status', ['confirm', 'reject'])->orderBy('sort_order_id')->get();
 
         $user_id_all = [];
+        $user_id_all = [];
+        $admin_id_all = [];
 
         if ($withdraw_list) {
-            foreach ($withdraw_list as $list)
+            foreach ($withdraw_list as $list) {
                 array_push($user_id_all, $list->user_id);
-
-            $user_all = DB::table('users')->whereIn('id', $user_id_all)->get();
-
-            $user_by_id = array();
-            if ($user_all) {
-                foreach ($user_all as $user)
-                    $user_by_id[$user->id] = $user;
+                array_push($admin_id_all, $list->admin_id);
             }
 
-            $not_found_user = new stdClass;
-            $not_found_user->first_name = "ไม่พบผู้ใช้งานนี้แล้ว";
-            $not_found_user->last_name = "";
-            $not_found_user->username = "";
+            $user_by_id = array();
+            $admin_by_id = array();
 
+            if ($user_id_all) {
+                $user_all = DB::table('users')->whereIn('id', $user_id_all)->get();
+                if ($user_all) {
+                    foreach ($user_all as $user)
+                        $user_by_id[$user->id] = $user;
+                }
+            }
+
+            if ($admin_id_all) {
+                $admin_all = DB::table('admins')->whereIn('id', $admin_id_all)->get();
+                if ($admin_all) {
+                    foreach ($admin_all as $user)
+                        $admin_by_id[$user->id] = $user;
+                }
+            }
 
             foreach ($withdraw_list as $key => $info) {
-                $withdraw_list[$key]->user_info = isset($user_by_id[$info->user_id]) ? $user_by_id[$info->user_id] : $not_found_user;
+                $withdraw_list[$key]->user_info = isset($user_by_id[$info->user_id]) ? $user_by_id[$info->user_id] : null;
+                $withdraw_list[$key]->admin_info = isset($admin_by_id[$info->admin_id]) ? $admin_by_id[$info->admin_id] : null;
                 $withdraw_list[$key]->status_name = self::$status_list[$info->status]['html'];
             }
         }

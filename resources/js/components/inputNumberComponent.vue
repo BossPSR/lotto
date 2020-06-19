@@ -191,17 +191,33 @@
                 <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_up != -1">
                     <div v-on:click="select_option('price_two_up')" id="price_two_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
-                            สองตัวบน ({{price_two_up}})
+                            + สองตัวบน ({{price_two_up}})
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_down != -1">
                     <div v-on:click="select_option('price_two_down')" id="price_two_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
-                            สองตัวล่าง ({{price_two_down}})
+                            + สองตัวล่าง ({{price_two_down}})
                         </div>
                     </div>
                 </div>
+    
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_up != -1">
+                    <div v-on:click="select_option('swap_3')" id="swap_3" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                        <div class="part-body" style="padding: 15px 15px">
+                            + กลับสามตัว
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_up != -1">
+                    <div v-on:click="select_option('swap_2')" id="swap_2" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                        <div class="part-body" style="padding: 15px 15px">
+                            + กลับสองตัว
+                        </div>
+                    </div>
+                </div>
+    
                 <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_run_up != -1">
                     <div v-on:click="select_option('price_run_up')" id="price_run_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
@@ -213,6 +229,65 @@
                     <div v-on:click="select_option('price_run_down')" id="price_run_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             วิ่งล่าง ({{price_run_down}})
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="alert alert-success col-md-12 row m-0" v-if="show_two_option == true ">
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="door != -1">
+                        <div v-on:click="select_option('door')" id="door" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                19 ประตู
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="ble != -1">
+                        <div v-on:click="select_option('ble')" id="ble" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                เลขเบิ้ล
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="rood_front != -1">
+                        <div v-on:click="select_option('rood_front')" id="rood_front" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                รูดหน้า
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="rood_back != -1">
+                        <div v-on:click="select_option('rood_back')" id="rood_back" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                รูดหลัง
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_low != -1">
+                        <div v-on:click="select_option('two_low')" id="two_low" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                สองตัวต่ำ
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_height != -1">
+                        <div v-on:click="select_option('two_height')" id="two_height" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                สองตัวสูง
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_even != -1">
+                        <div v-on:click="select_option('two_even')" id="two_even" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                สองตัวคี่
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_odd != -1">
+                        <div v-on:click="select_option('two_odd')" id="two_odd" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
+                            <div class="part-body" style="padding: 15px 15px">
+                                สองตัวคู่
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -488,7 +563,7 @@
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="input-auto-height form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
-                                <span >{{ (item.total_price) }} ฿ </span>
+                                                                                                                                                                    <span >{{ (item.total_price) }} ฿ </span>
                                 </span>
                             </div>
                             <div class="input-group-append">
@@ -671,12 +746,56 @@ export default {
             type: Number,
             default: 0
         },
+        // option
+        door: {
+            type: Number,
+            default: 0
+        },
+        ble: {
+            type: Number,
+            default: 0
+        },
+        rood_front: {
+            type: Number,
+            default: 0
+        },
+        rood_back: {
+            type: Number,
+            default: 0
+        },
+        two_low: {
+            type: Number,
+            default: 0
+        },
+        two_height: {
+            type: Number,
+            default: 0
+        },
+        two_odd: {
+            type: Number,
+            default: 0
+        },
+        two_even: {
+            type: Number,
+            default: 0
+        },
+        swap_2: {
+            type: Number,
+            default: 0
+        },
+        swap_3: {
+            type: Number,
+            default: 0
+        },
+
+
         huay_secret: String,
         huay_category_id: String,
     },
     data: function() {
         return {
             can_add: 0,
+            show_two_option: false,
 
             total_price: 0,
             total_price_txt: "0",
@@ -699,6 +818,20 @@ export default {
                 price_run_down: [],
             },
             option_huay: {
+
+                door: false,
+                ble: false,
+                rood_front: false,
+                rood_back: false,
+                two_low: false,
+                two_height: false,
+                two_odd: false,
+                two_even: false,
+
+                swap_2: false,
+                swap_3: false,
+
+
                 price_tree_up: false,
                 price_tree_tod: false,
                 price_tree_front: false,
@@ -707,6 +840,8 @@ export default {
                 price_two_down: false,
                 price_run_up: false,
                 price_run_down: false,
+
+
             },
             type_name: {
                 price_tree_up: 'สามตัวบน',
@@ -812,7 +947,6 @@ export default {
                         }
                     }
                 }
-                //console.log(this.my_number)
             }
             this.cal_total_price();
 
@@ -826,6 +960,7 @@ export default {
                 $("#shoot-number-btn").removeClass("btn-primary text-white").addClass("btn-outline-primary")
                 $("#input-number-btn").addClass("btn-primary text-white").removeClass("btn-outline-primary")
 
+                this.show_two_option = false;
                 this.option_huay = {
                     price_tree_up: false,
                     price_tree_tod: false,
@@ -928,6 +1063,7 @@ export default {
             var is_run_operator = false;
             var has_two = false;
 
+
             if (key == 'price_run_up')
                 is_run_operator = true;
             else if (key == 'price_run_down')
@@ -960,7 +1096,127 @@ export default {
                 this.option_huay['price_run_up'] = false;
                 this.option_huay['price_run_down'] = false;
 
-                if (this.option_huay[key] == false) {
+                var skip = false;
+                var has_option = false;
+
+                function isEven(n) {
+                    return n % 2 == 0;
+                }
+
+                function isOdd(n) {
+                    return Math.abs(n % 2) == 1;
+                }
+
+                var number_array = []
+                if (key == 'ble') {
+                    if (this.option_huay['price_two_up'])
+                        number_array['price_two_up'] = ['00', '11', '22', '33', '44', '55', '66', '77', '88', '99'];
+                    if (this.option_huay['price_two_down'])
+                        number_array['price_two_down'] = ['00', '11', '22', '33', '44', '55', '66', '77', '88', '99'];
+
+                    this.set_to_variable_internal(number_array)
+                    skip = true;
+                } else if (key == 'two_low') {
+                    if (this.option_huay['price_two_up']) {
+                        number_array['price_two_up'] = [];
+                        for (let i = 0; i < 50; i++) {
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_up'].push(ans)
+                        }
+                    }
+                    if (this.option_huay['price_two_down']) {
+                        number_array['price_two_down'] = [];
+                        for (let i = 0; i < 50; i++) {
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_down'].push(ans)
+                        }
+                    }
+                    this.set_to_variable_internal(number_array)
+
+                    skip = true;
+                } else if (key == 'two_height') {
+
+                    if (this.option_huay['price_two_up']) {
+                        number_array['price_two_up'] = [];
+                        for (let i = 50; i < 100; i++) {
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_up'].push(ans)
+                        }
+                    }
+                    if (this.option_huay['price_two_down']) {
+                        number_array['price_two_down'] = [];
+                        for (let i = 50; i < 100; i++) {
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_down'].push(ans)
+                        }
+                    }
+                    this.set_to_variable_internal(number_array)
+
+                    skip = true;
+                } else if (key == 'two_odd') {
+                    if (this.option_huay['price_two_up']) {
+                        number_array['price_two_up'] = [];
+                        for (let i = 0; i < 100; i++) {
+                            if (isOdd(i))
+                                continue;
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_up'].push(ans)
+                        }
+                    }
+                    if (this.option_huay['price_two_down']) {
+                        number_array['price_two_down'] = [];
+                        for (let i = 0; i < 100; i++) {
+                            if (isOdd(i))
+                                continue;
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_down'].push(ans)
+                        }
+                    }
+                    this.set_to_variable_internal(number_array)
+
+                    skip = true;
+                } else if (key == 'two_even') {
+                    if (this.option_huay['price_two_up']) {
+                        number_array['price_two_up'] = [];
+                        for (let i = 0; i < 100; i++) {
+                            if (isEven(i))
+                                continue;
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_up'].push(ans)
+                        }
+                    }
+                    if (this.option_huay['price_two_down']) {
+                        number_array['price_two_down'] = [];
+                        for (let i = 0; i < 100; i++) {
+                            if (isEven(i))
+                                continue;
+                            var str = "" + i
+                            var pad = "00"
+                            var ans = pad.substring(0, pad.length - str.length) + str
+                            number_array['price_two_down'].push(ans)
+                        }
+                    }
+                    this.set_to_variable_internal(number_array)
+
+                    skip = true;
+                }
+
+
+                if (this.option_huay[key] == false && skip == false) {
                     this.option_huay[key] = true;
                     $('#' + key).addClass("bg-success text-white")
                 } else {
@@ -973,15 +1229,50 @@ export default {
                 if (this.option_huay['price_two_down'])
                     has_two = true;
 
+                if (this.option_huay['door']) {
+                    has_option = true;
+                } else if (this.option_huay['rood_front']) {
+                    has_option = true;
+                } else if (this.option_huay['rood_back']) {
+                    has_option = true;
+                }
+
+                var pass = false;
+                if (this.option_huay['price_tree_up'])
+                    pass = true;
+                if (this.option_huay['price_tree_tod'])
+                    pass = true;
+                if (this.option_huay['price_tree_front'])
+                    pass = true;
+                if (this.option_huay['price_tree_down'])
+                    pass = true;
+
+                if (pass == false) {
+                    this.option_huay['swap_3'] = false;
+                    $('#swap_3').removeClass("bg-success text-white")
+                }
+
+                var pass = false
+                if (this.option_huay['price_two_up'])
+                    pass = true;
+                if (this.option_huay['price_two_down'])
+                    pass = true;
+                if (pass == false) {
+                    this.option_huay['swap_2'] = false;
+                    $('#swap_2').removeClass("bg-success text-white")
+                }
+
 
                 // เช็คหากมีแค่ 2 ตัวก็จะ input แค่ 2
                 this.input_digi = 2;
 
                 for (const [key_obj, value] of Object.entries(this.option_huay)) {
-                    if (key_obj !== "price_two_up" && key_obj !== 'price_two_down' && value == true)
+                    if (key_obj !== "price_two_up" && key_obj !== 'price_two_down' && key_obj !== 'door' && key_obj !== 'ble' && key_obj !== 'rood_front' && key_obj !== 'rood_back' && key_obj !== 'two_low' && key_obj !== 'two_height' && key_obj !== 'two_odd' && key_obj !== 'two_even' && key_obj !== 'swap_2' && value == true)
                         this.input_digi = 3;
                 }
 
+                if (has_option)
+                    this.input_digi = 1;
             }
 
             // เช็คว่ามีค่า
@@ -995,6 +1286,7 @@ export default {
             if (check == false)
                 this.input_digi = 0;
 
+
             if (this.input_digi > 0) {
                 var input1 = $("#input1");
                 var input2 = $("#input2");
@@ -1002,19 +1294,24 @@ export default {
                 input1.removeClass('digi2').addClass('digi');
                 input2.removeClass('digi2').addClass('digi');
                 input3.removeClass('digi2').addClass('digi');
+                this.show_two_option = false;
 
                 if (this.input_digi == 3) {
                     input1.removeClass("hide");
                     input2.removeClass("hide");
                     input3.removeClass("hide");
+
                 } else if (this.input_digi == 2) {
                     input1.removeClass("hide");
                     input2.removeClass("hide");
                     input3.addClass("hide");
+                    this.show_two_option = true;
                 } else if (this.input_digi == 1) {
                     input1.removeClass("hide");
                     input2.addClass("hide");
                     input3.addClass("hide");
+                    if (has_option)
+                        this.show_two_option = true;
                 }
 
                 if (this.input_digi == 3 && has_two) {
@@ -1029,6 +1326,22 @@ export default {
                 $('#main-input').removeClass("hide");
             } else
                 $('#main-input').addClass("hide");
+
+
+            var pass = false;
+            if (this.option_huay['price_two_up'])
+                pass = true;
+            if (this.option_huay['price_two_down'])
+                pass = true;
+
+            if (pass == false) {
+                this.show_two_option = false;
+                this.option_huay['door'] = false;
+                this.option_huay['rood_front'] = false;
+                this.option_huay['rood_back'] = false;
+                this.option_huay['swap_2'] = false;
+            }
+
 
             //console.log(this.input_digi)
 
@@ -1187,7 +1500,10 @@ export default {
                         input_full = true;
                 }
 
+
                 if (input_full) {
+
+                    console.log("trick")
                     var total_number = '';
                     for (const [key_obj, value] of Object.entries(this.option_huay)) {
                         if (value == true) {
@@ -1214,19 +1530,58 @@ export default {
                             var multiple = 1;
                             if (min)
                                 multiple = min;
-                            total_number += number + ",";
-                            this.my_number[key_obj].push({
-                                number: number,
-                                number_type: key_obj,
-                                is_duplicate: false,
-                                multiple: multiple,
-                                min: min,
-                                multiple_txt: numeral(multiple).format('0,0.00'),
-                                total_price: numeral((this[key_obj] * multiple)).format('0,0.00'),
-                                price: this[key_obj],
-                                date: new Date(),
-                            });
+
+                            console.log("FUCK")
+                            if (key_obj == 'door') {
+
+                                var count = 0
+                                var number_array = [];
+                                if (this.option_huay['price_two_up']) {
+                                    number_array['price_two_up'] = [];
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_up'].push(i + "" + number)
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_up'].push(number + "" + i)
+
+                                    count += 20
+                                }
+                                if (this.option_huay['price_two_down']) {
+                                    number_array['price_two_down'] = [];
+
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_down'].push(i + "" + number)
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_down'].push(number + "" + i)
+
+                                    count += 20
+
+
+                                }
+                                setTimeout(function() {
+                                    input1.text("");
+                                    input2.text("");
+                                    input3.text("");
+                                }, 200);
+
+                                this.set_to_variable_internal(number_array)
+                            } else {
+                                total_number += number + ",";
+
+                                console.log('door')
+                                this.my_number[key_obj].push({
+                                    number: number,
+                                    number_type: key_obj,
+                                    is_duplicate: false,
+                                    multiple: multiple,
+                                    min: min,
+                                    multiple_txt: numeral(multiple).format('0,0.00'),
+                                    total_price: numeral((this[key_obj] * multiple)).format('0,0.00'),
+                                    price: this[key_obj],
+                                    date: new Date(),
+                                });
+                            }
                             this.cal_total_price();
+                            return true
                         }
                     }
                     var app = this;
@@ -1236,7 +1591,7 @@ export default {
                             icon: 'success',
                             title: '<small class="text-center">เพิ่ม</small>&nbsp;<small class="text-center">' + total_number + "</small>",
                             showConfirmButton: false,
-                            timer: 1000,
+                            timer: 3000,
                             backdrop: true,
                         })
                         // //console.log(app.my_number)
@@ -1299,7 +1654,7 @@ export default {
                             icon: 'success',
                             title: '<small class="text-center">ส่งโพยสำเร็จ</small>&nbsp;<small class="text-center"></small>',
                             showConfirmButton: false,
-                            timer: 1000,
+                            timer: 3000,
                             backdrop: true,
                             width: 500,
                         });
@@ -1390,7 +1745,7 @@ export default {
                                 icon: 'success',
                                 title: '<small class="text-center">ยิงสำเร็จ</small>&nbsp;<small class="text-center">' + number + "</small>",
                                 showConfirmButton: false,
-                                timer: 1000,
+                                timer: 3000,
                                 backdrop: true,
                                 width: 500,
                             });
@@ -1498,11 +1853,11 @@ export default {
         // เอาเลข จาก Set มาใส่ Array แทง
         set_to_variable(datas) {
 
-            //console.log("LOGGG")
-            //console.log(datas)
+
+            // console.log("LOGGG")
+            // console.log(datas)
             for (const [huay_type, list] of Object.entries(datas)) {
-
-
+                // console.log(huay_type)
                 if (list.length) {
                     for (var i = 0; i < list.length; i++) {
                         var info = list[i];
@@ -1538,6 +1893,64 @@ export default {
             this.cal_duplicate();
             this.cal_total_price();
             this.refesh_my_number();
+        },
+        set_to_variable_internal(datas) {
+            var temp_select_option = this.option_huay
+            var count = 0;
+            // console.log("LOGGG")
+            // console.log(datas)
+            for (const [huay_type, list] of Object.entries(datas)) {
+                // console.log(huay_type)
+                if (list.length) {
+                    for (var i = 0; i < list.length; i++) {
+                        var info = list[i];
+
+                        count++;
+                        //console.log('-------')
+                        //console.log(info);
+                        //console.log('-------')
+
+                        //ฟิกค่าขั้นต่ำ
+
+                        if (this.huay_category_id == '3')
+                            var min = 10;
+                        else
+                            var min = 0;
+
+                        var multiple = 1;
+                        if (min)
+                            multiple = min;
+                        this.my_number[huay_type].push({
+                            number: info,
+                            number_type: length,
+                            is_duplicate: false,
+                            multiple: multiple,
+                            min: min,
+                            multiple_txt: numeral(multiple).format('0,0.00'),
+                            total_price: numeral((this[huay_type] * multiple)).format('0,0.00'),
+                            price: this[huay_type],
+                            date: new Date(),
+                        });
+                    }
+                }
+            }
+            this.change_page(1);
+            this.cal_duplicate();
+            this.cal_total_price();
+            this.refesh_my_number();
+
+
+
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: '<small class="text-center">เพิ่มแล้ว</small>&nbsp;<small class="text-center">' + count + " เลข</small>",
+                showConfirmButton: false,
+                timer: 3000,
+                backdrop: true,
+            })
+            this.option_huay = temp_select_option
+            this.show_two_option = true;
         }
     }
 

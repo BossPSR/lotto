@@ -183,7 +183,7 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown" style="display: none;">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <button class="btn-icon btn btn-primary btn-round btm-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                     </div>
                 </div>
@@ -305,11 +305,11 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                         if($huay_round->round_status  != 'complete' and $huay_round->round_status != 'cancel')
                                                         {
                                                             if ($huay_round->is_active) {
-                                                                echo '<a name="on" class="btn btn-success btn-sm text-white" >เปิด</a>';
-                                                                echo '<button name="off" class="btn btn-outline-danger btn-sm">ปิด</button>';
+                                                                echo '<a name="on" class="btn btn-success btm-md text-white" >เปิด</a>';
+                                                                echo '<button name="off" class="btn btn-outline-danger btm-md">ปิด</button>';
                                                             } else {
-                                                                echo '<button name="on" class="btn btn-outline-success btn-sm ">เปิด</button>';
-                                                                echo '<a name="off" class="btn btn-danger btn-sm text-white" >ปิด</a>';
+                                                                echo '<button name="on" class="btn btn-outline-success btm-md ">เปิด</button>';
+                                                                echo '<a name="off" class="btn btn-danger btm-md text-white" >ปิด</a>';
                                                             }
                                                         }
                                                         ?>

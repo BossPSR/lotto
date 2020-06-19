@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -20,6 +21,13 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+
+    function authenticated(Request $request, $user)
+    {
+        $user->update([
+            'session_id' => $request->session()->getID()
+        ]);
+    }
 
     use AuthenticatesUsers;
 
@@ -41,6 +49,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
     }
+    
 
     public function login(Request $request)
     {
@@ -51,7 +60,13 @@ class LoginController extends Controller
             'password' => 'required|string'
         ]);
 
+
         if (Auth::guard('user')->attempt([$key => $request->$key, 'password' => $request->password])) {
+
+            $update_user = array('session_id' => $request->session()->getID());
+            User::where('id', Auth::user()->id)
+            ->update($update_user);
+
             return redirect()->route('index_member');
         } else {
             return redirect()->route('index');

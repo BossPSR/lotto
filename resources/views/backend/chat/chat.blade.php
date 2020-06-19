@@ -58,7 +58,7 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown" style="display: none;">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <button class="btn-icon btn btn-primary btn-round btm-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
                                             <td>{{$i}}</td>
                                             <td class="product-name" nowrap>{{$fingerprint}} ({{$count}})</td>
                                             <td class="text-center p-0">
-                                                <a class="btn btn-sm btn-light {{$fingerprint == $_GET['fingerprint'] ? 'btn-info' : ''}}" href="?fingerprint={{$fingerprint}}"><i class="fa fa-chevron-right" style="font-size: 10px;"></i></a>
+                                                <a class="btn btm-md btn-light {{$fingerprint == $_GET['fingerprint'] ? 'btn-info' : ''}}" href="?fingerprint={{$fingerprint}}"><i class="fa fa-chevron-right" style="font-size: 10px;"></i></a>
                                             </td>
                                         </tr>
                                 <?php

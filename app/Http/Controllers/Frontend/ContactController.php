@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'single.device.login']);
 
         $contacts = Contacts::where('deleted_at', null)->OrderBy('sort_order_id')->get();
         return view('frontend.contact', ['contacts' => $contacts]);

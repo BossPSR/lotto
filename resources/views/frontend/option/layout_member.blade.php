@@ -154,27 +154,27 @@ $contact_header = ContactHeader::first();
                    
                     <div class="col-12">
                         <label for="" style="font-size: 20px;">ชื่อเข้าสู่ระบบ</label>
-                        <input type="text" name="username" class="form-control">
+                        <input type="text" value="{{$user->username}}" class="form-control" readonly>
                     </div>
                     <div class="col-12">
                         <label for="">ชื่อจริง</label>
-                        <input type="text" name="fname" class="form-control">
+                        <input type="text" name="fname" class="form-control" value="{{$user->first_name}}">
                     </div>
                     <div class="col-12">
                         <label for="" style="font-size: 20px;">นามสกุล</label>
-                        <input type="text" name="lname" class="form-control">
+                        <input type="text" name="lname" class="form-control" value="{{$user->last_name}}">
                     </div>
                     <div class="col-12">
                         <label for="" style="font-size: 20px;">อีเมล</label>
-                        <input type="text" name="email" class="form-control">
+                        <input type="text" class="form-control" value="{{$user->email}}" readonly>
                     </div>
                     <div class="col-12">
                         <label for="" style="font-size: 20px;">วัน/เดือน/ปี เกิด</label>
-                        <input type="text" name="bit" class="form-control">
+                        <input type="date"  class="form-control" value="{{$user->birthday}}" readonly>
                     </div>
                     <div class="col-12">
                         <label for="" style="font-size: 20px;">โทรศัพท์ติดต่อ</label>
-                        <input type="text" name="tel" class="form-control">
+                        <input type="text"  class="form-control" value="{{$user->first_name}}" readonly>
                     </div>
 
 

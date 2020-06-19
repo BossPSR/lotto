@@ -35,7 +35,7 @@ $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
                     <div class="dropdown" style="display: none;">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <button class="btn-icon btn btn-primary btn-round btm-md dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                     </div>
                 </div>
@@ -80,6 +80,8 @@ $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null
                                             <?php
                                             $index = 0;
                                             foreach ($price_array as $key => $name) {
+                                                if($huay->$key  == -1)
+                                                    continue;
                                                 $index++;
                                                 if ($index == 5)
                                                     echo '<br>';
@@ -259,7 +261,23 @@ $_GET['category_id'] = isset($_GET['category_id']) ? $_GET['category_id'] : null
                             if (data[element.name] && element.type == 'text')
                                 element.value = data[element.name]
                             if (data[element.name] && element.type == 'number')
+                            {
+                                el = $('[name="'+element.name+'"]')[0].closest(".col-6");
+                                if(data[element.name] == -1)
+                                {
+                                   $(el).hide()
+                                   element.required = false;    
+                                   element.min = null;    
+                                }
+                                else
+                                {
+                                    $(el).show()
+                                    element.required = true;  
+                                   element.min = 0;    
+
+                                }
                                 element.value = data[element.name]
+                            }
                             else if (data[element.name] && element.type == 'color')
                                 $(element).spectrum("set", data[element.name]);
                             else if (data[element.name] && element.type == 'file') {

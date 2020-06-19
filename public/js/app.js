@@ -3667,6 +3667,81 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     can_shoot: {
@@ -3705,12 +3780,54 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       type: Number,
       "default": 0
     },
+    // option
+    door: {
+      type: Number,
+      "default": 0
+    },
+    ble: {
+      type: Number,
+      "default": 0
+    },
+    rood_front: {
+      type: Number,
+      "default": 0
+    },
+    rood_back: {
+      type: Number,
+      "default": 0
+    },
+    two_low: {
+      type: Number,
+      "default": 0
+    },
+    two_height: {
+      type: Number,
+      "default": 0
+    },
+    two_odd: {
+      type: Number,
+      "default": 0
+    },
+    two_even: {
+      type: Number,
+      "default": 0
+    },
+    swap_2: {
+      type: Number,
+      "default": 0
+    },
+    swap_3: {
+      type: Number,
+      "default": 0
+    },
     huay_secret: String,
     huay_category_id: String
   },
   data: function data() {
     return {
       can_add: 0,
+      show_two_option: false,
       total_price: 0,
       total_price_txt: "0",
       money: 0,
@@ -3730,6 +3847,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         price_run_down: []
       },
       option_huay: {
+        door: false,
+        ble: false,
+        rood_front: false,
+        rood_back: false,
+        two_low: false,
+        two_height: false,
+        two_odd: false,
+        two_even: false,
+        swap_2: false,
+        swap_3: false,
         price_tree_up: false,
         price_tree_tod: false,
         price_tree_front: false,
@@ -3844,8 +3971,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               this.my_number[huay_type][i].total_price = numeral(multiple * list[i].price).format('0,0.00');
             }
           }
-        } //console.log(this.my_number)
-
+        }
       }
 
       this.cal_total_price();
@@ -3856,6 +3982,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         this.page_index = index;
         $("#shoot-number-btn").removeClass("btn-primary text-white").addClass("btn-outline-primary");
         $("#input-number-btn").addClass("btn-primary text-white").removeClass("btn-outline-primary");
+        this.show_two_option = false;
         this.option_huay = {
           price_tree_up: false,
           price_tree_tod: false,
@@ -3973,13 +4100,135 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           }
         }
       } else {
+        var isEven = function isEven(n) {
+          return n % 2 == 0;
+        };
+
+        var isOdd = function isOdd(n) {
+          return Math.abs(n % 2) == 1;
+        };
+
         //ไม่ใช่วิง จะล้างวิ่งทิ้ง
         $('#price_run_up').removeClass("bg-success text-white");
         $('#price_run_down').removeClass("bg-success text-white");
         this.option_huay['price_run_up'] = false;
         this.option_huay['price_run_down'] = false;
+        var skip = false;
+        var has_option = false;
+        var number_array = [];
 
-        if (this.option_huay[key] == false) {
+        if (key == 'ble') {
+          if (this.option_huay['price_two_up']) number_array['price_two_up'] = ['00', '11', '22', '33', '44', '55', '66', '77', '88', '99'];
+          if (this.option_huay['price_two_down']) number_array['price_two_down'] = ['00', '11', '22', '33', '44', '55', '66', '77', '88', '99'];
+          this.set_to_variable_internal(number_array);
+          skip = true;
+        } else if (key == 'two_low') {
+          if (this.option_huay['price_two_up']) {
+            number_array['price_two_up'] = [];
+
+            for (var i = 0; i < 50; i++) {
+              var str = "" + i;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_up'].push(ans);
+            }
+          }
+
+          if (this.option_huay['price_two_down']) {
+            number_array['price_two_down'] = [];
+
+            for (var _i6 = 0; _i6 < 50; _i6++) {
+              var str = "" + _i6;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_down'].push(ans);
+            }
+          }
+
+          this.set_to_variable_internal(number_array);
+          skip = true;
+        } else if (key == 'two_height') {
+          if (this.option_huay['price_two_up']) {
+            number_array['price_two_up'] = [];
+
+            for (var _i7 = 50; _i7 < 100; _i7++) {
+              var str = "" + _i7;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_up'].push(ans);
+            }
+          }
+
+          if (this.option_huay['price_two_down']) {
+            number_array['price_two_down'] = [];
+
+            for (var _i8 = 50; _i8 < 100; _i8++) {
+              var str = "" + _i8;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_down'].push(ans);
+            }
+          }
+
+          this.set_to_variable_internal(number_array);
+          skip = true;
+        } else if (key == 'two_odd') {
+          if (this.option_huay['price_two_up']) {
+            number_array['price_two_up'] = [];
+
+            for (var _i9 = 0; _i9 < 100; _i9++) {
+              if (isOdd(_i9)) continue;
+              var str = "" + _i9;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_up'].push(ans);
+            }
+          }
+
+          if (this.option_huay['price_two_down']) {
+            number_array['price_two_down'] = [];
+
+            for (var _i10 = 0; _i10 < 100; _i10++) {
+              if (isOdd(_i10)) continue;
+              var str = "" + _i10;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_down'].push(ans);
+            }
+          }
+
+          this.set_to_variable_internal(number_array);
+          skip = true;
+        } else if (key == 'two_even') {
+          if (this.option_huay['price_two_up']) {
+            number_array['price_two_up'] = [];
+
+            for (var _i11 = 0; _i11 < 100; _i11++) {
+              if (isEven(_i11)) continue;
+              var str = "" + _i11;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_up'].push(ans);
+            }
+          }
+
+          if (this.option_huay['price_two_down']) {
+            number_array['price_two_down'] = [];
+
+            for (var _i12 = 0; _i12 < 100; _i12++) {
+              if (isEven(_i12)) continue;
+              var str = "" + _i12;
+              var pad = "00";
+              var ans = pad.substring(0, pad.length - str.length) + str;
+              number_array['price_two_down'].push(ans);
+            }
+          }
+
+          this.set_to_variable_internal(number_array);
+          skip = true;
+        }
+
+        if (this.option_huay[key] == false && skip == false) {
           this.option_huay[key] = true;
           $('#' + key).addClass("bg-success text-white");
         } else {
@@ -3988,24 +4237,55 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
 
         if (this.option_huay['price_two_up']) has_two = true;
-        if (this.option_huay['price_two_down']) has_two = true; // เช็คหากมีแค่ 2 ตัวก็จะ input แค่ 2
+        if (this.option_huay['price_two_down']) has_two = true;
+
+        if (this.option_huay['door']) {
+          has_option = true;
+        } else if (this.option_huay['rood_front']) {
+          has_option = true;
+        } else if (this.option_huay['rood_back']) {
+          has_option = true;
+        }
+
+        var pass = false;
+        if (this.option_huay['price_tree_up']) pass = true;
+        if (this.option_huay['price_tree_tod']) pass = true;
+        if (this.option_huay['price_tree_front']) pass = true;
+        if (this.option_huay['price_tree_down']) pass = true;
+
+        if (pass == false) {
+          this.option_huay['swap_3'] = false;
+          $('#swap_3').removeClass("bg-success text-white");
+        }
+
+        var pass = false;
+        if (this.option_huay['price_two_up']) pass = true;
+        if (this.option_huay['price_two_down']) pass = true;
+
+        if (pass == false) {
+          this.option_huay['swap_2'] = false;
+          $('#swap_2').removeClass("bg-success text-white");
+        } // เช็คหากมีแค่ 2 ตัวก็จะ input แค่ 2
+
 
         this.input_digi = 2;
 
-        for (var _i6 = 0, _Object$entries6 = Object.entries(this.option_huay); _i6 < _Object$entries6.length; _i6++) {
-          var _Object$entries6$_i = _slicedToArray(_Object$entries6[_i6], 2),
+        for (var _i13 = 0, _Object$entries6 = Object.entries(this.option_huay); _i13 < _Object$entries6.length; _i13++) {
+          var _Object$entries6$_i = _slicedToArray(_Object$entries6[_i13], 2),
               _key_obj = _Object$entries6$_i[0],
               _value = _Object$entries6$_i[1];
 
-          if (_key_obj !== "price_two_up" && _key_obj !== 'price_two_down' && _value == true) this.input_digi = 3;
+          if (_key_obj !== "price_two_up" && _key_obj !== 'price_two_down' && _key_obj !== 'door' && _key_obj !== 'ble' && _key_obj !== 'rood_front' && _key_obj !== 'rood_back' && _key_obj !== 'two_low' && _key_obj !== 'two_height' && _key_obj !== 'two_odd' && _key_obj !== 'two_even' && _key_obj !== 'swap_2' && _value == true) this.input_digi = 3;
         }
+
+        if (has_option) this.input_digi = 1;
       } // เช็คว่ามีค่า
 
 
       var check = false;
 
-      for (var _i7 = 0, _Object$entries7 = Object.entries(this.option_huay); _i7 < _Object$entries7.length; _i7++) {
-        var _Object$entries7$_i = _slicedToArray(_Object$entries7[_i7], 2),
+      for (var _i14 = 0, _Object$entries7 = Object.entries(this.option_huay); _i14 < _Object$entries7.length; _i14++) {
+        var _Object$entries7$_i = _slicedToArray(_Object$entries7[_i14], 2),
             _key_obj2 = _Object$entries7$_i[0],
             _value2 = _Object$entries7$_i[1];
 
@@ -4024,6 +4304,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         input1.removeClass('digi2').addClass('digi');
         input2.removeClass('digi2').addClass('digi');
         input3.removeClass('digi2').addClass('digi');
+        this.show_two_option = false;
 
         if (this.input_digi == 3) {
           input1.removeClass("hide");
@@ -4033,10 +4314,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           input1.removeClass("hide");
           input2.removeClass("hide");
           input3.addClass("hide");
+          this.show_two_option = true;
         } else if (this.input_digi == 1) {
           input1.removeClass("hide");
           input2.addClass("hide");
           input3.addClass("hide");
+          if (has_option) this.show_two_option = true;
         }
 
         if (this.input_digi == 3 && has_two) {
@@ -4048,7 +4331,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
 
         $('#main-input').removeClass("hide");
-      } else $('#main-input').addClass("hide"); //console.log(this.input_digi)
+      } else $('#main-input').addClass("hide");
+
+      var pass = false;
+      if (this.option_huay['price_two_up']) pass = true;
+      if (this.option_huay['price_two_down']) pass = true;
+
+      if (pass == false) {
+        this.show_two_option = false;
+        this.option_huay['door'] = false;
+        this.option_huay['rood_front'] = false;
+        this.option_huay['rood_back'] = false;
+        this.option_huay['swap_2'] = false;
+      } //console.log(this.input_digi)
 
     },
     cal_total_price: function cal_total_price() {
@@ -4056,8 +4351,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var total_price = 0;
       var total_multiple = 0;
 
-      for (var _i8 = 0, _Object$entries8 = Object.entries(app.my_number); _i8 < _Object$entries8.length; _i8++) {
-        var _Object$entries8$_i = _slicedToArray(_Object$entries8[_i8], 2),
+      for (var _i15 = 0, _Object$entries8 = Object.entries(app.my_number); _i15 < _Object$entries8.length; _i15++) {
+        var _Object$entries8$_i = _slicedToArray(_Object$entries8[_i15], 2),
             huay_type = _Object$entries8$_i[0],
             list = _Object$entries8$_i[1];
 
@@ -4083,8 +4378,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         console.log(uns);
 
         if (uns) {
-          for (var _i9 = 0, _Object$entries9 = Object.entries(app.my_number); _i9 < _Object$entries9.length; _i9++) {
-            var _Object$entries9$_i = _slicedToArray(_Object$entries9[_i9], 2),
+          for (var _i16 = 0, _Object$entries9 = Object.entries(app.my_number); _i16 < _Object$entries9.length; _i16++) {
+            var _Object$entries9$_i = _slicedToArray(_Object$entries9[_i16], 2),
                 _huay_type = _Object$entries9$_i[0],
                 _list = _Object$entries9$_i[1];
 
@@ -4117,8 +4412,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         price_run_down: {}
       };
 
-      for (var _i10 = 0, _Object$entries10 = Object.entries(this.my_number); _i10 < _Object$entries10.length; _i10++) {
-        var _Object$entries10$_i = _slicedToArray(_Object$entries10[_i10], 2),
+      for (var _i17 = 0, _Object$entries10 = Object.entries(this.my_number); _i17 < _Object$entries10.length; _i17++) {
+        var _Object$entries10$_i = _slicedToArray(_Object$entries10[_i17], 2),
             huay_type = _Object$entries10$_i[0],
             list = _Object$entries10$_i[1];
 
@@ -4130,8 +4425,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
       }
 
-      for (var _i11 = 0, _Object$entries11 = Object.entries(this.my_number); _i11 < _Object$entries11.length; _i11++) {
-        var _Object$entries11$_i = _slicedToArray(_Object$entries11[_i11], 2),
+      for (var _i18 = 0, _Object$entries11 = Object.entries(this.my_number); _i18 < _Object$entries11.length; _i18++) {
+        var _Object$entries11$_i = _slicedToArray(_Object$entries11[_i18], 2),
             _huay_type2 = _Object$entries11$_i[0],
             _list2 = _Object$entries11$_i[1];
 
@@ -4147,8 +4442,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     refesh_my_number: function refesh_my_number() {
       this.my_number_txt = "";
 
-      for (var _i12 = 0, _Object$entries12 = Object.entries(this.my_number); _i12 < _Object$entries12.length; _i12++) {
-        var _Object$entries12$_i = _slicedToArray(_Object$entries12[_i12], 2),
+      for (var _i19 = 0, _Object$entries12 = Object.entries(this.my_number); _i19 < _Object$entries12.length; _i19++) {
+        var _Object$entries12$_i = _slicedToArray(_Object$entries12[_i19], 2),
             huay_type = _Object$entries12$_i[0],
             list = _Object$entries12$_i[1];
 
@@ -4201,10 +4496,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
 
         if (input_full) {
+          console.log("trick");
           var total_number = '';
 
-          for (var _i13 = 0, _Object$entries13 = Object.entries(this.option_huay); _i13 < _Object$entries13.length; _i13++) {
-            var _Object$entries13$_i = _slicedToArray(_Object$entries13[_i13], 2),
+          for (var _i20 = 0, _Object$entries13 = Object.entries(this.option_huay); _i20 < _Object$entries13.length; _i20++) {
+            var _Object$entries13$_i = _slicedToArray(_Object$entries13[_i20], 2),
                 key_obj = _Object$entries13$_i[0],
                 value = _Object$entries13$_i[1];
 
@@ -4214,19 +4510,64 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               if (this.huay_category_id == '3') var min = 10;else var min = 0;
               var multiple = 1;
               if (min) multiple = min;
-              total_number += number + ",";
-              this.my_number[key_obj].push({
-                number: number,
-                number_type: key_obj,
-                is_duplicate: false,
-                multiple: multiple,
-                min: min,
-                multiple_txt: numeral(multiple).format('0,0.00'),
-                total_price: numeral(this[key_obj] * multiple).format('0,0.00'),
-                price: this[key_obj],
-                date: new Date()
-              });
+              console.log("FUCK");
+
+              if (key_obj == 'door') {
+                var count = 0;
+                var number_array = [];
+
+                if (this.option_huay['price_two_up']) {
+                  number_array['price_two_up'] = [];
+
+                  for (var i = 0; i < 10; i++) {
+                    number_array['price_two_up'].push(i + "" + number);
+                  }
+
+                  for (var _i21 = 0; _i21 < 10; _i21++) {
+                    number_array['price_two_up'].push(number + "" + _i21);
+                  }
+
+                  count += 20;
+                }
+
+                if (this.option_huay['price_two_down']) {
+                  number_array['price_two_down'] = [];
+
+                  for (var _i22 = 0; _i22 < 10; _i22++) {
+                    number_array['price_two_down'].push(_i22 + "" + number);
+                  }
+
+                  for (var _i23 = 0; _i23 < 10; _i23++) {
+                    number_array['price_two_down'].push(number + "" + _i23);
+                  }
+
+                  count += 20;
+                }
+
+                setTimeout(function () {
+                  input1.text("");
+                  input2.text("");
+                  input3.text("");
+                }, 200);
+                this.set_to_variable_internal(number_array);
+              } else {
+                total_number += number + ",";
+                console.log('door');
+                this.my_number[key_obj].push({
+                  number: number,
+                  number_type: key_obj,
+                  is_duplicate: false,
+                  multiple: multiple,
+                  min: min,
+                  multiple_txt: numeral(multiple).format('0,0.00'),
+                  total_price: numeral(this[key_obj] * multiple).format('0,0.00'),
+                  price: this[key_obj],
+                  date: new Date()
+                });
+              }
+
               this.cal_total_price();
+              return true;
             }
           }
 
@@ -4237,7 +4578,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               icon: 'success',
               title: '<small class="text-center">เพิ่ม</small>&nbsp;<small class="text-center">' + total_number + "</small>",
               showConfirmButton: false,
-              timer: 1000,
+              timer: 3000,
               backdrop: true
             }); // //console.log(app.my_number)
 
@@ -4293,7 +4634,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             icon: 'success',
             title: '<small class="text-center">ส่งโพยสำเร็จ</small>&nbsp;<small class="text-center"></small>',
             showConfirmButton: false,
-            timer: 1000,
+            timer: 3000,
             backdrop: true,
             width: 500
           });
@@ -4380,7 +4721,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               icon: 'success',
               title: '<small class="text-center">ยิงสำเร็จ</small>&nbsp;<small class="text-center">' + number + "</small>",
               showConfirmButton: false,
-              timer: 1000,
+              timer: 3000,
               backdrop: true,
               width: 500
             });
@@ -4472,13 +4813,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     },
     // เอาเลข จาก Set มาใส่ Array แทง
     set_to_variable: function set_to_variable(datas) {
-      //console.log("LOGGG")
-      //console.log(datas)
-      for (var _i14 = 0, _Object$entries14 = Object.entries(datas); _i14 < _Object$entries14.length; _i14++) {
-        var _Object$entries14$_i = _slicedToArray(_Object$entries14[_i14], 2),
+      // console.log("LOGGG")
+      // console.log(datas)
+      for (var _i24 = 0, _Object$entries14 = Object.entries(datas); _i24 < _Object$entries14.length; _i24++) {
+        var _Object$entries14$_i = _slicedToArray(_Object$entries14[_i24], 2),
             huay_type = _Object$entries14$_i[0],
             list = _Object$entries14$_i[1];
 
+        // console.log(huay_type)
         if (list.length) {
           for (var i = 0; i < list.length; i++) {
             var info = list[i]; //console.log('-------')
@@ -4508,6 +4850,58 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.cal_duplicate();
       this.cal_total_price();
       this.refesh_my_number();
+    },
+    set_to_variable_internal: function set_to_variable_internal(datas) {
+      var temp_select_option = this.option_huay;
+      var count = 0; // console.log("LOGGG")
+      // console.log(datas)
+
+      for (var _i25 = 0, _Object$entries15 = Object.entries(datas); _i25 < _Object$entries15.length; _i25++) {
+        var _Object$entries15$_i = _slicedToArray(_Object$entries15[_i25], 2),
+            huay_type = _Object$entries15$_i[0],
+            list = _Object$entries15$_i[1];
+
+        // console.log(huay_type)
+        if (list.length) {
+          for (var i = 0; i < list.length; i++) {
+            var info = list[i];
+            count++; //console.log('-------')
+            //console.log(info);
+            //console.log('-------')
+            //ฟิกค่าขั้นต่ำ
+
+            if (this.huay_category_id == '3') var min = 10;else var min = 0;
+            var multiple = 1;
+            if (min) multiple = min;
+            this.my_number[huay_type].push({
+              number: info,
+              number_type: length,
+              is_duplicate: false,
+              multiple: multiple,
+              min: min,
+              multiple_txt: numeral(multiple).format('0,0.00'),
+              total_price: numeral(this[huay_type] * multiple).format('0,0.00'),
+              price: this[huay_type],
+              date: new Date()
+            });
+          }
+        }
+      }
+
+      this.change_page(1);
+      this.cal_duplicate();
+      this.cal_total_price();
+      this.refesh_my_number();
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: '<small class="text-center">เพิ่มแล้ว</small>&nbsp;<small class="text-center">' + count + " เลข</small>",
+        showConfirmButton: false,
+        timer: 3000,
+        backdrop: true
+      });
+      this.option_huay = temp_select_option;
+      this.show_two_option = true;
     }
   }
 });
@@ -42473,7 +42867,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                        สองตัวบน (" +
+                                "\n                        + สองตัวบน (" +
                                   _vm._s(_vm.price_two_up) +
                                   ")\n                    "
                               )
@@ -42507,9 +42901,73 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                        สองตัวล่าง (" +
+                                "\n                        + สองตัวล่าง (" +
                                   _vm._s(_vm.price_two_down) +
                                   ")\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.price_tree_up != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "swap_3" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("swap_3")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        + กลับสามตัว\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.price_two_up != -1
+                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "single-jackpot disableSelection",
+                          staticStyle: { padding: "0", cursor: "pointer" },
+                          attrs: { id: "swap_2" },
+                          on: {
+                            click: function($event) {
+                              return _vm.select_option("swap_2")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "part-body",
+                              staticStyle: { padding: "15px 15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        + กลับสองตัว\n                    "
                               )
                             ]
                           )
@@ -42584,6 +43042,334 @@ var render = function() {
                         ]
                       )
                     ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.show_two_option == true
+                  ? _c(
+                      "div",
+                      { staticClass: "alert alert-success col-md-12 row m-0" },
+                      [
+                        _vm.door != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "door" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("door")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            19 ประตู\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.ble != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "ble" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("ble")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            เลขเบิ้ล\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.rood_front != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "rood_front" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("rood_front")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            รูดหน้า\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.rood_back != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "rood_back" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("rood_back")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            รูดหลัง\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.two_low != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "two_low" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("two_low")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            สองตัวต่ำ\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.two_height != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "two_height" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("two_height")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            สองตัวสูง\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.two_even != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "two_even" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("two_even")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            สองตัวคี่\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.two_odd != -1
+                          ? _c(
+                              "div",
+                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "single-jackpot disableSelection",
+                                    staticStyle: {
+                                      padding: "0",
+                                      cursor: "pointer"
+                                    },
+                                    attrs: { id: "two_odd" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.select_option("two_odd")
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "part-body",
+                                        staticStyle: { padding: "15px 15px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            สองตัวคู่\n                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    )
                   : _vm._e()
               ]),
               _vm._v(" "),
@@ -43874,7 +44660,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "ชนะ : \n                            "
+                                        "ชนะ : \n                                                                                                                                                                "
                                       ),
                                       _c("span", [
                                         _vm._v(_vm._s(item.total_price) + " ฿ ")

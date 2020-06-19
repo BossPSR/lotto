@@ -22,7 +22,7 @@ class IndexController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'login_process', 'register', 'register_process');
+        $this->middleware(['auth', 'single.device.login'])->except('index', 'login_process', 'register', 'register_process');
     }
 
     public function index(Request $request)

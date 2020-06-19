@@ -64,12 +64,15 @@ if(session()-> has('ref_code'))
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <label>รหัสผ่าน</label>
-                                                            <input type="password" id="password" name="password" class="form-control form-group" required placeholder="รหัสผ่าน">
+                                                            <input onkeyup="validatePassOnKeyup()" type="password" id="password" name="password" class="form-control form-group" required placeholder="รหัสผ่าน">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>ยืนยันรหัสผ่าน</label>
-                                                            <input type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required placeholder="ยืนยันรหัสผ่าน">
+                                                            <input onkeyup="validatePassOnKeyup()" type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required placeholder="ยืนยันรหัสผ่าน">
 
+                                                        </div>
+                                                        <div id="alert_password" class="col-md-12 alert alert-danger p-2" style="font-size: 20px;">
+                                                            รหัสผ่านไม่ตรงกัน
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -136,6 +139,17 @@ if(session()-> has('ref_code'))
         '{{ session()->get("status") }}',
     );
     @endif
+
+    function validatePassOnKeyup() {
+        var input_password = document.getElementById("password");
+        var input_confirm_password = document.getElementById("confirm_password");
+        if (input_password.value != input_confirm_password.value) {
+           document.getElementById("alert_password").style.display = "block";
+        }
+        else
+        document.getElementById("alert_password").style.display = "none";
+
+    }
 
     function validateForm(form) {
         var input_password = document.getElementById("password");

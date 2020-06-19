@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('account_name')->nullable();
             $table->decimal('money', 22, 2)->default(0);
             $table->decimal('credit', 22, 2)->default(0);
+            $table->string('session_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
