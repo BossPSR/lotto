@@ -563,7 +563,7 @@
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="input-auto-height form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
-                                                                                                                                                                    <span >{{ (item.total_price) }} ฿ </span>
+                                                                                                                                                                                        <span >{{ (item.total_price) }} ฿ </span>
                                 </span>
                             </div>
                             <div class="input-group-append">
@@ -1063,6 +1063,9 @@ export default {
             var is_run_operator = false;
             var has_two = false;
 
+            var input1 = $("#input1");
+            var input2 = $("#input2");
+            var input3 = $("#input3");
 
             if (key == 'price_run_up')
                 is_run_operator = true;
@@ -1238,14 +1241,22 @@ export default {
                 }
 
                 var pass = false;
-                if (this.option_huay['price_tree_up'])
+                if (this.option_huay['price_tree_up'] && !this.option_huay['price_tree_tod']) {
+                    has_option = false;
                     pass = true;
-                if (this.option_huay['price_tree_tod'])
+                }
+                // if (this.option_huay['price_tree_tod']) {
+                //     has_option = false;
+                //     pass = true;
+                // }
+                if (this.option_huay['price_tree_front'] && !this.option_huay['price_tree_tod']) {
+                    has_option = false;
                     pass = true;
-                if (this.option_huay['price_tree_front'])
+                }
+                if (this.option_huay['price_tree_down'] && !this.option_huay['price_tree_tod']) {
+                    has_option = false;
                     pass = true;
-                if (this.option_huay['price_tree_down'])
-                    pass = true;
+                }
 
                 if (pass == false) {
                     this.option_huay['swap_3'] = false;
@@ -1271,10 +1282,22 @@ export default {
                         this.input_digi = 3;
                 }
 
-                if (has_option)
+                if (has_option) {
                     this.input_digi = 1;
-            }
+                    input1.text("")
+                    input2.text("")
+                    input3.text("")
+                } else {
+                    this.option_huay['door'] = false;
+                    this.option_huay['rood_front'] = false;
+                    this.option_huay['rood_back'] = false;
 
+                    input1.text("")
+                    input2.text("")
+                    input3.text("")
+
+                }
+            }
             // เช็คว่ามีค่า
             var check = false;
             for (const [key_obj, value] of Object.entries(this.option_huay)) {
@@ -1288,9 +1311,7 @@ export default {
 
 
             if (this.input_digi > 0) {
-                var input1 = $("#input1");
-                var input2 = $("#input2");
-                var input3 = $("#input3");
+
                 input1.removeClass('digi2').addClass('digi');
                 input2.removeClass('digi2').addClass('digi');
                 input3.removeClass('digi2').addClass('digi');
@@ -1503,10 +1524,15 @@ export default {
 
                 if (input_full) {
 
-                    console.log("trick")
                     var total_number = '';
                     for (const [key_obj, value] of Object.entries(this.option_huay)) {
                         if (value == true) {
+
+                            if (key_obj == 'swap_3')
+                                continue;
+                            if (key_obj == 'swap_2')
+                                continue;
+
                             if (key_obj != 'price_two_up' && key_obj != 'price_two_down')
                                 var number = input1.text() + input2.text() + input3.text();
                             else if (key_obj == 'price_two_up' && this.input_digi == 3)
@@ -1531,7 +1557,7 @@ export default {
                             if (min)
                                 multiple = min;
 
-                            console.log("FUCK")
+
                             if (key_obj == 'door') {
 
                                 var count = 0
@@ -1564,10 +1590,117 @@ export default {
                                 }, 200);
 
                                 this.set_to_variable_internal(number_array)
+                                return true
+                            } else if (key_obj == 'rood_front') {
+
+                                var count = 0
+                                var number_array = [];
+                                if (this.option_huay['price_two_up']) {
+                                    number_array['price_two_up'] = [];
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_up'].push(number + "" + i)
+
+                                    count += 10
+                                }
+                                if (this.option_huay['price_two_down']) {
+                                    number_array['price_two_down'] = [];
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_down'].push(number + "" + i)
+
+                                    count += 10
+
+
+                                }
+                                setTimeout(function() {
+                                    input1.text("");
+                                    input2.text("");
+                                    input3.text("");
+                                }, 200);
+
+                                this.set_to_variable_internal(number_array)
+                                return true
+                            } else if (key_obj == 'rood_back') {
+
+                                var count = 0
+                                var number_array = [];
+                                if (this.option_huay['price_two_up']) {
+                                    number_array['price_two_up'] = [];
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_up'].push(i + "" + number)
+                                    count += 10
+                                }
+                                if (this.option_huay['price_two_down']) {
+                                    number_array['price_two_down'] = [];
+
+                                    for (let i = 0; i < 10; i++)
+                                        number_array['price_two_down'].push(i + "" + number)
+
+                                    count += 10
+
+
+                                }
+                                setTimeout(function() {
+                                    input1.text("");
+                                    input2.text("");
+                                    input3.text("");
+                                }, 200);
+
+                                this.set_to_variable_internal(number_array)
+                                return true
+                            } else if (this.option_huay['swap_3']) {
+
+                                var count = 0
+                                var number_array = [];
+                                if (this.option_huay[key_obj]) {
+                                    number_array[key_obj] = [];
+
+                                    number = number+""
+
+                                    if (number.length == 3) {
+                                        number_array[key_obj].push(number[0] + number[1] + number[2])
+                                        number_array[key_obj].push(number[1] + number[2] + number[0])
+                                        number_array[key_obj].push(number[2] + number[0] + number[1])
+                                        number_array[key_obj].push(number[1] + number[0] + number[2])
+                                        number_array[key_obj].push(number[2] + number[1] + number[0])
+                                        number_array[key_obj].push(number[0] + number[2] + number[1])
+
+                                    }
+                                    count += 6
+                                }
+                                setTimeout(function() {
+                                    input1.text("");
+                                    input2.text("");
+                                    input3.text("");
+                                }, 200);
+
+                                this.set_to_variable_internal(number_array)
+                            }else if (this.option_huay['swap_2']) {
+
+                                var count = 0
+                                var number_array = [];
+                                if (this.option_huay[key_obj]) {
+                                    number_array[key_obj] = [];
+
+                                    number = number+""
+
+                                    if (number.length ==2) {
+                                        number_array[key_obj].push(number[0] + number[1] )
+                                        number_array[key_obj].push(number[1] + number[0])
+
+                                    }
+                                    count += 6
+                                }
+                                setTimeout(function() {
+                                    input1.text("");
+                                    input2.text("");
+                                    input3.text("");
+                                }, 200);
+
+                                this.set_to_variable_internal(number_array)
                             } else {
                                 total_number += number + ",";
 
-                                console.log('door')
+
                                 this.my_number[key_obj].push({
                                     number: number,
                                     number_type: key_obj,
@@ -1580,10 +1713,10 @@ export default {
                                     date: new Date(),
                                 });
                             }
-                            this.cal_total_price();
-                            return true
                         }
                     }
+                    this.cal_total_price();
+
                     var app = this;
                     setTimeout(function() {
                         Swal.fire({
@@ -1877,7 +2010,7 @@ export default {
                             multiple = min;
                         this.my_number[huay_type].push({
                             number: info.number,
-                            number_type: length,
+                            number_type: huay_type,
                             is_duplicate: false,
                             multiple: multiple,
                             min: min,
@@ -1895,6 +2028,7 @@ export default {
             this.refesh_my_number();
         },
         set_to_variable_internal(datas) {
+            var temp_show_two_option = this.show_two_option
             var temp_select_option = this.option_huay
             var count = 0;
             // console.log("LOGGG")
@@ -1922,7 +2056,7 @@ export default {
                             multiple = min;
                         this.my_number[huay_type].push({
                             number: info,
-                            number_type: length,
+                            number_type: huay_type,
                             is_duplicate: false,
                             multiple: multiple,
                             min: min,
@@ -1939,8 +2073,6 @@ export default {
             this.cal_total_price();
             this.refesh_my_number();
 
-
-
             Swal.fire({
                 position: 'top',
                 icon: 'success',
@@ -1950,7 +2082,7 @@ export default {
                 backdrop: true,
             })
             this.option_huay = temp_select_option
-            this.show_two_option = true;
+            this.show_two_option = temp_show_two_option;
         }
     }
 
