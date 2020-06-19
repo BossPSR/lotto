@@ -563,7 +563,7 @@
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="input-auto-height form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
-                                                                                                                                                                                        <span >{{ (item.total_price) }} ฿ </span>
+                                                                                                                                                                                            <span >{{ (item.total_price) }} ฿ </span>
                                 </span>
                             </div>
                             <div class="input-group-append">
@@ -1654,7 +1654,7 @@ export default {
                                 if (this.option_huay[key_obj]) {
                                     number_array[key_obj] = [];
 
-                                    number = number+""
+                                    number = number + ""
 
                                     if (number.length == 3) {
                                         number_array[key_obj].push(number[0] + number[1] + number[2])
@@ -1674,17 +1674,17 @@ export default {
                                 }, 200);
 
                                 this.set_to_variable_internal(number_array)
-                            }else if (this.option_huay['swap_2']) {
+                            } else if (this.option_huay['swap_2']) {
 
                                 var count = 0
                                 var number_array = [];
                                 if (this.option_huay[key_obj]) {
                                     number_array[key_obj] = [];
 
-                                    number = number+""
+                                    number = number + ""
 
-                                    if (number.length ==2) {
-                                        number_array[key_obj].push(number[0] + number[1] )
+                                    if (number.length == 2) {
+                                        number_array[key_obj].push(number[0] + number[1])
                                         number_array[key_obj].push(number[1] + number[0])
 
                                     }
@@ -2008,17 +2008,20 @@ export default {
                         var multiple = 1;
                         if (min)
                             multiple = min;
-                        this.my_number[huay_type].push({
-                            number: info.number,
-                            number_type: huay_type,
-                            is_duplicate: false,
-                            multiple: multiple,
-                            min: min,
-                            multiple_txt: numeral(multiple).format('0,0.00'),
-                            total_price: numeral((this[huay_type] * multiple)).format('0,0.00'),
-                            price: this[huay_type],
-                            date: new Date(),
-                        });
+                        if (this[huay_type] !== -1) {
+
+                            this.my_number[huay_type].push({
+                                number: info.number,
+                                number_type: huay_type,
+                                is_duplicate: false,
+                                multiple: multiple,
+                                min: min,
+                                multiple_txt: numeral(multiple).format('0,0.00'),
+                                total_price: numeral((this[huay_type] * multiple)).format('0,0.00'),
+                                price: this[huay_type],
+                                date: new Date(),
+                            });
+                        }
                     }
                 }
             }
@@ -2054,6 +2057,7 @@ export default {
                         var multiple = 1;
                         if (min)
                             multiple = min;
+
                         this.my_number[huay_type].push({
                             number: info,
                             number_type: huay_type,

@@ -105,8 +105,9 @@
 
                                 ?>
                                     <div class="col-6 col-md-3 col-lg-2 mb-2 px-1">
+                                    <a <?php echo $href ? 'href="' . $href . '"' : "" ?> class="text-white">
+
                                         <div class="info-card info-card-{{$style}} shadow rounded text-center " style="cursor: pointer !important">
-                                            <a <?php echo $href ? 'href="' . $href . '"' : "" ?> class="text-white">
                                                 <h2><span>
                                                         <div id="timer" style="cursor: pointer !important">
                                                             <label id="hours{{$index}}" class="m-0" style="cursor: pointer !important"></label><label id="minutes{{$index}}" class="m-0" style="cursor: pointer !important">
@@ -124,8 +125,9 @@
                                                 <span class="time m-1">
                                                     <small>ปิดรับ : {{date('d/m/Y H:i:s',strtotime($huay_round->end_datetime))}}</small>
                                                 </span>
-                                            </a>
                                         </div>
+                                        </a>
+
                                     </div>
                                 <?php
                                 }

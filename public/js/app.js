@@ -4966,17 +4966,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             if (this.huay_category_id == '3') var min = 10;else var min = 0;
             var multiple = 1;
             if (min) multiple = min;
-            this.my_number[huay_type].push({
-              number: info.number,
-              number_type: huay_type,
-              is_duplicate: false,
-              multiple: multiple,
-              min: min,
-              multiple_txt: numeral(multiple).format('0,0.00'),
-              total_price: numeral(this[huay_type] * multiple).format('0,0.00'),
-              price: this[huay_type],
-              date: new Date()
-            });
+
+            if (this[huay_type] !== -1) {
+              this.my_number[huay_type].push({
+                number: info.number,
+                number_type: huay_type,
+                is_duplicate: false,
+                multiple: multiple,
+                min: min,
+                multiple_txt: numeral(multiple).format('0,0.00'),
+                total_price: numeral(this[huay_type] * multiple).format('0,0.00'),
+                price: this[huay_type],
+                date: new Date()
+              });
+            }
           }
         }
       }
@@ -44796,7 +44799,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "ชนะ : \n                                                                                                                                                                                    "
+                                        "ชนะ : \n                                                                                                                                                                                        "
                                       ),
                                       _c("span", [
                                         _vm._v(_vm._s(item.total_price) + " ฿ ")
