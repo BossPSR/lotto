@@ -63,6 +63,9 @@ $banks_array = array(
 
                                         <div class="form-group">
                                             <div>ธนาคาร</div>
+                                            <div class="col-md-12 alert alert-danger">
+                                            คุณสามารถใช้สิทธิการถอนได้ 5 ครั้งต่อวัน, ขณะนี้คุณใช้สิทธิถอนไปแล้ว {{$withdraw_count}} ครั้ง
+                                            </div>
                                             <div class="d-flex" style="padding: 15px; border: 1px solid rgba(0, 0, 0, 0.125);">
                                                 <div style="margin-right: 15px;"><img src="{{url('assets/img/banks/'.$user_info->bank_name.'.png')}}" style="max-height: 200px; max-width:200px; object-fit:contain" alt=""></div>
                                                 <div>
@@ -75,6 +78,7 @@ $banks_array = array(
                                             </div>
                                         </div>
 
+                                        @if($withdraw_count < 5)
                                         <div class="form-group">
                                             <form action="" method="POST">
                                                 @csrf
@@ -86,6 +90,7 @@ $banks_array = array(
                                                 <button type="reset" class="btn btn-danger ">ยกเลิก</button>
                                             </form>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
 

@@ -45,6 +45,7 @@ class LotteryAffiliateController extends Controller
                 $withdraw->bank_name = $user->bank_name;
                 $withdraw->account_no = $user->account_no;
                 $withdraw->account_name = $user->account_name;
+                $withdraw->direction = 'OUT';
                 $withdraw->type = 'CREDIT_WITHDRAW';
 
                 $withdraw->save();

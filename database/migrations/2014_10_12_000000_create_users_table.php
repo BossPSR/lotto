@@ -37,6 +37,7 @@ class CreateUsersTable extends Migration
             $table->decimal('money', 22, 2)->default(0);
             $table->decimal('credit', 22, 2)->default(0);
             $table->string('session_id')->nullable();
+            $table->bigInteger('last_content_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -39,6 +39,9 @@ class CreateHuayRounds extends Migration
             $table->decimal('price_run_down', 22, 2)->default(0);
             $table->decimal('price_shoot', 22, 2)->default(0);
 
+            $table->decimal('price_yeekee_sixteen', 22, 2)->default(0);
+            $table->decimal('price_yeekee_first', 22, 2)->default(0);
+
             $table->string('result_tree_up', 6, 0)->default("");
             $table->string('result_tree_tod', 6, 0)->default("");
             $table->string('result_tree_front', 6, 0)->default("");

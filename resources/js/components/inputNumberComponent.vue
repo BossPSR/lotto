@@ -563,7 +563,7 @@
                             <div class="input-group-append"><span class="input-group-text number bg-gold" style="min-width:50px;" v-bind:data-duplicate="item.is_duplicate">{{ item.number }}</span></div>
                             <input v-on:keyup=" change_multiple(huay_type, index, $event.target.value)" type="number" class="input-auto-height form-control bg-black text-gold border-right-gold" v-bind:min="item.min" v-bind:value="item.multiple" v-bind:data-duplicate="item.is_duplicate">
                             <div class="input-group-append input-group-append-price"><span class="input-group-text bg-black" v-bind:data-duplicate="item.is_duplicate">ชนะ :&nbsp;
-                                                                                                                                                                                            <span >{{ (item.total_price) }} ฿ </span>
+                                                                                                                                                                                                    <span >{{ (item.total_price) }} ฿ </span>
                                 </span>
                             </div>
                             <div class="input-group-append">
@@ -1807,6 +1807,9 @@ export default {
                         input3.text("");
                         app.refesh_my_number();
                         app.change_page(1);
+                        setTimeout(function() {
+                            window.location.href = window.location.href;
+                        }, 3000);
 
                     })
                     .catch(function(error) {

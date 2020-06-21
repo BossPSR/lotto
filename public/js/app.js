@@ -5090,6 +5090,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           input3.text("");
           app.refesh_my_number();
           app.change_page(1);
+          setTimeout(function () {
+            window.location.href = window.location.href;
+          }, 3000);
         })["catch"](function (error) {
           var error_txt = '';
 
@@ -45464,7 +45467,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "ชนะ : \n                                                                                                                                                                                        "
+                                        "ชนะ : \n                                                                                                                                                                                                "
                                       ),
                                       _c("span", [
                                         _vm._v(_vm._s(item.total_price) + " ฿ ")

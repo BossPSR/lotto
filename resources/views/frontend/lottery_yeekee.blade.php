@@ -43,7 +43,6 @@
                             <div id="page_list1">
 
 
-
                                 <div class="d-flex">
                                     <div class="col-xl-6 col-lg-6 col-sm-6">
                                         <div class="single-jackpot" style="padding:0; cursor: pointer;" onclick="lottery('สามตัวบน');">

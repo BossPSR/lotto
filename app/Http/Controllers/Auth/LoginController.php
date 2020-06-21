@@ -69,7 +69,7 @@ class LoginController extends Controller
 
             return redirect()->route('index_member');
         } else {
-            return redirect()->route('index');
+            return redirect()->route('index')->with('message', 'ไม่สามารถเข้าสู่ระบบได้!')->with('status', 'error');
         }
     }
 

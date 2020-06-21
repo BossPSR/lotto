@@ -37,17 +37,25 @@
                                             <div class="col-12">
                                                 <p class="title text-center">ผลรางวัล</p>
                                                 <p class="number text-center mb-4"><?php
-                                                $nums = $huay_round->result_total_shoot;
 
-                                                $yeekee_six = $nums - intval($huay_round->result_row_sixteen);
-                                                $yeekee_six = strval($yeekee_six);
-                                                $three_up = $yeekee_six[(strlen($yeekee_six)) - 3] . $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
-                                                $two_up = $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
-                                                $two_down = $yeekee_six[(strlen($yeekee_six)) - 5] . $yeekee_six[(strlen($yeekee_six)) - 4];
+                                                $yeekee_six = "";
+                                                $three_up = "";
+                                                $two_down = "";
+                                                $two_up = "";
+                                                $left = ""; 
 
-                                                $left = substr($yeekee_six, 0, (strlen($yeekee_six) - 5));
+                                                if($huay_round->result_total_shoot != "คำนวนไม่เสร็จเร็จเนื่องจาก ผู้ยิงไม่ถึง 16 คน")
+                                                {
+                                                    $nums = $huay_round->result_total_shoot;
 
+                                                    $yeekee_six = $nums - intval($huay_round->result_row_sixteen);
+                                                    $yeekee_six = strval($yeekee_six);
+                                                    $three_up = $yeekee_six[(strlen($yeekee_six)) - 3] . $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
+                                                    $two_up = $yeekee_six[(strlen($yeekee_six)) - 2] . $yeekee_six[(strlen($yeekee_six)) - 1];
+                                                    $two_down = $yeekee_six[(strlen($yeekee_six)) - 5] . $yeekee_six[(strlen($yeekee_six)) - 4];
 
+                                                    $left = substr($yeekee_six, 0, (strlen($yeekee_six) - 5));
+                                                }
                                                 ?>{{ $left}}<span class="number text-success">{{$two_down}}</span><span class="number text-danger">{{$three_up}}</span></p>
                                             </div>
                                             <div class="col-6 border-right">

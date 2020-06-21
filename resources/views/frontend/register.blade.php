@@ -64,12 +64,55 @@ if(session()-> has('ref_code'))
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <label>รหัสผ่าน</label>
-                                                            <input onkeyup="validatePassOnKeyup()" type="password" id="password" name="password" class="form-control form-group" required placeholder="รหัสผ่าน">
+                                                            <div class="input-group">
+                                                                <input onkeyup="validatePassOnKeyup()" type="password" id="password" name="password" class="form-control form-group" required placeholder="รหัสผ่าน">
+                                                                <div class="input-group-append">
+                                                                    <div class="input-group-text" >
+                                                                        <a id="showPass1" style="cursor: pointer;" onclick="
+                                                                        input = document.getElementById('password')
+                                                                        input.type = 'text'
+                                                                        eye =  document.getElementById('hidePass1')
+                                                                        eye.style.display = 'block'
+                                                                        eye =  document.getElementById('showPass1')
+                                                                        eye.style.display = 'none'
+                                                                        "><i class="fas fa-eye"></i></a>
+                                                                        <a id="hidePass1" style="cursor: pointer; display:none" onclick="
+                                                                        input = document.getElementById('password')
+                                                                        input.type = 'password'
+                                                                        eye =  document.getElementById('showPass1')
+                                                                        eye.style.display = 'block'
+                                                                        eye =  document.getElementById('hidePass1')
+                                                                        eye.style.display = 'none'
+                                                                        "><i class="fas fa-eye-slash"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <label>ยืนยันรหัสผ่าน</label>
+                                                            <div class="input-group">
                                                             <input onkeyup="validatePassOnKeyup()" type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required placeholder="ยืนยันรหัสผ่าน">
-
+                                                                <div class="input-group-append">
+                                                                    <div class="input-group-text" >
+                                                                        <a id="showPass2" style="cursor: pointer;" onclick="
+                                                                        input = document.getElementById('confirm_password')
+                                                                        input.type = 'text'
+                                                                        eye =  document.getElementById('hidePass2')
+                                                                        eye.style.display = 'block'
+                                                                        eye =  document.getElementById('showPass2')
+                                                                        eye.style.display = 'none'
+                                                                        "><i class="fas fa-eye"></i></a>
+                                                                        <a id="hidePass2" style="cursor: pointer; display:none" onclick="
+                                                                        input = document.getElementById('confirm_password')
+                                                                        input.type = 'password'
+                                                                        eye =  document.getElementById('showPass2')
+                                                                        eye.style.display = 'block'
+                                                                        eye =  document.getElementById('hidePass2')
+                                                                        eye.style.display = 'none'
+                                                                        "><i class="fas fa-eye-slash"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div id="alert_password" class="col-md-12 alert alert-danger p-2" style="font-size: 20px;">
                                                             รหัสผ่านไม่ตรงกัน

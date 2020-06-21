@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Withdraws;
 use File;
@@ -82,6 +83,12 @@ class WithdrawHuayController extends Controller
             DB::table(self::$table)
                 ->where('id', $request->id)
                 ->update($data);
+                
+            $info = Withdraws::where('id', $request->id)->first();
+
+            User::where('id', $info->user_id)->increment('money', $info->amount);
+
+
             return redirect('admin/withdraw_approve')->with('message', 'ปฏิเสธรายการนี้แล้ว!')->with('status', 'success');
         }
         return redirect('admin/withdraw_approve')->with('message', 'ไม่สำเร็จ!')->with('status', 'error');

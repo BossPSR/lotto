@@ -32,6 +32,7 @@ class DefaultController extends Controller
             md5('get-commission_setting') => 'commission_setting',
             md5('get-transactions') => 'transactions',
             md5('get-contact-header') => 'contact_header',
+            md5('get-content_modals') => 'content_modals',
         );
     }
 

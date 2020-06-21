@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\CommissionSetting;
 use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
 use App\Models\HuayRounds;
 use App\Models\HuayRoundShoots;
 use App\Models\Transactions;
+use App\Models\User;
 use File;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -89,6 +91,8 @@ class RewardHuayController extends Controller
                 'result_run_up' => $_POST['result_run_up'],
                 'result_run_down' => $_POST['result_run_down'],
                 'price_shoot' => $_POST['price_shoot'],
+                'price_yeekee_sixteen' => $_POST['price_yeekee_sixteen'],
+                'price_yeekee_first' => $_POST['price_yeekee_first'],
                 'result_total_shoot' => $_POST['result_total_shoot'],
                 'result_row_sixteen' => $_POST['result_row_sixteen'],
                 'result_user_firt' => $_POST['result_user_firt'],
@@ -226,7 +230,7 @@ class RewardHuayController extends Controller
                     $result_user_firt = "---";
                     $result_user_sixteen = "---";
 
-                    if ($total_shoot && $shoot_by_round_id[$info->id][15]) {
+                    if ($total_shoot && isset($shoot_by_round_id[$info->id][15])) {
                         $yeekee_six = $total_shoot - intval($shoot_by_round_id[$info->id][15]->number);
                         
                         $yeekee_six = strval($yeekee_six);
@@ -256,7 +260,7 @@ class RewardHuayController extends Controller
                     $two_up = 'xx';
                     $two_down = 'xx';
                     
-                    if ($total_shoot && $shoot_by_round_id[$info->id][15]) {
+                    if ($total_shoot && isset($shoot_by_round_id[$info->id][15])) {
                         $two = '00';
                         if (!$avalable_number_by_round_id[$info->id]['two'])
                             $two = sprintf('%03d', rand(0, 99));
@@ -494,6 +498,44 @@ class RewardHuayController extends Controller
 
         $number_all = HuayRoundPoyNumbers::where('huay_round_id', $huay_round_id)->whereIn('number', $answer)->get($field);
 
+        $number_for_commission = HuayRoundPoyNumbers::where('huay_round_id', $huay_round_id)->get($field);
+
+        if($number_for_commission)
+        {
+            $number_by_user_id = array();
+            foreach ($number_for_commission as $number)
+            {
+                if(!isset($number_by_user_id[$number->user_id]))
+                    $number_by_user_id[$number->user_id] = array();
+               
+                array_push($number_by_user_id[$number->user_id], $number);
+            }
+
+            foreach($number_by_user_id as $user_id => $number_list)
+            {
+                $total_price = 0;
+                foreach ($number_list as $info) {
+                    $total_price += ($info['multiple']);
+                }
+                $user = User::where('id', $user_id)->first();
+
+                $commission_setting = CommissionSetting::first();
+                if ($user->upline_id && $commission_setting->commission_percent > 0) {
+
+                    $commission = (($total_price / 100) * $commission_setting->commission_percent);
+                    $credit_cf = new Transactions();
+                    $credit_cf->user_id = $user->upline_id;
+                    $credit_cf->status = 'confirm';
+                    $credit_cf->direction = 'IN';
+                    $credit_cf->type = 'CREDIT';
+                    $credit_cf->remark = 'คุณได้รับ ' . $commission . ' (' . $commission_setting->commission_percent . '%)เครดิตจากแทงหวยของ ' . $user->username;
+                    $credit_cf->amount = $commission;
+                    $credit_cf->save();
+                    DB::table("users")->where('id', $user->upline_id)->increment('credit', $commission);
+                }
+            }
+        }
+
       
         // GROUP BY TYPE
         $number_group_by_type = array();
@@ -632,7 +674,10 @@ class RewardHuayController extends Controller
         foreach ($answer as $word) {
             $query->orWhere('number', 'LIKE', '%' . $word . '%');
         }
-        $number_all = $query->where('huay_round_id', $huay_round_id)->get();
+        $number_all = $query->where('huay_round_id', $huay_round_id)->orderBy('id', 'desc')->get();
+
+        $query = HuayRoundShoots::query();
+        $number_all_for_first_and_sixtenn = $query->where('huay_round_id', $huay_round_id)->orderBy('id', 'desc')->limit(20)->get();
 
         // GROUP BY TYPE
         $won_id_array = array();
@@ -670,7 +715,42 @@ class RewardHuayController extends Controller
                     $total_won_shoot += $huay_round->price_shoot;
                     $won_by_user_id[$number->user_id]['total_price'] += $huay_round->price_shoot;
                 }
+
             }
+            
+        }
+       
+        if(isset($number_all_for_first_and_sixtenn[0]))
+        {
+            $number = $number_all_for_first_and_sixtenn[0];
+            if (!isset($won_by_user_id[$number->user_id])) {
+                $won_by_user_id[$number->user_id] = array(
+                    'user_id' => $number->user_id,
+                    'description' => 'คุณยิงเลข ' . $huay_round->name . ' ',
+                    'total_price' => 0,
+                    'number_list' => array()
+                );
+            }
+            array_push($won_id_array, $number->id);
+            array_push($won_by_user_id[$number->user_id]['number_list'], $number->number . ' ได้ลำดับที่ 1 ' . number_format($huay_round->price_yeekee_first, 2) . ' บ.');
+            $total_won_shoot += $huay_round->price_yeekee_first;
+            $won_by_user_id[$number->user_id]['total_price'] += $huay_round->price_yeekee_first;
+        }
+        if(isset($number_all_for_first_and_sixtenn[15]))
+        {
+            $number = $number_all_for_first_and_sixtenn[15];
+            if (!isset($won_by_user_id[$number->user_id])) {
+                $won_by_user_id[$number->user_id] = array(
+                    'user_id' => $number->user_id,
+                    'description' => 'คุณยิงเลข ' . $huay_round->name . ' ',
+                    'total_price' => 0,
+                    'number_list' => array()
+                );
+            }
+            array_push($won_id_array, $number->id);
+            array_push($won_by_user_id[$number->user_id]['number_list'], $number->number . ' ได้ลำดับที่ 16 ' . number_format($huay_round->price_yeekee_sixteen, 2) . ' บ.');
+            $total_won_shoot += $huay_round->price_yeekee_sixteen;
+            $won_by_user_id[$number->user_id]['total_price'] += $huay_round->price_yeekee_sixteen;
         }
 
 

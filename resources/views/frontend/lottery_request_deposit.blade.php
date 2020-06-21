@@ -94,7 +94,7 @@
 
                                                 <div class="form-group mt-3">
                                                     <div>จำนวนเงินที่ต้องการเติม</div>
-                                                    <input type="number" name="amount" min="0" step="0.01" style="font-size: 30px; height:50px;" class="form-control form-group" required>
+                                                    <input type="number" name="amount" min="100" step="0.01" style="font-size: 30px; height:50px;" class="form-control form-group" required>
 
                                                     <div>หลักฐานการโอน</div>
                                                     <input type="file" name="file_name" class="form-control form-group" id="imgInp" accept="image/*" required>

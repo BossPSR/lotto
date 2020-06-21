@@ -10,7 +10,7 @@ class LotteryResultController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'single.device.login']);
+        // $this->middleware(['auth', 'single.device.login']);
     }
 
     public function index()
@@ -49,7 +49,6 @@ class LotteryResultController extends Controller
             'huay_round' => $huay_round,
             'shoot_numbers' => $shoot_number
         );
-
 
         return view('frontend.lottery_result_yeekee', $data);
     }

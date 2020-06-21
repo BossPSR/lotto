@@ -96,6 +96,7 @@ $contact_header = ContactHeader::first();
                             </div>
                         </div>
                     </div>
+                    @if(Auth::user())
                     <div class="col-xl-9 col-lg-9 for-lottery text-white">
                         <div class="mainmenu">
                             <nav class="navbar navbar-expand-lg for-lottery">
@@ -127,11 +128,13 @@ $contact_header = ContactHeader::first();
                             </nav>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 
+    @if(Auth::user())
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -197,6 +200,34 @@ $contact_header = ContactHeader::first();
             </div>
         </div>
     </div>
+    @endif
+
+    @if(isset($content_modal))
+    @if($content_modal)
+    <!-- Modal -->
+    <div class="modal fade" id="modal_content_huay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="z-index: 1;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ข่าวสาร</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if($content_modal->image)
+                        <img src="{{url($content_modal->image)}}" style="w-100">
+                    @endif
+                    {{$content_modal->description}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    @endif
 
     <!-- header end -->
 

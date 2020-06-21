@@ -62,6 +62,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/login_process','Auth\LoginController@adminLogin')->name('login_process');
 
     Route::get('/index_admin','Backend\IndexController@index')->name('index'); //Dashboard
+    Route::get('/dashboard','Backend\IndexController@dashboard')->name('dashboard'); //Dashboard
     Route::get('/manage_admin','Backend\IndexController@manage_admin')->name('manage_admin'); //ระบบจัดการผู้ดูแล
 
     Route::get('/manage_huay','Backend\ManageHuayController@index')->name('manage_huay'); //จัดการหวย
@@ -90,6 +91,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/blacklist_user','Backend\UserController@blacklist_user')->name('blacklist_user'); //บัญชีดำ
 
     Route::get('/news_huay','Backend\NewsHuayController@index')->name('news_huay'); //จัดการข่าวสาร
+    Route::get('/content_modal_huay','Backend\ContentModalController@index')->name('content_modal_huay'); //จัดการข่าวสาร
     Route::get('/chat','Backend\chatController@index')->name('chat'); //chat
 
     Route::get('/rule_huay','Backend\RuleHuayController@index')->name('rule_huay'); //จัดการกฏติกา
@@ -127,5 +129,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::POST('/manage_huay_round','Backend\ManageHuayController@manage_huay_round_post');//จัดการรอบหวย
 
     Route::post('/index_admin','Backend\IndexController@post'); //Dashboard
+    Route::post('/content_modal_huay','Backend\ContentModalController@post'); //จัดการข่าวสาร
+
 
 });

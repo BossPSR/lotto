@@ -140,7 +140,7 @@ class LotteryPlayController extends Controller
                 'credit' => Auth::user()->credit,
                 'pass' => false,
             );
-            if (Auth::user()->money - $request->total_price > 0)
+            if (Auth::user()->money - $request->total_price >= 0)
                 $wrap['pass'] = true;
 
             return response()->json($wrap, 200);
@@ -159,20 +159,20 @@ class LotteryPlayController extends Controller
                 if (Auth::user()->money - $total_price < 0)
                     return response()->json(array('a' => Auth::user()->money, 'b' => $total_price), 401);
 
-                $commission_setting = CommissionSetting::first();
-                if (Auth::user()->upline_id && $commission_setting->commission_percent > 0) {
+                // $commission_setting = CommissionSetting::first();
+                // if (Auth::user()->upline_id && $commission_setting->commission_percent > 0) {
 
-                    $commission = (($total_price / 100) * $commission_setting->commission_percent);
-                    $credit_cf = new Transactions();
-                    $credit_cf->user_id = Auth::user()->upline_id;
-                    $credit_cf->status = 'confirm';
-                    $credit_cf->direction = 'IN';
-                    $credit_cf->type = 'CREDIT';
-                    $credit_cf->remark = 'คุณได้รับ ' . $commission . ' (' . $commission_setting->commission_percent . '%)เครดิตจากแทงหวยของ ' . Auth::user()->username;
-                    $credit_cf->amount = $commission;
-                    $credit_cf->save();
-                    DB::table("users")->where('id', Auth::user()->upline_id)->increment('credit', $commission);
-                }
+                //     $commission = (($total_price / 100) * $commission_setting->commission_percent);
+                //     $credit_cf = new Transactions();
+                //     $credit_cf->user_id = Auth::user()->upline_id;
+                //     $credit_cf->status = 'confirm';
+                //     $credit_cf->direction = 'IN';
+                //     $credit_cf->type = 'CREDIT';
+                //     $credit_cf->remark = 'คุณได้รับ ' . $commission . ' (' . $commission_setting->commission_percent . '%)เครดิตจากแทงหวยของ ' . Auth::user()->username;
+                //     $credit_cf->amount = $commission;
+                //     $credit_cf->save();
+                //     DB::table("users")->where('id', Auth::user()->upline_id)->increment('credit', $commission);
+                // }
 
                 // ดึงเลขอั้น 
                 $numbers = HuayUns::where('huay_category_id', $check->huay_category_id)->where('huay_id', $check->huay_id)->where('is_enable', 1)->get();

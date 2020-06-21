@@ -49,8 +49,18 @@
                 if (count($huay_round_by_category) > 0) {
                     foreach ($huay_round_by_category as $category_name => $huay_list) {
                 ?>
+
                         <div class="part-head p-2 rounded button_plus_story">
-                            {{$category_name}}
+                            <div class="row">
+                                <div class="col-6">
+                                    {{$category_name}}
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a href="/index_member" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                                </div>
+
+                            </div>
+                            
                         </div>
                         <div class="row m-0 mt-2">
                             <?php
@@ -67,47 +77,67 @@
                                             </span>
                                             <div class="part-body">
                                                 <div class="lotto_list_colum_2">
+                                                    @if($huay_round->price_tree_up != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>3 ตัวบน</div>
                                                         <div>{{(($huay_round->result_tree_up != "") ? $huay_round->result_tree_up : 'xxx')}}</div>
                                                     </div>
+                                                    @endif
+                                                    @if($huay_round->price_tree_tod != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>3 ตัวโต้ด</div>
                                                         <div>{{(($huay_round->result_tree_tod !="") ? $huay_round->result_tree_tod : 'xxx')}}</div>
                                                     </div>
-
+                                                    @endif
+                                                    @if($huay_round->price_tree_front != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>3 ตัวหน้า</div>
                                                         <div>{{(($huay_round->result_tree_front  != "") ? $huay_round->result_tree_front : 'xxx')}}</div>
                                                     </div>
+                                                    @endif
                                                 </div>
                                                 <div class="lotto_list_colum_2 mt-2">
+                                                    @if($huay_round->price_tree_down != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>3 ตัวล่าง</div>
                                                         <div>{{(($huay_round->result_tree_down != "") ? $huay_round->result_tree_down : 'xxx')}}</div>
                                                     </div>
+                                                    @endif
+                                                    @if($huay_round->price_two_up != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>2 ตัวบน</div>
                                                         <div>{{(($huay_round->result_two_up !="") ? $huay_round->result_two_up : 'xx')}}</div>
                                                     </div>
-
+                                                    @endif
+                                                    @if($huay_round->price_two_down != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>2 ตัวล่าง</div>
                                                         <div>{{(($huay_round->result_two_down  != "") ? $huay_round->result_two_down : 'xx')}}</div>
                                                     </div>
+                                                    @endif
                                                 </div>
 
                                                 <div class="lotto_list_colum_2 mt-2">
+                                                    @if($huay_round->price_run_up != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>วิ่งบน</div>
                                                         <div>{{(($huay_round->result_run_up != "") ? $huay_round->result_run_up : 'x')}}</div>
                                                     </div>
+                                                    @endif
+                                                    @if($huay_round->price_run_down != -1)
                                                     <div class="lotto_list_colum_2_detail">
                                                         <div>วิ่งล่าง</div>
                                                         <div>{{(($huay_round->result_run_down !="") ? $huay_round->result_run_down : 'x')}}</div>
                                                     </div>
+                                                    @endif
                                                 </div>
+                                                @if($huay_round->huay_category_id != 1 && $huay_round->round_status == 'complete')
+                                                <div class="lotto_list_colum_2 mt-2 mb-0 pb-0">
+                                                    <a href="lottery_result_yeekee?huay_secret={{$huay_round->secret}}" class="btn btn-md btn-warning w-100 text-white">ผลรางวัลยิงเลข</a>
+                                                </div>
+                                                @endif
                                             </div>
+
                                         </a>
                                     </div>
                                 </div>
@@ -118,9 +148,12 @@
                 <?php
                     }
                 }
-                else{
+                else
+                {
                     ?>
-                    <div class="alert alert-danger mb-0">ยังไม่มีข้อมูล</div>
+                    <div class="container shape-container">
+                        <div class="alert alert-danger">ยังไม่มีข้อมูล</div>
+                    </div>
                     <?php
                 }
                 ?>

@@ -19,9 +19,26 @@ class SingleDeviceLogin
         $session_id = $request->session()->getID();
         // dd($request->session()->getID());
         if ($user) {
-            if ($user && ($user->session_id == $session_id || is_null($user->session_id))) {
+            if($user->status == 'บัญชีดำ')
+            {
+                \Auth::guard()->logout();
+                $request->session()->flush();
+                $request->session()->regenerate();
+                return redirect()->guest(route('index'))->with('message', 'บัญชีของท่านติดบัญชีดำ')->with('status', 'error');
+
+            } 
+            else if($user->status == 'แบนสมาชิก')
+            {
+                \Auth::guard()->logout();
+                $request->session()->flush();
+                $request->session()->regenerate();
+                return redirect()->guest(route('index'))->with('message', 'บัญชีของท่านถูกแบน')->with('status', 'error');
+
+            } 
+            else if ($user && ($user->session_id == $session_id || is_null($user->session_id))) {
                 return $next($request);
-            } else {
+            } 
+            else {
                 \Auth::guard()->logout();
                 $request->session()->flush();
                 $request->session()->regenerate();

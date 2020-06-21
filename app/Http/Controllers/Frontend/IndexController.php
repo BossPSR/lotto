@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Models\ContactHeader;
+use App\Models\ContentModals;
 use App\Models\Deposits;
 use App\Models\HuayRoundPoyNumbers;
 use App\Models\HuayRoundPoys;
@@ -55,6 +56,10 @@ class IndexController extends Controller
     public function lottery_request_deposit_post(Request $request)
     {
         if (isset($_POST['addDeposit'])) {
+
+            if ($_POST['amount'] < 100)
+                return redirect()->route('lottery_request_deposit')->with('message', 'กรุณาเติมเงินมากกว่า 100 บาท!')->with('status', 'error');
+
             $deposit = new Deposits();
             $deposit->amount = $_POST['amount'];
             $deposit->banks_id = $_POST['bank_id'];
@@ -108,12 +113,22 @@ class IndexController extends Controller
         } else if (isset($_POST['addWithdraw'])) {
             $user = auth()->user();
 
+            $withdraw_count = Withdraws::where('user_id', Auth::user()->id)->whereBetween('created_at', [date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')])->count();
+
+
+            if ($_POST['amount'] < 100)
+                return redirect()->route('lottery_withdraw')->with('message', 'ขั้นต่ำในการถอนเงิน คือ 100 บาท!')->with('status', 'error');
+
+            if ($withdraw_count >= 5)
+                return redirect()->route('lottery_withdraw')->with('message', 'คุณถอนเกินจำนวนครั้งที่กำหนดแล้ว!')->with('status', 'error');
+
+
             $last_poy = HuayRoundPoys::where('user_id', $user->id)->orderBy('id', 'DESC')->first();
             if (!$last_poy)
                 return redirect()->route('lottery_withdraw')->with('message', 'คุณยังไม่มีการเล่นในระบบ ยอดที่คุณสามารถถอนได้คือ 50% ของการเล่นล่าสุด')->with('status', 'error');
 
-            if (($last_poy->total_price*0.5) != $_POST['amount'])
-                return redirect()->route('lottery_withdraw')->with('message', 'ยอดที่คุณสามารถถอนได้คือ 50% ของการเล่นล่าสุด คือ '.number_format(($last_poy->total_price * 0.5), 2).' บาท')->with('status', 'error');
+            if (($last_poy->total_price * 0.5) != $_POST['amount'])
+                return redirect()->route('lottery_withdraw')->with('message', 'ยอดที่คุณสามารถถอนได้คือ 50% ของการเล่นล่าสุด คือ ' . number_format(($last_poy->total_price * 0.5), 2) . ' บาท')->with('status', 'error');
 
             if ($user->money - $_POST['amount'] >= 0) {
                 $withdraw = new Withdraws();
@@ -156,7 +171,7 @@ class IndexController extends Controller
         if (Auth::attempt(['username' => $username, 'password' => $password])) {
             return redirect('index_member');
         } else {
-            return redirect()->route('index');
+            return redirect()->route('index')->with('message', 'ไม่สามารถเข้าสู่ระบบได้!')->with('status', 'error');
         }
     }
 
@@ -255,7 +270,20 @@ class IndexController extends Controller
 
         $user_info = Auth::user();
         $contact_header = ContactHeader::first();
-        return view('frontend.index_member', ['user_info' => $user_info, 'contact_header' => $contact_header]);
+
+        $content_modals = array();
+        if (Auth::user()->last_content_id)
+            $content_modals = ContentModals::where('deleted_at', null)->where('id', '!=', Auth::user())->where('id', '>', Auth::user()->last_content_id)->orderBy('id', 'desc')->first();
+        else
+            $content_modals = ContentModals::where('deleted_at', null)->orderBy('id', 'desc')->first();
+
+        if($content_modals)
+        {
+            $update = array('last_content_id'=> $content_modals->id);
+            DB::table("users")->where('id', Auth::user()->id)->update($update);
+        }
+
+        return view('frontend.index_member', ['user_info' => $user_info, 'contact_header' => $contact_header, 'content_modal' => $content_modals]);
     }
 
     public function plus_story()
@@ -272,7 +300,8 @@ class IndexController extends Controller
     public function lottery_withdraw()
     {
         $user_info = auth()->user();
+        $withdraw_count = Withdraws::where('user_id', $user_info->id)->whereBetween('created_at', [date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')])->count();
 
-        return view('frontend.lottery_withdraw', ['user_info' => $user_info]);
+        return view('frontend.lottery_withdraw', ['user_info' => $user_info, 'withdraw_count' => $withdraw_count]);
     }
 }
