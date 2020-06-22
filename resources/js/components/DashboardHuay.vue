@@ -99,6 +99,7 @@ input {
                                         </div>
                                         <div class="col-md-6 col-md-6 col-6  text-center">
                                             <b class="text-success">แทง {{data.count}} ครั้ง</b>
+                                            <b style="font-size:16px;" class="" v-for="info in data.poy_list"><br>{{info.poy_code}} แทง {{info.multiple}} บาท</b>
                                         </div>
                                     </div>
                                 </div>

@@ -205,6 +205,35 @@ if(session()-> has('ref_code'))
             )
             event.preventDefault();
         }
+
+        const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+        })
+        event.preventDefault();
+
+
+        swalWithBootstrapButtons.fire({
+        title: 'ข้อกำหนดการใช้งาน',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ยินยอม',
+        cancelButtonText: 'ไม่ยินยอม',
+        reverseButtons: true
+        }).then((result) => {
+            form.submit();
+
+        if (result.value) {
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel) {
+                event.preventDefault();
+        }
+        })
     }
 
     function readURL(input) {

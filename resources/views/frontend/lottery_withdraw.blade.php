@@ -129,7 +129,7 @@ $banks_array = array(
                                         </div>
 
                                         <div class="form-group">
-                                            <form action="" method="POST">
+                                            <form action="" method="POST" onsubmit="validateForm(this)" >
                                                 @csrf
                                                 <div class="form-group">
                                                     <label>ธนาคาร</label>
@@ -144,9 +144,18 @@ $banks_array = array(
                                                     <label>เลขที่บัญชี</label>
                                                     <input pattern="[0-9, -]+" maxlength="255" type="text" name="account_no" class="form-control" id="" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>ชื่อบัญชี</label>
-                                                    <input maxlength="255" type="text" name="account_name" class="form-control" id="" required>
+                                                <div class="form-group row">
+                                                    <div class="col-md-6">
+                                                        <label>ชื่อบัญชี</label>
+                                                        <input maxlength="255" type="text" onkeyup="checkName()" id="account_name" name="account_name" class="form-control" id="" required>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>นามสกุล</label>
+                                                        <input maxlength="255" type="text" onkeyup="checkName()" id="account_surname" name="account_surname" class="form-control" id="" required>
+                                                    </div>
+                                                    <div class="col-md-12 mt-2" id="error-name" style="display: none;">
+                                                        <div class="alert alert-danger">กรุณาป้อนชื่อนามสกุลบัญชีให้ตรงกับชื่อนามสกุลของผู้ใช้งาน</div>
+                                                    </div>
                                                 </div>
                                                 <span class="text-danger">หากทำการบันทึกแล้วจะไม่สามารถเปลี่ยนแปลงได้ภายหลัง</span>
                                                 <br>
@@ -170,6 +179,35 @@ $banks_array = array(
 <!-- jackpot end -->
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
+    function checkName(){
+        var input_name = document.getElementById("account_name")
+        var alert_div = document.getElementById("error-name")
+        if(input_name.value != '{{Auth::user()->first_name}}')
+        {
+            alert_div.style.display = 'block';
+            return false;
+        }
+        var input_name = document.getElementById("account_surname")
+        if(input_name.value != '{{Auth::user()->last_name}}')
+        {
+            alert_div.style.display = 'block';
+            return false;
+        }
+        alert_div.style.display = 'none';
+        return true;
+    }
+
+    function validateForm(form) {
+        
+        if (checkName() == false) {
+            Swal.fire(
+                'ไม่สำเร็จ!',
+                'กรุณาป้อนชื่อให้ถูกต้อง!',
+                'error'
+            )
+            event.preventDefault();
+        }
+    }
     var csrf_token = document.getElementsByName('_token')[0].value;
     @if(session()-> has('message'))
     var status = "{{session()->get('status')}}"

@@ -97,12 +97,15 @@ class IndexController extends Controller
     public function lottery_withdraw_post(Request $request)
     {
         if (isset($_POST['updateUserBank'])) {
+            if(Auth::user()->first_name != $_POST['account_name'] or Auth::user()->last_name != $_POST['account_surname'])
+                return redirect()->route('lottery_withdraw')->with('message', 'ไม่สามารถทำรายการได้!')->with('status', 'error');
+
             $user_id = auth()->user()->id;
 
             $data = array(
                 'bank_name' => $_POST['bank_name'],
                 'account_no' => $_POST['account_no'],
-                'account_name' => $_POST['account_name'],
+                'account_name' => $_POST['account_name'].' '.$_POST['account_surname'],
             );
 
             DB::table('users')

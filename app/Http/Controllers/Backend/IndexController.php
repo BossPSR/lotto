@@ -15,6 +15,7 @@ use File;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use stdClass;
 
 class IndexController extends Controller
 {
@@ -24,12 +25,13 @@ class IndexController extends Controller
     }
     public function post(Request $request)
     {
-        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC)
+        {
             $sort_col = array();
-            foreach ($arr as $key=> $row) {
+            foreach ($arr as $key => $row) {
                 $sort_col[$key] = $row[$col];
             }
-        
+
             array_multisort($sort_col, $dir, $arr);
         }
 
@@ -38,23 +40,38 @@ class IndexController extends Controller
             return response()->json($rounds, 200);
         }
         if (isset($request->get_stat_number_by_round_id)) {
-            
+            $field = array('number', 'huay_round_poy_id', 'multiple');
+
             $query = HuayRoundPoyNumbers::query();
             $query->where('huay_round_id', $request->huay_round_id);
             if ($request->huay_type)
                 $query->where('huay_type', $request->huay_type);
-            $numbers = $query->get('number');
+            $numbers = $query->get($field)->toArray();
 
             $wrap = array();
             if ($numbers) {
                 foreach ($numbers as $data) {
-                    if (!isset($wrap[$data->number]))
-                    {
-                        $data->count = 0;
-                        $wrap[$data->number] = $data;
+                    if (!isset($wrap[$data['number']])) {
+                        $data['count'] = 0;
+                        $data['poy_list'] = array();
+                        $wrap[$data['number']] = $data;
                     }
 
-                    $wrap[$data->number]->count++;
+                    $wrap[$data['number']]['count']++;
+
+                    $poy_no = 'PY' . sprintf('%04d', $data['huay_round_poy_id']);
+                    $temp = array();
+                    $temp['multiple'] = 0;
+                    $temp['poy_code'] = $poy_no;
+                    if (!isset($wrap[$data['number']]['poy_list'][$poy_no]))
+                        $wrap[$data['number']]['poy_list'][$poy_no] = $temp;
+
+                    $wrap[$data['number']]['poy_list'][$poy_no] ['multiple'] += $data['multiple'];
+                }
+                foreach ($wrap as $number => $list) {
+                    $wrap[$number]['poy_list'] = array_values($wrap[$number]['poy_list']);
+                    
+                    array_sort_by_column($wrap[$number]['poy_list'], 'multiple', SORT_DESC);
                 }
             }
             $wrap = array_values($wrap);
@@ -66,12 +83,13 @@ class IndexController extends Controller
     public function index()
     {
 
-        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC)
+        {
             $sort_col = array();
-            foreach ($arr as $key=> $row) {
+            foreach ($arr as $key => $row) {
                 $sort_col[$key] = $row[$col];
             }
-        
+
             array_multisort($sort_col, $dir, $arr);
         }
 
@@ -157,12 +175,13 @@ class IndexController extends Controller
     public function dashboard()
     {
 
-        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+        function array_sort_by_column(&$arr, $col, $dir = SORT_ASC)
+        {
             $sort_col = array();
-            foreach ($arr as $key=> $row) {
+            foreach ($arr as $key => $row) {
                 $sort_col[$key] = $row[$col];
             }
-        
+
             array_multisort($sort_col, $dir, $arr);
         }
 

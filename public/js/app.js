@@ -2185,6 +2185,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     huay_categorys: {
@@ -42129,8 +42130,25 @@ var render = function() {
                               [
                                 _c("b", { staticClass: "text-success" }, [
                                   _vm._v("แทง " + _vm._s(data.count) + " ครั้ง")
-                                ])
-                              ]
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(data.poy_list, function(info) {
+                                  return _c(
+                                    "b",
+                                    { staticStyle: { "font-size": "16px" } },
+                                    [
+                                      _c("br"),
+                                      _vm._v(
+                                        _vm._s(info.poy_code) +
+                                          " แทง " +
+                                          _vm._s(info.multiple) +
+                                          " บาท"
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
                             )
                           ]
                         )
