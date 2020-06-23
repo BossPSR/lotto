@@ -30,8 +30,9 @@ if(session()-> has('ref_code'))
                                 <a href="/" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
                             </div>
                            
-                           
                         </div>
+                        <br>
+                        <span style="color:red; font-size: 18px;" >*** หมายเหตุ การกรอก ชื่อ-นามสกุลต้องเป็นชื่อ-นามสกุลที่ตรงกับบัตรประชาชนและเลขที่บัญชีธนาคาร เท่านั้น ไม่งั้นระบบจะไม่สามารถถอนเงินได้</span> 
                     </div>
                     <br>
                     <div class="part-body">

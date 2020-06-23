@@ -64,6 +64,8 @@ $banks_array = array(
                     <div class="col-12">
                         <div class="card rounded-0 mb-2">
                             <div class="card-body" style="display: block;">
+                                <b><span class="amount" style="color:#6f39d5; font-size: 28px;">ระบบแนะนำเพื่อน</span></b>
+                                <br><br>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class=" text-left mb-2">
@@ -71,7 +73,7 @@ $banks_array = array(
                                                 <a href="?page=index" class="nav-link {{($_GET['page'] == 'index' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-globe-asia"></i> ภาพรวม</a>
                                                 <a href="?page=members" class="nav-link {{($_GET['page'] == 'members' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-users"></i> สมาชิก</a>
                                                 <a href="?page=revenue" class="nav-link {{($_GET['page'] == 'revenue' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-money-bill"></i> รายได้</a>
-                                                <a href="?page=withdraw" class="nav-link {{($_GET['page'] == 'withdraw' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-bell"></i> แจ้งถอนรายได้</a>
+                                                <a href="?page=withdraw" class="nav-link {{($_GET['page'] == 'withdraw' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-bell"></i> แจ้งถอนรายได้ (CF)</a>
                                             </div>
                                         </div>
                                     </div>
