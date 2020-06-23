@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Lotter</title>
+    <title>Luckily Lotto</title>
     <!-- favicon -->
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{ asset('assets/img/LOGOV2.png') }}" type="image/x-icon">
@@ -84,7 +84,7 @@
                             <div class="col-xl-12 col-lg-12 col-7">
                                 <div class="logo" style="width:70%">
 
-                                    <img id="logo-2" src="assets/img/LOGOV2-02.png" alt="">
+                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
 
                                 </div>
                             </div>
