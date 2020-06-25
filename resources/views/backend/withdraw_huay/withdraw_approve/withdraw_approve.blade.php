@@ -139,22 +139,22 @@
             <div class="modal-body">
                 <form method="POST" action="/admin/withdraw_approve" onsubmit="doSubmit(this)" enctype="multipart/form-data">
                     <input name="id" type="hidden">
-                    <div class="form-group">
-                        <b>ลูกค้า</b> <label id="customer_name"></label> (<label id="username"></label>)
+                    <div class="form-group" style="font-size: 18PX">
+                        <b>ลูกค้า</b> <label id="customer_name" style="font-size: 16PX"></label> (<label id="username" style="font-size: 16PX"></label>)
                         <br>
-                        <b>ทำรายการเมื่อ</b> <label id="created_at"></label>
+                        <b>ทำรายการเมื่อ</b> <label id="created_at" style="font-size: 16PX"></label>
                         <br>
-                        <b>ธนาคาร</b> <label id="bank_name"></label>
+                        <b>ธนาคาร</b> <label id="bank_name" style="font-size: 16PX"></label>
                         <br>
-                        <b>เลขที่บัญชี</b> <label id="account_no"></label>
+                        <b>เลขที่บัญชี</b> <label id="account_no" style="font-size: 16PX"></label>
                         <br>
-                        <b>ชื่อบัญชี</b> <label id="account_name"></label>
+                        <b>ชื่อบัญชี</b> <label id="account_name" style="font-size: 16PX"></label>
                         <br>
-                        <b>หมายเหตุ</b> <label id="remark"></label>
+                        <b>หมายเหตุ</b> <label id="remark" style="font-size: 16PX"></label>
                         <br>
-                        <label>ยอดเงินแจ้งโอน</label>
-                        <input type="number" name="amount" class="form-control" id="" readonly>
-                        <label>หลักฐานการโอนเงิน</label>
+                        <label style="font-size: 18PX">ยอดเงินแจ้งโอน</label>
+                        <input type="number" name="amount" class="form-control" id="" readonly style="font-size: 16PX">
+                        <label style="font-size: 18PX">หลักฐานการโอนเงิน</label>
                         <input type="file" name="image" accept="image/*" class="form-control" >
                     </div>
 
