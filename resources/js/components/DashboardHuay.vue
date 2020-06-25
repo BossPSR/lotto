@@ -47,7 +47,7 @@ input {
                                 </table>
                             </div>
                         </div>
-                        <div class="col-md-4" v-if="page != 0">
+                        <div class="col-md-4" v-if="page != 0 && page != 'view_poy'">
                             <a class="btn btn-warning btn-md text-white" v-on:click="change_page(0)">ย้อนกลับ</a>
                             <div class="table-responsive">
                                 <table class="table data-list-view">
@@ -77,7 +77,7 @@ input {
                                 </table>
                             </div>
                         </div>
-                        <div class="col-md-8" v-if="view_id != 0">
+                        <div class="col-md-8" v-if="view_id != 0  && page != 'view_poy'">
                             <form methods="POST">
                                 <select id="select_round" class="form-control mb-2" v-on:change="change_round($event.target.value)" required>
                                     <option value disabled selected>เลือกรอบหวย</option>
@@ -99,10 +99,33 @@ input {
                                         </div>
                                         <div class="col-md-6 col-md-6 col-6  text-center">
                                             <b class="text-success">แทง {{data.count}} ครั้ง</b>
-                                            <b style="font-size:16px;" class="" v-for="info in data.poy_list"><br>{{info.poy_code}} แทง {{info.multiple}} บาท</b>
+                                            <a class="btn btn-default border p-1" style="font-size:16px;"  v-for="info in data.poy_list" v-on:click="view_poy(info.number_list)">{{info.poy_code}} แทง {{info.multiple}} บาท</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" v-if="page != 0 && page == 'view_poy'">
+                            <a class="btn btn-warning btn-md text-white" v-on:click="change_page(old_page)">ย้อนกลับ</a>
+                            <div class="table-responsive">
+                                <table class="table data-list-view">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none;"></th>
+                                            <th style="width:1%">#</th>
+                                            <th>หวย</th>
+                                            <th style="width:1%">ราคา</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(number_info, index) in view_poy_data">
+                                            <td style="display:none;"></td>
+                                            <td class="product-name">{{index+1}}.</td>
+                                            <td class="product-name">{{number_info.number}}</td>
+                                            <td class="product-name text-center">{{number_info.multiple}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -153,7 +176,9 @@ export default {
             },
             my_number: [],
             huay_rounds: [],
-            huay_type: ""
+            view_poy_data: [],
+            huay_type: "",
+            old_page: ""
         };
     },
     mounted() {
@@ -242,6 +267,13 @@ export default {
                     // console.log(error)
                 });
             // console.log(app.old_list)
+        },
+        view_poy(poy_number_list)
+        {
+            console.log(poy_number_list)
+            this.view_poy_data = poy_number_list
+            this.old_page = this.page
+            this.change_page('view_poy')
         },
         change_page(page) {
             this.page = page;

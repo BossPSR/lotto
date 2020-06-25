@@ -2186,6 +2186,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     huay_categorys: {
@@ -2226,7 +2249,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       my_number: [],
       huay_rounds: [],
-      huay_type: ""
+      view_poy_data: [],
+      huay_type: "",
+      old_page: ""
     };
   },
   mounted: function mounted() {// console.log('Component mounted.')
@@ -2297,6 +2322,12 @@ __webpack_require__.r(__webpack_exports__);
         app.$forceUpdate();
       })["catch"](function (error) {// console.log(error)
       }); // console.log(app.old_list)
+    },
+    view_poy: function view_poy(poy_number_list) {
+      console.log(poy_number_list);
+      this.view_poy_data = poy_number_list;
+      this.old_page = this.page;
+      this.change_page('view_poy');
     },
     change_page: function change_page(page) {
       this.page = page;
@@ -41961,7 +41992,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.page != 0
+            _vm.page != 0 && _vm.page != "view_poy"
               ? _c("div", { staticClass: "col-md-4" }, [
                   _c(
                     "a",
@@ -42030,7 +42061,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.view_id != 0
+            _vm.view_id != 0 && _vm.page != "view_poy"
               ? _c("div", { staticClass: "col-md-8" }, [
                   _c("form", { attrs: { methods: "POST" } }, [
                     _c(
@@ -42134,10 +42165,17 @@ var render = function() {
                                 _vm._v(" "),
                                 _vm._l(data.poy_list, function(info) {
                                   return _c(
-                                    "b",
-                                    { staticStyle: { "font-size": "16px" } },
+                                    "a",
+                                    {
+                                      staticClass: "btn btn-default border p-1",
+                                      staticStyle: { "font-size": "16px" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.view_poy(info.number_list)
+                                        }
+                                      }
+                                    },
                                     [
-                                      _c("br"),
                                       _vm._v(
                                         _vm._s(info.poy_code) +
                                           " แทง " +
@@ -42155,6 +42193,53 @@ var render = function() {
                       }),
                       0
                     )
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.page != 0 && _vm.page == "view_poy"
+              ? _c("div", { staticClass: "col-md-12" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-warning btn-md text-white",
+                      on: {
+                        click: function($event) {
+                          return _vm.change_page(_vm.old_page)
+                        }
+                      }
+                    },
+                    [_vm._v("ย้อนกลับ")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table data-list-view" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.view_poy_data, function(number_info, index) {
+                          return _c("tr", [
+                            _c("td", { staticStyle: { display: "none" } }),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(index + 1) + ".")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(number_info.number))
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "product-name text-center" },
+                              [_vm._v(_vm._s(number_info.multiple))]
+                            )
+                          ])
+                        }),
+                        0
+                      )
+                    ])
                   ])
                 ])
               : _vm._e()
@@ -42202,6 +42287,22 @@ var staticRenderFns = [
         _c("th", [_vm._v("หวย")]),
         _vm._v(" "),
         _c("th", { staticStyle: { width: "1%" } }, [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticStyle: { display: "none" } }),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("หวย")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }, [_vm._v("ราคา")])
       ])
     ])
   }
