@@ -80,15 +80,15 @@ input {
                         <div class="col-md-8" v-if="view_id != 0">
                             <form methods="POST">
                                 <select id="select_round" class="form-control mb-2" v-on:change="change_round($event.target.value)" required>
-                                                    <option value disabled selected>เลือกรอบหวย</option>
-                                                    <option v-for="(data, index) in huay_rounds" v-bind:value="data.id">{{data.name + " "+data.end_datetime}}</option>
-                                                </select>
+                                    <option value disabled selected>เลือกรอบหวย</option>
+                                    <option v-for="(data, index) in huay_rounds" v-bind:value="data.id">{{data.name + " "+data.end_datetime}}</option>
+                                </select>
                             </form>
                             <form methods="POST">
                                 <select id="select_type" class="form-control mb-2" v-on:change="change_round(null ,$event.target.value)" required>
-                                                    <option value  selected>แสดงประเภทเลขตัวเลขทั้งหมด</option>
-                                                    <option v-for="(name, huay_type) in type_name" v-bind:value="huay_type">{{name}}</option>
-                                                </select>
+                                    <option value  selected>แสดงประเภทเลขตัวเลขทั้งหมด</option>
+                                    <option v-for="(name, huay_type) in type_name" v-bind:value="huay_type">{{name}}</option>
+                                </select>
                             </form>
     
                             <div class="border p-2 rounded bg-white">

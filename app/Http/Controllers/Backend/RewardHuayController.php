@@ -97,6 +97,8 @@ class RewardHuayController extends Controller
                 'result_row_sixteen' => $_POST['result_row_sixteen'],
                 'result_user_firt' => $_POST['result_user_firt'],
                 'result_user_sixteen' => $_POST['result_user_sixteen'],
+                'price_yeekee_one_hundred' => $_POST['price_yeekee_one_hundred'],
+                'price_yeekee_two_hundred' => $_POST['price_yeekee_two_hundred'],
                 'round_status' => 'complete',
                 'is_active' => 0
             );
@@ -749,6 +751,38 @@ class RewardHuayController extends Controller
             }
             array_push($won_id_array, $number->id);
             array_push($won_by_user_id[$number->user_id]['number_list'], $number->number . ' ได้ลำดับที่ 16 ' . number_format($huay_round->price_yeekee_sixteen, 2) . ' บ.');
+            $total_won_shoot += $huay_round->price_yeekee_sixteen;
+            $won_by_user_id[$number->user_id]['total_price'] += $huay_round->price_yeekee_sixteen;
+        }
+        if(isset($number_all_for_first_and_sixtenn[99]))
+        {
+            $number = $number_all_for_first_and_sixtenn[99];
+            if (!isset($won_by_user_id[$number->user_id])) {
+                $won_by_user_id[$number->user_id] = array(
+                    'user_id' => $number->user_id,
+                    'description' => 'คุณยิงเลข ' . $huay_round->name . ' ',
+                    'total_price' => 0,
+                    'number_list' => array()
+                );
+            }
+            array_push($won_id_array, $number->id);
+            array_push($won_by_user_id[$number->user_id]['number_list'], $number->number . ' ได้ลำดับที่ 100 ' . number_format($huay_round->price_yeekee_sixteen, 2) . ' บ.');
+            $total_won_shoot += $huay_round->price_yeekee_sixteen;
+            $won_by_user_id[$number->user_id]['total_price'] += $huay_round->price_yeekee_sixteen;
+        }
+        if(isset($number_all_for_first_and_sixtenn[199]))
+        {
+            $number = $number_all_for_first_and_sixtenn[199];
+            if (!isset($won_by_user_id[$number->user_id])) {
+                $won_by_user_id[$number->user_id] = array(
+                    'user_id' => $number->user_id,
+                    'description' => 'คุณยิงเลข ' . $huay_round->name . ' ',
+                    'total_price' => 0,
+                    'number_list' => array()
+                );
+            }
+            array_push($won_id_array, $number->id);
+            array_push($won_by_user_id[$number->user_id]['number_list'], $number->number . ' ได้ลำดับที่ 200 ' . number_format($huay_round->price_yeekee_sixteen, 2) . ' บ.');
             $total_won_shoot += $huay_round->price_yeekee_sixteen;
             $won_by_user_id[$number->user_id]['total_price'] += $huay_round->price_yeekee_sixteen;
         }

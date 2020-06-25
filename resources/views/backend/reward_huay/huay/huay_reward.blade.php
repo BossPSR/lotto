@@ -551,6 +551,18 @@ if (date('Y-m-d', strtotime($_GET['start_date'])) > date('Y-m-d', strtotime($_GE
                                                     <input type="number" min="0" step="0.01" name="price_yeekee_sixteen" class="form-control" id="" required>
                                                 </div>
                                             </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>รางวัลคนยิงเลข ลำดับ 100</label>
+                                                    <input type="number" min="0" step="0.01" name="price_yeekee_one_hundred" class="form-control" id="" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>รางวัลคนยิงเลข ลำดับ 200</label>
+                                                    <input type="number" min="0" step="0.01" name="price_yeekee_two_hundred" class="form-control" id="" required>
+                                                </div>
+                                            </div>
 
                                         </div>
                                         <div class="form-group  mb-0">

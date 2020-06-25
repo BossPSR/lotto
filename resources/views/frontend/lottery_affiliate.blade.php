@@ -168,14 +168,21 @@ $banks_array = array(
                                     คุณยังไม่มีสมาชิก
                                 </div>
                                 @endif
-                                <div class="row">
-                                    @foreach ($downlines as $user)
-                                    <div class="text-center m-2" style="width: 100px;">
-                                        <img class="shadow" style="width:100%; height:100px; object-fit:cover; border-radius:100vh;" src="{{$user->path_cover}}">
-                                        <label class="mt-2" style="word-break: break-all">{{$user->username}}</label>
-                                    </div>
+                                <table class="table">
+                                    <tr>
+                                        <th style="width: 1px">#</th>
+                                        <th>Username</th>
+                                        <th class="text-center" style="width: auto;" nowrap>วันที่สมัคร</th>
+                                    </tr>
+                                    @foreach ($downlines as $index => $user)
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{$user->username}}</td>
+
+                                        <td class="text-center">{{date('d/m/Y H:i:s',strtotime($user->created_at))}}</td>
+                                    </tr>
                                     @endforeach
-                                </div>
+                                </table>
                                 @endif
 
                                 @if($_GET['page'] == 'revenue')
