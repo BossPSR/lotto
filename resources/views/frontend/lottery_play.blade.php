@@ -39,6 +39,14 @@
     .info-card-warning h2 {
         background-color: #C97902;
     }
+
+    .info-card-complete {
+        background-color: #FFBB00;
+    }
+
+    .info-card-complete h2 {
+        background-color: #805E00;
+    }
 </style>
 <div class="jackpot" style="background:#FFF;  min-height: calc(100vh - 100px);">
     <div class="container" style="max-width: 90%">
@@ -96,12 +104,16 @@
                                         $style = 'success';
                                     else if (date('Y-m-d H:i:s') < date('Y-m-d H:i:s', strtotime($huay_round->start_datetime)))
                                         $style = 'warning';
+                                    else if($huay_round->round_status == 'complete')
+                                        $style = 'complete';
                                     else
                                         $style = 'danger';
 
                                     $href = "";
                                     if ($style == 'success')
                                         $href = 'lottery_government?huay_secret=' . $huay_round->secret;
+                                    else if ($style == 'complete')
+                                        $href = 'lottery_result';
 
                                 ?>
                                     <div class="col-6 col-md-3 col-lg-2 mb-2 px-1">
@@ -116,6 +128,8 @@
                                                                 echo 'ปิดรับแทง';
                                                             else if($style == 'warning')
                                                                 echo 'ยังไม่ถึงเวลาเริ่มต้น';
+                                                            else if($style == 'complete')
+                                                                echo 'ประกาศผลแล้ว';
                                                             ?>
                                                             </label><label id="seconds{{$index}}" class="m-0" style="cursor: pointer !important"></label>
                                                         </div>

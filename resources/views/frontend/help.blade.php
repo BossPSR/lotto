@@ -34,7 +34,7 @@
                                         <?php
                                         if ($player_rules) {
                                             foreach ($player_rules as $rule) {
-                                                echo '<button type="button" class="btn btn-warning new_story mr-2 mb-2" onClick="toggle(\'info-' . $rule->id . '\');" value="help_list1">' . $rule->title . '</button>';
+                                                echo '<span style="color:white !important" class="text-white text-dark rounded p-1 new_story mr-2 mb-2" onClick="toggle(\'info-' . $rule->id . '\');" value="help_list1">' . $rule->title . '</span>';
                                             }
                                         }
                                         ?>
