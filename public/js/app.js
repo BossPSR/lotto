@@ -2209,6 +2209,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     huay_categorys: {
@@ -42163,30 +42166,26 @@ var render = function() {
                                   _vm._v("แทง " + _vm._s(data.count) + " ครั้ง")
                                 ]),
                                 _vm._v(" "),
-                                _vm._l(data.poy_list, function(info) {
-                                  return _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-default border p-1",
-                                      staticStyle: { "font-size": "16px" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.view_poy(info.number_list)
-                                        }
-                                      }
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "btn btn-warning text-white border",
+                                    staticStyle: {
+                                      "font-size": "16px",
+                                      padding: "5px"
                                     },
-                                    [
-                                      _vm._v(
-                                        _vm._s(info.poy_code) +
-                                          " แทง " +
-                                          _vm._s(info.multiple) +
-                                          " บาท"
-                                      )
-                                    ]
-                                  )
-                                })
-                              ],
-                              2
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.view_poy(data.poy_list)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("ดูโพย")]
+                                )
+                              ]
                             )
                           ]
                         )
@@ -42228,6 +42227,10 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", { staticClass: "product-name" }, [
                               _vm._v(_vm._s(number_info.number))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "product-name" }, [
+                              _vm._v(_vm._s(number_info.poy_code))
                             ]),
                             _vm._v(" "),
                             _c(
@@ -42300,7 +42303,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("หวย")]),
+        _c("th", [_vm._v("เลข")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("เลขโพย")]),
         _vm._v(" "),
         _c("th", { staticStyle: { width: "1%" } }, [_vm._v("ราคา")])
       ])

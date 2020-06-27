@@ -51,7 +51,7 @@ class IndexController extends Controller
             $wrap = array();
             if ($numbers) {
                 foreach ($numbers as $data) {
-                    $original_data = $data;
+                    // $original_data = $data;
                     if (!isset($wrap[$data['number']])) {
                         $data['count'] = 0;
                         $data['poy_list'] = array();
@@ -61,15 +61,15 @@ class IndexController extends Controller
                     $wrap[$data['number']]['count']++;
 
                     $poy_no = 'PY' . sprintf('%04d', $data['huay_round_poy_id']);
-                    $temp = array();
-                    $temp['number_list'] = array();
-                    $temp['multiple'] = 0;
-                    $temp['poy_code'] = $poy_no;
-                    if (!isset($wrap[$data['number']]['poy_list'][$poy_no]))
-                        $wrap[$data['number']]['poy_list'][$poy_no] = $temp;
+                    // $temp = array();
+                    // $temp['number'] = $data['number'];
+                    // $temp['multiple'] = 0;
+                    $data['poy_code'] = $poy_no;
+                    // if (!isset($wrap[$data['number']]['poy_list'][$poy_no]))
+                    //     $wrap[$data['number']]['poy_list'][$poy_no] = $temp;
 
-                    $wrap[$data['number']]['poy_list'][$poy_no]['multiple'] += $data['multiple'];
-                    array_push($wrap[$data['number']]['poy_list'][$poy_no]['number_list'] , $original_data);
+                    // $wrap[$data['number']]['poy_list'][$poy_no]['multiple'] += $data['multiple'];
+                    array_push($wrap[$data['number']]['poy_list'] , $data);
                 }
                 foreach ($wrap as $number => $list) {
                     $wrap[$number]['poy_list'] = array_values($wrap[$number]['poy_list']);

@@ -99,7 +99,8 @@ input {
                                         </div>
                                         <div class="col-md-6 col-md-6 col-6  text-center">
                                             <b class="text-success">แทง {{data.count}} ครั้ง</b>
-                                            <a class="btn btn-default border p-1" style="font-size:16px;"  v-for="info in data.poy_list" v-on:click="view_poy(info.number_list)">{{info.poy_code}} แทง {{info.multiple}} บาท</a>
+                                            <br>
+                                            <a class="btn btn-warning text-white border" style="font-size:16px; padding:5px;"  v-on:click="view_poy(data.poy_list)">ดูโพย</a>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +114,8 @@ input {
                                         <tr>
                                             <th style="display:none;"></th>
                                             <th style="width:1%">#</th>
-                                            <th>หวย</th>
+                                            <th>เลข</th>
+                                            <th>เลขโพย</th>
                                             <th style="width:1%">ราคา</th>
                                         </tr>
                                     </thead>
@@ -122,6 +124,7 @@ input {
                                             <td style="display:none;"></td>
                                             <td class="product-name">{{index+1}}.</td>
                                             <td class="product-name">{{number_info.number}}</td>
+                                            <td class="product-name">{{number_info.poy_code}}</td>
                                             <td class="product-name text-center">{{number_info.multiple}}</td>
                                         </tr>
                                     </tbody>

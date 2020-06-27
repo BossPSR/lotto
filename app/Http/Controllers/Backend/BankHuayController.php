@@ -52,7 +52,7 @@ class BankHuayController extends Controller
 
             return redirect(self::$view)->with('message', 'แก้ไขสำเร็จ!')->with('status', 'success');
         } else if (isset($_POST['deleteBanks'])) {
-            Bank::where('id', $_POST['id'])
+            Banks::where('id', $_POST['id'])
                 ->delete();
             return redirect(self::$view)->with('message', 'ลบสำเร็จ')->with('status', 'success');
         } else if (isset($_POST['sort'])) {
