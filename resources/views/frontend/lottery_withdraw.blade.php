@@ -157,7 +157,7 @@ $banks_array = array(
                                                         <div class="alert alert-danger">กรุณาป้อนชื่อนามสกุลบัญชีให้ตรงกับชื่อนามสกุลของผู้ใช้งาน</div>
                                                     </div>
                                                 </div>
-                                                <span class="text-danger">หากทำการบันทึกแล้วจะไม่สามารถเปลี่ยนแปลงได้ภายหลัง</span>
+                                                <span class="text-danger">หากทำการบันทึกแล้วจะไม่สามารถเปลี่ยนแปลงได้ภายหลัง และชื่อ-นามสกุลและเลขบัญชีต้องตรงกันไม่งั้นจะไม่สามารถดำเนินการได้</span>
                                                 <br>
                                                 <button type="submit" name="updateUserBank" class="btn btn-success">บันทึกข้อมูล</button>
                                                 <button type="reset" class="btn btn-danger ">ยกเลิก</button>

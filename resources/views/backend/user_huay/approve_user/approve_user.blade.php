@@ -132,10 +132,10 @@
                 <form method="POST" action="/admin/approve_user" onsubmit="doSubmit(this)" enctype="multipart/form-data">
                     <input name="id" type="hidden">
                     <input name="page" value="approve_user" type="hidden">
-                    <div class="form-group">
-                        <b>ลูกค้า</b> <label id="customer_name"></label> (<label id="username"></label>)
+                    <div class="form-group" style="font-size: 18PX">
+                        <b>ลูกค้า</b> <label id="customer_name" style="font-size: 16PX"></label> (<label id="username" style="font-size: 16PX"></label>)
                         <br>
-                        <b>สมัครเมื่อ</b> <label id="created_at"></label>
+                        <b>สมัครเมื่อ</b> <label id="created_at" style="font-size: 16PX"></label>
                     </div>
 
                     <div class="form-group  mb-0">

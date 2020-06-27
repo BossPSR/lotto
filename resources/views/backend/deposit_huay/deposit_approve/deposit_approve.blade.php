@@ -126,13 +126,13 @@
             <div class="modal-body">
                 <form method="POST" action="/admin/deposit_approve" onsubmit="doSubmit(this)">
                     <input name="id" type="hidden">
-                    <div class="form-group">
-                        <b>ลูกค้า</b> <label id="customer_name"></label> (<label id="username"></label>)
+                    <div class="form-group" style="font-size: 18px">
+                        <b>ลูกค้า</b> <label id="customer_name" style="font-size: 16px"></label> (<label id="username" style="font-size: 16px"></label>)
                         <br>
-                        <b>ทำรายการเมื่อ</b> <label id="created_at"></label>
+                        <b>ทำรายการเมื่อ</b> <label id="created_at" style="font-size: 16px"></label>
                         <br>
                         <b>ยอดเงินแจ้งโอน</b>
-                        <input type="number" name="amount" class="form-control" id="" readonly>
+                        <input type="number" name="amount" class="form-control" id="" readonly style="font-size: 16px">
                         
                     </div>
 
