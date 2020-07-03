@@ -64,10 +64,18 @@ $banks_array = array(
                     <div class="col-12">
                         <div class="card rounded-0 mb-2">
                             <div class="card-body" style="display: block;">
-                                <b><span class="amount" style="color:#6f39d5; font-size: 28px;">ระบบแนะนำเพื่อน</span></b>
-                                <br><br>
+
                                 <div class="row">
                                     <div class="col-6">
+                                        <b><span class="amount" style="color:#6f39d5; font-size: 28px;">ระบบแนะนำเพื่อน</span></b>
+                                        <br><br>
+                                    </div>
+
+                                    <div class="col-6 text-right">
+                                        <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                                    </div>
+
+                                    <div class="col-12">
                                         <div class=" text-left mb-2">
                                             <div style="display: inline-flex;">
                                                 <a href="?page=index" class="nav-link {{($_GET['page'] == 'index' ? 'text-warning' : 'text-secondary')}}"><i class="fa fa-globe-asia"></i> ภาพรวม</a>
@@ -77,9 +85,7 @@ $banks_array = array(
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6 text-right">
-                                        <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
-                                    </div>
+
                                 </div>
                                 <br>
                                 @if($_GET['page'] == 'index')
@@ -309,7 +315,7 @@ $banks_array = array(
                                         </div>
                                     </div>
                                     @elseif(!$user_info->bank_name)
-                                    
+
                                     <div class="part-head">
 
                                         <div class="text" style="margin-left:25px;">
