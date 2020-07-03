@@ -105,7 +105,7 @@ $contact_header = ContactHeader::first();
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
                                             <div class="header_login">
-                                                <div class="d-flex">
+                                                <div class="d-flex" style="justify-content: center;">
                                                     <div class="header_after_login">
                                                         {{number_format(Auth::user()->money, 2)}}
                                                         <i class="fa fa-coins"></i>

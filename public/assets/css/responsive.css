@@ -49,7 +49,7 @@
     .testimonial .testimonial-slider2 .single-testimonial {
         background: #f6f9fc;
     }
-    .header .menu-bar .mainmenu .navbar .navbar-nav .nav-item.dropdown.for-lottery-btn .all-lotteries .single-lottery {
+    /* .header .menu-bar .mainmenu .navbar .navbar-nav .nav-item.dropdown.for-lottery-btn .all-lotteries .single-lottery {
         width: 147px;
         padding: 15px;
     }
@@ -73,7 +73,7 @@
         width: 24px;
         height: 24px;
         line-height: 24px;
-    }
+    } */
     .team .single-member .part-img {
         width: 150px;
         height: 150px;
@@ -115,7 +115,7 @@
         margin-bottom: 40px;
         background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
         width: 100%;
-    } 
+    }
     .thiz-class-only-for-responsive .single-testimonial .user-img {
         margin-left: 0;
     }
@@ -129,15 +129,15 @@
     /* pick number */
     .lottery-coupon .row:first-child > [class*=col-] {
         padding: 0 0;
-    } 
-
-    .header .menu-bar .mainmenu .navbar .navbar-nav .nav-item .nav-link {
-        margin: 10px 20px 10px 0;
     }
+
+    /* .header .menu-bar .mainmenu .navbar .navbar-nav .nav-item .nav-link {
+        margin: 10px 20px 10px 0;
+    } */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    
+
     /* header */
     .header {
         position: relative;
@@ -227,6 +227,7 @@
         left: 30px;
         top: 15px;
         border-radius: 5px;
+        color: #000;
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav {
         padding: 10px 0;
@@ -370,7 +371,7 @@
     .choosing-reason .choosing-reason-list .single-reason .part-text p {
         font-size: 16px;
         line-height: 24px;
-    }    
+    }
     .choosing-reason .choosing-reason-list .single-reason {
         margin-right: 0;
         margin-bottom: 30px;
@@ -384,7 +385,7 @@
     .choosing-reason .choosing-text h2 {
         font-size: 34px;
         line-height: 44px;
-        margin-bottom: 10px;    
+        margin-bottom: 10px;
         margin-top: 0;
     }
     .choosing-reason .choosing-text {
@@ -510,7 +511,7 @@
     .footer .footer-widget {
         margin-bottom: 30px;
     }
-    
+
     /* index = 2 > header */
     .header.style-2 {
         padding-top: 15px;
@@ -600,7 +601,7 @@
         font-size: 14px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .draw-time ul li {
-        margin-right: 6px; 
+        margin-right: 6px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .text h3 {
         font-size: 24px;
@@ -619,7 +620,7 @@
         margin-top: -10px;
         font-size: 15px;
     }
-    
+
     /* breadcrumb */
     .breadcrumb-lotters .breadcrumb-content h2 {
         font-size: 24px;
@@ -637,12 +638,12 @@
     .breadcrumb-lotters:after {
         display: none;
     }
-    
+
     /* about */
     .about {
         padding: 50px 0;
     }
-    .about .part-text span.sub-title { 
+    .about .part-text span.sub-title {
         margin-bottom: 8px;
     }
     .about .part-text h2 {
@@ -668,7 +669,7 @@
     .user-statics.style-2 {
         padding: 30px 0 50px!important;
     }
-     
+
     /* sidebar */
     .sidebar {
         margin-right: 0;
@@ -706,7 +707,7 @@
         right: 0;
         width: 90px;
     }
-    
+
     /* blog left sidebar */
     .blog {
         padding-top: 80px;
@@ -721,7 +722,7 @@
     .quick-review {
         padding: 80px 0 50px;
     }
-    
+
     /* contact */
     .contact {
         padding: 80px 0;
@@ -731,11 +732,11 @@
     }
     .contact .info-widget {
         margin-bottom: 30px;
-    } 
+    }
     .map iframe {
         height: 200px;
     }
-    
+
     /* faq */
     .faq .faq-sidebar {
         margin-right: 0;
@@ -752,7 +753,7 @@
     .how-to-works.how-it-works-page {
         padding-top: 80px;
     }
-    
+
     /* form */
     .form {
         padding: 80px 0;
@@ -775,12 +776,12 @@
     .testimonial.thiz-class-only-for-responsive .single-testimonial {
         margin-bottom: 30px;
     }
-    
+
     /* testimonial 2 */
     .testimonial.testimonial-2.thiz-class-only-for-responsive {
         padding-top: 80px;
     }
-    
+
     /* why choose us page */
     .choosing-reason-2.choosing-reason-page {
         padding-top: 80px;
@@ -1153,7 +1154,7 @@
     .choosing-reason .choosing-reason-list .single-reason .part-text p {
         font-size: 16px;
         line-height: 24px;
-    }    
+    }
     .choosing-reason .choosing-reason-list .single-reason {
         margin-right: 0;
         margin-bottom: 30px;
@@ -1167,12 +1168,12 @@
     .choosing-reason .choosing-text h2 {
         font-size: 24px;
         line-height: 34px;
-        margin-bottom: 10px;    
+        margin-bottom: 10px;
         margin-top: 0;
     }
     .choosing-reason .choosing-text p {
         font-size: 16px;
-        line-height: 24px; 
+        line-height: 24px;
         margin-bottom: 10px;
     }
     .choosing-reason .choosing-text {
@@ -1348,7 +1349,7 @@
         font-size: 16px;
         line-height: 24px;
     }
-    
+
     /* index = 2 > header */
     .header.style-2 {
         padding-top: 15px;
@@ -1430,7 +1431,7 @@
         font-size: 14px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .draw-time ul li {
-        margin-right: 6px; 
+        margin-right: 6px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .text h3 {
         font-size: 24px;
@@ -1449,7 +1450,7 @@
         margin-top: -10px;
         font-size: 15px;
     }
-    
+
     /* breadcrumb */
     .breadcrumb-lotters .breadcrumb-content h2 {
         font-size: 24px;
@@ -1468,7 +1469,7 @@
         display: none;
     }
 
-    
+
     /* about */
     .about {
         padding: 50px 0;
@@ -1517,7 +1518,7 @@
     .user-statics.style-2 {
         padding: 30px 0 50px!important;
     }
-    
+
     /* sidebar */
     .sidebar {
         margin-right: 0;
@@ -1555,7 +1556,7 @@
         right: 0;
         width: 90px;
     }
-    
+
     /* blog left sidebar */
     .blog {
         padding-top: 80px;
@@ -1570,7 +1571,7 @@
     .quick-review {
         padding: 80px 0 50px;
     }
-    
+
     /* contact */
     .contact {
         padding: 80px 0;
@@ -1580,11 +1581,11 @@
     }
     .contact .info-widget {
         margin-bottom: 30px;
-    } 
+    }
     .map iframe {
         height: 200px;
     }
-    
+
     /* error */
     .error {
         padding: 80px 0;
@@ -1593,7 +1594,7 @@
         font-size: 30px;
         line-height: 40px;
     }
-    
+
     /* faq */
     .faq .faq-sidebar {
         margin-right: 0;
@@ -1637,7 +1638,7 @@
     .testimonial.testimonial-2.thiz-class-only-for-responsive {
         padding-top: 80px;
     }
-    
+
     /* why choose us page */
     .choosing-reason-2.choosing-reason-page {
         padding-top: 80px;
@@ -1819,6 +1820,7 @@
         left: 30px;
         top: 15px;
         border-radius: 5px;
+        color: #000;
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav {
         padding: 10px 0;
@@ -1885,7 +1887,7 @@
 
     /* brand */
     .brand .brand-list .single-brand {
-        padding: 10px 15px; 
+        padding: 10px 15px;
     }
 
     /* section title */
@@ -2080,7 +2082,7 @@
     .choosing-reason .choosing-reason-list .single-reason .part-text p {
         font-size: 16px;
         line-height: 24px;
-    }    
+    }
     .choosing-reason .choosing-reason-list .single-reason {
         margin-right: 0;
     }
@@ -2093,12 +2095,12 @@
     .choosing-reason .choosing-text h2 {
         font-size: 24px;
         line-height: 34px;
-        margin-bottom: 10px;    
+        margin-bottom: 10px;
         margin-top: 0;
     }
     .choosing-reason .choosing-text p {
         font-size: 16px;
-        line-height: 24px; 
+        line-height: 24px;
         margin-bottom: 10px;
     }
     .choosing-reason .choosing-text {
@@ -2271,7 +2273,7 @@
         font-size: 16px;
         line-height: 24px;
     }
-    
+
     /* index = 2 > header */
     .header.style-2 {
         padding-top: 15px;
@@ -2347,7 +2349,7 @@
         font-size: 14px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .draw-time ul li {
-        margin-right: 6px; 
+        margin-right: 6px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .text h3 {
         font-size: 24px;
@@ -2364,7 +2366,7 @@
         height: 40px;
         line-height: 40px;
     }
-    
+
     /* breadcrumb */
     .breadcrumb-lotters .breadcrumb-content h2 {
         font-size: 24px;
@@ -2382,7 +2384,7 @@
     .breadcrumb-lotters:after {
         display: none;
     }
-    
+
     /* about */
     .about {
         padding: 50px 0;
@@ -2431,7 +2433,7 @@
     .user-statics.style-2 {
         padding: 30px 0 50px!important;
     }
-    
+
     /* sidebar */
     .sidebar {
         margin-right: 0;
@@ -2546,7 +2548,7 @@
     .sidebar.for-right {
         margin-left: 0;
     }
-    
+
     /* quick review */
     .quick-review {
         padding: 80px 0 50px;
@@ -2561,7 +2563,7 @@
     .quick-review .single-jackpot .part-body a {
         font-size: 16px;
     }
-    
+
     /* contact */
     .contact {
         padding: 80px 0;
@@ -2571,11 +2573,11 @@
     }
     .contact .info-widget {
         margin-bottom: 30px;
-    } 
+    }
     .map iframe {
         height: 200px;
     }
-    
+
     /* error */
     .error {
         padding: 80px 0;
@@ -2628,7 +2630,7 @@
     .testimonial.testimonial-2.thiz-class-only-for-responsive {
         padding-top: 80px;
     }
-    
+
     /* why choose us page */
     .choosing-reason-2.choosing-reason-page {
         padding-top: 80px;
@@ -2810,6 +2812,7 @@
         left: 30px;
         top: 15px;
         border-radius: 5px;
+        color:#000;
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav {
         padding: 10px 0;
@@ -2876,7 +2879,7 @@
 
     /* brand */
     .brand .brand-list .single-brand {
-        padding: 10px 15px; 
+        padding: 10px 15px;
     }
 
     /* section title */
@@ -3071,7 +3074,7 @@
     .choosing-reason .choosing-reason-list .single-reason .part-text p {
         font-size: 16px;
         line-height: 24px;
-    }    
+    }
     .choosing-reason .choosing-reason-list .single-reason {
         margin-right: 0;
     }
@@ -3084,12 +3087,12 @@
     .choosing-reason .choosing-text h2 {
         font-size: 24px;
         line-height: 34px;
-        margin-bottom: 10px;    
+        margin-bottom: 10px;
         margin-top: 0;
     }
     .choosing-reason .choosing-text p {
         font-size: 16px;
-        line-height: 24px; 
+        line-height: 24px;
         margin-bottom: 10px;
     }
     .choosing-reason .choosing-text {
@@ -3265,7 +3268,7 @@
 
     /* index = 2 > header */
     .header.style-2 {
-        padding-top: 15px;
+        /* padding-top: 15px; */
         background: transparent;
         position: absolute;
     }
@@ -3339,7 +3342,7 @@
         font-size: 14px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .draw-time ul li {
-        margin-right: 6px; 
+        margin-right: 6px;
     }
     .banner-4 .box-slide .single-slide .single-lottery .text h3 {
         font-size: 24px;
@@ -3623,7 +3626,7 @@
         width: 150px;
         font-size: 16px;
         height: 40px;
-        margin-top: 10px;    
+        margin-top: 10px;
     }
     .map iframe {
         height: 200px;
@@ -3893,7 +3896,7 @@
         padding: 60px 0 45px;
     }
 
-    
+
     /* profile */
     .profile {
         padding: 60px 0;
@@ -3978,7 +3981,7 @@
     .user-panel-dashboard {
         padding: 60px 0 45px;
     }
-    
+
     /* profile */
     .profile {
         padding: 60px 0;
