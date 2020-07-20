@@ -100,7 +100,7 @@ input {
                                         <div class="col-md-6 col-md-6 col-6  text-center">
                                             <b class="text-success">แทง {{data.count}} ครั้ง</b>
                                             <br>
-                                            <a class="btn btn-warning text-white border" style="font-size:16px; padding:5px;"  v-on:click="view_poy(data.poy_list)">ดูโพย</a>
+                                            <a v-if="data.count > 0" class="btn btn-warning text-white border" style="font-size:16px; padding:5px;"  v-on:click="view_poy(data.poy_list)">ดูโพย</a>
                                         </div>
                                     </div>
                                 </div>

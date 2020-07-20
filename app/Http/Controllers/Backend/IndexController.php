@@ -49,6 +49,38 @@ class IndexController extends Controller
             $numbers = $query->get($field)->toArray();
 
             $wrap = array();
+
+            if ($request->huay_type) {
+                $type_count = array(
+                    'price_tree_up' => 3,
+                    'price_tree_tod' => 3,
+                    'price_tree_front' => 3,
+                    'price_tree_down' => 3,
+                    'price_two_up' => 2,
+                    'price_two_down' => 2,
+                    'price_run_up' => 1,
+                    'price_run_down' => 1
+                );
+                $count = $type_count[$request->huay_type];
+
+                if ($count == 1)
+                    $all_count = 10;
+                else if ($count == 2)
+                    $all_count = 100;
+                else if ($count == 3)
+                    $all_count = 1000;
+
+                for ($i = 0; $i < $all_count; $i++) {
+                    $num = sprintf('%0' . $count . 'd', $i);
+                    if (!isset($wrap[$num])) {
+                        $data = array();
+                        $data['count'] = 0;
+                        $data['poy_list'] = array();
+                        $data['number'] = $num;
+                        $wrap[$num] = $data;
+                    }
+                }
+            }
             if ($numbers) {
                 foreach ($numbers as $data) {
                     // $original_data = $data;
@@ -69,16 +101,16 @@ class IndexController extends Controller
                     //     $wrap[$data['number']]['poy_list'][$poy_no] = $temp;
 
                     // $wrap[$data['number']]['poy_list'][$poy_no]['multiple'] += $data['multiple'];
-                    array_push($wrap[$data['number']]['poy_list'] , $data);
+                    array_push($wrap[$data['number']]['poy_list'], $data);
                 }
                 foreach ($wrap as $number => $list) {
                     $wrap[$number]['poy_list'] = array_values($wrap[$number]['poy_list']);
-                    
+
                     array_sort_by_column($wrap[$number]['poy_list'], 'multiple', SORT_DESC);
                 }
             }
             $wrap = array_values($wrap);
-            array_sort_by_column($wrap, 'count', SORT_DESC);
+            // array_sort_by_column($wrap, 'count', SORT_DESC);
             return response()->json($wrap, 200);
         }
     }

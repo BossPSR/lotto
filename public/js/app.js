@@ -42168,23 +42168,25 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("br"),
                                 _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass:
-                                      "btn btn-warning text-white border",
-                                    staticStyle: {
-                                      "font-size": "16px",
-                                      padding: "5px"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.view_poy(data.poy_list)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("ดูโพย")]
-                                )
+                                data.count > 0
+                                  ? _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn btn-warning text-white border",
+                                        staticStyle: {
+                                          "font-size": "16px",
+                                          padding: "5px"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.view_poy(data.poy_list)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("ดูโพย")]
+                                    )
+                                  : _vm._e()
                               ]
                             )
                           ]
