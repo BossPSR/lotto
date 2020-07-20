@@ -80,7 +80,7 @@
     }
     .team .single-member:after,
     .team.style-2 .single-member:after {
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
     }
     .team.style-2 .single-member {
         background: white;
@@ -113,7 +113,7 @@
     }
     .thiz-class-only-for-responsive .single-testimonial {
         margin-bottom: 40px;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 100%;
     }
     .thiz-class-only-for-responsive .single-testimonial .user-img {
@@ -192,7 +192,7 @@
         top: 50%;
         margin-top: -1px;
         height: 2px;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 100%;
         transform: rotate(0);
         transition: .4s;
@@ -203,7 +203,7 @@
         left: 50%;
         top: 0;
         height: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 2px;
         margin-left: -1px;
         transform: rotate(0);
@@ -221,7 +221,7 @@
     .header .menu-bar .mainmenu {
         background: white;
         z-index: -1;
-        position: absolute;
+        /* position: absolute; */
         box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.2);
         right: 30px;
         left: 30px;
@@ -231,8 +231,8 @@
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav {
         padding: 10px 0;
-        border-top: 8px solid #0576d3;
-        border-bottom: 8px solid #0576d3;
+        border-top: 8px solid #4d2c83;
+        border-bottom: 8px solid #7A58BF;
         border-radius: 5px;
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
@@ -462,7 +462,7 @@
     }
     .testimonial .single-testimonial {
         width: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
     }
     .testimonial .single-testimonial .user-img {
         margin: 0;
@@ -577,7 +577,7 @@
         background: #fff;
     }
     .team.style-2 .single-member:after {
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
     }
 
     /* index 4 */
@@ -881,7 +881,7 @@
         top: 50%;
         margin-top: -1px;
         height: 2px;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 100%;
         transform: rotate(0);
         transition: .4s;
@@ -892,7 +892,7 @@
         left: 50%;
         top: 0;
         height: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 2px;
         margin-left: -1px;
         transform: rotate(0);
@@ -910,7 +910,7 @@
     .header .menu-bar .mainmenu {
         background: white;
         z-index: -1;
-        position: absolute;
+        /* position: absolute; */
         box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.2);
         right: 30px;
         left: 30px;
@@ -919,8 +919,8 @@
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav {
         padding: 10px 0;
-        border-top: 8px solid #0576d3;
-        border-bottom: 8px solid #0576d3;
+        border-top: 8px solid #4d2c83;
+        border-bottom: 8px solid #7A58BF;
         border-radius: 5px;
     }
     .header .menu-bar .mainmenu .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
@@ -1087,7 +1087,7 @@
         height: 60px;
         line-height: 60px;
         text-align: center;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         font-size: 18px;
         font-weight: 600;
         color: #fff;
@@ -1255,7 +1255,7 @@
     }
     .testimonial .single-testimonial {
         width: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
     }
     .testimonial .single-testimonial .user-img {
         margin: 0;
@@ -1785,7 +1785,7 @@
         top: 50%;
         margin-top: -1px;
         height: 2px;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 100%;
         transform: rotate(0);
         transition: .4s;
@@ -1796,7 +1796,7 @@
         left: 50%;
         top: 0;
         height: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 2px;
         margin-left: -1px;
         transform: rotate(0);
@@ -1814,7 +1814,7 @@
     .header .menu-bar .mainmenu {
         background: white;
         z-index: -1;
-        position: absolute;
+        /* position: absolute; */
         box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.2);
         right: 30px;
         left: 30px;
@@ -2018,7 +2018,7 @@
         height: 60px;
         line-height: 60px;
         text-align: center;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         font-size: 18px;
         font-weight: 600;
         color: #fff;
@@ -2179,7 +2179,7 @@
     }
     .testimonial .single-testimonial {
         width: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
     }
     .testimonial .single-testimonial .user-img {
         margin: 0;
@@ -2777,7 +2777,7 @@
         top: 50%;
         margin-top: -1px;
         height: 2px;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 100%;
         transform: rotate(0);
         transition: .4s;
@@ -2788,7 +2788,7 @@
         left: 50%;
         top: 0;
         height: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         width: 2px;
         margin-left: -1px;
         transform: rotate(0);
@@ -2806,7 +2806,7 @@
     .header .menu-bar .mainmenu {
         background: white;
         z-index: -1;
-        position: absolute;
+        /* position: absolute; */
         box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.2);
         right: 30px;
         left: 30px;
@@ -3010,7 +3010,7 @@
         height: 60px;
         line-height: 60px;
         text-align: center;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
         font-size: 18px;
         font-weight: 600;
         color: #fff;
@@ -3171,7 +3171,7 @@
     }
     .testimonial .single-testimonial {
         width: 100%;
-        background: -webkit-linear-gradient(473deg, #2e9dfa 20%, #0172d0 100%);
+        background: -webkit-linear-gradient(473deg, #4d2c83 20%, #7A58BF 100%);
     }
     .testimonial .single-testimonial .user-img {
         margin: 0;

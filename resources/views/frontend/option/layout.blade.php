@@ -102,7 +102,7 @@
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item dropdown">
-                                            <div class="header_login">
+                                            <div class="header_login d-none d-xl-block d-none d-lg-block d-xl-none" style="display: flex;justify-content:center;">
                                                 <form action="{{ route('login_process') }}" method="post">
                                                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                     <div class="form_user">
@@ -147,6 +147,59 @@
                                                     </div>
                                                 </form>
                                             </div>
+                                            {{-- มือถือ --}}
+                                            <div class="header_login d-xl-none d-lg-none d-block">
+                                                <div style="display: block;text-align: center;margin-bottom: 15px;">
+                                                    <a href="{{ route('register') }}" style="color: #6f39d5 "><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
+
+                                                    <a href="{{ route('contact_visitor') }}" style="color: #6f39d5 "><i class="fas fa-headset"></i>ติดต่อเรา</a>
+                                                </div>
+                                                <form action="{{ route('login_process') }}" method="post" style="display: block;">
+                                                    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                                    <div class="form_user">
+                                                        <div style="color: #6f39d5 ">ชื่อผู้ใช้งาน</div>
+                                                        <input class="form-control" type="text" name="username" id="">
+
+                                                    </div>
+                                                    <div class="form_user">
+                                                        <div style="color: #6f39d5 ">รหัสผ่าน</div>
+                                                        <label class="sr-only" for="inlineFormInputGroupPassword">Username</label>
+                                                        <div class="input-group">
+                                                            <input  class="form-control" type="password" name="password" id="inlineFormInputGroupPassword">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text" >
+                                                                    <a id="showPass" style="cursor: pointer;" onclick="
+                                                                    input = document.getElementById('inlineFormInputGroupPassword')
+                                                                    input.type = 'text'
+                                                                    eye =  document.getElementById('hidePass')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('showPass')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye"></i></a>
+                                                                    <a id="hidePass" style="cursor: pointer; display:none" onclick="
+                                                                    input = document.getElementById('inlineFormInputGroupPassword')
+                                                                    input.type = 'password'
+                                                                    eye =  document.getElementById('showPass')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('hidePass')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye-slash"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username"> -->
+                                                        </div>
+                                                        <script>
+
+                                                        </script>
+                                                        <!-- <a href=""><i class="fas fa-unlock"></i> ลืมรหัสผ่าน</a> -->
+                                                        <a href="{{ route('help_visitor') }}" tabindex="-1" style="color: #6f39d5;"><i class="fas fa-book"></i>กฏกติกาและข้อบังคับ</a>
+                                                    </div>
+                                                    <div class="form_user_send" style="margin-top: 15px; justify-content: center;">
+                                                        <button class="btn btn-warning button_login" type="submit">เข้าสู่ระบบ</button>
+                                                    </div>
+
+                                                </form>
+                                            </div>
                                         </li>
                                     </ul>
 
@@ -161,6 +214,9 @@
         </div>
     </div>
     <!-- header end -->
+    <br class="d-block d-sm-none">
+    <br class="d-block d-sm-none">
+    <br class="d-block d-sm-none">
     @yield('content')
 
     <!-- copyright begin -->
@@ -176,7 +232,7 @@
     <!-- copyright end -->
 
     <!-- mobile navbar begin -->
-    <div class="mobile-navbar">
+    {{-- <div class="mobile-navbar">
         <ul>
             <li>
                 <a href="#"><img src="assets/img/svg/home.svg" alt=""></a>
@@ -194,7 +250,7 @@
                 <a href="#"><img src="assets/img/svg/user.svg" alt=""></a>
             </li>
         </ul>
-    </div>
+    </div> --}}
     <!-- mobile navbar end -->
 
 

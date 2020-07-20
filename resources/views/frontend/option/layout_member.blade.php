@@ -82,18 +82,40 @@ $contact_header = ContactHeader::first();
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                         <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-7">
-                                <div class="logo" style="width:100%">
-
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <div class="logo d-none d-xl-block d-lg-block d-xl-none" style="width:100%">
                                     <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
-
                                 </div>
+                                {{-- มือถือ --}}
+                                <div class="logo  d-xl-none d-lg-none d-block" style="width: 50%; margin:15px auto; background: #8d55ff;">
+                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
+                                </div>
+                                <div class="header_login d-xl-none d-lg-none d-block">
+                                    <div class="d-flex" style="justify-content: center;">
+                                        <div class="header_after_login">
+                                            {{number_format(Auth::user()->money, 2)}}
+                                            <i class="fa fa-coins"></i>
+                                            |
+                                            {{number_format(Auth::user()->credit, 2)}}
+                                            <i class="fa fa-coins"></i>
+                                            CF
+                                        </div>
+                                        <div class="header_after_login">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="header_after_login" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="d-xl-none d-lg-none d-block col-5">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            {{--<div class="d-xl-none d-lg-none d-block col-5">
+                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
                                 </button>
-                            </div>
+
+                            </div>--}}
                         </div>
                     </div>
                     @if(Auth::user())
@@ -101,7 +123,7 @@ $contact_header = ContactHeader::first();
                         <div class="mainmenu">
                             <nav class="navbar navbar-expand-lg for-lottery">
 
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class="collapse navbar-collapse d-none d-xl-block" id="navbarSupportedContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
                                             <div class="header_login">
@@ -125,6 +147,8 @@ $contact_header = ContactHeader::first();
                                         </li>
                                     </ul>
                                 </div>
+
+
                             </nav>
                         </div>
                     </div>
@@ -185,13 +209,13 @@ $contact_header = ContactHeader::first();
                 </div>
                 <div class="modal-footer" style="display: block;">
                     <div class="row">
-                        <div class="col-6" id="logout_user">
+                        <div class="col-8" id="logout_user">
                             <a href="{{ route('logout') }}" style="display: flex;align-items: center;font-size: 22px;">
                                 <i class="fas fa-sign-out-alt" style="font-size:40px;padding-right: 5px;"></i> ออกจากระบบ
                             </a>
                         </div>
 
-                        <div class="col-6 text-right">
+                        <div class="col-4 text-right">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 
@@ -230,7 +254,9 @@ $contact_header = ContactHeader::first();
     @endif
 
     <!-- header end -->
-
+    <br class="d-block d-sm-none">
+    <br class="d-block d-sm-none">
+    <br class="d-block d-sm-none">
     @yield('contact_member')
 
 

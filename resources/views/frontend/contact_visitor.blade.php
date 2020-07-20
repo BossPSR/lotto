@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 form-group">
-                <a href="/index" style="display: inline-block;"><button type="button" class="btn btn-warning button_plus_story">ย้อนกลับ</button></a>
+                <a href="/index" style="display: inline-block;"><button type="button" class="btn btn-warning" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF">ย้อนกลับ</button></a>
             </div>
         </div>
     </div>

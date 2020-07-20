@@ -23,16 +23,16 @@ if(session()-> has('ref_code'))
                     <div class="part-head"  style="display: block;">
 
                         <div class="text row" style="margin-left:25px;">
-                            <div class="col-6">
+                            <div class="col-xl-6 col-lg-12 col-sm-6">
                                 <span class="amount" style="color:#6f39d5">สมัครสมาชิก</span>
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-xl-6 col-lg-12 col-sm-6 text-right">
                                 <a href="/" style="display: inline-block;font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
                             </div>
-                           
+
                         </div>
                         <br>
-                        <span style="color:red; font-size: 18px;" >*** หมายเหตุ การกรอก ชื่อ-นามสกุลต้องเป็นชื่อ-นามสกุลที่ตรงกับบัตรประชาชนและเลขที่บัญชีธนาคาร เท่านั้น ไม่งั้นระบบจะไม่สามารถถอนเงินได้</span> 
+                        <span style="color:red; font-size: 18px;" >*** หมายเหตุ การกรอก ชื่อ-นามสกุลต้องเป็นชื่อ-นามสกุลที่ตรงกับบัตรประชาชนและเลขที่บัญชีธนาคาร เท่านั้น ไม่งั้นระบบจะไม่สามารถถอนเงินได้</span>
                     </div>
                     <br>
                     <div class="part-body">
@@ -55,15 +55,15 @@ if(session()-> has('ref_code'))
                                                         </label>
                                                     </div> --}}
 
-                                                  
+
                                                     <div class="row">
-                                                    <div class="col-12">
+                                                    <div class="col-xl-12 col-lg-12 col-sm-12">
                                                         <label>ชื่อเข้าสู่ระบบ</label>
                                                         <input type="text" name="username" class="form-control form-group" required placeholder="ชื่อเข้าสู่ระบบ">
                                                     </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
                                                             <label>รหัสผ่าน</label>
                                                             <div class="input-group">
                                                                 <input onkeyup="validatePassOnKeyup()" type="password" id="password" name="password" class="form-control form-group" required placeholder="รหัสผ่าน">
@@ -89,7 +89,7 @@ if(session()-> has('ref_code'))
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
                                                             <label>ยืนยันรหัสผ่าน</label>
                                                             <div class="input-group">
                                                             <input onkeyup="validatePassOnKeyup()" type="password" id="confirm_password" name="confirm_password" class="form-control form-group" required placeholder="ยืนยันรหัสผ่าน">
@@ -120,36 +120,37 @@ if(session()-> has('ref_code'))
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <label>ชื่อจริง</label> 
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                            <label>ชื่อจริง</label>
                                                              <input type="text" name="first_name" class="form-control form-group" required placeholder="ชื่อจริง">
                                                         </div>
-                                                        <div class="col-6">
-                                                            <label>นามสกุล</label> 
-                                                            <input type="text" name="last_name" class="form-control form-group" required placeholder="นามสกุล"> 
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                            <label>นามสกุล</label>
+                                                            <input type="text" name="last_name" class="form-control form-group" required placeholder="นามสกุล">
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <label>อีเมล</label> 
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                            <label>อีเมล</label>
                                                             <input type="email" name="email" class="form-control form-group" required placeholder="อีเมล">
                                                         </div>
-                                                        <div class="col-6">
-                                                            <label>วัน/เดือน/ปี เกิด</label> 
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                            <label>วัน/เดือน/ปี เกิด</label>
                                                             <input type="date" name="birthday" class="form-control form-group" required placeholder="วัน/เดือน/ปี เกิด">
                                                         </div>
 
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <label>โทรศัพท์ติดต่อ</label> 
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                            <label>โทรศัพท์ติดต่อ</label>
                                                             <input type="text" name="tel" pattern="[0-9]+" class="form-control form-group" required placeholder="โทรศัพท์ติดต่อ">
                                                         </div>
-                                                        <div class="col-6">
-                                                            <label>Code ผู้แนะนำ</label> 
+                                                        <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                            <label>Code ผู้แนะนำ</label>
                                                             <input type="text" name="upline_username" class="form-control form-group" value="{{$_GET['ref_code']}}" placeholder="Code ผู้แนะนำ">
                                                         </div>
                                                     </div>
+
                                                     <button type="submit" class="btn btn-warning new_story">สมัครสมาชิก</button>
                                                     <button type="reset" class="btn btn-danger new_story_cancel">ยกเลิก</button>
                                                 </form>
@@ -164,6 +165,7 @@ if(session()-> has('ref_code'))
                             </div>
                         </div>
                     </div>
+                    <br><br><br>
                 </div>
             </div>
         </div>

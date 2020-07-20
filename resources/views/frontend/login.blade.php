@@ -60,14 +60,14 @@
                                 </div>
 
                             </div>
-                            
+
                         </div>
                         <div class="row m-0 mt-2">
                             <?php
                             foreach ($huay_list as $huay_round) {
                                 $index++;
                             ?>
-                                <div class="col-6 col-md-4 col-lg-3 col-sm-4 mb-2 px-1">
+                                <div class="col-md-4 col-lg-3 col-sm-12 mb-2 px-1">
                                     <div class="info-card  shadow rounded text-center " >
                                         <a class="">
                                             <span style="font-size:22px;">{{$huay_round->name}}</span>
