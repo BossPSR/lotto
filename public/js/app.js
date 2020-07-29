@@ -1984,7 +1984,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var app = this;
-    console.log(app.position);
     this.axios.post('/get_fingerprint', {}).then(function (response) {
       if (app.fingerprint == '') app.fingerprint = response.data;
       setInterval(function () {
@@ -2034,7 +2033,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
-      console.log(this.fingerprint);
     },
     send: function send($event) {
       var app = this;
@@ -2072,6 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2263,6 +2262,7 @@ __webpack_require__.r(__webpack_exports__);
     change_huay_id: function change_huay_id(id) {
       this.huay_id = id;
       this.view_id = id;
+      this.huay_round_id = 0;
       var app = this;
       this.axios.post("/admin/index_admin", {
         get_huay_rounds: true,
@@ -9829,7 +9829,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\r\n    padding: 10px !important;\n}\ninput {\r\n    height: 30px !important;\n}\r\n", ""]);
+exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
 
 // exports
 
@@ -9848,7 +9848,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\r\n  padding: 10px !important;\n}\ninput {\r\n  height: 30px !important;\n}\r\n", ""]);
+exports.push([module.i, "\ntd {\n  padding: 10px !important;\n}\ninput {\n  height: 30px !important;\n}\n", ""]);
 
 // exports
 
@@ -9867,7 +9867,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hide {\r\n    display: none;\n}\n.input-auto-height {\r\n    height: auto !important;\n}\n.disableSelection {\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    outline: 0;\n}\n.digi {\r\n    width: 100px;\n}\n.digi:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink linear infinite;\r\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n.digi2 {\r\n    width: 100px;\n}\n.digi2:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink2 linear infinite;\r\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\r\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\r\n    background-color: #f2dede;\n}\r\n", ""]);
+exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height {\n    height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
 
 // exports
 
@@ -42101,34 +42101,41 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("form", { attrs: { methods: "POST" } }, [
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control mb-2",
-                        attrs: { id: "select_type", required: "" },
-                        on: {
-                          change: function($event) {
-                            return _vm.change_round(null, $event.target.value)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "", selected: "" } }, [
-                          _vm._v("แสดงประเภทเลขตัวเลขทั้งหมด")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.type_name, function(name, huay_type) {
-                          return _c(
-                            "option",
-                            { domProps: { value: huay_type } },
-                            [_vm._v(_vm._s(name))]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
+                  _vm.huay_round_id
+                    ? _c("form", { attrs: { methods: "POST" } }, [
+                        _c(
+                          "select",
+                          {
+                            staticClass: "form-control mb-2",
+                            attrs: { id: "select_type", required: "" },
+                            on: {
+                              change: function($event) {
+                                return _vm.change_round(
+                                  null,
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", selected: "" } },
+                              [_vm._v("แสดงประเภทเลขตัวเลขทั้งหมด")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.type_name, function(name, huay_type) {
+                              return _c(
+                                "option",
+                                { domProps: { value: huay_type } },
+                                [_vm._v(_vm._s(name))]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "border p-2 rounded bg-white" }, [
                     _c(
@@ -42164,6 +42171,12 @@ var render = function() {
                               [
                                 _c("b", { staticClass: "text-success" }, [
                                   _vm._v("แทง " + _vm._s(data.count) + " ครั้ง")
+                                ]),
+                                _vm._v(" "),
+                                _c("b", { staticClass: "text-warning" }, [
+                                  _vm._v(
+                                    " " + _vm._s(data.multiple_txt) + " บาท"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("br"),
@@ -59101,8 +59114,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\lotto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lotto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/ammi/GIT/lotto/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/ammi/GIT/lotto/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

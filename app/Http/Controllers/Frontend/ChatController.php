@@ -14,7 +14,7 @@ class ChatController extends Controller
 {
     public function get_fingerprint(Request $request)
     {
-        $result =  $request->fingerprint();
+        $result = isset(Auth::user()->id) ? Auth::user()->id : 0;
         return response()->json($result, 200);
     }
 

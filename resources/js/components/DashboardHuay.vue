@@ -84,7 +84,7 @@ input {
                                     <option v-for="(data, index) in huay_rounds" v-bind:value="data.id">{{data.name + " "+data.end_datetime}}</option>
                                 </select>
                             </form>
-                            <form methods="POST">
+                            <form methods="POST" v-if="huay_round_id">
                                 <select id="select_type" class="form-control mb-2" v-on:change="change_round(null ,$event.target.value)" required>
                                     <option value  selected>แสดงประเภทเลขตัวเลขทั้งหมด</option>
                                     <option v-for="(name, huay_type) in type_name" v-bind:value="huay_type">{{name}}</option>
@@ -99,6 +99,7 @@ input {
                                         </div>
                                         <div class="col-md-6 col-md-6 col-6  text-center">
                                             <b class="text-success">แทง {{data.count}} ครั้ง</b>
+                                            <b class="text-warning"> {{data.multiple_txt}} บาท</b>
                                             <br>
                                             <a v-if="data.count > 0" class="btn btn-warning text-white border" style="font-size:16px; padding:5px;"  v-on:click="view_poy(data.poy_list)">ดูโพย</a>
                                         </div>
@@ -191,6 +192,7 @@ export default {
         change_huay_id(id) {
             this.huay_id = id;
             this.view_id = id;
+            this.huay_round_id = 0;
             const app = this;
 
             this.axios

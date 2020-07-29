@@ -84,14 +84,14 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
                                 if ($chat_list) {
                                     $i = 0;
                                     $index = -1;
-                                    foreach ($chat_list as $fingerprint => $count) {
+                                    foreach ($chat_list as $fingerprint => $data) {
                                         $i++;
                                         $index++;
                                 ?>
                                         <tr>
                                             <td style="display:none;"></td>
                                             <td>{{$i}}</td>
-                                            <td class="product-name" nowrap>{{$fingerprint}} ({{$count}})</td>
+                                            <td class="product-name" nowrap>{{($data['username'])}} ({{$data['count']}})</td>
                                             <td class="text-center p-0">
                                                 <a class="btn btm-md btn-light {{$fingerprint == $_GET['fingerprint'] ? 'btn-info' : ''}}" href="?fingerprint={{$fingerprint}}"><i class="fa fa-chevron-right" style="font-size: 10px;"></i></a>
                                             </td>

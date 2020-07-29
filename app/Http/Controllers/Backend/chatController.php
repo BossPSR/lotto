@@ -20,14 +20,19 @@ class chatController extends Controller
 
     public function index()
     {
-        $chats = Chat::get();
+        $chats = DB::table('chat')
+            ->join('users', 'users.id', '=', 'chat.fingerprint')
+            ->select('users.username', 'chat.*')
+            ->get();
+
+        // $chats = Chat::get();
         $chat_list = array();
         if ($chats) {
             foreach ($chats as $value) {
                 if (!isset($chat_list[$value->fingerprint]))
-                    $chat_list[$value->fingerprint] = 0;
+                    $chat_list[$value->fingerprint] = array('count' => 0, 'username' => $value->username);
                 if ($value->is_admin_read == 0)
-                    $chat_list[$value->fingerprint]++;
+                    $chat_list[$value->fingerprint]['count']++;
             }
         }
         return view('backend.chat.chat', ['chat_list' => $chat_list]);

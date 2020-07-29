@@ -76,7 +76,6 @@ export default {
     created: function() {
 
         const app = this
-        console.log(app.position)
         this.axios.post('/get_fingerprint', {})
             .then(function(response) {
                 if (app.fingerprint == '')
@@ -135,7 +134,6 @@ export default {
                 .catch(function(error) {
                     console.log(error)
                 });
-            console.log(this.fingerprint)
 
 
         },

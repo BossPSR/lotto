@@ -77,6 +77,8 @@ class IndexController extends Controller
                         $data['count'] = 0;
                         $data['poy_list'] = array();
                         $data['number'] = $num;
+                        $data['multiple'] = 0;
+                        $data['multiple_txt'] = '0.00';
                         $wrap[$num] = $data;
                     }
                 }
@@ -100,11 +102,12 @@ class IndexController extends Controller
                     // if (!isset($wrap[$data['number']]['poy_list'][$poy_no]))
                     //     $wrap[$data['number']]['poy_list'][$poy_no] = $temp;
 
-                    // $wrap[$data['number']]['poy_list'][$poy_no]['multiple'] += $data['multiple'];
+                    $wrap[$data['number']]['multiple'] += $data['multiple'];
                     array_push($wrap[$data['number']]['poy_list'], $data);
                 }
                 foreach ($wrap as $number => $list) {
                     $wrap[$number]['poy_list'] = array_values($wrap[$number]['poy_list']);
+                    $wrap[$number]['multiple_txt'] = number_format($wrap[$number]['multiple'], 2);
 
                     array_sort_by_column($wrap[$number]['poy_list'], 'multiple', SORT_DESC);
                 }
