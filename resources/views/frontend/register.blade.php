@@ -223,9 +223,10 @@ if(session()-> has('ref_code'))
         title: 'ข้อกำหนดการใช้งาน',
         text: "You won't be able to revert this!",
         icon: 'warning',
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonText: 'ยินยอม',
-        cancelButtonText: 'ไม่ยินยอม',
+        //cancelButtonText: 'ไม่ยินยอม',
+
         reverseButtons: true
         }).then((result) => {
             form.submit();

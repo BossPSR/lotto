@@ -2,7 +2,7 @@
     <!--- CHAT -->
     <div v-if="fingerprint != ''">
         <a class="w-100 btn" v-on:click="toggleView()">
-                                    <label style="cursor:pointer"><i class="fa fa-comment-dots"></i> CHAT</label>
+                                    <label style="cursor:pointer"><i class="fa fa-comment-dots"></i> ติดต่อ ADMIN</label>
                                 </a>
         <div style="">
             <div style="height: 400px; overflow-y:scroll" id="chat-div">
@@ -19,8 +19,8 @@
                     <div v-if="data.is_admin == 0 && position == 'admin'" class="text-left">
                         <label class="bg-info text-white rounded pl-2 pr-2">{{data.text}}</label>
                     </div>
-    
-    
+
+
                     <div v-if="data.is_admin == 1 && position == 'member' && data.image " class="text-left">
                         <a target="_blank" v-bind:href="data.image"><img v-bind:src="data.image" style="width:80%; height:auto"></a>
                     </div>
@@ -33,7 +33,7 @@
                     <div v-if="data.is_admin == 0 && position == 'admin' && data.image" class="text-left">
                         <a target="_blank" v-bind:href="data.image"><img v-bind:src="data.image" style="width:80%; height:auto"></a>
                     </div>
-    
+
                 </div>
             </div>
             <form v-on:submit="send($event)">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </form>
-    
+
         </div>
     </div>
 </template>
@@ -152,7 +152,7 @@ export default {
             if (app.position == "admin")
                 formData.append('is_admin', 1);
 
-            // You should have a server side REST API 
+            // You should have a server side REST API
             this.axios.post('/add_chat_list',
                     formData, {
                         headers: {

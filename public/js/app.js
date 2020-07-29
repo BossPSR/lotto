@@ -2043,7 +2043,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('image', $('#inputFileChat').prop('files')[0]);
       formData.append('fingerprint', app.fingerprint);
       formData.append('text', $('#inputChat').val());
-      if (app.position == "admin") formData.append('is_admin', 1); // You should have a server side REST API 
+      if (app.position == "admin") formData.append('is_admin', 1); // You should have a server side REST API
 
       this.axios.post('/add_chat_list', formData, {
         headers: {
@@ -9829,7 +9829,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
+exports.push([module.i, "\ntd {\r\n    padding: 10px !important;\n}\ninput {\r\n    height: 30px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -9848,7 +9848,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\n  padding: 10px !important;\n}\ninput {\n  height: 30px !important;\n}\n", ""]);
+exports.push([module.i, "\ntd {\r\n  padding: 10px !important;\n}\ninput {\r\n  height: 30px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -9867,7 +9867,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height {\n    height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
+exports.push([module.i, "\n.hide {\r\n    display: none;\n}\n.input-auto-height {\r\n    height: auto !important;\n}\n.disableSelection {\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    outline: 0;\n}\n.digi {\r\n    width: 100px;\n}\n.digi:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink linear infinite;\r\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n.digi2 {\r\n    width: 100px;\n}\n.digi2:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink2 linear infinite;\r\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\r\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\r\n    background-color: #f2dede;\n}\r\n", ""]);
 
 // exports
 
@@ -41893,7 +41893,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticStyle: { cursor: "pointer" } }, [
       _c("i", { staticClass: "fa fa-comment-dots" }),
-      _vm._v(" CHAT")
+      _vm._v(" ติดต่อ ADMIN")
     ])
   },
   function() {
@@ -59101,8 +59101,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ammi/GIT/lotto/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/ammi/GIT/lotto/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\lotto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lotto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
