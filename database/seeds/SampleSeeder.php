@@ -97,16 +97,29 @@ class SampleSeeder extends Seeder
             'ฮานอยพิเศษ'
         );
 
+        DB::table('huays')->insert([
+            'name' => 'รัฐบาล',
+            'huay_category_id' => 1,
+            'price_tree_up' => 900,
+            'price_tree_tod' => 150,
+            'price_tree_front' => 450,
+            'price_tree_down' => 450,
+            'price_two_up' => 90,
+            'price_two_down' => 90,
+            'price_run_up' => 3.5,
+            'price_run_down' => 4.5,
+            'created_at' => now(),
+        ]);
         
         foreach ($general_huay as $name)
         {
             DB::table('huays')->insert([
                 'name' => $name,
                 'huay_category_id' => 1,
-                'price_tree_up' => 900,
-                'price_tree_tod' => 150,
-                'price_tree_front' => 450,
-                'price_tree_down' => 450,
+                'price_tree_up' => 750,
+                'price_tree_tod' => 120,
+                'price_tree_front' => -1,
+                'price_tree_down' => -1,
                 'price_two_up' => 90,
                 'price_two_down' => 90,
                 'price_run_up' => 3.5,
@@ -126,15 +139,15 @@ class SampleSeeder extends Seeder
             DB::table('huays')->insert([
                 'name' => 'หวยยี่กี ',
                 'huay_category_id' => 2,
-                'price_tree_up' => 900,
                 'can_shoot' => 1,
-                // 'price_tree_tod' => 150,
-                // 'price_tree_front' => 450,
-                // 'price_tree_down' => 450,
-                // 'price_two_up' => 90,
+                'price_tree_up' => 750,
+                'price_tree_tod' => 120,
+                'price_tree_front' => -1,
+                'price_tree_down' => -1,
+                'price_two_up' => 90,
                 'price_two_down' => 90,
-                // 'price_run_up' => 3.5,
-                // 'price_run_down' => 4.5,
+                'price_run_up' => 3.5,
+                'price_run_down' => 4.5,
                 'created_at' => now(),
             ]);
         }
@@ -149,16 +162,15 @@ class SampleSeeder extends Seeder
             DB::table('huays')->insert([
                 'name' => 'หวยยี่กี Big Money ',
                 'huay_category_id' => 3,
-                'price_tree_up' => 900,
                 'can_shoot' => 1,
-
-                // 'price_tree_tod' => 150,
-                // 'price_tree_front' => 450,
-                // 'price_tree_down' => 450,
-                // 'price_two_up' => 90,
+                'price_tree_up' => 750,
+                'price_tree_tod' => 120,
+                'price_tree_front' => -1,
+                'price_tree_down' => -1,
+                'price_two_up' => 90,
                 'price_two_down' => 90,
-                // 'price_run_up' => 3.5,
-                // 'price_run_down' => 4.5,
+                'price_run_up' => 3.5,
+                'price_run_down' => 4.5,
                 'created_at' => now(),
             ]);
         }

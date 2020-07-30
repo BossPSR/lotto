@@ -2,13 +2,13 @@
     <!--- CHAT -->
     <div v-if="fingerprint != ''">
         <a class="w-100 btn" v-on:click="toggleView()">
-                                                        <label style="cursor:pointer"><i class="fa fa-comment-dots"></i> CHAT</label>
-                                                    </a>
+                                    <label style="cursor:pointer"><i class="fa fa-comment-dots"></i> CHAT</label>
+                                </a>
         <div style="">
-            <div style="height: 410px; overflow-y:scroll" id="chat-div">
+            <div style="height: 400px; overflow-y:scroll" id="chat-div">
                 <div v-for="(data, index) in chat">
                     <div v-if="data.is_admin == 1 && position == 'member'" class="text-left">
-                        <label class="bg-warning text-white rounded pl-2 pr-2">{{data.text}}</label>
+                        <label class="bg-info text-white rounded pl-2 pr-2">{{data.text}}</label>
                     </div>
                     <div v-if="data.is_admin == 0 && position == 'member'" class="text-right">
                         <label class="bg-warning text-white rounded pl-2 pr-2">{{data.text}}</label>
@@ -17,21 +17,40 @@
                         <label class="bg-warning text-white rounded pl-2 pr-2">{{data.text}}</label>
                     </div>
                     <div v-if="data.is_admin == 0 && position == 'admin'" class="text-left">
-                        <label class="bg-warning text-white rounded pl-2 pr-2">{{data.text}}</label>
+                        <label class="bg-info text-white rounded pl-2 pr-2">{{data.text}}</label>
                     </div>
+    
+    
+                    <div v-if="data.is_admin == 1 && position == 'member' && data.image " class="text-left">
+                        <a target="_blank" v-bind:href="data.image"><img v-bind:src="data.image" style="width:80%; height:auto"></a>
+                    </div>
+                    <div v-if="data.is_admin == 0 && position == 'member' && data.image" class="text-right">
+                        <a target="_blank" v-bind:href="data.image"><img v-bind:src="data.image"  style="width:80%; height:auto"></a>
+                    </div>
+                    <div v-if="data.is_admin == 1 && position == 'admin' && data.image" class="text-right">
+                        <a target="_blank" v-bind:href="data.image"><img v-bind:src="data.image" style="width:80%; height:auto"></a>
+                    </div>
+                    <div v-if="data.is_admin == 0 && position == 'admin' && data.image" class="text-left">
+                        <a target="_blank" v-bind:href="data.image"><img v-bind:src="data.image" style="width:80%; height:auto"></a>
+                    </div>
+    
                 </div>
             </div>
             <form v-on:submit="send($event)">
-                <div class="row" style="max-height: 50px;;">
-    
-                    <div class="col-md-8 col-sm-8 col-8">
-                        <input type="text" class="form-control" style="height: 30px !important" id="inputChat">
+                <div class="row pt-2" style="height: 80px;">
+                    <div class="col-md-8 col-md-8 col-8">
+                        <input type="text" class="form-control" style="height: 40px !important" id="inputChat">
                     </div>
-                    <div class="col-md-4 col-sm-4 col-4 pl-0">
-                        <button class="btn btn-success text-white btn-sm w-100 " v-on:click="send($event)">ส่ง</button>
+                    <div class="col-md-2 col-md-2 col-2 pl-0">
+                        <label class="btn btn-light w-100" style="height: 40px !important"  for="inputFileChat">รูป</label>
+                        <input type="file" class="form-control" accept="image/*" style="height: 40px !important; display:none;" v-on:change="send($event)" id="inputFileChat">
+                    </div>
+                    <div class="col-md-2 col-md-2 col-2 pl-0">
+                        <button class="btn btn-success text-white btn-md w-100 " v-on:click="send($event)">ส่ง</button>
                     </div>
                 </div>
             </form>
+    
         </div>
     </div>
 </template>
@@ -123,18 +142,26 @@ export default {
         send($event) {
             const app = this;
             $event.preventDefault();
-            var data = {
-                fingerprint: this.fingerprint,
-                text: $('#inputChat').val(),
-            }
-            console.log(app.position)
-            if (app.position == "admin")
-                data['is_admin'] = 1;
 
-            this.axios.post('/add_chat_list', data)
+
+
+            let formData = new FormData();
+            formData.append('image', $('#inputFileChat').prop('files')[0]);
+            formData.append('fingerprint', app.fingerprint);
+            formData.append('text', $('#inputChat').val());
+            if (app.position == "admin")
+                formData.append('is_admin', 1);
+
+            // You should have a server side REST API 
+            this.axios.post('/add_chat_list',
+                    formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
                 .then(function(response) {
                     $('#inputChat').val("")
-                    console.log(response.data)
+                    $('#inputFileChat').val("")
                     app.reloadChat()
                 })
                 .catch(function(error) {

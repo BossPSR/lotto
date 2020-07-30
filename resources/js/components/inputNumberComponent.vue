@@ -159,66 +159,57 @@
             <a id="shoot-number-btn" v-on:click="change_page(2)" class="btn btn-sm btn-outline-primary col-md-6" style="border-radius:0px;">ยิงเลข</a>
         </div>
         <div v-if="page_index==1">
-            <div class="d-flex">
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_up != -1">
                     <div v-on:click="select_option('price_tree_up')" id="price_tree_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวบน ({{price_tree_up}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_tod != -1">
                     <div v-on:click="select_option('price_tree_tod')" id="price_tree_tod" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวโต๊ด ({{price_tree_tod}})
                         </div>
                     </div>
                 </div>
-            </div>
-    
-            <div class="d-flex">
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_front != -1">
                     <div v-on:click="select_option('price_tree_front')" id="price_tree_front" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวหน้า ({{price_tree_front}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_down != -1">
                     <div v-on:click="select_option('price_tree_down')" id="price_tree_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวหลัง ({{price_tree_down}})
                         </div>
                     </div>
                 </div>
-            </div>
-    
-            <div class="d-flex">
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_up != -1">
                     <div v-on:click="select_option('price_two_up')" id="price_two_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สองตัวบน ({{price_two_up}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_down != -1">
                     <div v-on:click="select_option('price_two_down')" id="price_two_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สองตัวล่าง ({{price_two_down}})
                         </div>
                     </div>
                 </div>
-            </div>
-    
-            <div class="d-flex">
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_run_up != -1">
                     <div v-on:click="select_option('price_run_up')" id="price_run_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             วิ่งบน ({{price_run_up}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_run_down != -1">
                     <div v-on:click="select_option('price_run_down')" id="price_run_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             วิ่งล่าง ({{price_run_down}})

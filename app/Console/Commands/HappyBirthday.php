@@ -33,18 +33,24 @@ class HappyBirthday extends Command
 
         $birthdays = User::orWhere('birthday', 'like', '%'.date('-m-d').'%')->where('status', 'อนุมัติ')->get();
         if ($birthdays) {
-            foreach ($birthdays as $user) {
-                $tran = new Transactions();
-                $tran->user_id = $user->id;
-                $tran->admin_id = 0;
-                $tran->status = 'confirm';
-                $tran->direction = 'IN';
-                $tran->type = 'BONUS';
-                $tran->remark = 'สุขสันต์วันเกิด';
-                $tran->amount = 100;
-                $tran->save();
+            foreach ($birthdays as $user) 
+            {
+                $has = Transactions::where('type', 'BONUS')->where('user_id', $user->id)->whereBetween('created_at',[date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')])->first();
+                
+                if(!$has)
+                {
+                    $tran = new Transactions();
+                    $tran->user_id = $user->id;
+                    $tran->admin_id = 0;
+                    $tran->status = 'confirm';
+                    $tran->direction = 'IN';
+                    $tran->type = 'BONUS';
+                    $tran->remark = 'สุขสันต์วันเกิด';
+                    $tran->amount = 100;
+                    $tran->save();
 
-                User::where('id', $user->id)->increment('money', 100);
+                    User::where('id', $user->id)->increment('money', 100);
+                }
             }
         }
     }

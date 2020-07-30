@@ -271,13 +271,19 @@
                 </li>
                 @endif
 
-                <li class="nav-item {{ Request::segment(2) == 'manage_huay' || Request::segment(2) == 'manage_huay_round' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
-                    <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย</span></a>
+                <li class="nav-item {{ Request::segment(2) == 'manage_huay' ||  Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
+                    <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการหวย (ราคา)</span></a>
                     <ul class="menu-content">
                         <li><a href="{{ '/admin/manage_huay?category_id=1' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย-ทั่วไป</span></a>
                         <li><a href="{{ '/admin/manage_huay?category_id=2' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย-ยี่กี</span></a>
                         <li><a href="{{ '/admin/manage_huay?category_id=3' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการหวย-ยี่กี Big Money</span></a>
                         </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item {{ Request::segment(2) == 'manage_huay_round' || Request::segment(2) == 'manage_huay_yeekee_cf' ? 'active' : '' }}">
+                    <a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="จัดการหวย">จัดการรอบหวย</span></a>
+                    <ul class="menu-content">
                         <li><a href="{{ '/admin/manage_huay_round?category_id=1' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ทั่วไป</span></a>
                         <li><a href="{{ '/admin/manage_huay_round?category_id=2' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี</span></a>
                         <li><a href="{{ '/admin/manage_huay_round?category_id=3' }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="จัดการหวย">จัดการรอบ-ยี่กี Big Money</span></a>
