@@ -75,7 +75,7 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
                                 <tr>
                                     <th style="display:none;"></th>
                                     <th class="thincell">#</th>
-                                    <th>fingerprint</th>
+                                    <th>Users</th>
                                     <th class="thincell">ACTION</th>
                                 </tr>
                             </thead>
@@ -108,8 +108,8 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
                     {
                     ?>
                     <div class="col-md-6 bg-white text-white" id="app" style="font-size: 25px !important;">
-                        <chat 
-                        :fingerprint="{{json_encode($_GET['fingerprint'])}}" 
+                        <chat
+                        :fingerprint="{{json_encode($_GET['fingerprint'])}}"
                         :position="{{json_encode('admin')}}"
                         ></chat>
                     </div>
@@ -208,7 +208,7 @@ $_GET['fingerprint'] = isset($_GET['fingerprint']) ? $_GET['fingerprint'] : '';
                                 var file = data[element.name];
                                 var div_out = $(element).closest("div")
 
-                            } 
+                            }
                             else
                                 element.value = data[element.name]
                         }
