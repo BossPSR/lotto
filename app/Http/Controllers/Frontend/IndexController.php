@@ -307,4 +307,9 @@ class IndexController extends Controller
 
         return view('frontend.lottery_withdraw', ['user_info' => $user_info, 'withdraw_count' => $withdraw_count]);
     }
+
+    public function edit_profile()
+    {
+        return view('frontend.edit_profile');
+    }
 }

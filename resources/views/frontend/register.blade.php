@@ -115,8 +115,13 @@ if(session()-> has('ref_code'))
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="alert_password" class="col-md-12 alert alert-danger p-2" style="font-size: 20px;">
-                                                            รหัสผ่านไม่ตรงกัน
+
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-12">
+                                                            <div id="alert_password" class="col-md-12 alert alert-danger p-2" style="font-size: 20px;">
+                                                                รหัสผ่านไม่ตรงกัน
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
