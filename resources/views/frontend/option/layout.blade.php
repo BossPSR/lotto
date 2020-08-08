@@ -84,8 +84,8 @@
                             <div class="col-xl-12 col-lg-12 col-7">
                                 <div class="logo" style="width:70%">
 
-                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
-
+                                    <img id="logo-2" src="assets/img/LOGOV2.png" alt="" class="d-none d-xl-block d-none d-lg-block d-xl-none">
+                                    <img id="logo-2" src="assets/img/LOGOV2MB.png" alt="" class="d-none d-md-block d-lg-none d-none d-sm-block d-md-none d-block d-sm-none">
                                 </div>
                             </div>
                             <div class="d-xl-none d-lg-none d-block col-5">
