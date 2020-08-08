@@ -143,13 +143,13 @@ $credit_withdraw_count = Transactions::where('status', 'pending')->where('direct
                                 <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
                         </li> --}}
-                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" style="cursor: context-menu;">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::user()->username }}</span><span class="user-status"></span></div><span><img class="round" src="{{ asset('backend/app-assets/images/portrait/small/user.png') }}" alt="avatar" height="40" width="40"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            {{-- <div class="dropdown-menu dropdown-menu-right"> --}}
                                 {{-- <a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a> --}}
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="feather icon-power"></i> Logout</a>
-                            </div>
+                                {{-- <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="feather icon-power"></i> Logout</a>
+                            </div> --}}
                         </li>
                     </ul>
                 </div>
@@ -391,6 +391,10 @@ $credit_withdraw_count = Transactions::where('status', 'pending')->where('direct
                     </ul>
                 </li>
                 @endif
+
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}"><i class="feather icon-power"></i><span class="menu-title" data-i18n="ออกจากระบบ">ออกจากระบบ</span></a>
+                </li>
 
 
             </ul>

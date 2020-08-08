@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-sm-12">
+                            <div class="col-6">
                                 <a href="{{ route('lottery_request_deposit') }}" style="display:block; color:#fff;">
                                     <div class="single-jackpot bg-primary">
                                         <div class="text-center">
@@ -48,7 +48,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-6 col-lg-6 col-sm-12">
+                            <div class="col-6">
                                 <a href="{{ route('lottery_withdraw') }}" style="display:block; color:#fff;">
                                     <div class="single-jackpot bg-success">
                                         <div class="text-center">
@@ -78,7 +78,7 @@
                     </div>
                     <div class="part-body">
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_play') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -91,7 +91,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_transaction') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -106,7 +106,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_result') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -124,7 +124,7 @@
 
                         <div class="row">
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_credit') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -138,7 +138,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_affiliate') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -153,7 +153,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_number_set') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -173,7 +173,7 @@
                         <div class="row">
 
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_news') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -188,7 +188,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('lottery_bonus') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -203,7 +203,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('help') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -221,7 +221,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                            <div class="col-4">
                                 <a href="{{ route('contact') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -248,7 +248,7 @@
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
     var csrf_token = '{{ csrf_token() }}';
-    
+
     <?php
 
     if($content_modal)

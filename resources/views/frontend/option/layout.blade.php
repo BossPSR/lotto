@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="d-xl-none d-lg-none d-block col-5">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
 
                                 </button>
                             </div>
@@ -99,7 +99,7 @@
                         <div class="mainmenu">
                             <nav class="navbar navbar-expand-lg for-lottery">
 
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class="collapse show navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item dropdown">
                                             <div class="header_login d-none d-xl-block d-none d-lg-block d-xl-none" style="display: flex;justify-content:center;">
