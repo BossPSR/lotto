@@ -23,6 +23,7 @@ Route::post('/login_process','Auth\LoginController@login')->name('login_process'
 Route::get('/profile_user','Frontend\IndexController@profile_user')->name('profile_user');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 Route::get('/edit_profile','Frontend\IndexController@edit_profile')->name('edit_profile');
+Route::post('/edit_profile','Frontend\IndexController@edit_profile_post');
 
 Route::get('/index_member','Frontend\IndexController@index_member')->name('index_member');
 Route::get('/plus_story','Frontend\IndexController@plus_story')->name('plus_story');

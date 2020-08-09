@@ -97,7 +97,7 @@ class IndexController extends Controller
     public function lottery_withdraw_post(Request $request)
     {
         if (isset($_POST['updateUserBank'])) {
-            if(Auth::user()->first_name != $_POST['account_name'] or Auth::user()->last_name != $_POST['account_surname'])
+            if (Auth::user()->first_name != $_POST['account_name'] or Auth::user()->last_name != $_POST['account_surname'])
                 return redirect()->route('lottery_withdraw')->with('message', 'ไม่สามารถทำรายการได้!')->with('status', 'error');
 
             $user_id = auth()->user()->id;
@@ -105,7 +105,7 @@ class IndexController extends Controller
             $data = array(
                 'bank_name' => $_POST['bank_name'],
                 'account_no' => $_POST['account_no'],
-                'account_name' => $_POST['account_name'].' '.$_POST['account_surname'],
+                'account_name' => $_POST['account_name'] . ' ' . $_POST['account_surname'],
             );
 
             DB::table('users')
@@ -161,6 +161,39 @@ class IndexController extends Controller
         return redirect()->route('lottery_withdraw')->with('message', 'เกิดข้อผิดพลาด!')->with('status', 'error');
     }
 
+
+    public function edit_profile_post(Request $request)
+    {
+        $data = array();
+        $data['tel'] = $_POST['tel'];
+        $data['email'] = $_POST['email'];
+        $data['birthday'] = $_POST['birthday'];
+        $data['first_name'] = $_POST['first_name'];
+        $data['last_name'] = $_POST['last_name'];
+        
+        $user = Auth::user();
+
+        // Upload image
+        if ($request->hasFile('file_name')) {
+            $filepath = 'uploads/id_card/';
+            if (!File::exists($filepath)) {
+                File::makeDirectory($filepath, 0775, true);
+            }
+
+            $file = $request->file('file_name');
+            $filename = $file->getClientOriginalName();
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+            $filename = time() . '_proof_image_' . $user->id . '.' . $ext;
+            $file->move($filepath, $filename);
+
+            $data['citizen_image'] = $filepath . '/' . $filename;
+        }
+        DB::table('users')
+            ->where('id', $user->id)
+            ->update($data);
+        return redirect()->route('edit_profile')->with('message', 'แก้ไขข้อมูลสำเร็จ!')->with('status', 'success');
+    }
     public function login_process(Request $request)
     {
         $this->validate($request, [
@@ -280,9 +313,8 @@ class IndexController extends Controller
         else
             $content_modals = ContentModals::where('deleted_at', null)->orderBy('id', 'desc')->first();
 
-        if($content_modals)
-        {
-            $update = array('last_content_id'=> $content_modals->id);
+        if ($content_modals) {
+            $update = array('last_content_id' => $content_modals->id);
             DB::table("users")->where('id', Auth::user()->id)->update($update);
         }
 

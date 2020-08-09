@@ -62,7 +62,7 @@
                         <tr>
                             <th style="display:none;"></th>
                             <th class="thincell">#</th>
-                            <th class="thincell">รูปภาพ</th>
+                            <th class="thincell">รูปบัตรประชาชน</th>
                             <th>ลูกค้า</th>
                             <th>บัญชีผู้ใช้งาน</th>
                             <th>ผู้แนะนำ</th>
@@ -85,8 +85,8 @@
                                     <td style="display:none;"></td>
                                     <td class="text-center">{{$i}}</td>
                                     <td class="product-name">
-                                        @if($user_list->path_cover)
-                                        <a target="_blank" href="{{url($user_list->path_cover)}}"><img src="{{url($user_list->path_cover)}}" class="image_rules"></a>
+                                        @if($user_list->citizen_image)
+                                        <a target="_blank" href="{{url($user_list->citizen_image)}}"><img src="{{url($user_list->citizen_image)}}" class="image_rules"></a>
                                         @endif
                                     </td>
                                     <td class="product-name">{{$user_list->first_name}} {{$user_list->last_name}}<br><small>{{$user_list->tel}}</small></td>

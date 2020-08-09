@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('cover_name',100)->nullable();
             $table->string('affiliate_code',100)->nullable();
             $table->string('path_cover',100)->nullable();
+            $table->string('citizen_image',500)->nullable();
             $table->string('cover_extension',50)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
