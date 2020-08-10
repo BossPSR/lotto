@@ -151,7 +151,7 @@
                 else
                 {
                     ?>
-                    <div class="container shape-container">
+                    <div class="container shape-container" style="margin-top: 30px;">
                         <div class="alert alert-danger">ยังไม่มีข้อมูล</div>
                     </div>
                     <?php

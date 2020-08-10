@@ -78,7 +78,7 @@
                     </div>
                     <div class="part-body">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_play') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -91,7 +91,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_transaction') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -106,7 +106,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_result') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -120,11 +120,11 @@
                                 </a>
                             </div>
 
-                        </div>
+                        {{-- </div>
 
-                        <div class="row">
+                        <div class="row"> --}}
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_credit') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -138,7 +138,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_affiliate') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -153,7 +153,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_number_set') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -168,12 +168,12 @@
                                 </a>
                             </div>
 
-                        </div>
+                        {{-- </div>
 
-                        <div class="row">
+                        <div class="row"> --}}
 
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_news') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -188,7 +188,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_bonus') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
@@ -203,7 +203,7 @@
                                 </a>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('help') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
@@ -218,10 +218,10 @@
                                 </a>
                             </div>
 
-                        </div>
+                        {{-- </div>
 
-                        <div class="row">
-                            <div class="col-4">
+                        <div class="row"> --}}
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('contact') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
