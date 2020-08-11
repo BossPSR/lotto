@@ -28,19 +28,21 @@
                         </div>
                     </div>
                     <br>
+
                     <div class="row">
-                        <?php
-                        if ($contacts) {
-                            foreach ($contacts as $contact) {
-                        ?>
-                                <div class="col-md-2">
-                                    <img src="{{$contact->image}}" data-filename="M.png" style="width: 180px;">
-                                    <label>{{nl2br($contact->description)}}</label>
-                                </div>
-                        <?php
+                            <?php
+                            if ($contacts) {
+                                foreach ($contacts as $contact) {
+                            ?>
+                                    <div class="col-6 form-group">
+                                        <img src="{{$contact->image}}" data-filename="M.png" style="width: 250px;">
+                                        <label>{{nl2br($contact->description)}}</label>
+                                    </div>
+                            <?php
+                                }
                             }
-                        }
-                        ?>
+                            ?>
+
                     </div>
                 </div>
             </div>

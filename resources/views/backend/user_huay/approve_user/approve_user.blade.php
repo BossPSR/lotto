@@ -123,7 +123,7 @@
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel1">อนุมัติแจ้งถอน</h4>
+                <h4 class="modal-title" id="myModalLabel1">อนุมัติสมัครสมาชิก</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
