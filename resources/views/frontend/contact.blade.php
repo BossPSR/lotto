@@ -21,10 +21,10 @@
                             </div>
                             <div class="col-6 text-right">
                                 <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
-                         
+
                             </div>
-                          
-                            
+
+
                         </div>
                     </div>
                     <br>
