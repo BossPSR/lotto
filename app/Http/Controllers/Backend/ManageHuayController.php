@@ -117,13 +117,13 @@ class ManageHuayController extends Controller
                             ->update($data);
 
                     } else if ($huay->id > 19) {
-                        for ($i = 0; $i < 48; $i++) {
+                        for ($i = 0; $i < 84; $i++) {
 
                             $_POST['start_datetime'] = $_POST['date'] . ' 00:00:00';
-                            $_POST['end_datetime'] = $_POST['date'] . ' 00:30:00';
+                            $_POST['end_datetime'] = $_POST['date'] . ' 00:15:00';
 
-                            $_POST['start_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['start_datetime'] . ' + ' . ($i * 30) . ' minutes'));
-                            $_POST['end_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['end_datetime'] . ' + ' . ($i * 30) . ' minutes'));
+                            $_POST['start_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['start_datetime'] . ' + ' . ($i * 15) . ' minutes'));
+                            $_POST['end_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['end_datetime'] . ' + ' . ($i * 15) . ' minutes'));
                             $huay_round = new HuayRounds();
                             $huay_round->huay_category_id = $huay->huay_category_id;
                             $huay_round->can_shoot = $huay->can_shoot;
