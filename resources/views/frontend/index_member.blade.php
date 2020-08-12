@@ -2,7 +2,6 @@
 @extends('frontend.option.layout_chat')
 
 @section('contact_member')
-
 <!-- jackpot begin -->
 <div class="jackpot" style="background:#Fff;  min-height: calc(100vh - 100px);">
     <div class="container">
@@ -12,7 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="container shape-container" style="max-width: 1800px">
+    <div class="container shape-container" style="max-width: 1800px; margin-bottom:40px;">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
                 <div class="single-jackpot">
