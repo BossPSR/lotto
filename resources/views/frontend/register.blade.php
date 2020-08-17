@@ -155,6 +155,15 @@ if(session()-> has('ref_code'))
                                                             <input type="text" name="upline_username" class="form-control form-group" value="{{$_GET['ref_code']}}" placeholder="Code ผู้แนะนำ">
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-xl-12 col-lg-12 col-sm-12 text-center">
+                                                            <label>บัตรประชาชน</label>
+                                                            <input type="file" name="file_name" class="form-control form-group" id="imgInp" require accept="image/*" >
+                                                            <label for="imgInp" style="cursor: pointer">
+                                                                <img id="blah" src="{{ url('assets/img/logo_r.jpg')}}" style="max-width: 50%">
+                                                            </label>
+                                                        </div>
+                                                    </div>
 
                                                     <button type="submit" class="btn btn-warning new_story">สมัครสมาชิก</button>
                                                     <button type="reset" class="btn btn-danger new_story_cancel">ยกเลิก</button>
@@ -180,7 +189,7 @@ if(session()-> has('ref_code'))
 <!-- jackpot end -->
 <script src="{{url('backend/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script>
-    @if(session()-> has('message'))
+    @if(session()->has('message'))
 
     var status = "{{session()->get('status')}}"
     var status_name = (status == "success" ? 'สำเร็จ' : 'ไม่สำเร็จ')
@@ -199,7 +208,6 @@ if(session()-> has('ref_code'))
         }
         else
         document.getElementById("alert_password").style.display = "none";
-
     }
 
     function validateForm(form) {

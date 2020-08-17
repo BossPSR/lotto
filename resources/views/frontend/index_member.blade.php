@@ -124,6 +124,19 @@
                         <div class="row"> --}}
 
                             <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <a href="{{ route('lottery_money') }}" style="display:block; color:#3d5169;">
+                                    <div class="single-jackpot ">
+                                        <div class="text-center">
+                                            <i class="fas fa-university" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                        </div>
+                                        <div class="text-center" style="margin-left: 10px;">
+                                            รายการแจ้ง ฝาก/ถอน
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_credit') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">

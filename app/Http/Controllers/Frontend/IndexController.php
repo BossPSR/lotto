@@ -170,8 +170,17 @@ class IndexController extends Controller
         $data['birthday'] = $_POST['birthday'];
         $data['first_name'] = $_POST['first_name'];
         $data['last_name'] = $_POST['last_name'];
-        
+
         $user = Auth::user();
+        if ($_POST['old_password']) {
+            // echo bcrypt($_POST['old_password']);
+
+            if (!Auth::attempt(['username' => $user['username'], 'password' => $_POST['old_password']]))
+                return redirect()->route('edit_profile')->with('message', 'รหัสผ่านเดิมคุณไม่ถูกต้อง!')->with('status', 'error');
+
+            Auth::logout();
+            $data['password'] = bcrypt($_POST['password']);
+        }
 
         // Upload image
         if ($request->hasFile('file_name')) {
@@ -192,6 +201,10 @@ class IndexController extends Controller
         DB::table('users')
             ->where('id', $user->id)
             ->update($data);
+        if ($_POST['old_password']) {
+            return redirect()->route('index')->with('message', 'แก้ไขข้อมูลสำเร็จ! กรุณา Login อีกครั้ง')->with('status', 'success');
+        }
+
         return redirect()->route('edit_profile')->with('message', 'แก้ไขข้อมูลสำเร็จ!')->with('status', 'success');
     }
     public function login_process(Request $request)
@@ -277,22 +290,23 @@ class IndexController extends Controller
         $member->save();
 
         $data = array('affiliate_code' => md5('afc_' . $member->id . '_' . $member->username . '_' . $member->created_at));
-        User::where('id', $member->id)->update($data);
-
         if ($request->hasFile('file_name')) {
-            $filepath = 'uploads/users/' . $member->id;
+            $filepath = 'uploads/id_card/';
             if (!File::exists($filepath)) {
                 File::makeDirectory($filepath, 0775, true);
             }
 
             $file = $request->file('file_name');
             $filename = $file->getClientOriginalName();
-            $Ext = explode('.', $filename);
-            $filename = 'cover_user_' . $member->id . '.' . $Ext[1];
-            $file->move($filepath, $filename);
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            User::where('id', $member->id)->update(['cover_name' => $filename, 'path_cover' => $filepath . "/" . $filename, 'cover_extension' => $ext]);
+
+            $filename = time() . '_proof_image_' . $member->id . '.' . $ext;
+            $file->move($filepath, $filename);
+
+            $data['citizen_image'] = $filepath . '/' . $filename;
         }
+
+        User::where('id', $member->id)->update($data);
 
         return redirect()->route('index')->with('message', 'สมัครสมาชิกสำเร็จ กรุณารอการตรวจสอบ')->with('status', 'success');
     }

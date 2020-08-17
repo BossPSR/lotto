@@ -45,6 +45,7 @@ Route::POST('/lottery_transaction','Frontend\LotteryTransactionController@post')
 
 Route::get('/lottery_result','Frontend\LotteryResultController@index')->name('lottery_result');
 Route::get('/lottery_credit','Frontend\LotteryCreditController@index')->name('lottery_credit');
+Route::get('/lottery_money','Frontend\LotteryMoneyController@index')->name('lottery_money');
 Route::get('/lottery_affiliate','Frontend\LotteryAffiliateController@index')->name('lottery_affiliate');
 Route::post('/lottery_affiliate','Frontend\LotteryAffiliateController@post');
 Route::get('/lottery_number_set','Frontend\LotteryNumberSetController@index')->name('lottery_number_set');

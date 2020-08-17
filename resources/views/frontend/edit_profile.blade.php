@@ -42,11 +42,11 @@
                                                     <form action="" method="post" onsubmit="validateForm(this)" enctype="multipart/form-data">
                                                         <input type="hidden" name="_token" value="<?php
 
-use Illuminate\Support\Facades\Auth;
+                                                                                                    use Illuminate\Support\Facades\Auth;
 
-echo csrf_token() ?>">
+                                                                                                    echo csrf_token() ?>">
                                                         {{-- <div>รูปโปรไฟล์</div>
-                                                        <input accept="image/*" type="file" name="file_name" class="form-control form-group" id="imgInp" required>
+                                                        <input accept="image/*" type="file" name="file_name" class="form-control form-group" id="imgInp" >
                                                         <div style="width:30%; margin:auto;">
                                                             <label for="imgInp" style="cursor: pointer">
                                                                 <img id="blah" src="{{url('assets/img/upload.png')}}">
@@ -88,12 +88,103 @@ echo csrf_token() ?>">
                                                         <label>โทรศัพท์ติดต่อ</label>
                                                         <input type="text" name="tel" pattern="[0-9]+" class="form-control form-group" required placeholder="โทรศัพท์ติดต่อ" value="{{Auth::user()->tel}}">
                                                     </div>
+                                                </div>
+                                                <hr>
+                                                <label>เปลี่ยนแปลงรหัสผ่าน</label>
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                        <label>รหัสผ่านเดิม</label>
+                                                        <div class="input-group">
+                                                            <input onkeyup="validatePassOnKeyup()" type="password" id="old_password" name="old_password" class="form-control form-group"  placeholder="รหัสผ่าน">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <a id="showPass1" style="cursor: pointer;" onclick="
+                                                                    input = document.getElementById('old_password')
+                                                                    input.type = 'text'
+                                                                    eye =  document.getElementById('hidePass1')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('showPass1')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye"></i></a>
+                                                                    <a id="hidePass1" style="cursor: pointer; display:none" onclick="
+                                                                    input = document.getElementById('old_password')
+                                                                    input.type = 'password'
+                                                                    eye =  document.getElementById('showPass1')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('hidePass1')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye-slash"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                        <label>รหัสผ่านใหม่</label>
+                                                        <div class="input-group">
+                                                            <input onkeyup="validatePassOnKeyup()" type="password" id="password" name="password" class="form-control form-group"  placeholder="รหัสผ่าน">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <a id="showPass1" style="cursor: pointer;" onclick="
+                                                                    input = document.getElementById('password')
+                                                                    input.type = 'text'
+                                                                    eye =  document.getElementById('hidePass1')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('showPass1')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye"></i></a>
+                                                                    <a id="hidePass1" style="cursor: pointer; display:none" onclick="
+                                                                    input = document.getElementById('password')
+                                                                    input.type = 'password'
+                                                                    eye =  document.getElementById('showPass1')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('hidePass1')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye-slash"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-12 col-sm-6">
+                                                        <label>ยืนยันรหัสผ่าน</label>
+                                                        <div class="input-group">
+                                                            <input onkeyup="validatePassOnKeyup()" type="password" id="confirm_password" name="confirm_password" class="form-control form-group"  placeholder="ยืนยันรหัสผ่าน">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <a id="showPass2" style="cursor: pointer;" onclick="
+                                                                    input = document.getElementById('confirm_password')
+                                                                    input.type = 'text'
+                                                                    eye =  document.getElementById('hidePass2')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('showPass2')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye"></i></a>
+                                                                    <a id="hidePass2" style="cursor: pointer; display:none" onclick="
+                                                                    input = document.getElementById('confirm_password')
+                                                                    input.type = 'password'
+                                                                    eye =  document.getElementById('showPass2')
+                                                                    eye.style.display = 'block'
+                                                                    eye =  document.getElementById('hidePass2')
+                                                                    eye.style.display = 'none'
+                                                                    "><i class="fas fa-eye-slash"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
+                                                </div>
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-12">
+                                                        <div id="alert_password" class="col-md-12 alert alert-danger p-2" style="font-size: 20px; display:none">
+                                                            รหัสผ่านไม่ตรงกัน
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <?php
-                                                $citizen_image= Auth::user()->citizen_image;
-                                                if($citizen_image)
+                                                $citizen_image = Auth::user()->citizen_image;
+                                                if ($citizen_image)
                                                     $citizen_image = url($citizen_image);
                                                 else
                                                     $citizen_image = url('assets/img/logo_r.jpg');
@@ -102,7 +193,7 @@ echo csrf_token() ?>">
                                                 <div class="row">
                                                     <div class="col-xl-12 col-lg-12 col-sm-12 text-center">
                                                         <label>บัตรประชาชน</label>
-                                                        <input type="file" name="file_name" class="form-control form-group" id="imgInp" accept="image/*" required>
+                                                        <input type="file" name="file_name" class="form-control form-group" id="imgInp" accept="image/*" >
                                                         <label for="imgInp" style="cursor: pointer">
                                                             <img id="blah" src="{{$citizen_image}}" style="max-width: 50%">
                                                         </label>
@@ -138,6 +229,27 @@ echo csrf_token() ?>">
     function toggle(id) {
         $('.player-info').css('display', 'none');
         $('#' + id).css('display', 'block');
+    }
+
+    function validatePassOnKeyup() {
+        var input_password = document.getElementById("password");
+        var input_confirm_password = document.getElementById("confirm_password");
+        if (input_password.value != input_confirm_password.value) {
+            document.getElementById("alert_password").style.display = "block";
+        } else
+            document.getElementById("alert_password").style.display = "none";
+    }
+    function validateForm(form) {
+        var input_password = document.getElementById("password");
+        var input_confirm_password = document.getElementById("confirm_password");
+        if (input_password.value != input_confirm_password.value) {
+            Swal.fire(
+                'ไม่สำเร็จ!',
+                'กรุณาป้อนรหัสผ่านให้ตรงกัน!',
+                'error'
+            )
+            event.preventDefault();
+        }
     }
 
     function readURL(input) {
