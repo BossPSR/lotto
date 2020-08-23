@@ -17,7 +17,10 @@ Route::post('/add_chat_list','Frontend\ChatController@add_chat_list');
 Route::post('/get_fingerprint','Frontend\ChatController@get_fingerprint');
 
 Route::get('/index','Frontend\IndexController@index')->name('index');
-Route::get('/register','Frontend\IndexController@register')->name('register');
+Route::get('/otp','Frontend\IndexController@otp')->name('otp');
+Route::get('/otp_confirm','Frontend\IndexController@otp_confirm')->name('otp_confirm');
+Route::get('/register_info','Frontend\IndexController@register')->name('register');
+
 Route::post('/register_process','Frontend\IndexController@register_process')->name('register_process');
 Route::post('/login_process','Auth\LoginController@login')->name('login_process');
 Route::get('/profile_user','Frontend\IndexController@profile_user')->name('profile_user');

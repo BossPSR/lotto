@@ -5016,14 +5016,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
                     number_array[key_obj].push(number[1] + number[0]);
                   }
 
-                  count += 6;
+                  count += 2;
                 }
 
                 setTimeout(function () {
                   input1.text("");
                   input2.text("");
                   input3.text("");
-                }, 200);
+                }, 500);
                 this.set_to_variable_internal(number_array);
               } else {
                 total_number += number + ",";
@@ -41892,7 +41892,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticStyle: { cursor: "pointer" } }, [
-      _c("i", { staticClass: "fa fa-comment-dots" }),
+      _c("i", { staticClass: "fa fa-envelope" }),
       _vm._v(" ติดต่อ ADMIN")
     ])
   },

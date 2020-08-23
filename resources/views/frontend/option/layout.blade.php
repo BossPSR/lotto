@@ -65,7 +65,7 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="select-lang" style="font-size: 20px;">
                             <div>
-                                <a href="{{ route('register') }}" style="color: #fff "><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
+                                <a href="{{ route('otp') }}" style="color: #fff "><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
                             </div>
                             <div>
                                 <a href="{{ route('contact_visitor') }}" style="color: #fff "><i class="fas fa-headset"></i>ติดต่อเรา</a>
@@ -150,7 +150,7 @@
                                             {{-- มือถือ --}}
                                             <div class="header_login d-xl-none d-lg-none d-block">
                                                 <div style="display: block;text-align: center;margin-bottom: 15px;">
-                                                    <a href="{{ route('register') }}" style="color: #6f39d5 "><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
+                                                    <a href="{{ route('otp') }}" style="color: #6f39d5 "><i class="fas fa-user-plus"></i>สมัครสมาชิก</a>
 
                                                     <a href="{{ route('contact_visitor') }}" style="color: #6f39d5 "><i class="fas fa-headset"></i>ติดต่อเรา</a>
                                                 </div>

@@ -1688,13 +1688,13 @@ export default {
                                         number_array[key_obj].push(number[1] + number[0])
 
                                     }
-                                    count += 6
+                                    count += 2
                                 }
                                 setTimeout(function() {
                                     input1.text("");
                                     input2.text("");
                                     input3.text("");
-                                }, 200);
+                                }, 500);
 
                                 this.set_to_variable_internal(number_array)
                             } else {

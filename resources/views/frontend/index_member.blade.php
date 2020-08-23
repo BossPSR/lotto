@@ -11,10 +11,10 @@
             </div>
         </div>
     </div>
-    <div class="container shape-container" style="max-width: 1800px; margin-bottom:40px;">
+    <div class="container shape-container" style="max-width: 1800px; margin-bottom:0px;">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 single_jackpot_all form-group">
-                <div class="single-jackpot">
+                <div class="single-jackpot" style="height:auto">
                     <div class="part-head">
                         <div class="text" style="margin-left:25px;">
                             <span class="amount">ยอดเงิน</span>
@@ -37,11 +37,9 @@
                                     <div class="single-jackpot bg-primary">
                                         <div class="text-center">
                                             <i class="far fa-money-bill-alt" style="font-size: 40Px;margin-bottom: 10px"></i>
-
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             ฝากเครดิต
-
                                         </div>
                                     </div>
                                 </a>
@@ -53,9 +51,8 @@
                                         <div class="text-center">
                                             <i class="fas fa-hand-holding-usd" style="font-size: 40Px;margin-bottom: 10px"></i>
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             ถอนเครดิต
-
                                         </div>
                                     </div>
                                 </a>
@@ -77,72 +74,65 @@
                     </div>
                     <div class="part-body">
                         <div class="row">
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_play') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="fas fa-money-check-alt" style="font-size: 40Px;margin-bottom: 10px"></i>
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             แทงหวย
                                         </div>
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_transaction') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="far fa-list-alt" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             รายการโพย
 
                                         </div>
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_result') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
                                             <i class="fas fa-trophy" style="font-size: 40Px;margin-bottom: 10px"></i>
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             ผลรางวัล
 
                                         </div>
                                     </div>
                                 </a>
                             </div>
-
-                        {{-- </div>
-
-                        <div class="row"> --}}
-
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_money') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="fas fa-university" style="font-size: 40Px;margin-bottom: 10px"></i>
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             รายการแจ้ง ฝาก/ถอน
 
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_credit') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="fas fa-list-ol" style="font-size: 40Px;margin-bottom: 10px"></i>
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             รายงานเครดิต
 
                                         </div>
@@ -150,14 +140,14 @@
                                 </a>
                             </div>
 
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_affiliate') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="fas fa-user-friends" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             ระบบแนะนำ
 
                                         </div>
@@ -165,34 +155,28 @@
                                 </a>
                             </div>
 
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_number_set') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="fas fa-th" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             สร้างเลขชุด
 
                                         </div>
                                     </div>
                                 </a>
                             </div>
-
-                        {{-- </div>
-
-                        <div class="row"> --}}
-
-
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_news') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
                                             <i class="far fa-newspaper" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             ข่าวสารประชาสัมพันธ์
 
                                         </div>
@@ -200,14 +184,14 @@
                                 </a>
                             </div>
 
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('lottery_bonus') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
                                             <i class="fas fa-medal" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
 
                                             ระบบโบนัสทั้งหมด
                                         </div>
@@ -215,32 +199,28 @@
                                 </a>
                             </div>
 
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('help') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
                                             <i class="fas fa-book" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             วิธีการใช้งาน
 
                                         </div>
                                     </div>
                                 </a>
                             </div>
-
-                        {{-- </div>
-
-                        <div class="row"> --}}
-                            <div class="col-6 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('contact') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
                                             <i class="far fa-address-book" style="font-size: 40Px;margin-bottom: 10px"></i>
 
                                         </div>
-                                        <div class="text-center" style="margin-left: 10px;">
+                                        <div class="text-center" style="word-break:break-word">
                                             ติดต่อเอเย่นต์
 
                                         </div>

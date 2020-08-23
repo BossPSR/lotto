@@ -23,7 +23,7 @@ class IndexController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth', 'single.device.login'])->except('index', 'login_process', 'register', 'register_process');
+        $this->middleware(['auth', 'single.device.login'])->except('index', 'login_process', 'register', 'otp', 'otp_confirm','register_process');
     }
 
     public function index(Request $request)
@@ -227,6 +227,15 @@ class IndexController extends Controller
     public function profile_user()
     {
         return view('frontend.profile_user');
+    }
+
+    public function otp()
+    {
+        return view('frontend.otp');
+    }
+    public function otp_confirm()
+    {
+        return view('frontend.otp_confirm');
     }
 
     public function register()

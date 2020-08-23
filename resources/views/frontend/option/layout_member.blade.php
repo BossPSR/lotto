@@ -78,7 +78,7 @@ $contact_header = ContactHeader::first();
         </div>
 
         <div class="container">
-            <div class="menu-bar" style="margin:15px 0;">
+            <div class="text-white" style="margin:15px 0;">
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                         <div class="row">
@@ -91,7 +91,7 @@ $contact_header = ContactHeader::first();
                                     <img id="logo-2" src="assets/img/LOGOV2.png" alt="">
                                 </div>
                                 <div class="header_login d-xl-none d-lg-none d-block">
-                                    <div class="d-flex" style="justify-content: center;">
+                                    <div class="d-flex" style="justify-content: center;     align-items: center;  align-items: center;">
                                         <div class="header_after_login">
                                             {{number_format(Auth::user()->money, 2)}}
                                             <i class="fa fa-coins"></i>
@@ -127,7 +127,7 @@ $contact_header = ContactHeader::first();
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
                                             <div class="header_login">
-                                                <div class="d-flex" style="justify-content: center;">
+                                                <div class="d-flex" style="justify-content: center;     align-items: center;">
                                                     <div class="header_after_login">
                                                         {{number_format(Auth::user()->money, 2)}}
                                                         <i class="fa fa-coins"></i>

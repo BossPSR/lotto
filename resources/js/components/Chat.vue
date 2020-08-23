@@ -2,7 +2,7 @@
     <!--- CHAT -->
     <div v-if="fingerprint != ''">
         <a class="w-100 btn" v-on:click="toggleView()">
-                                    <label style="cursor:pointer"><i class="fa fa-comment-dots"></i> ติดต่อ ADMIN</label>
+                                    <label style="cursor:pointer"><i class="fa fa-envelope"></i> ติดต่อ ADMIN</label>
                                 </a>
         <div style="">
             <div style="height: 400px; overflow-y:scroll" id="chat-div">

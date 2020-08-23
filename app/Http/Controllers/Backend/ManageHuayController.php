@@ -116,7 +116,7 @@ class ManageHuayController extends Controller
                             ->where('id', $huay_round->id)
                             ->update($data);
 
-                    } else if ($huay->id > 19) {
+                    } else if ($huay->id > 20) {
                         for ($i = 0; $i < 84; $i++) {
 
                             $_POST['start_datetime'] = $_POST['date'] . ' 00:00:00';
