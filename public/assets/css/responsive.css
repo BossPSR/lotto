@@ -2919,10 +2919,14 @@
         line-height: 24px;
     }
     .jackpot .single-jackpot {
-        padding: 30px 20px;
+        padding: 5px 5px;
     }
     .jackpot {
         padding: 73px 0 50px;
+    }
+
+    .jackpot .single-jackpot div{
+        font-size: 11px;
     }
 
     /* lottery ticket */

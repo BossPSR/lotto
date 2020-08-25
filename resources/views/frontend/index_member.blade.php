@@ -36,7 +36,7 @@
                                 <a href="{{ route('lottery_request_deposit') }}" style="display:block; color:#fff;">
                                     <div class="single-jackpot bg-primary">
                                         <div class="text-center">
-                                            <i class="far fa-money-bill-alt" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="far fa-money-bill-alt" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
                                             ฝากเครดิต
@@ -49,7 +49,7 @@
                                 <a href="{{ route('lottery_withdraw') }}" style="display:block; color:#fff;">
                                     <div class="single-jackpot bg-success">
                                         <div class="text-center">
-                                            <i class="fas fa-hand-holding-usd" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-hand-holding-usd" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
                                             ถอนเครดิต
@@ -78,7 +78,7 @@
                                 <a href="{{ route('lottery_play') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="fas fa-money-check-alt" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-money-check-alt" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
                                             แทงหวย
@@ -90,7 +90,7 @@
                                 <a href="{{ route('lottery_transaction') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="far fa-list-alt" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="far fa-list-alt" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
@@ -104,7 +104,7 @@
                                 <a href="{{ route('lottery_result') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
-                                            <i class="fas fa-trophy" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-trophy" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
                                             ผลรางวัล
@@ -117,7 +117,7 @@
                                 <a href="{{ route('lottery_money') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="fas fa-university" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-university" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
                                             รายการแจ้ง ฝาก/ถอน
@@ -130,7 +130,7 @@
                                 <a href="{{ route('lottery_credit') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="fas fa-list-ol" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-list-ol" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
                                             รายงานเครดิต
@@ -144,7 +144,7 @@
                                 <a href="{{ route('lottery_affiliate') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="fas fa-user-friends" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-user-friends" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
@@ -159,7 +159,7 @@
                                 <a href="{{ route('lottery_number_set') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="fas fa-th" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-th" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
@@ -173,7 +173,7 @@
                                 <a href="{{ route('lottery_news') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
-                                            <i class="far fa-newspaper" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="far fa-newspaper" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
@@ -188,7 +188,7 @@
                                 <a href="{{ route('lottery_bonus') }}" style="display:block; color:#3d5169;">
                                     <div class="single-jackpot ">
                                         <div class="text-center">
-                                            <i class="fas fa-medal" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-medal" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
@@ -203,7 +203,7 @@
                                 <a href="{{ route('help') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
-                                            <i class="fas fa-book" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="fas fa-book" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
@@ -217,7 +217,7 @@
                                 <a href="{{ route('contact') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
                                         <div class="text-center">
-                                            <i class="far fa-address-book" style="font-size: 40Px;margin-bottom: 10px"></i>
+                                            <i class="far fa-address-book" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
 
                                         </div>
                                         <div class="text-center" style="word-break:break-word">
