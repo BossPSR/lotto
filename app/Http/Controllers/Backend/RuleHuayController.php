@@ -37,7 +37,7 @@ class RuleHuayController extends Controller
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/player_rules/' . $player_rule->id;
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -71,7 +71,7 @@ class RuleHuayController extends Controller
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/player_rules/' . $request->id;
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');

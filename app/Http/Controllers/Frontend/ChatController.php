@@ -46,7 +46,7 @@ class ChatController extends Controller
         if ($request->hasFile('image')) {
             $filepath = 'uploads/chat/';
             if (!File::exists($filepath)) {
-                File::makeDirectory($filepath, 0775, true);
+                File::makeDirectory($filepath, 0777, true);
             }
 
             $file = $request->file('image');

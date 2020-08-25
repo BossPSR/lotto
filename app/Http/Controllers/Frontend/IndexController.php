@@ -74,7 +74,7 @@ class IndexController extends Controller
             if ($request->hasFile('file_name')) {
                 $filepath = 'uploads/deposit/';
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('file_name');
@@ -186,7 +186,7 @@ class IndexController extends Controller
         if ($request->hasFile('file_name')) {
             $filepath = 'uploads/id_card/';
             if (!File::exists($filepath)) {
-                File::makeDirectory($filepath, 0775, true);
+                File::makeDirectory($filepath, 0777, true);
             }
 
             $file = $request->file('file_name');
@@ -302,7 +302,7 @@ class IndexController extends Controller
         if ($request->hasFile('file_name')) {
             $filepath = 'uploads/id_card/';
             if (!File::exists($filepath)) {
-                File::makeDirectory($filepath, 0775, true);
+                File::makeDirectory($filepath, 0777, true);
             }
 
             $file = $request->file('file_name');

@@ -45,7 +45,7 @@ class CommissionController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     public function post(Request $request)
     {
         if (isset($_POST['updateCommissionSetting'])) {
@@ -66,7 +66,7 @@ class CommissionController extends Controller
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/withdraws_credit/';
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -123,14 +123,14 @@ class CommissionController extends Controller
                 $transaction_list[$key]->status_name = self::$status_list[$info->status]['html'];
             }
         }
-        
+
         return view('backend.commission_huay.credit_commission.credit' ,['transaction_lists' =>  $transaction_list]);
     }
 
     public function commission_approve()
     {
         $transaction_list = Transactions::where('status', 'pending')->where('type', 'CREDIT_WITHDRAW')->get();
-       
+
         $user_id_all = [];
 
         if ($transaction_list) {
@@ -150,7 +150,7 @@ class CommissionController extends Controller
                 $transaction_list[$key]->status_name = self::$status_list[$info->status]['html'];
             }
         }
-        
+
         return view('backend.commission_huay.approve_withdraw.approve' ,['transaction_lists' =>  $transaction_list]);
     }
 }

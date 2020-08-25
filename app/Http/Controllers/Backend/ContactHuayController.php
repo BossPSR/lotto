@@ -27,14 +27,14 @@ class ContactHuayController extends Controller
             $contact = new Contacts();
             $contact->description = $request->description;
 
-           
+
             $contact->save();
 
             $path = '';
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/contacts/' . $contact->id;
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -62,7 +62,7 @@ class ContactHuayController extends Controller
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/contacts/' . $request->id;
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -73,7 +73,7 @@ class ContactHuayController extends Controller
                 $file->move($filepath, $filename);
 
                 $data['image'] = $filepath . '/' . $filename;
-                
+
             }
 
             $affected = DB::table(self::$table)

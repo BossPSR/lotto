@@ -58,7 +58,7 @@ class WithdrawHuayController extends Controller
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/withdraws/';
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -83,7 +83,7 @@ class WithdrawHuayController extends Controller
             DB::table(self::$table)
                 ->where('id', $request->id)
                 ->update($data);
-                
+
             $info = Withdraws::where('id', $request->id)->first();
 
             User::where('id', $info->user_id)->increment('money', $info->amount);

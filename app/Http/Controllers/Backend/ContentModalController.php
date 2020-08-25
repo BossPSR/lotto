@@ -24,14 +24,14 @@ class ContentModalController extends Controller
             $content_modal = new ContentModals();
             $content_modal->description = $request->description;
 
-           
+
             $content_modal->save();
 
             $path = '';
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/content_modals/' . $content_modal->id;
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -59,7 +59,7 @@ class ContentModalController extends Controller
             if ($request->hasFile('image')) {
                 $filepath = 'uploads/content_modals/' . $request->id;
                 if (!File::exists($filepath)) {
-                    File::makeDirectory($filepath, 0775, true);
+                    File::makeDirectory($filepath, 0777, true);
                 }
 
                 $file = $request->file('image');
@@ -70,7 +70,7 @@ class ContentModalController extends Controller
                 $file->move($filepath, $filename);
 
                 $data['image'] = $filepath . '/' . $filename;
-                
+
             }
 
             $affected = DB::table(self::$table)
