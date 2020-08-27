@@ -1963,8 +1963,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     position: {
@@ -9829,7 +9827,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
+exports.push([module.i, "\ntd {\r\n    padding: 10px !important;\n}\ninput {\r\n    height: 30px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -9848,7 +9846,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\n  padding: 10px !important;\n}\ninput {\n  height: 30px !important;\n}\n", ""]);
+exports.push([module.i, "\ntd {\r\n  padding: 10px !important;\n}\ninput {\r\n  height: 30px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -9867,7 +9865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height {\n    height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
+exports.push([module.i, "\n.hide {\r\n    display: none;\n}\n.input-auto-height {\r\n    height: auto !important;\n}\n.disableSelection {\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    outline: 0;\n}\n.digi {\r\n    width: 100px;\n}\n.digi:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink linear infinite;\r\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n.digi2 {\r\n    width: 100px;\n}\n.digi2:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink2 linear infinite;\r\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\r\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\r\n    background-color: #f2dede;\n}\r\n", ""]);
 
 // exports
 
@@ -41688,19 +41686,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.fingerprint != ""
     ? _c("div", [
-        _c(
-          "a",
-          {
-            staticClass: "w-100 btn",
-            on: {
-              click: function($event) {
-                return _vm.toggleView()
-              }
-            }
-          },
-          [_vm._m(0)]
-        ),
-        _vm._v(" "),
         _c("div", {}, [
           _c(
             "div",
@@ -41709,7 +41694,7 @@ var render = function() {
               attrs: { id: "chat-div" }
             },
             _vm._l(_vm.chat, function(data, index) {
-              return _c("div", [
+              return _c("div", { staticStyle: { "margin-right": "15px" } }, [
                 data.is_admin == 1 && _vm.position == "member"
                   ? _c("div", { staticClass: "text-left" }, [
                       _c(
@@ -41832,7 +41817,7 @@ var render = function() {
                 "div",
                 { staticClass: "row pt-2", staticStyle: { height: "80px" } },
                 [
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-2 col-md-2 col-2 pl-0" }, [
                     _c(
@@ -41887,15 +41872,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticStyle: { cursor: "pointer" } }, [
-      _c("i", { staticClass: "fa fa-envelope" }),
-      _vm._v(" ติดต่อ ADMIN")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -59114,8 +59090,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ammi/GIT/lotto/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/ammi/GIT/lotto/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\lotto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lotto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

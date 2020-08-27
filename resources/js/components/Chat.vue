@@ -1,12 +1,10 @@
 <template>
     <!--- CHAT -->
     <div v-if="fingerprint != ''">
-        <a class="w-100 btn" v-on:click="toggleView()">
-                                    <label style="cursor:pointer"><i class="fa fa-envelope"></i> ติดต่อ ADMIN</label>
-                                </a>
+
         <div style="">
             <div style="height: 400px; overflow-y:scroll" id="chat-div">
-                <div v-for="(data, index) in chat">
+                <div v-for="(data, index) in chat" style="margin-right:15px;">
                     <div v-if="data.is_admin == 1 && position == 'member'" class="text-left">
                         <label class="bg-info text-white rounded pl-2 pr-2">{{data.text}}</label>
                     </div>

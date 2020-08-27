@@ -23,7 +23,17 @@
                             <div class="col-6 text-right">
                                 <a href="/index_member" style="display: inline-block; font-size: 20px; background-color: #6f39d5;color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
                             </div>
-                           
+
+                        </div>
+
+                        <div class="text row" style="margin-left:25px;">
+                            <div class=" text-left mb-2">
+                                <div style="display: inline-flex;">
+                                    <a href="/lottery_bonus" class="nav-link text-warning"><i class="fa fa-birthday-cake"></i> โบนัสวันเกิด</a>
+                                    <a href="?page=members" class="nav-link text-secondary"><i class="far fa-money-bill-alt"></i> แทงหวยสะสมครบ 10 วัน รับ 200 เครดิต</a>
+                                    <a href="?page=members" class="nav-link text-secondary"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br>

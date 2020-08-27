@@ -1,5 +1,5 @@
 @extends('frontend/option/layout_member')
-@extends('frontend.option.layout_chat')
+
 
 @section('contact_member')
 <!-- jackpot begin -->
@@ -213,6 +213,22 @@
                                     </div>
                                 </a>
                             </div>
+
+                            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <a href="{{ route('message') }}" style="display: block; color:#3d5169;">
+                                    <div class="single-jackpot">
+                                        <div class="text-center">
+                                            <i class="fas fa-envelope" style="font-size: 40Px;margin-bottom: 10px; margin-left:0px;"></i>
+
+                                        </div>
+                                        <div class="text-center" style="word-break:break-word">
+                                            กล่องจดหมาย
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
                             <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <a href="{{ route('contact') }}" style="display: block; color:#3d5169;">
                                     <div class="single-jackpot">
