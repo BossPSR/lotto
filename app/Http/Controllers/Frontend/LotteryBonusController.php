@@ -20,4 +20,17 @@ class LotteryBonusController extends Controller
         $data = array('transactions' => $transactions);
         return view('frontend.lottery_bonus', $data);
     }
+
+    public function bonus_normal()
+    {
+        $data = array();
+        return view('frontend.bonus_normal', $data);
+    }
+
+    public function bonus_vip()
+    {
+
+        $data = array();
+        return view('frontend.bonus_vip', $data);
+    }
 }

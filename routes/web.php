@@ -56,6 +56,8 @@ Route::post('/lottery_number_set','Frontend\LotteryNumberSetController@post');
 
 Route::get('/lottery_news','Frontend\LotteryNewsController@index')->name('lottery_news');
 Route::get('/lottery_bonus','Frontend\LotteryBonusController@index')->name('lottery_bonus');
+Route::get('/bonus_normal','Frontend\LotteryBonusController@bonus_normal')->name('bonus_normal');
+Route::get('/bonus_vip','Frontend\LotteryBonusController@bonus_vip')->name('bonus_vip');
 Route::get('/help','Frontend\HelpController@index')->name('help');
 Route::get('/help_visitor','Frontend\HelpController@index_visitor')->name('help_visitor');
 Route::get('/contact','Frontend\ContactController@index')->name('contact');

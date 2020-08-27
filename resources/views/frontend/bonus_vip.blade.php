@@ -29,34 +29,15 @@
                         <div class="text row" style="margin-left:25px;">
                             <div class=" text-left mb-2">
                                 <div style="display: inline-flex;">
-                                    <a href="/lottery_bonus" class="nav-link text-warning"><i class="fa fa-birthday-cake"></i> โบนัสวันเกิด</a>
+                                    <a href="/lottery_bonus" class="nav-link text-secondary"><i class="fa fa-birthday-cake"></i> โบนัสวันเกิด</a>
                                     <a href="/bonus_normal" class="nav-link text-secondary"><i class="far fa-money-bill-alt"></i> แทงหวยสะสมครบ 10 วัน รับ 200 เครดิต</a>
-                                    <a href="/bonus_vip" class="nav-link text-secondary"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>
+                                    <a href="/bonus_vip" class="nav-link text-warning"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
-                    @foreach($transactions as $transaction)
-                    <div class="d-flex">
-                        <div class="col-xl-12 col-lg-12 col-sm-12">
-                            <div class="single-jackpot">
-                                <div class="part-head">
-                                    <div class="icon">
-                                        <img src="assets/img/svg/euro-jackpot.png" alt="">
-                                    </div>
-                                    <div class="text">
-                                        <span class="amount">{{$transaction->remark}}</span>
-                                        <span class="draw-date">{{date('Y-m-d H:i:s',strtotime($transaction->created_at))}}</span>
-                                    </div>
-                                </div>
-                                <div class="part-body">
-                                    รับเครดิตพิเศษ {{number_format($transaction->amount)}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+
                 </div>
             </div>
         </div>
