@@ -46,7 +46,13 @@
                                         วันที่ 1
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 1000 && $round_one == 1){?>
+                                            <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                            <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +66,13 @@
                                         วันที่ 2
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 2000 && $round_two == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +86,13 @@
                                         วันที่ 3
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 3000 && $round_three == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +106,13 @@
                                         วันที่ 4
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 4000 && $round_four == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +126,13 @@
                                         วันที่ 5
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 5000 && $round_five == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +146,13 @@
                                         วันที่ 6
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 6000 && $round_six == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +166,13 @@
                                         วันที่ 7
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 7000 && $round_seven == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +186,13 @@
                                         วันที่ 8
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 8000 && $round_eight == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +206,13 @@
                                         วันที่ 9
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 9000 && $round_nine == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +226,13 @@
                                         วันที่ 10
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                        <?php if($numPrice == 10000 && $round_ten == 1){?>
+                                             <form action="bonus_normal_success" method="post">
+                                                <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <div class="form-control">ยอดแทงยังไม่ถึง</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
