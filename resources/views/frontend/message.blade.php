@@ -30,7 +30,7 @@
 
                     <div class="row">
                         <div class="col-12 mb-2 pr-1">
-                            <div id="app" style="height:40px; z-index:99; background : -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%); font-size:25px; padding-top:15px;" class="col-md-12 col-sm-12 col-lg-12 col-xl-12 mr-2 ml-3  border text-white rounded">
+                            <div id="app" style="height: 517px;z-index:99; background : -webkit-linear-gradient(473deg, #6f39d5 20%, #6f39d5 100%); font-size:25px; padding-top:15px;" class="col-md-12 col-sm-12 col-lg-12 col-xl-12 mr-2 ml-3  border text-white rounded">
                                 <chat></chat>
                             </div>
                             <script src="js/app.js"></script>
