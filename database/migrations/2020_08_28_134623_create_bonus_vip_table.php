@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBonusNormalTable extends Migration
+class CreateBonusVipTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBonusNormalTable extends Migration
      */
     public function up()
     {
-        Schema::create('bonus_normal', function (Blueprint $table) {
+        Schema::create('bonus_vip', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('round');
             $table->bigInteger('user_id');
@@ -29,6 +29,6 @@ class CreateBonusNormalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonus_normal');
+        Schema::dropIfExists('bonus_vip');
     }
 }

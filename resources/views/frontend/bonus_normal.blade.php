@@ -31,7 +31,7 @@
                                 <div style="display: inline-flex;">
                                     <a href="/lottery_bonus" class="nav-link text-secondary"><i class="fa fa-birthday-cake"></i> โบนัสวันเกิด</a>
                                     <a href="/bonus_normal" class="nav-link text-warning"><i class="far fa-money-bill-alt"></i> แทงหวยสะสมครบ 10 วัน รับ 200 เครดิต</a>
-                                    <a href="/bonus_vip" class="nav-link text-secondary"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>
+                                    <a href="/bonus_vip?page=index" class="nav-link text-secondary"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>
                                 </div>
                             </div>
                         </div>
@@ -61,8 +61,9 @@
                                         วันที่ 1
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 1000 && $round_one == 1){?>
-                                            <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 1000 && $round_one == 1){?>
+                                            <form action="bonus_normal_process" method="post">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                             <?php }else{ ?>
@@ -81,8 +82,9 @@
                                         วันที่ 2
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 2000 && $round_two == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 2000 && $round_two == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -101,8 +103,9 @@
                                         วันที่ 3
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 3000 && $round_three == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 3000 && $round_three == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -121,8 +124,9 @@
                                         วันที่ 4
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 4000 && $round_four == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 4000 && $round_four == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -141,8 +145,9 @@
                                         วันที่ 5
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 5000 && $round_five == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 5000 && $round_five == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -161,8 +166,9 @@
                                         วันที่ 6
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 6000 && $round_six == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 6000 && $round_six == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -181,8 +187,9 @@
                                         วันที่ 7
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 7000 && $round_seven == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 7000 && $round_seven == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -201,8 +208,9 @@
                                         วันที่ 8
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 8000 && $round_eight == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 8000 && $round_eight == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -221,8 +229,9 @@
                                         วันที่ 9
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 9000 && $round_nine == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 9000 && $round_nine == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
@@ -241,8 +250,9 @@
                                         วันที่ 10
                                     </div>
                                     <div>
-                                        <?php if($numPrice == 10000 && $round_ten == 1){?>
-                                             <form action="bonus_normal_success" method="post">
+                                        <?php if($numPrice >= 10000 && $round_ten == 1){?>
+                                             <form action="bonus_normal_process" method="post">
+                                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                                 <button type="submit" class="btn btn-warning" style="display: inline-block; font-size: 15px; background-color: #6f39d5;color:#FFF">กดรับ Bonus</button>
                                             </form>
                                         <?php }else{ ?>
