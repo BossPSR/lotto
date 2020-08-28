@@ -15,7 +15,7 @@ $contact_header = ContactHeader::first();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Lotter</title>
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset('LOGOV2.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/LOGOV2.png') }}" type="image/x-icon">
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <!-- fontawesome icon  -->

@@ -42,6 +42,21 @@
                         <div class="col-xl-12 col-lg-12 col-sm-12">
                             <div class="single-jackpot">
                                 <div class="part-body d-flex" style="justify-content: space-between;">
+                                    <div style="display: flex; justify-content: center; align-items: center; font-size:15px;">
+                                        ต้องมียอดแทง ตั้งแต่ 1000 ขึ้นไปและ มีการออกผลแล้วจึงจะกดยืนยันได้
+                                    </div>
+                                    <div style="width: 25%; text-align: center;">
+                                        <div class="form-control" style="background-color: #6f39d5; color:#fff;">200 ฿</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="col-xl-12 col-lg-12 col-sm-12">
+                            <div class="single-jackpot">
+                                <div class="part-body d-flex" style="justify-content: space-between;">
                                     <div style="display: flex; justify-content: center; align-items: center; font-size:20px;">
                                         วันที่ 1
                                     </div>

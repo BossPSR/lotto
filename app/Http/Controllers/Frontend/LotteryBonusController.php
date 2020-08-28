@@ -118,6 +118,20 @@ class LotteryBonusController extends Controller
     public function bonus_vip()
     {
         $data = array();
+        $huay_complete = HuayRoundPoys::where('poy_status', 'complete')->where('user_id', Auth::user()->id)->get();
+        $numPrice_complete = 0;
+        foreach ($huay_complete as  $price_complete) {
+            $numPrice_complete += $price_complete['total_price'];
+        }
+        $data['numPrice_complete'] = $numPrice_complete;
+
+        $huay_pending = HuayRoundPoys::where('poy_status', 'pending')->where('user_id', Auth::user()->id)->get();
+        $numPrice_pending = 0;
+        foreach ($huay_pending as  $price_pending) {
+            $numPrice_pending += $price_pending['total_price'];
+        }
+        $data['numPrice_pending'] = $numPrice_pending;
+
         return view('frontend.bonus_vip', $data);
     }
 }
