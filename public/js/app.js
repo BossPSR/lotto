@@ -9865,7 +9865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.hide {\r\n    display: none;\n}\n.input-auto-height {\r\n    height: auto !important;\n}\n.disableSelection {\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    outline: 0;\n}\n.digi {\r\n    width: 100px;\n}\n.digi:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink linear infinite;\r\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n.digi2 {\r\n    width: 100px;\n}\n.digi2:empty {\r\n    background-color: red;\r\n    -webkit-animation: 1s blink2 linear infinite;\r\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\r\n    to {\r\n        background-color: transparent;\n}\n50% {\r\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\r\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\r\n    background-color: #f2dede;\n}\r\n", ""]);
+exports.push([module.i, "\n.hide {\n    display: none;\n}\n.input-auto-height {\n    height: auto !important;\n}\n.disableSelection {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    outline: 0;\n}\n.digi {\n    width: 100px;\n}\n.digi:empty {\n    background-color: red;\n    -webkit-animation: 1s blink linear infinite;\n    animation: 1s blink linear infinite;\n}\n@keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n.digi2 {\n    width: 100px;\n}\n.digi2:empty {\n    background-color: red;\n    -webkit-animation: 1s blink2 linear infinite;\n    animation: 1s blink2 linear infinite;\n}\n@keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #fa8900;\n}\n}\n@-webkit-keyframes \"blink2\" {\nfrom,\n    to {\n        background-color: transparent;\n}\n50% {\n        background-color: #09afff;\n}\n}\n.yee-kee-first {\n    background-color: #d9edf7;\n}\n.yee-kee-sixteen {\n    background-color: #f2dede;\n}\n", ""]);
 
 // exports
 
@@ -43631,7 +43631,7 @@ var render = function() {
           ? _c("div", [
               _c("div", { staticClass: "row" }, [
                 _vm.price_tree_up != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43665,7 +43665,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_tree_tod != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43699,7 +43699,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_tree_front != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43733,7 +43733,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_tree_down != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43767,7 +43767,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_two_up != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43801,7 +43801,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_two_down != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43835,7 +43835,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_tree_up != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43867,7 +43867,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_two_up != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43899,7 +43899,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_run_up != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43933,7 +43933,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.price_run_down != -1
-                  ? _c("div", { staticClass: "col-xl-6 col-lg-6 col-sm-6" }, [
+                  ? _c("div", { staticClass: "col-6" }, [
                       _c(
                         "div",
                         {
@@ -43972,323 +43972,291 @@ var render = function() {
                       { staticClass: "alert alert-success col-md-12 row m-0" },
                       [
                         _vm.door != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "door" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("door")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            19 ประตู\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "door" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("door")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            19 ประตู\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.ble != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "ble" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("ble")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            เลขเบิ้ล\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "ble" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("ble")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            เลขเบิ้ล\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.rood_front != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "rood_front" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("rood_front")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            รูดหน้า\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "rood_front" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("rood_front")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            รูดหน้า\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.rood_back != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "rood_back" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("rood_back")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            รูดหลัง\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "rood_back" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("rood_back")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            รูดหลัง\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.two_low != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "two_low" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("two_low")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            สองตัวต่ำ\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "two_low" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("two_low")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            สองตัวต่ำ\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.two_height != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "two_height" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("two_height")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            สองตัวสูง\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "two_height" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("two_height")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            สองตัวสูง\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.two_even != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "two_even" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("two_even")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            สองตัวคี่\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "two_even" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("two_even")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            สองตัวคี่\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.two_odd != -1
-                          ? _c(
-                              "div",
-                              { staticClass: "col-xl-6 col-lg-6 col-sm-6" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "single-jackpot disableSelection",
-                                    staticStyle: {
-                                      padding: "0",
-                                      cursor: "pointer"
-                                    },
-                                    attrs: { id: "two_odd" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.select_option("two_odd")
-                                      }
-                                    }
+                          ? _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "single-jackpot disableSelection",
+                                  staticStyle: {
+                                    padding: "0",
+                                    cursor: "pointer"
                                   },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "part-body",
-                                        staticStyle: { padding: "15px 15px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            สองตัวคู่\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                  attrs: { id: "two_odd" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.select_option("two_odd")
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "part-body",
+                                      staticStyle: { padding: "15px 15px" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            สองตัวคู่\n                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e()
                       ]
                     )

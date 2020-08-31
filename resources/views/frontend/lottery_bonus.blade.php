@@ -27,8 +27,16 @@
                         </div>
 
                         <div class="text row" style="margin-left:25px;">
-                            <div class=" text-left mb-2">
+                            <div class=" text-left mb-2 d-none d-xl-block">
                                 <div style="display: inline-flex;">
+                                    <a href="/lottery_bonus" class="nav-link text-warning"><i class="fa fa-birthday-cake"></i> โบนัสวันเกิด</a>
+                                    <a href="/bonus_normal" class="nav-link text-secondary"><i class="far fa-money-bill-alt"></i> แทงหวยสะสมครบ 10 วัน รับ 200 เครดิต</a>
+                                    <a href="/bonus_vip?page=index" class="nav-link text-secondary"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>
+                                </div>
+                            </div>
+                            {{-- มือถือ --}}
+                            <div class=" text-left mb-2 d-xl-none">
+                                <div style="display: block; font-size:17px;">
                                     <a href="/lottery_bonus" class="nav-link text-warning"><i class="fa fa-birthday-cake"></i> โบนัสวันเกิด</a>
                                     <a href="/bonus_normal" class="nav-link text-secondary"><i class="far fa-money-bill-alt"></i> แทงหวยสะสมครบ 10 วัน รับ 200 เครดิต</a>
                                     <a href="/bonus_vip?page=index" class="nav-link text-secondary"><i class="fa fa-star"></i> ระดับVIP แทงครบยอด รับเครดิตพิเศษ</a>

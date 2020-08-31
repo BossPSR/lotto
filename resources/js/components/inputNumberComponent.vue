@@ -160,130 +160,130 @@
         </div>
         <div v-if="page_index==1">
             <div class="row">
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_up != -1">
+                <div class="col-6" v-if="price_tree_up != -1">
                     <div v-on:click="select_option('price_tree_up')" id="price_tree_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวบน ({{price_tree_up}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_tod != -1">
+                <div class="col-6" v-if="price_tree_tod != -1">
                     <div v-on:click="select_option('price_tree_tod')" id="price_tree_tod" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวโต๊ด ({{price_tree_tod}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_front != -1">
+                <div class="col-6" v-if="price_tree_front != -1">
                     <div v-on:click="select_option('price_tree_front')" id="price_tree_front" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวหน้า ({{price_tree_front}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_down != -1">
+                <div class="col-6" v-if="price_tree_down != -1">
                     <div v-on:click="select_option('price_tree_down')" id="price_tree_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             สามตัวหลัง ({{price_tree_down}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_up != -1">
+                <div class="col-6" v-if="price_two_up != -1">
                     <div v-on:click="select_option('price_two_up')" id="price_two_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             + สองตัวบน ({{price_two_up}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_down != -1">
+                <div class="col-6" v-if="price_two_down != -1">
                     <div v-on:click="select_option('price_two_down')" id="price_two_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             + สองตัวล่าง ({{price_two_down}})
                         </div>
                     </div>
                 </div>
-    
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_tree_up != -1">
+
+                <div class="col-6" v-if="price_tree_up != -1">
                     <div v-on:click="select_option('swap_3')" id="swap_3" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             + กลับสามตัว
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_two_up != -1">
+                <div class="col-6" v-if="price_two_up != -1">
                     <div v-on:click="select_option('swap_2')" id="swap_2" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             + กลับสองตัว
                         </div>
                     </div>
                 </div>
-    
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_run_up != -1">
+
+                <div class="col-6" v-if="price_run_up != -1">
                     <div v-on:click="select_option('price_run_up')" id="price_run_up" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             วิ่งบน ({{price_run_up}})
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-6" v-if="price_run_down != -1">
+                <div class="col-6" v-if="price_run_down != -1">
                     <div v-on:click="select_option('price_run_down')" id="price_run_down" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                         <div class="part-body" style="padding: 15px 15px">
                             วิ่งล่าง ({{price_run_down}})
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="alert alert-success col-md-12 row m-0" v-if="show_two_option == true ">
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="door != -1">
+                    <div class="col-6" v-if="door != -1">
                         <div v-on:click="select_option('door')" id="door" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 19 ประตู
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="ble != -1">
+                    <div class="col-6" v-if="ble != -1">
                         <div v-on:click="select_option('ble')" id="ble" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 เลขเบิ้ล
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="rood_front != -1">
+                    <div class="col-6" v-if="rood_front != -1">
                         <div v-on:click="select_option('rood_front')" id="rood_front" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 รูดหน้า
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="rood_back != -1">
+                    <div class="col-6" v-if="rood_back != -1">
                         <div v-on:click="select_option('rood_back')" id="rood_back" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 รูดหลัง
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_low != -1">
+                    <div class="col-6" v-if="two_low != -1">
                         <div v-on:click="select_option('two_low')" id="two_low" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 สองตัวต่ำ
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_height != -1">
+                    <div class="col-6" v-if="two_height != -1">
                         <div v-on:click="select_option('two_height')" id="two_height" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 สองตัวสูง
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_even != -1">
+                    <div class="col-6" v-if="two_even != -1">
                         <div v-on:click="select_option('two_even')" id="two_even" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 สองตัวคี่
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-sm-6" v-if="two_odd != -1">
+                    <div class="col-6" v-if="two_odd != -1">
                         <div v-on:click="select_option('two_odd')" id="two_odd" class="single-jackpot disableSelection" style="padding:0; cursor: pointer;">
                             <div class="part-body" style="padding: 15px 15px">
                                 สองตัวคู่
@@ -292,7 +292,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex ">
                 <div class="col-xl-12 col-lg-12 col-sm-12 hide" id="main-input">
                     <div class="single-jackpot disableSelection">
@@ -552,7 +552,7 @@
         <div v-if="page_index==3">
             <a id="input-number-btn" v-on:click="change_page(1)" class="btn btn-sm btn-warning text-white col-md-2">กลับ</a>
             <div v-for="(list, huay_type) in my_number">
-    
+
                 <div v-if="list.length">
                     <label class="mt--2"> {{type_name[huay_type]}}</label>
                 </div>
@@ -572,7 +572,7 @@
                         </div>
                         <div v-if="item.min > item.multiple" class="alert alert-danger p-1">ขั้นต่ำ {{item.min}} บาท</div>
                         <div v-if="item.is_un" class="alert alert-danger p-1">เลขนี้ถูกอั้น</div>
-    
+
                     </div>
                 </div>
             </div>
@@ -609,7 +609,7 @@
                             <button class="btn btn-primary w-100" v-on:click="change_page(4)">แทงพนัน</button>
                         </div>
                     </div>
-    
+
                 </div>
             </section>
         </div>
@@ -646,7 +646,7 @@
             <div class="alert alert-danger" v-if="poy_list.length == 0" style="display: flex; justify-content: space-between;">
                 <label>ยังไม่มีเลขชุด</label>
             </div>
-    
+
             <div v-for="(poy, index) in poy_list">
                 <a v-on:click="load_number_list(poy.id)" style="cursor:pointer;">
                     <div class="row border shadow rounded mb-3 p-2">
@@ -696,11 +696,11 @@
                     <button class="btn btn-light mt-2" v-on:click="change_page(5)">เลขชุด/ดึงโพย</button>
                 </div>
             </div>
-    
+
             <div id="lottery_all">
                 {{my_number_txt}}
             </div>
-    
+
         </div>
     </div>
 </template>
