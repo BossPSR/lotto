@@ -28,6 +28,7 @@ $_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
                             </div>
                             <div class="col-6 text-right">
                                 <a href="/lottery_play" style="display: inline-block; font-size: 20px; background-color: #6f39d5; color:#FFF" class="btn btn-warning">ย้อนกลับ</a>
+                                <button type="button" style="display: inline-block; font-size: 20px; background-color: #6f39d5; color:#FFF" class="btn btn-warning" data-toggle="modal" data-target="#rule">กติกา</button>
                              </div>
                          
                             <span class="draw-date"></span>
@@ -57,6 +58,14 @@ $_GET['huay_secret'] = isset($_GET['huay_secret']) ? $_GET['huay_secret'] : '';
         </div>
     </div>
 
+</div>
+<div class="modal fade" id="rule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <img src="{{url('uploads/rule/'.$huay_round->huay_id.'.png')}}">
+    </div>
+    </div>
+  </div>
 </div>
 <!-- jackpot end -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>

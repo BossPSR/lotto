@@ -1,6 +1,14 @@
 /node_modules
 /public/hot
-/public/uploads
+/public/uploads/chat
+/public/uploads/content_modals
+/public/uploads/contacts
+/public/uploads/deposit
+/public/uploads/id_card
+/public/uploads/player_rules
+/public/uploads/users
+/public/uploads/withdraws
+/public/uploads/withdraws_credit
 /public/storage
 /storage/*.key
 /vendor

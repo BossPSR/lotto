@@ -24,14 +24,26 @@ class LotteryPlayController extends Controller
 
     public function index()
     {
-        $huay_rounds = HuayRounds::whereBetween('start_datetime', array(date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')))
+        $huay_rounds = HuayRounds::whereBetween('end_datetime', array(date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')))
             ->join('huay_categorys', 'huay_rounds.huay_category_id', '=', 'huay_categorys.id')
             ->select('huay_rounds.*', 'huay_categorys.name as category_name')
+            ->orderBy('end_datetime')
             ->get();
 
-        $huay_round_by_category = array();
+            
+
+        $huay_round_by_category = array(
+            'หวยไทย' => array(),
+            'หวยหุ้นต่างประเทศ' => array(),
+            'หวยยี่กี' => array(),
+            'หวยยี่กี Big Money' => array(),
+        );
         if ($huay_rounds) {
             foreach ($huay_rounds as $round) {
+                if($round->huay_id == 1)
+                    $round->category_name = 'หวยไทย';
+                if($round->category_name == 'หวยทั่วไป')
+                    $round->category_name = 'หวยหุ้นต่างประเทศ';
                 if (!isset($huay_round_by_category[$round->category_name]))
                     $huay_round_by_category[$round->category_name] = array();
 

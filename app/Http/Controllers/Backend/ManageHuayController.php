@@ -80,11 +80,11 @@ class ManageHuayController extends Controller
             if (count($check_duplicate) == 0) {
                 $huays = Huays::get();
                 foreach ($huays as $huay) {
-                    if ($huay->id > 1 && $huay->id < 8) {
-                        if ($huay->id == 2 or $huay->id == 4 or $huay->id == 6) {
+                    if ($huay->id > 1 && $huay->id < 9) {
+                        if ($huay->id == 3 or $huay->id == 5 or $huay->id == 7) {
                             $_POST['start_datetime'] = $_POST['date'] . ' 00:00:00';
                             $_POST['end_datetime'] = $_POST['date'] . ' 11:59:59';
-                        } else if ($huay->id == 3 or $huay->id == 5 or $huay->id == 7) {
+                        } else if ($huay->id == 4 or $huay->id == 6 or $huay->id == 8) {
                             $_POST['start_datetime'] = $_POST['date'] . ' 12:00:00';
                             $_POST['end_datetime'] = $_POST['date'] . ' 23:59:59';
                         }
@@ -117,18 +117,15 @@ class ManageHuayController extends Controller
                             ->update($data);
 
                     } else if ($huay->id > 20) {
-                        for ($i = 0; $i < 84; $i++) {
+                        for ($i = 1; $i < 88; $i++) {
 
-                            $_POST['start_datetime'] = $_POST['date'] . ' 00:00:00';
-                            $_POST['end_datetime'] = $_POST['date'] . ' 00:15:00';
-
-                            $_POST['start_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['start_datetime'] . ' + ' . ($i * 15) . ' minutes'));
-                            $_POST['end_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['end_datetime'] . ' + ' . ($i * 15) . ' minutes'));
+                            $_POST['start_datetime'] = $_POST['date'] . ' 06:00:00';
+                            $_POST['end_datetime'] = date('Y-m-d H:i:s', strtotime($_POST['start_datetime'] . ' + ' . ($i * 15) . ' minutes'));
                             $huay_round = new HuayRounds();
                             $huay_round->huay_category_id = $huay->huay_category_id;
                             $huay_round->can_shoot = $huay->can_shoot;
                             $huay_round->huay_id = $huay['id'];
-                            $huay_round->name = $huay->name . ' รอบ ' . ($i + 1);
+                            $huay_round->name = $huay->name . ' รอบ ' . ($i );
                             $huay_round->date = $_POST['date'];
                             $huay_round->start_time = date('H:i:s', strtotime($_POST['start_datetime']));
                             $huay_round->end_time = date('H:i:s', strtotime($_POST['end_datetime']));

@@ -9827,7 +9827,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\r\n    padding: 10px !important;\n}\ninput {\r\n    height: 30px !important;\n}\r\n", ""]);
+exports.push([module.i, "\ntd {\n    padding: 10px !important;\n}\ninput {\n    height: 30px !important;\n}\n", ""]);
 
 // exports
 
@@ -9846,7 +9846,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntd {\r\n  padding: 10px !important;\n}\ninput {\r\n  height: 30px !important;\n}\r\n", ""]);
+exports.push([module.i, "\ntd {\n  padding: 10px !important;\n}\ninput {\n  height: 30px !important;\n}\n", ""]);
 
 // exports
 
@@ -59058,8 +59058,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\lotto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lotto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/ammi/GIT/lotto/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/ammi/GIT/lotto/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
